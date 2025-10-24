@@ -1,0 +1,131 @@
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ShoppingCart } from "lucide-react";
+import { Link } from "wouter";
+import type { Product } from "@shared/schema";
+
+interface ProductCardProps {
+  product: Product;
+  onAddToCart: (productId: string) => void;
+}
+
+export function ProductCard({ product, onAddToCart }: ProductCardProps) {
+  const discountPercent = Math.round(
+    ((parseFloat(product.originalPrice) - parseFloat(product.exhibitionPrice)) /
+      parseFloat(product.originalPrice)) *
+      100
+  );
+
+  return (
+    <Card className="group hover-elevate overflow-hidden" data-testid={`card-product-${product.id}`}>
+      <Link href={`/produkt/${product.slug}`} data-testid={`link-product-${product.slug}`}>
+        <div className="relative aspect-square overflow-hidden bg-muted">
+          {/* Exhibition Badge */}
+          <Badge
+            variant="destructive"
+            className="absolute top-3 left-3 z-10 text-xs font-semibold uppercase tracking-wide"
+            data-testid="badge-exhibition"
+          >
+            PRODUKT POWYSTAWOWY
+          </Badge>
+
+          {/* Discount Badge */}
+          {discountPercent > 0 && (
+            <Badge
+              className="absolute top-3 right-3 z-10 bg-primary text-primary-foreground border-primary-border"
+              data-testid="badge-discount"
+            >
+              -{discountPercent}%
+            </Badge>
+          )}
+
+          {/* Product Image */}
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            data-testid="img-product"
+          />
+        </div>
+      </Link>
+
+      <CardContent className="p-4 space-y-2">
+        <Link href={`/produkt/${product.slug}`}>
+          <div className="space-y-1">
+            <h3
+              className="font-semibold text-lg leading-tight line-clamp-2 hover:text-primary transition-colors"
+              data-testid="text-product-name"
+            >
+              {product.name}
+            </h3>
+            <p className="text-sm text-muted-foreground" data-testid="text-product-sku">
+              SKU: {product.sku}
+            </p>
+          </div>
+        </Link>
+
+        {/* Pricing */}
+        <div className="space-y-1">
+          <div className="flex items-baseline gap-2">
+            <span
+              className="text-2xl font-bold text-primary font-heading"
+              data-testid="text-exhibition-price"
+            >
+              {parseFloat(product.exhibitionPrice).toLocaleString("pl-PL", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}{" "}
+              zł
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span
+              className="text-sm text-muted-foreground line-through"
+              data-testid="text-original-price"
+            >
+              {parseFloat(product.originalPrice).toLocaleString("pl-PL", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}{" "}
+              zł
+            </span>
+            <span className="text-sm font-medium text-destructive">
+              Oszczędzasz {(parseFloat(product.originalPrice) - parseFloat(product.exhibitionPrice)).toLocaleString("pl-PL", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}{" "}
+              zł
+            </span>
+          </div>
+        </div>
+
+        {/* Stock Status */}
+        {product.inStock ? (
+          <Badge variant="secondary" className="text-xs">
+            Dostępny
+          </Badge>
+        ) : (
+          <Badge variant="outline" className="text-xs">
+            Brak w magazynie
+          </Badge>
+        )}
+      </CardContent>
+
+      <CardFooter className="p-4 pt-0">
+        <Button
+          className="w-full"
+          onClick={(e) => {
+            e.preventDefault();
+            onAddToCart(product.id);
+          }}
+          disabled={!product.inStock}
+          data-testid="button-add-to-cart"
+        >
+          <ShoppingCart className="mr-2 h-4 w-4" />
+          Dodaj do koszyka
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
