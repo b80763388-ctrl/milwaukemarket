@@ -1,252 +1,90 @@
 # Milwaukee Tools - Sklep z Narzędziami Powystawowymi
 
-## Przegląd Projektu
+## Overview
+This project is a professional, bilingual (Polish/English) e-commerce store offering original Milwaukee exhibition tools at attractive prices. All products come with a 12-month warranty. The platform aims to provide a seamless shopping experience for customers looking for high-quality tools, featuring a modern UI, real-time chat support, and a robust e-commerce workflow.
 
-Profesjonalny dwujęzyczny (polski/angielski) sklep internetowy e-commerce oferujący oryginalne narzędzia Milwaukee w atrakcyjnych cenach. Wszystkie produkty to urządzenia powystawowe z 12-miesięczną gwarancją.
+**Key Capabilities:**
+- Bilingual support (PL/EN) with automatic IP-based language detection.
+- E-commerce functionalities: product display, cart management, checkout, order placement.
+- Real-time customer support via a live chat system.
+- Admin panel for managing orders and customer chats.
+- Responsive design for optimal viewing on various devices.
+- Focus on "exhibition products" with clear pricing and warranty information.
 
-**Języki:** Polski (pl), Angielski (en) - automatyczna detekcja na podstawie IP
-**Technologie:** React, TypeScript, Express, TailwindCSS, Shadcn UI, i18n
-**Storage:** In-memory (MemStorage)
+## User Preferences
+I want the agent to use simple language and provide detailed explanations when necessary. I prefer an iterative development approach, where I can review changes frequently. The agent should ask for confirmation before making any major architectural changes or introducing new dependencies.
 
-## Data Model
+## System Architecture
 
-### Product (Produkt)
-- `id`: UUID - unikalny identyfikator
-- `name`: string - nazwa produktu
-- `slug`: string - SEO-friendly URL
-- `category`: string - kategoria (10 kategorii: "wiertarki", "szlifierki", "klucze", "młoty", "wózki", "zestawy", "piły", "oświetlenie", "akcesoria", "zestawy-specjalistyczne")
-- `description`: string - opis produktu
-- `originalPrice`: decimal - cena katalogowa
-- `exhibitionPrice`: decimal - cena powystawowa (obniżona)
-- `image`: string - ścieżka do obrazu produktu
-- `sku`: string - numer SKU
-- `voltage`: string (optional) - napięcie (np. "18V")
-- `batteryIncluded`: boolean - czy bateria w zestawie
-- `inStock`: boolean - dostępność
-- `condition`: string - stan produktu
-- `warranty`: string - informacje o gwarancji
-- `features`: string[] - lista cech technicznych
+### UI/UX Decisions
+- **Color Scheme:** Milwaukee Red (`hsl(0, 72%, 42%)`) as primary, with black/white foreground and subtle card backgrounds. Destructive elements use red for emphasis (e.g., "PRODUKT POWYSTAWOWY" badge).
+- **Typography:** Space Grotesk for headings (bold, industrial) and Inter for body text (clean, professional).
+- **Component Library:** Shadcn UI components with custom color theming.
+- **Responsiveness:** Full support for mobile (< 768px), tablet (768-1024px), and desktop (> 1024px) with an elevation system for interactive elements.
+- **Pages:**
+    - **Public:** Homepage (hero, featured products, categories), All Products, Category, Product Detail, Checkout, Terms, Privacy.
+    - **Admin:** Login, Dashboard (orders, revenue, chats), Chat Management.
+- **Components:** Sticky Header with logo, categories dropdown, cart, language switcher; Product Cards with pricing and discount badges; Cart Sidebar with quantity management and free delivery progress; Footer with newsletter, links, contact, social media, and payment icons; LiveChat widget.
 
-### CartItem (Element koszyka)
-- `id`: UUID - identyfikator elementu koszyka
-- `sessionId`: string - ID sesji użytkownika
-- `productId`: string - ID produktu
-- `quantity`: number - ilość
+### Technical Implementations
+- **Frontend:** React, TypeScript, TailwindCSS, Shadcn UI, i18n for internationalization. Uses `localStorage` for cart and admin token, React Query for data fetching, and toast notifications.
+- **Backend:** Express, TypeScript. Provides REST API for products, cart, orders, and chat sessions.
+- **Real-time Communication:** WebSocket server (`/ws`) for live chat functionality, supporting `join`, `message`, and `typing` events. Automatically creates chat sessions for new customers and broadcasts messages between customers and admins.
+- **Data Model:**
+    - **Product:** `id`, `name`, `slug`, `category`, `description`, `originalPrice`, `exhibitionPrice`, `image`, `sku`, `voltage`, `batteryIncluded`, `inStock`, `condition`, `warranty`, `features`.
+    - **CartItem:** `id`, `sessionId`, `productId`, `quantity`.
+    - **Order:** `id`, `firstName`, `lastName`, `email`, `phone`, `address`, `city`, `postalCode`, `courier`, `orderItems`, `totalAmount`, `createdAt`.
+    - **ChatSession:** `id`, `customerName`, `customerEmail`, `status`, `createdAt`, `lastMessageAt`.
+    - **ChatMessage:** `id`, `sessionId`, `sender`, `message`, `createdAt`.
+- **Storage:** In-memory `MemStorage` for products, orders, chat sessions, and messages (note: data is ephemeral and lost on server restart, needs migration to persistent storage like PostgreSQL for production).
 
-### CartItemWithProduct
-- Rozszerzenie CartItem z pełnymi danymi produktu
+### Feature Specifications
+- **Exhibition Products:** Products clearly marked with a "PRODUKT POWYSTAWOWY" badge and 12-month warranty.
+- **Discount System:** Displays savings between original and exhibition prices.
+- **Cart Management:** Sidebar with quantity controls, subtotal, and free delivery progress bar (threshold 500 PLN).
+- **Product Catalog:** 100 products across 10 categories.
+- **Navigation:** Dropdown category menus in the header for desktop and mobile.
+- **Payment Icons:** VISA, Mastercard, BLIK displayed in the footer.
+- **Live Chat:** Real-time WebSocket chat system. Floating widget (customer-side) available from 12:00-20:00 with online indicator. Admin interface for managing chat sessions and responding to customers in real-time.
+- **SEO:** Meta tags, Polish language support, descriptive titles.
+- **Multilingualism:** Automatic IP-based language detection (PL/EN) and a language switcher.
+- **Currency System:** Automatic currency conversion based on user's country (PLN, EUR, USD/GBP) with Frankfurter API integration and 1-hour cache.
+- **Legal Pages:** Dedicated pages for Terms and Privacy, linked from the footer.
+- **Checkout:** Shipping form with courier selection (InPost, DPD, DHL), dynamic courier availability based on product size, order summary, and success screen.
+- **Admin Panel:** Secure admin panel with password authentication (default: admin123, configurable via ADMIN_PASSWORD env variable).
+  - **Dashboard:** Overview with total orders, total revenue, list of recent orders with customer details.
+  - **Chat Management:** Real-time chat interface with list of active sessions, conversation window, and ability to respond to customers via WebSocket.
+  - **Authentication:** Simple token-based authentication stored in localStorage.
+  - **Bilingual:** Full PL/EN support in admin panel.
 
-### Order (Zamówienie)
-- `id`: UUID - unikalny identyfikator zamówienia
-- `firstName`: string - imię klienta
-- `lastName`: string - nazwisko klienta
-- `email`: string - adres e-mail
-- `phone`: string - numer telefonu
-- `address`: string - adres dostawy
-- `city`: string - miasto
-- `postalCode`: string - kod pocztowy (format: XX-XXX)
-- `courier`: enum - wybrany kurier ("inpost" | "dpd" | "dhl")
-- `orderItems`: JSON - produkty w zamówieniu (productId, name, quantity, price)
-- `totalAmount`: decimal - łączna kwota zamówienia
-- `createdAt`: timestamp - data utworzenia
+## Recent Changes
 
-## Architektura Projektu
+**2025-10-25:** Admin Panel & Real-time Chat Implementation
+- Implemented full admin panel with authentication and order management:
+  - **AdminLoginPage** (/admin/login): Password-protected login (ADMIN_PASSWORD env or default "admin123")
+  - **AdminDashboardPage** (/admin/dashboard): Statistics dashboard showing total orders, total revenue, and list of recent 10 orders
+  - **AdminChatPage** (/admin/chat): Real-time chat management interface with session list and conversation window
+- Built WebSocket chat system:
+  - **WebSocket Server** (/ws endpoint): Handles join, message, and typing events
+  - **useChat Hook**: Custom React hook for WebSocket connection management (customer and admin modes)
+  - **LiveChat Component**: Complete rewrite using WebSocket for real-time messaging
+  - **Chat Storage**: ChatSession and ChatMessage models with full CRUD operations in MemStorage
+- Added admin API endpoints:
+  - GET /api/orders - list all orders
+  - GET /api/orders/:id - get single order
+  - GET /api/chat/sessions - list all chat sessions
+  - GET /api/chat/sessions/:id - get session with messages
+  - POST /api/chat/sessions/:id/close - close chat session
+  - POST /api/admin/login - admin authentication
+- Updated App.tsx routing:
+  - Admin routes exclude Header, Footer, and CartSidebar
+  - Conditional rendering based on route path
+- All admin pages fully translated (PL/EN) using useLanguage hook
+- ⚠️ **Note:** MemStorage is in-memory - all data (orders, chat sessions) is lost on server restart. Production deployment requires migration to PostgreSQL.
 
-### Frontend (Client)
-**Strony:**
-- `/` - HomePage: Hero z obrazem warsztatu, wyróżnione produkty, kategorie, sekcja zaufania
-- `/produkty` - AllProductsPage: Wszystkie produkty w układzie siatki
-- `/kategoria/:category` - CategoryPage: Produkty według kategorii
-- `/produkt/:slug` - ProductDetailPage: Szczegóły produktu z akordeonem specyfikacji
-- `/checkout` - CheckoutPage: Finalizacja zamówienia z formularzem wysyłkowym i wyborem kuriera
-
-**Komponenty:**
-- `Header`: Sticky navigation z logo Milwaukee, dropdown menu kategorii, koszyk z licznikiem, przełącznik języka
-- `LanguageSwitcher`: Dropdown z ikoną Globe do wyboru języka (Polski/English)
-- `ProductCard`: Karta produktu z badge "PRODUKT POWYSTAWOWY", zniżką, cenami
-- `CartSidebar`: Slide-out panel koszyka z zarządzaniem ilością, podsumowaniem, progress bar darmowej dostawy
-- `Footer`: Newsletter, linki, kontakt, social media, ikony płatności (VISA, Mastercard, BLIK)
-- `LiveChat`: Floating widget w prawym dolnym rogu z informacją o godzinach dostępności (12:00-20:00)
-
-**Stan:**
-- Koszyk zarządzany w localStorage
-- React Query do fetchu produktów
-- Toast notifications dla akcji koszyka
-
-### Backend (Server)
-**API Endpoints:**
-- `GET /api/products` - Wszystkie produkty
-- `GET /api/products/:id` - Pojedynczy produkt
-- `POST /api/cart` - Dodaj do koszyka
-- `PUT /api/cart/:id` - Aktualizuj ilość
-- `DELETE /api/cart/:id` - Usuń z koszyka
-- `POST /api/orders` - Utwórz nowe zamówienie
-
-**Storage:**
-- MemStorage dla produktów (preloaded z danymi Milwaukee)
-- MemStorage dla zamówień (in-memory persistence)
-- localStorage dla koszyka (frontend)
-
-## Design System
-
-### Kolorystyka Milwaukee
-- **Primary:** Czerwony Milwaukee (`hsl(0, 72%, 42%)`)
-- **Foreground:** Czarny/biały zależnie od trybu
-- **Card:** Subtelne tło dla kart produktów
-- **Destructive:** Czerwony dla badge'ów "PRODUKT POWYSTAWOWY"
-
-### Typography
-- **Heading Font:** Space Grotesk (bold, industrial)
-- **Body Font:** Inter (clean, professional)
-
-### Komponenty UI
-- Wszystkie z shadcn/ui z customizacją kolorów
-- Elevation system (hover-elevate, active-elevate-2)
-- Responsywne breakpoints: mobile < 768px, tablet 768-1024px, desktop > 1024px
-
-## Kluczowe Funkcje
-
-1. **Produkty Powystawowe:** Każdy produkt oznaczony badge "PRODUKT POWYSTAWOWY" z 12-miesięczną gwarancją
-2. **System Zniżek:** Pokazywane oszczędności (cena katalogowa vs powystawowa)
-3. **Koszyk:** Sidebar z zarządzaniem ilością, podsumowaniem, progress bar darmowej dostawy (500 zł)
-4. **Katalog:** 100 produktów w 10 kategoriach (Wiertarki, Szlifierki, Klucze, Młoty, Wózki, Zestawy, Piły, Oświetlenie, Akcesoria, Zestawy Specjalistyczne)
-5. **Nawigacja:** Dropdown menu kategorii w header (desktop i mobile)
-6. **Płatności:** Ikony VISA, Mastercard (react-icons/si) i BLIK badge w footer
-7. **Live Chat:** Floating widget dostępny 12:00-20:00 z pulsującym wskaźnikiem online
-8. **Responsywność:** Pełne wsparcie mobile/tablet/desktop
-9. **SEO:** Meta tags, polski język, opisowe tytuły
-10. **Wielojęzyczność:** Automatyczna detekcja języka na podstawie IP (ipapi.co), przełącznik PL/EN, tłumaczenia dla całego UI
-
-## Struktura Plików
-
-```
-client/
-  src/
-    components/
-      Header.tsx - Nawigacja sticky z dropdown kategorii
-      LanguageSwitcher.tsx - Przełącznik języka (Globe icon)
-      ProductCard.tsx - Karta produktu z cenami
-      CartSidebar.tsx - Panel boczny koszyka
-      Footer.tsx - Stopka z newsletter i ikonami płatności
-      LiveChat.tsx - Floating chat widget
-      ui/ - Komponenty shadcn
-    contexts/
-      LanguageContext.tsx - Kontekst języka z wykrywaniem IP
-    lib/
-      i18n.ts - System tłumaczeń (PL/EN)
-    pages/
-      HomePage.tsx - Strona główna z hero
-      ProductDetailPage.tsx - Szczegóły produktu
-      CategoryPage.tsx - Lista produktów w kategorii
-      AllProductsPage.tsx - Wszystkie produkty
-    App.tsx - Routing i zarządzanie koszykiem
-    
-server/
-  routes.ts - API endpoints
-  storage.ts - MemStorage interface i implementacja
-  
-shared/
-  schema.ts - Typy TypeScript i Drizzle schemas
-```
-
-## Workflow
-
-**Start application:**
-- Command: `npm run dev`
-- Uruchamia Express backend + Vite frontend na tym samym porcie
-
-## Zmiany Ostatnie
-
-**2025-10-25:** Poprawki UX i optymalizacja CheckoutPage
-- Dodano scroll to top przy zmianie route (useEffect w App.tsx)
-- Poprawiono zamykanie koszyka po kliknięciu "Przejdź do kasy"
-- Zoptymalizowano responsywność CheckoutPage:
-  - Zmniejszono paddingi i odstępy na mobilnych urządzeniach (py-4 md:py-8)
-  - Zmniejszono odstępy między elementami formularza (gap-4 md:gap-6)
-  - Zoptymalizowano rozmiary logo kurierów (h-8 zamiast h-10)
-  - Zmniejszono paddingi w courier cards (p-3 zamiast p-4)
-  - Zmniejszono obrazy produktów w podsumowaniu (w-14 zamiast w-16)
-  - Sticky positioning Order Summary dla desktop (lg:top-20)
-
-**2025-10-25:** Implementacja checkout z formularzem wysyłkowym i wyborem kuriera
-- Dodano Order model do shared/schema.ts z walidacją Zod
-- Rozszerzono IStorage i MemStorage o createOrder()
-- Dodano endpoint POST /api/orders w server/routes.ts
-- Zaimplementowano CheckoutPage:
-  - Formularz wysyłkowy: imię, nazwisko, email, telefon, adres, miasto, kod pocztowy
-  - Wybór kuriera: InPost, DPD, DHL (z obrazami logo)
-  - Logika blokowania InPost dla dużych produktów (kategorie: wózki, zestawy, zestawy-specjalistyczne)
-  - Podsumowanie zamówienia z listą produktów
-  - Ekran sukcesu po złożeniu zamówienia
-- Dodano route /checkout w App.tsx
-- Dodano Link z CartSidebar "Przejdź do kasy" → /checkout
-- Dodano tłumaczenia checkout (PL/EN) do lib/i18n.ts
-- Walidacja formularza: kod pocztowy XX-XXX, email, telefon min 9 cyfr
-- Frontend schema (frontendOrderSchema) bez backend-only fields
-- Responsywność desktop/mobile, integracja z systemem walut
-- Middleware Express do serwowania /attached_assets (obrazy kurierów)
-- Naprawiono CategoryPage: dodano wszystkie 10 kategorii do categoryNames słownika
-- Testy e2e: pełny checkout flow działa poprawnie, InPost blokowany dla dużych produktów
-
-**2025-10-25:** Naprawa błędnych specyfikacji technicznych produktów
-- Poprawiono błędne specyfikacje na podstawie oficjalnych danych Milwaukee:
-  - **M18 FUEL Wiertarko-wkrętarka udarowa (M18FPD3):** moment obrotowy 135 Nm → **158 Nm**, SKU zaktualizowane na M18FPD3-0X
-  - **M18 FUEL Klucz udarowy 1/2" (M18FHIWF12):** dodano moment zrywający **1898 Nm**, zaktualizowano tryby DRIVE CONTROL™
-  - **M18 FUEL Młot udarowo-obrotowy SDS-Plus (M18FHX):** energia uderzenia 2.1J → **2.5J**, SKU zaktualizowane na M18FHX-0X
-  - **M18 FUEL Wiertarko-wkrętarka 13mm (M18FDD3):** moment obrotowy 60 Nm → **158 Nm**, SKU zaktualizowane na M18FDD3-0X
-- Wszystkie parametry techniczne zweryfikowane ze stroną producenta Milwaukee
-- Prędkości obrotowe i inne specyfikacje zaktualizowane do najnowszych modeli
-
-**2025-10-25:** Naprawa błędnych kategorii produktów
-- Naprawiono błędne kategorie w bazie produktów:
-  - **M18 FUEL Piła szablasta:** usunięto duplikat (produkt był 2 razy w bazie)
-  - **M18 FUEL Wyrzynarka:** kategoria "wiertarki" → "pily"
-  - **M18 FUEL Multi-Tool:** kategoria "szlifierki" → "akcesoria"
-  - **M18 FUEL Frezarka:** kategoria "wiertarki" → "akcesoria"
-- Zweryfikowano poprawność wszystkich 100 produktów w bazie
-- Katalog produktów teraz poprawnie kategoryzowany w 10 kategoriach
-
-**2025-10-25:** System walut, modale informacyjne, strony prawne
-- Zaimplementowano system automatycznego przeliczania walut:
-  - Automatyczna detekcja kraju użytkownika (PL→PLN, EU→EUR, inne→USD/GBP)
-  - Integracja z Frankfurter API (darmowe, bez limitu zapytań)
-  - Cache kursów walut (1 godzina) w localStorage
-  - Funkcja formatPriceSync() dostępna w LanguageContext
-  - Integracja w ProductCard (CartSidebar i ProductDetailPage do aktualizacji)
-- Dodano modale informacyjne:
-  - ExhibitionProductsModal: Informacje o produktach powystawowych, stan, gwarancja 12 miesięcy
-  - ShippingPaymentModal: Dostawa kurierem (max 21 dni), płatności (karty Visa/Mastercard, BLIK)
-  - Modale zintegrowane z HomePage (przyciski info) i Footer (linki)
-- Dodano strony prawne:
-  - TermsPage (/regulamin): Pełny regulamin sklepu zgodny z prawem polskim
-  - PrivacyPage (/polityka-prywatnosci): Polityka prywatności zgodna z RODO
-  - Routy dodane do App.tsx, linki w Footer
-- Pobrano stock images narzędzi (wiertarki, szlifierki, klucze, piły, młoty)
-  - **Uwaga:** Prawdziwe zdjęcia produktów Milwaukee wymagają licencji od producenta
-  - Stock images reprezentują typy narzędzi, nie konkretne modele Milwaukee
-
-**2025-10-25:** System wielojęzyczny i poprawki gwarancji
-- Zamieniono "gwarancja producenta" na "gwarancja 12 miesięcy" we wszystkich produktach (100 produktów)
-- Poprawiono kategoryzację produktów (piła tarczowa przeniesiona z "wiertarki" do "pily")
-- Zaimplementowano pełny system wielojęzyczny (Polski/Angielski):
-  - Automatyczne wykrywanie kraju użytkownika przez ipapi.co API
-  - LanguageContext z detekcją IP i zapisem w localStorage
-  - LanguageSwitcher z ikoną Globe (bez emoji, zgodnie z guidelines)
-  - Tłumaczenia dla Header (desktop i mobile navigation)
-  - Tłumaczenia dla HomePage (hero section, trust badges, kategorie)
-  - System i18n z pełnym wsparciem dla PL i EN
-
-**2025-10-25:** Rozszerzenie funkcjonalności
-- Rozszerzono katalog do 100 produktów w 10 kategoriach
-- Dodano dropdown menu dla kategorii w nawigacji
-- Dodano ikony płatności: VISA, Mastercard (SVG z react-icons/si), BLIK
-- Zamieniono PayU na BLIK
-- Zaimplementowano LiveChat widget z godzinami dostępności 12:00-20:00
-- LiveChat z pulsującym wskaźnikiem online i automatyczną detekcją statusu
-- Wszystkie komponenty przetestowane e2e z Playwright
-
-**2025-10-24:** Projekt utworzony
-- Zaimplementowany pełny frontend z wszystkimi stronami
-- Design system w kolorystyce Milwaukee
-- Komponenty produktów, koszyka, nawigacji
-- Responsywny layout z hero section
+## External Dependencies
+- **Frankfurter API:** Used for real-time currency exchange rates.
+- **ipapi.co:** Used for automatic IP-based user country and language detection.
+- **react-icons/si:** For various icons, including payment icons (VISA, Mastercard).
+- **Shadcn UI:** A collection of re-usable components for building the UI.
+- **Zod:** For schema validation, particularly for order data.
