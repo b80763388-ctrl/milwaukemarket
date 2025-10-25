@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import path from "path";
 
 const app = express();
 
@@ -45,6 +46,9 @@ app.use((req, res, next) => {
 
   next();
 });
+
+// Serve attached_assets directory for product images
+app.use('/attached_assets', express.static(path.join(process.cwd(), 'attached_assets')));
 
 (async () => {
   const server = await registerRoutes(app);
