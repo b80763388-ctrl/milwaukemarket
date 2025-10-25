@@ -14,7 +14,7 @@ Profesjonalny polski sklep internetowy e-commerce oferujący oryginalne narzędz
 - `id`: UUID - unikalny identyfikator
 - `name`: string - nazwa produktu
 - `slug`: string - SEO-friendly URL
-- `category`: string - kategoria ("wiertarki", "szlifierki", "klucze", "mloty", "zestawy")
+- `category`: string - kategoria (10 kategorii: "wiertarki", "szlifierki", "klucze", "młoty", "wózki", "zestawy", "piły", "oświetlenie", "akcesoria", "zestawy-specjalistyczne")
 - `description`: string - opis produktu
 - `originalPrice`: decimal - cena katalogowa
 - `exhibitionPrice`: decimal - cena powystawowa (obniżona)
@@ -46,10 +46,11 @@ Profesjonalny polski sklep internetowy e-commerce oferujący oryginalne narzędz
 - `/produkt/:slug` - ProductDetailPage: Szczegóły produktu z akordeonem specyfikacji
 
 **Komponenty:**
-- `Header`: Sticky navigation z logo Milwaukee, menu kategorii, koszyk z licznikiem
+- `Header`: Sticky navigation z logo Milwaukee, dropdown menu kategorii, koszyk z licznikiem
 - `ProductCard`: Karta produktu z badge "PRODUKT POWYSTAWOWY", zniżką, cenami
 - `CartSidebar`: Slide-out panel koszyka z zarządzaniem ilością, podsumowaniem, progress bar darmowej dostawy
-- `Footer`: Newsletter, linki, kontakt, social media
+- `Footer`: Newsletter, linki, kontakt, social media, ikony płatności (VISA, Mastercard, BLIK)
+- `LiveChat`: Floating widget w prawym dolnym rogu z informacją o godzinach dostępności (12:00-20:00)
 
 **Stan:**
 - Koszyk zarządzany w localStorage
@@ -90,9 +91,12 @@ Profesjonalny polski sklep internetowy e-commerce oferujący oryginalne narzędz
 1. **Produkty Powystawowe:** Każdy produkt oznaczony badge "PRODUKT POWYSTAWOWY"
 2. **System Zniżek:** Pokazywane oszczędności (cena katalogowa vs powystawowa)
 3. **Koszyk:** Sidebar z zarządzaniem ilością, podsumowaniem, progress bar darmowej dostawy (500 zł)
-4. **Kategorie:** Wiertarki, Szlifierki, Klucze Udarowe, Młoty, Zestawy
-5. **Responsywność:** Pełne wsparcie mobile/tablet/desktop
-6. **SEO:** Meta tags, polski język, opisowe tytuły
+4. **Katalog:** 100 produktów w 10 kategoriach (Wiertarki, Szlifierki, Klucze, Młoty, Wózki, Zestawy, Piły, Oświetlenie, Akcesoria, Zestawy Specjalistyczne)
+5. **Nawigacja:** Dropdown menu kategorii w header (desktop i mobile)
+6. **Płatności:** Ikony VISA, Mastercard (react-icons/si) i BLIK badge w footer
+7. **Live Chat:** Floating widget dostępny 12:00-20:00 z pulsującym wskaźnikiem online
+8. **Responsywność:** Pełne wsparcie mobile/tablet/desktop
+9. **SEO:** Meta tags, polski język, opisowe tytuły
 
 ## Struktura Plików
 
@@ -100,10 +104,11 @@ Profesjonalny polski sklep internetowy e-commerce oferujący oryginalne narzędz
 client/
   src/
     components/
-      Header.tsx - Nawigacja sticky z koszykiem
+      Header.tsx - Nawigacja sticky z dropdown kategorii
       ProductCard.tsx - Karta produktu z cenami
       CartSidebar.tsx - Panel boczny koszyka
-      Footer.tsx - Stopka z newsletter
+      Footer.tsx - Stopka z newsletter i ikonami płatności
+      LiveChat.tsx - Floating chat widget
       ui/ - Komponenty shadcn
     pages/
       HomePage.tsx - Strona główna z hero
@@ -128,9 +133,17 @@ shared/
 
 ## Zmiany Ostatnie
 
+**2025-10-25:** Rozszerzenie funkcjonalności
+- Rozszerzono katalog do 100 produktów w 10 kategoriach
+- Dodano dropdown menu dla kategorii w nawigacji
+- Dodano ikony płatności: VISA, Mastercard (SVG z react-icons/si), BLIK
+- Zamieniono PayU na BLIK
+- Zaimplementowano LiveChat widget z godzinami dostępności 12:00-20:00
+- LiveChat z pulsującym wskaźnikiem online i automatyczną detekcją statusu
+- Wszystkie komponenty przetestowane e2e z Playwright
+
 **2025-10-24:** Projekt utworzony
 - Zaimplementowany pełny frontend z wszystkimi stronami
 - Design system w kolorystyce Milwaukee
 - Komponenty produktów, koszyka, nawigacji
-- 6 wygenerowanych obrazów produktów Milwaukee
 - Responsywny layout z hero section
