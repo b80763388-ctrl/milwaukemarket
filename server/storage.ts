@@ -228,33 +228,9 @@ export class MemStorage implements IStorage {
         ],
       },
       {
-        name: "M18 FUEL Piła szablasta",
-        slug: "m18-fuel-pila-szablasta",
-        category: "wiertarki",
-        description:
-          "Profesjonalna piła szablasta M18 FUEL z skokiem ostrza 32mm. Idealna do prac rozbiórkowych i cięcia różnych materiałów.",
-        originalPrice: "749.00",
-        exhibitionPrice: "469.00",
-        image: "/attached_assets/generated_images/Reciprocating_saw_power_tool_93c2b8bb.png",
-        sku: "M18FSX-0",
-        voltage: "18V",
-        batteryIncluded: false,
-        inStock: true,
-        condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "gwarancja 12 miesięcy",
-        features: [
-          "Skok ostrza: 32mm",
-          "Prędkość skoku: 0-3000 skoków/min",
-          "Silnik bezszczotkowy",
-          "System szybkiej wymiany ostrza",
-          "Uchwyt gumowany antywibracyjny",
-          "Funkcja FIXTEC™",
-        ],
-      },
-      {
         name: "M18 FUEL Multi-Tool",
         slug: "m18-fuel-multi-tool",
-        category: "szlifierki",
+        category: "akcesoria",
         description:
           "Uniwersalne narzędzie oscylacyjne M18 FUEL. Szeroki zakres zastosowań - cięcie, szlifowanie, usuwanie fug.",
         originalPrice: "649.00",
@@ -278,7 +254,7 @@ export class MemStorage implements IStorage {
       {
         name: "M18 FUEL Wyrzynarka",
         slug: "m18-fuel-wyrzynarka",
-        category: "wiertarki",
+        category: "pily",
         description:
           "Precyzyjna wyrzynarka M18 FUEL do krzywoliniowego cięcia drewna, metalu i tworzyw sztucznych.",
         originalPrice: "699.00",
@@ -326,7 +302,7 @@ export class MemStorage implements IStorage {
       {
         name: "M18 FUEL Frezarka",
         slug: "m18-fuel-frezarka",
-        category: "wiertarki",
+        category: "akcesoria",
         description:
           "Uniwersalna frezarka M18 FUEL do obróbki drewna. Moc i precyzja w kompaktowej bezprzewodowej obudowie.",
         originalPrice: "799.00",
