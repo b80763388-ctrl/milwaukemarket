@@ -49,13 +49,14 @@
 
 ### Navigation Header
 - Sticky top navigation with logo (left), main menu (center), cart icon with badge (right)
+- Logo: Tools Shop in Milwaukee-inspired style with lightning bolt
 - Secondary bar: Contact info, language selector, search functionality
-- Categories mega-menu: "Wiertarki", "Szlifierki", "Klucze Udarowe", "Młoty", "Zestawy"
+- Categories mega-menu: "Wiertarki", "Szlifierki", "Klucze Udarowe", "Młoty", "Zestawy", "Wózki Narzędziowe"
 - Mobile: Hamburger menu with slide-out navigation
 
 ### Hero Section
 Large hero banner (70vh) featuring professional tools in workshop setting with:
-- Headline: "Profesjonalne Narzędzia Powystawowe" + "Produkty Powystawowe - Oszczędź do 40%"
+- Headline: "Profesjonalne Narzędzia Milwaukee od Tools Shop" + "Produkty Powystawowe - Oszczędź do 40%"
 - Primary CTA: "Zobacz Ofertę"
 - Trust badges: "Gwarancja Producenta", "Darmowa Dostawa od 500 zł", "Bezpieczne Płatności"
 

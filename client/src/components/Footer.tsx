@@ -85,6 +85,11 @@ export function Footer() {
                   Zestawy
                 </a>
               </li>
+              <li>
+                <a href="/kategoria/wozki" className="hover:text-foreground transition-colors" data-testid="link-footer-wozki">
+                  Wózki Narzędziowe
+                </a>
+              </li>
             </ul>
           </div>
 

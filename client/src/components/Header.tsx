@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
+import toolsShopLogo from "@assets/generated_images/Tools_Shop_logo_design_986f0e42.png";
 
 interface HeaderProps {
   cartItemCount: number;
@@ -19,6 +20,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
     { name: "Szlifierki", href: "/kategoria/szlifierki" },
     { name: "Klucze Udarowe", href: "/kategoria/klucze" },
     { name: "Młoty", href: "/kategoria/mloty" },
+    { name: "Wózki Narzędziowe", href: "/kategoria/wozki" },
   ];
 
   return (
@@ -27,10 +29,12 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" data-testid="link-home">
-            <div className="flex items-center gap-2 hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer">
-              <div className="text-2xl font-bold font-heading text-primary">
-                TOOLS SHOP
-              </div>
+            <div className="flex items-center gap-3 hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer">
+              <img 
+                src={toolsShopLogo} 
+                alt="Tools Shop" 
+                className="h-10 w-auto"
+              />
               <Badge variant="secondary" className="text-xs hidden sm:inline-flex">
                 POWYSTAWOWE
               </Badge>

@@ -21,6 +21,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
     { name: "Wiertarki", slug: "wiertarki", count: products?.filter(p => p.category === "wiertarki").length || 0 },
     { name: "Szlifierki", slug: "szlifierki", count: products?.filter(p => p.category === "szlifierki").length || 0 },
     { name: "Klucze Udarowe", slug: "klucze", count: products?.filter(p => p.category === "klucze").length || 0 },
+    { name: "Wózki Narzędziowe", slug: "wozki", count: products?.filter(p => p.category === "wozki").length || 0 },
   ];
 
   return (
@@ -45,7 +46,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 font-heading">
             Profesjonalne Narzędzia
             <br />
-            <span className="text-primary">Powystawowe</span>
+            <span className="text-primary">Milwaukee</span> od Tools Shop
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto">
             Oszczędź do 40% na profesjonalnych narzędziach
