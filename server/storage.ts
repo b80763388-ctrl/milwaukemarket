@@ -1650,7 +1650,7 @@ export class MemStorage implements IStorage {
         originalPrice: "299.00",
         exhibitionPrice: "189.00",
         image: "",
-        sku": "4932399527",
+        sku: "4932399527",
         voltage: null,
         batteryIncluded: false,
         inStock: true,

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import { SiVisa, SiMastercard } from "react-icons/si";
 
 export function Footer() {
   return (
@@ -181,15 +182,15 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-4">
             <span>Bezpieczne płatności:</span>
-            <div className="flex items-center gap-2">
-              <div className="px-2 py-1 bg-background border rounded text-xs font-semibold">
-                VISA
+            <div className="flex items-center gap-3">
+              <div className="h-8 px-3 bg-background border rounded flex items-center justify-center" data-testid="payment-visa">
+                <SiVisa className="h-5 w-auto text-[#1A1F71]" />
               </div>
-              <div className="px-2 py-1 bg-background border rounded text-xs font-semibold">
-                MASTERCARD
+              <div className="h-8 px-3 bg-background border rounded flex items-center justify-center" data-testid="payment-mastercard">
+                <SiMastercard className="h-5 w-auto text-[#EB001B]" />
               </div>
-              <div className="px-2 py-1 bg-background border rounded text-xs font-semibold">
-                PayU
+              <div className="h-8 px-3 bg-background border rounded flex items-center justify-center" data-testid="payment-blik">
+                <span className="text-sm font-bold text-foreground">BLIK</span>
               </div>
             </div>
           </div>

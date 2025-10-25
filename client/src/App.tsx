@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CartSidebar } from "@/components/CartSidebar";
+import { LiveChat } from "@/components/LiveChat";
 import { HomePage } from "@/pages/HomePage";
 import { ProductDetailPage } from "@/pages/ProductDetailPage";
 import { CategoryPage } from "@/pages/CategoryPage";
@@ -174,6 +175,7 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Router />
+        <LiveChat />
       </TooltipProvider>
     </QueryClientProvider>
   );
