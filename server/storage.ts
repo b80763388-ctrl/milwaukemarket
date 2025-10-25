@@ -43,7 +43,7 @@ export class MemStorage implements IStorage {
           "Profesjonalna wiertarko-wkrętarka udarowa M18 FUEL z silnikiem bezszczotkowym POWERSTATE™. Maksymalny moment obrotowy 158 Nm, kompaktowa konstrukcja idealna do pracy w ograniczonych przestrzeniach.",
         originalPrice: "899.00",
         exhibitionPrice: "549.00",
-        image: "/attached_assets/generated_images/Milwaukee_cordless_drill_product_f5b6aa57.png",
+        image: "/attached_assets/image_1761428426765.png",
         sku: "M18FPD3-0X",
         voltage: "18V",
         batteryIncluded: false,
