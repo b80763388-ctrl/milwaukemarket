@@ -140,6 +140,15 @@ shared/
 
 ## Zmiany Ostatnie
 
+**2025-10-25:** Naprawa błędnych specyfikacji technicznych produktów
+- Poprawiono błędne specyfikacje na podstawie oficjalnych danych Milwaukee:
+  - **M18 FUEL Wiertarko-wkrętarka udarowa (M18FPD3):** moment obrotowy 135 Nm → **158 Nm**, SKU zaktualizowane na M18FPD3-0X
+  - **M18 FUEL Klucz udarowy 1/2" (M18FHIWF12):** dodano moment zrywający **1898 Nm**, zaktualizowano tryby DRIVE CONTROL™
+  - **M18 FUEL Młot udarowo-obrotowy SDS-Plus (M18FHX):** energia uderzenia 2.1J → **2.5J**, SKU zaktualizowane na M18FHX-0X
+  - **M18 FUEL Wiertarko-wkrętarka 13mm (M18FDD3):** moment obrotowy 60 Nm → **158 Nm**, SKU zaktualizowane na M18FDD3-0X
+- Wszystkie parametry techniczne zweryfikowane ze stroną producenta Milwaukee
+- Prędkości obrotowe i inne specyfikacje zaktualizowane do najnowszych modeli
+
 **2025-10-25:** Naprawa błędnych kategorii produktów
 - Naprawiono błędne kategorie w bazie produktów:
   - **M18 FUEL Piła szablasta:** usunięto duplikat (produkt był 2 razy w bazie)

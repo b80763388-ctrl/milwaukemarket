@@ -53,7 +53,7 @@ export class MemStorage implements IStorage {
         features: [
           "Silnik bezszczotkowy POWERSTATE™",
           "Maksymalny moment obrotowy: 158 Nm",
-          "Prędkość obrotowa: 0-500/0-2100 obr/min",
+          "Prędkość obrotowa: 0-550/0-2100 obr/min",
           "Uchwyt szybkozaciskowy 13mm",
           "Podświetlenie LED",
           "Kompaktowa długość: 175mm",
@@ -136,7 +136,7 @@ export class MemStorage implements IStorage {
         slug: "m18-fuel-wiertarka-13mm",
         category: "wiertarki",
         description:
-          "Kompaktowa wiertarko-wkrętarka M18 FUEL z uchwytem 13mm bez udaru. Moment obrotowy 85 Nm, idealna do precyzyjnych prac montażowych i instalacyjnych.",
+          "Kompaktowa wiertarko-wkrętarka M18 FUEL z uchwytem 13mm bez udaru. Moment obrotowy 158 Nm, idealna do precyzyjnych prac montażowych i instalacyjnych.",
         originalPrice: "699.00",
         exhibitionPrice: "429.00",
         image: "/attached_assets/generated_images/Milwaukee_cordless_drill_product_f5b6aa57.png",
@@ -147,11 +147,11 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
-          "Moment obrotowy: 85 Nm",
-          "Prędkość obrotowa: 0-450/0-1800 obr/min",
+          "Moment obrotowy: 158 Nm",
+          "Prędkość obrotowa: 0-550/0-2100 obr/min",
           "Uchwyt metalowy 13mm",
-          "Długość: 169mm",
-          "Waga: 1.6kg z akumulatorem",
+          "Długość: 173mm",
+          "Waga: 2.1kg z akumulatorem",
           "Podświetlenie LED",
         ],
       },
