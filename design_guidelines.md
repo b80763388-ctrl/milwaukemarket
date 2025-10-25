@@ -1,13 +1,13 @@
-# Design Guidelines: Polski Sklep Narzędzi Milwaukee
+# Design Guidelines: Tools Shop - Polski Sklep Narzędzi
 
 ## Design Approach
 
-**Selected Approach:** Reference-based e-commerce design inspired by premium tool retailers and modern e-commerce platforms (Shopify, specialized tool retailers), adapted to showcase Milwaukee's professional tool brand identity and exhibition product nature.
+**Selected Approach:** Reference-based e-commerce design inspired by premium tool retailers and modern e-commerce platforms (Shopify, specialized tool retailers), adapted to showcase professional tool brand identity and exhibition product nature.
 
 **Key Design Principles:**
 - Professional, trustworthy e-commerce experience for trade professionals
 - Clear product hierarchy emphasizing exhibition product savings
-- Bold, industrial aesthetic matching Milwaukee's professional tool brand
+- Bold, industrial aesthetic matching professional tool brands
 - Seamless Polish-language shopping experience
 
 ---
@@ -54,10 +54,10 @@
 - Mobile: Hamburger menu with slide-out navigation
 
 ### Hero Section
-Large hero banner (70vh) featuring Milwaukee tools in workshop setting with:
-- Headline: "Profesjonalne Narzędzia Milwaukee" + "Produkty Powystawowe - Oszczędź do 40%"
+Large hero banner (70vh) featuring professional tools in workshop setting with:
+- Headline: "Profesjonalne Narzędzia Powystawowe" + "Produkty Powystawowe - Oszczędź do 40%"
 - Primary CTA: "Zobacz Ofertę"
-- Trust badges: "Gwarancja Milwaukee", "Darmowa Dostawa od 500 zł", "Bezpieczne Płatności"
+- Trust badges: "Gwarancja Producenta", "Darmowa Dostawa od 500 zł", "Bezpieczne Płatności"
 
 ### Product Cards
 - Product image (square aspect ratio) with hover zoom effect
@@ -81,7 +81,7 @@ Large hero banner (70vh) featuring Milwaukee tools in workshop setting with:
 
 ### Category Sections (Homepage)
 - Section headers with "Zobacz wszystkie" links
-- 4-column product grid showcasing top Milwaukee categories
+- 4-column product grid showcasing top tool categories
 - Each category gets 4-8 featured products
 
 ### Shopping Cart
@@ -102,7 +102,7 @@ Rich footer with:
 
 ### Trust Elements
 - Free shipping threshold indicator
-- Milwaukee authorized dealer badge
+- Authorized retailer badge
 - Secure payment icons (Visa, Mastercard, PayU, Przelewy24)
 - Customer reviews/ratings section
 - "Sprawdź Stan Produktu" detailed condition descriptions
@@ -124,8 +124,8 @@ Rich footer with:
 - Social media icons
 
 **Images Section:**
-- **Hero Image:** Large industrial workshop scene with Milwaukee tools in action, professional tradesperson using power tools - warm, professional lighting
-- **Category Headers:** Close-up product photography of Milwaukee tools on industrial backgrounds
+- **Hero Image:** Large industrial workshop scene with professional tools in action, professional tradesperson using power tools - warm, professional lighting
+- **Category Headers:** Close-up product photography of professional tools on industrial backgrounds
 - **Product Images:** Clean white background product shots showing tools from multiple angles
 - **Trust Section:** Workshop/construction site imagery showing professionals at work
 - **About Section:** Warehouse or showroom showing exhibition product displays

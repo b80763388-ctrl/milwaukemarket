@@ -38,10 +38,10 @@ export function Footer() {
           {/* Column 1 - About */}
           <div className="space-y-4">
             <h4 className="font-bold text-lg font-heading text-primary">
-              MILWAUKEE TOOLS
+              TOOLS SHOP
             </h4>
             <p className="text-sm text-muted-foreground">
-              Profesjonalne narzędzia Milwaukee w atrakcyjnych cenach. Produkty powystawowe z pełną gwarancją producenta.
+              Profesjonalne narzędzia w atrakcyjnych cenach. Produkty powystawowe z pełną gwarancją producenta.
             </p>
             <div className="flex gap-2">
               <Button variant="ghost" size="icon" data-testid="button-social-facebook">
@@ -133,12 +133,12 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="h-5 w-5 mt-0.5 shrink-0" />
-                <div className="font-medium text-foreground">sklep@milwaukee-tools.pl</div>
+                <div className="font-medium text-foreground">sklep@tools-shop.pl</div>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 mt-0.5 shrink-0" />
                 <div>
-                  <div className="font-medium text-foreground">Milwaukee Tools</div>
+                  <div className="font-medium text-foreground">Tools Shop</div>
                   <div>ul. Przykładowa 123</div>
                   <div>00-001 Warszawa</div>
                 </div>
@@ -152,7 +152,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <div>
-            © {new Date().getFullYear()} Milwaukee Tools. Wszystkie prawa zastrzeżone.
+            © {new Date().getFullYear()} Tools Shop. Wszystkie prawa zastrzeżone.
           </div>
           <div className="flex items-center gap-4">
             <span>Bezpieczne płatności:</span>

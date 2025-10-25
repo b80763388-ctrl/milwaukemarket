@@ -31,7 +31,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt="Milwaukee Tools Workshop"
+            alt="Tools Shop Workshop"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/50" />
@@ -45,10 +45,10 @@ export function HomePage({ onAddToCart }: HomePageProps) {
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 font-heading">
             Profesjonalne Narzędzia
             <br />
-            <span className="text-primary">Milwaukee</span>
+            <span className="text-primary">Powystawowe</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Oszczędź do 40% na oryginalnych narzędziach Milwaukee
+            Oszczędź do 40% na profesjonalnych narzędziach
             <br />
             Produkty powystawowe z pełną gwarancją
           </p>
@@ -73,7 +73,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
           <div className="flex flex-wrap items-center justify-center gap-6 mt-12 text-white">
             <div className="flex items-center gap-2">
               <Shield className="h-5 w-5" />
-              <span className="text-sm font-medium">Gwarancja Milwaukee</span>
+              <span className="text-sm font-medium">Gwarancja producenta</span>
             </div>
             <div className="flex items-center gap-2">
               <Truck className="h-5 w-5" />
@@ -98,7 +98,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
               Wyróżnione Produkty Powystawowe
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Najlepsze oferty na profesjonalne narzędzia Milwaukee w wyjątkowych cenach
+              Najlepsze oferty na profesjonalne narzędzia w wyjątkowych cenach
             </p>
           </div>
 
@@ -179,9 +179,9 @@ export function HomePage({ onAddToCart }: HomePageProps) {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary">
                 <Shield className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-bold">Gwarancja Milwaukee</h3>
+              <h3 className="text-xl font-bold">Gwarancja Producenta</h3>
               <p className="text-muted-foreground">
-                Wszystkie produkty objęte są pełną gwarancją producenta Milwaukee na 12 miesięcy
+                Wszystkie produkty objęte są pełną gwarancją producenta na 12 miesięcy
               </p>
             </div>
             <div className="text-center space-y-4">

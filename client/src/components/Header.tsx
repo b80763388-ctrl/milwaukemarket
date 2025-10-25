@@ -29,7 +29,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
           <Link href="/" data-testid="link-home">
             <div className="flex items-center gap-2 hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer">
               <div className="text-2xl font-bold font-heading text-primary">
-                MILWAUKEE
+                TOOLS SHOP
               </div>
               <Badge variant="secondary" className="text-xs hidden sm:inline-flex">
                 POWYSTAWOWE
