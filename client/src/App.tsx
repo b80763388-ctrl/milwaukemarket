@@ -14,6 +14,8 @@ import { HomePage } from "@/pages/HomePage";
 import { ProductDetailPage } from "@/pages/ProductDetailPage";
 import { CategoryPage } from "@/pages/CategoryPage";
 import { AllProductsPage } from "@/pages/AllProductsPage";
+import { TermsPage } from "@/pages/TermsPage";
+import { PrivacyPage } from "@/pages/PrivacyPage";
 import NotFound from "@/pages/not-found";
 import type { CartItemWithProduct, Product } from "@shared/schema";
 
@@ -153,6 +155,8 @@ function Router() {
             path="/produkt/:slug"
             component={() => <ProductDetailPage onAddToCart={handleAddToCart} />}
           />
+          <Route path="/regulamin" component={TermsPage} />
+          <Route path="/polityka-prywatnosci" component={PrivacyPage} />
           <Route component={NotFound} />
         </Switch>
       </main>

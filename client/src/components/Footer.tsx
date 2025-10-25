@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
 import { SiVisa, SiMastercard } from "react-icons/si";
+import { ExhibitionProductsModal } from "@/components/ExhibitionProductsModal";
+import { ShippingPaymentModal } from "@/components/ShippingPaymentModal";
 
 export function Footer() {
+  const [exhibitionModalOpen, setExhibitionModalOpen] = useState(false);
+  const [shippingModalOpen, setShippingModalOpen] = useState(false);
   return (
     <footer className="bg-card border-t mt-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-12">
@@ -119,27 +124,39 @@ export function Footer() {
             <h4 className="font-semibold">Informacje</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-foreground transition-colors" data-testid="link-footer-about-exhibition">
+                <button
+                  onClick={() => setExhibitionModalOpen(true)}
+                  className="hover:text-foreground transition-colors text-left"
+                  data-testid="link-footer-about-exhibition"
+                >
                   O produktach powystawowych
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors" data-testid="link-footer-delivery">
+                <button
+                  onClick={() => setShippingModalOpen(true)}
+                  className="hover:text-foreground transition-colors text-left"
+                  data-testid="link-footer-delivery"
+                >
                   Dostawa i płatności
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors" data-testid="link-footer-returns">
+                <button
+                  onClick={() => setShippingModalOpen(true)}
+                  className="hover:text-foreground transition-colors text-left"
+                  data-testid="link-footer-returns"
+                >
                   Zwroty i reklamacje
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors" data-testid="link-footer-terms">
+                <a href="/regulamin" className="hover:text-foreground transition-colors" data-testid="link-footer-terms">
                   Regulamin
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors" data-testid="link-footer-privacy">
+                <a href="/polityka-prywatnosci" className="hover:text-foreground transition-colors" data-testid="link-footer-privacy">
                   Polityka prywatności
                 </a>
               </li>
@@ -196,6 +213,10 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Modals */}
+      <ExhibitionProductsModal open={exhibitionModalOpen} onOpenChange={setExhibitionModalOpen} />
+      <ShippingPaymentModal open={shippingModalOpen} onOpenChange={setShippingModalOpen} />
     </footer>
   );
 }

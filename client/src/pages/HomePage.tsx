@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ProductCard } from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
@@ -5,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Shield, Truck, CheckCircle, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { ExhibitionProductsModal } from "@/components/ExhibitionProductsModal";
+import { ShippingPaymentModal } from "@/components/ShippingPaymentModal";
 import type { Product } from "@shared/schema";
 import heroImage from "@assets/generated_images/Workshop_hero_background_image_7fd60b9a.png";
 
@@ -14,6 +17,8 @@ interface HomePageProps {
 
 export function HomePage({ onAddToCart }: HomePageProps) {
   const { t } = useLanguage();
+  const [exhibitionModalOpen, setExhibitionModalOpen] = useState(false);
+  const [shippingModalOpen, setShippingModalOpen] = useState(false);
   const { data: products, isLoading } = useQuery<Product[]>({
     queryKey: ["/api/products"],
   });
@@ -72,6 +77,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
               size="lg"
               variant="outline"
               className="text-lg px-8 bg-background/10 backdrop-blur-sm border-white/20 text-white hover:bg-background/20"
+              onClick={() => setExhibitionModalOpen(true)}
               data-testid="button-hero-learn"
             >
               {t('hero.cta.learn')}
@@ -80,21 +86,37 @@ export function HomePage({ onAddToCart }: HomePageProps) {
 
           {/* Trust Badges */}
           <div className="flex flex-wrap items-center justify-center gap-6 mt-12 text-white">
-            <div className="flex items-center gap-2">
+            <button
+              onClick={() => setExhibitionModalOpen(true)}
+              className="flex items-center gap-2 hover-elevate active-elevate-2 px-3 py-2 rounded-md transition-colors"
+              data-testid="badge-warranty-info"
+            >
               <Shield className="h-5 w-5" />
               <span className="text-sm font-medium">{t('trust.warranty')}</span>
-            </div>
-            <div className="flex items-center gap-2">
+            </button>
+            <button
+              onClick={() => setShippingModalOpen(true)}
+              className="flex items-center gap-2 hover-elevate active-elevate-2 px-3 py-2 rounded-md transition-colors"
+              data-testid="badge-shipping-info"
+            >
               <Truck className="h-5 w-5" />
               <span className="text-sm font-medium">{t('trust.shipping')}</span>
-            </div>
-            <div className="flex items-center gap-2">
+            </button>
+            <button
+              onClick={() => setExhibitionModalOpen(true)}
+              className="flex items-center gap-2 hover-elevate active-elevate-2 px-3 py-2 rounded-md transition-colors"
+              data-testid="badge-verified-info"
+            >
               <CheckCircle className="h-5 w-5" />
               <span className="text-sm font-medium">{t('trust.verified')}</span>
-            </div>
+            </button>
           </div>
         </div>
       </section>
+
+      {/* Modals */}
+      <ExhibitionProductsModal open={exhibitionModalOpen} onOpenChange={setExhibitionModalOpen} />
+      <ShippingPaymentModal open={shippingModalOpen} onOpenChange={setShippingModalOpen} />
 
       {/* Featured Products */}
       <section id="produkty" className="py-16 md:py-20">

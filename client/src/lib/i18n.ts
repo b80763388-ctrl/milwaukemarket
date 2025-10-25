@@ -1,4 +1,91 @@
 export type Language = 'pl' | 'en';
+export type Currency = 'PLN' | 'EUR' | 'USD' | 'GBP';
+
+// Currency symbols and formatting
+export const currencySymbols: Record<Currency, string> = {
+  PLN: 'zł',
+  EUR: '€',
+  USD: '$',
+  GBP: '£',
+};
+
+// EU countries that use EUR
+const EU_COUNTRIES = [
+  'AT', 'BE', 'CY', 'EE', 'FI', 'FR', 'DE', 'GR', 'IE', 'IT',
+  'LV', 'LT', 'LU', 'MT', 'NL', 'PT', 'SK', 'SI', 'ES',
+  'HR', 'BG', 'CZ', 'DK', 'HU', 'RO', 'SE'
+];
+
+export function getCurrencyForCountry(countryCode: string): Currency {
+  if (countryCode === 'PL') return 'PLN';
+  if (countryCode === 'GB') return 'GBP';
+  if (countryCode === 'US' || countryCode === 'CA') return 'USD';
+  if (EU_COUNTRIES.includes(countryCode)) return 'EUR';
+  return 'USD'; // Default to USD for other countries
+}
+
+// Exchange rate cache
+let exchangeRates: Record<string, number> | null = null;
+let lastFetch: number = 0;
+const CACHE_DURATION = 3600000; // 1 hour in milliseconds
+
+async function getExchangeRates(): Promise<Record<string, number>> {
+  const now = Date.now();
+  
+  // Return cached rates if still valid
+  if (exchangeRates && (now - lastFetch) < CACHE_DURATION) {
+    return exchangeRates;
+  }
+  
+  try {
+    // Fetch from Frankfurter API (free, no key required)
+    const response = await fetch('https://api.frankfurter.dev/v1/latest?base=PLN&symbols=EUR,USD,GBP');
+    const data = await response.json();
+    
+    exchangeRates = {
+      PLN: 1,
+      EUR: data.rates.EUR || 0.23,
+      USD: data.rates.USD || 0.25,
+      GBP: data.rates.GBP || 0.20,
+    };
+    lastFetch = now;
+    
+    return exchangeRates;
+  } catch (error) {
+    console.error('Failed to fetch exchange rates:', error);
+    
+    // Fallback to approximate rates if API fails
+    return {
+      PLN: 1,
+      EUR: 0.23,
+      USD: 0.25,
+      GBP: 0.20,
+    };
+  }
+}
+
+export async function convertPrice(priceInPLN: number, toCurrency: Currency): Promise<number> {
+  if (toCurrency === 'PLN') {
+    return priceInPLN;
+  }
+  
+  const rates = await getExchangeRates();
+  return priceInPLN * rates[toCurrency];
+}
+
+export function formatCurrency(amount: number, currency: Currency): string {
+  const symbol = currencySymbols[currency];
+  const rounded = Math.round(amount * 100) / 100;
+  
+  // Format based on currency
+  if (currency === 'PLN') {
+    return `${rounded.toFixed(2)} ${symbol}`;
+  } else if (currency === 'USD' || currency === 'GBP') {
+    return `${symbol}${rounded.toFixed(2)}`;
+  } else {
+    return `${symbol}${rounded.toFixed(2)}`;
+  }
+}
 
 export const translations = {
   pl: {

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart } from "lucide-react";
 import { Link } from "wouter";
+import { useLanguage } from "@/contexts/LanguageContext";
 import type { Product } from "@shared/schema";
 
 interface ProductCardProps {
@@ -11,6 +12,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, onAddToCart }: ProductCardProps) {
+  const { formatPriceSync } = useLanguage();
   const discountPercent = Math.round(
     ((parseFloat(product.originalPrice) - parseFloat(product.exhibitionPrice)) /
       parseFloat(product.originalPrice)) *
@@ -72,11 +74,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
               className="text-2xl font-bold text-primary font-heading"
               data-testid="text-exhibition-price"
             >
-              {parseFloat(product.exhibitionPrice).toLocaleString("pl-PL", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}{" "}
-              zł
+              {formatPriceSync(parseFloat(product.exhibitionPrice))}
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -84,18 +82,10 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
               className="text-sm text-muted-foreground line-through"
               data-testid="text-original-price"
             >
-              {parseFloat(product.originalPrice).toLocaleString("pl-PL", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}{" "}
-              zł
+              {formatPriceSync(parseFloat(product.originalPrice))}
             </span>
             <span className="text-sm font-medium text-destructive">
-              Oszczędzasz {(parseFloat(product.originalPrice) - parseFloat(product.exhibitionPrice)).toLocaleString("pl-PL", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}{" "}
-              zł
+              Oszczędzasz {formatPriceSync(parseFloat(product.originalPrice) - parseFloat(product.exhibitionPrice))}
             </span>
           </div>
         </div>
