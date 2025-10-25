@@ -2,10 +2,10 @@
 
 ## Przegląd Projektu
 
-Profesjonalny polski sklep internetowy e-commerce oferujący oryginalne narzędzia Milwaukee w atrakcyjnych cenach. Wszystkie produkty to urządzenia powystawowe z pełną gwarancją producenta.
+Profesjonalny dwujęzyczny (polski/angielski) sklep internetowy e-commerce oferujący oryginalne narzędzia Milwaukee w atrakcyjnych cenach. Wszystkie produkty to urządzenia powystawowe z 12-miesięczną gwarancją.
 
-**Język:** Polski (pl)
-**Technologie:** React, TypeScript, Express, TailwindCSS, Shadcn UI
+**Języki:** Polski (pl), Angielski (en) - automatyczna detekcja na podstawie IP
+**Technologie:** React, TypeScript, Express, TailwindCSS, Shadcn UI, i18n
 **Storage:** In-memory (MemStorage)
 
 ## Data Model
@@ -46,7 +46,8 @@ Profesjonalny polski sklep internetowy e-commerce oferujący oryginalne narzędz
 - `/produkt/:slug` - ProductDetailPage: Szczegóły produktu z akordeonem specyfikacji
 
 **Komponenty:**
-- `Header`: Sticky navigation z logo Milwaukee, dropdown menu kategorii, koszyk z licznikiem
+- `Header`: Sticky navigation z logo Milwaukee, dropdown menu kategorii, koszyk z licznikiem, przełącznik języka
+- `LanguageSwitcher`: Dropdown z ikoną Globe do wyboru języka (Polski/English)
 - `ProductCard`: Karta produktu z badge "PRODUKT POWYSTAWOWY", zniżką, cenami
 - `CartSidebar`: Slide-out panel koszyka z zarządzaniem ilością, podsumowaniem, progress bar darmowej dostawy
 - `Footer`: Newsletter, linki, kontakt, social media, ikony płatności (VISA, Mastercard, BLIK)
@@ -88,7 +89,7 @@ Profesjonalny polski sklep internetowy e-commerce oferujący oryginalne narzędz
 
 ## Kluczowe Funkcje
 
-1. **Produkty Powystawowe:** Każdy produkt oznaczony badge "PRODUKT POWYSTAWOWY"
+1. **Produkty Powystawowe:** Każdy produkt oznaczony badge "PRODUKT POWYSTAWOWY" z 12-miesięczną gwarancją
 2. **System Zniżek:** Pokazywane oszczędności (cena katalogowa vs powystawowa)
 3. **Koszyk:** Sidebar z zarządzaniem ilością, podsumowaniem, progress bar darmowej dostawy (500 zł)
 4. **Katalog:** 100 produktów w 10 kategoriach (Wiertarki, Szlifierki, Klucze, Młoty, Wózki, Zestawy, Piły, Oświetlenie, Akcesoria, Zestawy Specjalistyczne)
@@ -97,6 +98,7 @@ Profesjonalny polski sklep internetowy e-commerce oferujący oryginalne narzędz
 7. **Live Chat:** Floating widget dostępny 12:00-20:00 z pulsującym wskaźnikiem online
 8. **Responsywność:** Pełne wsparcie mobile/tablet/desktop
 9. **SEO:** Meta tags, polski język, opisowe tytuły
+10. **Wielojęzyczność:** Automatyczna detekcja języka na podstawie IP (ipapi.co), przełącznik PL/EN, tłumaczenia dla całego UI
 
 ## Struktura Plików
 
@@ -105,11 +107,16 @@ client/
   src/
     components/
       Header.tsx - Nawigacja sticky z dropdown kategorii
+      LanguageSwitcher.tsx - Przełącznik języka (Globe icon)
       ProductCard.tsx - Karta produktu z cenami
       CartSidebar.tsx - Panel boczny koszyka
       Footer.tsx - Stopka z newsletter i ikonami płatności
       LiveChat.tsx - Floating chat widget
       ui/ - Komponenty shadcn
+    contexts/
+      LanguageContext.tsx - Kontekst języka z wykrywaniem IP
+    lib/
+      i18n.ts - System tłumaczeń (PL/EN)
     pages/
       HomePage.tsx - Strona główna z hero
       ProductDetailPage.tsx - Szczegóły produktu
@@ -132,6 +139,17 @@ shared/
 - Uruchamia Express backend + Vite frontend na tym samym porcie
 
 ## Zmiany Ostatnie
+
+**2025-10-25:** System wielojęzyczny i poprawki gwarancji
+- Zamieniono "gwarancja producenta" na "gwarancja 12 miesięcy" we wszystkich produktach (100 produktów)
+- Poprawiono kategoryzację produktów (piła tarczowa przeniesiona z "wiertarki" do "pily")
+- Zaimplementowano pełny system wielojęzyczny (Polski/Angielski):
+  - Automatyczne wykrywanie kraju użytkownika przez ipapi.co API
+  - LanguageContext z detekcją IP i zapisem w localStorage
+  - LanguageSwitcher z ikoną Globe (bez emoji, zgodnie z guidelines)
+  - Tłumaczenia dla Header (desktop i mobile navigation)
+  - Tłumaczenia dla HomePage (hero section, trust badges, kategorie)
+  - System i18n z pełnym wsparciem dla PL i EN
 
 **2025-10-25:** Rozszerzenie funkcjonalności
 - Rozszerzono katalog do 100 produktów w 10 kategoriach
