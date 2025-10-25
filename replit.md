@@ -140,6 +140,15 @@ shared/
 
 ## Zmiany Ostatnie
 
+**2025-10-25:** Naprawa błędnych kategorii produktów
+- Naprawiono błędne kategorie w bazie produktów:
+  - **M18 FUEL Piła szablasta:** usunięto duplikat (produkt był 2 razy w bazie)
+  - **M18 FUEL Wyrzynarka:** kategoria "wiertarki" → "pily"
+  - **M18 FUEL Multi-Tool:** kategoria "szlifierki" → "akcesoria"
+  - **M18 FUEL Frezarka:** kategoria "wiertarki" → "akcesoria"
+- Zweryfikowano poprawność wszystkich 100 produktów w bazie
+- Katalog produktów teraz poprawnie kategoryzowany w 10 kategoriach
+
 **2025-10-25:** System walut, modale informacyjne, strony prawne
 - Zaimplementowano system automatycznego przeliczania walut:
   - Automatyczna detekcja kraju użytkownika (PL→PLN, EU→EUR, inne→USD/GBP)
