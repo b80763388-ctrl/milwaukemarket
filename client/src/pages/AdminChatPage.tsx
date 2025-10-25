@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { MessageCircle, ArrowLeft, Send, Clock, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,7 +10,8 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useChat } from "@/hooks/useChat";
 import { useLanguage } from "@/contexts/LanguageContext";
-import type { ChatSession } from "@shared/schema";
+import { queryClient, apiRequest } from "@/lib/queryClient";
+import type { ChatSession, ChatMessage } from "@shared/schema";
 
 export default function AdminChatPage() {
   const [, setLocation] = useLocation();
@@ -29,6 +30,12 @@ export default function AdminChatPage() {
     queryKey: ["/api/chat/sessions"],
     refetchInterval: 5000, // Refresh every 5 seconds
   });
+
+  // Calculate unread count for each session
+  const getUnreadCount = (session: ChatSession) => {
+    // This will be calculated on the backend, but for now we'll use a simple approach
+    return 0; // Placeholder - will be updated when we fetch session details
+  };
 
   return (
     <div className="min-h-screen bg-muted/30">
@@ -72,36 +79,46 @@ export default function AdminChatPage() {
                   </div>
                 ) : sessions && sessions.length > 0 ? (
                   <div className="divide-y">
-                    {sessions.map((session) => (
-                      <button
-                        key={session.id}
-                        className={`w-full p-4 text-left hover-elevate ${
-                          selectedSessionId === session.id ? 'bg-muted' : ''
-                        }`}
-                        onClick={() => setSelectedSessionId(session.id)}
-                        data-testid={`session-${session.id}`}
-                      >
-                        <div className="flex items-center justify-between mb-1">
-                          <p className="font-medium text-sm">
-                            {session.customerName || (language === 'pl' ? 'Anonim' : 'Anonymous')}
+                    {sessions.map((session) => {
+                      const unreadCount = getUnreadCount(session);
+                      return (
+                        <button
+                          key={session.id}
+                          className={`w-full p-4 text-left hover-elevate ${
+                            selectedSessionId === session.id ? 'bg-muted' : ''
+                          }`}
+                          onClick={() => setSelectedSessionId(session.id)}
+                          data-testid={`session-${session.id}`}
+                        >
+                          <div className="flex items-center justify-between mb-1">
+                            <div className="flex items-center gap-2">
+                              <p className="font-medium text-sm">
+                                {session.customerName || (language === 'pl' ? 'Anonim' : 'Anonymous')}
+                              </p>
+                              {unreadCount > 0 && (
+                                <Badge variant="destructive" className="text-xs h-5 min-w-5 flex items-center justify-center rounded-full px-1.5">
+                                  {unreadCount}
+                                </Badge>
+                              )}
+                            </div>
+                            <Badge variant={session.status === 'active' ? 'default' : 'secondary'} className="text-xs">
+                              {session.status}
+                            </Badge>
+                          </div>
+                          {session.customerEmail && (
+                            <p className="text-xs text-muted-foreground mb-1">{session.customerEmail}</p>
+                          )}
+                          <p className="text-xs text-muted-foreground">
+                            {new Date(session.lastMessageAt).toLocaleString(language, {
+                              day: '2-digit',
+                              month: '2-digit',
+                              hour: '2-digit',
+                              minute: '2-digit',
+                            })}
                           </p>
-                          <Badge variant={session.status === 'active' ? 'default' : 'secondary'} className="text-xs">
-                            {session.status}
-                          </Badge>
-                        </div>
-                        {session.customerEmail && (
-                          <p className="text-xs text-muted-foreground mb-1">{session.customerEmail}</p>
-                        )}
-                        <p className="text-xs text-muted-foreground">
-                          {new Date(session.lastMessageAt).toLocaleString(language, {
-                            day: '2-digit',
-                            month: '2-digit',
-                            hour: '2-digit',
-                            minute: '2-digit',
-                          })}
-                        </p>
-                      </button>
-                    ))}
+                        </button>
+                      );
+                    })}
                   </div>
                 ) : (
                   <div className="p-8 text-center text-muted-foreground">
@@ -144,6 +161,23 @@ function ChatWindow({ sessionId }: { sessionId: string }) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const { messages, sendMessage, isConnected } = useChat("admin", sessionId);
+
+  // Mark messages as read when admin opens this session
+  const markAsReadMutation = useMutation({
+    mutationFn: async () => {
+      return apiRequest("POST", `/api/chat/sessions/${sessionId}/mark-read`, {});
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/chat/sessions"] });
+    },
+  });
+
+  // Mark as read when session is opened
+  useEffect(() => {
+    if (sessionId && messages.length > 0) {
+      markAsReadMutation.mutate();
+    }
+  }, [sessionId, messages.length]);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {

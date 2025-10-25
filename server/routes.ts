@@ -212,6 +212,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // POST /api/chat/sessions/:id/mark-read - Mark messages as read (admin only)
+  app.post("/api/chat/sessions/:id/mark-read", adminAuth, async (req, res) => {
+    try {
+      const { id } = req.params;
+      await storage.markMessagesAsRead(id);
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Error marking messages as read:", error);
+      res.status(500).json({ error: "Failed to mark messages as read" });
+    }
+  });
+
   // POST /api/admin/login - Admin login
   app.post("/api/admin/login", async (req, res) => {
     try {

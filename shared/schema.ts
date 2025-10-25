@@ -97,6 +97,7 @@ export const chatMessages = pgTable("chat_messages", {
   sessionId: text("session_id").notNull(),
   sender: text("sender").notNull(), // "customer" | "admin"
   message: text("message").notNull(),
+  isRead: boolean("is_read").notNull().default(false),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 

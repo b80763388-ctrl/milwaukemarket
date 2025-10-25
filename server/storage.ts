@@ -2004,6 +2004,7 @@ export class MemStorage implements IStorage {
     const message: ChatMessage = {
       ...insertMessage,
       id,
+      isRead: false, // New messages start as unread
       createdAt: new Date(),
     };
     this.chatMessages.set(id, message);
@@ -2012,6 +2013,22 @@ export class MemStorage implements IStorage {
     await this.updateChatSessionLastMessage(insertMessage.sessionId);
     
     return message;
+  }
+
+  async markMessagesAsRead(sessionId: string): Promise<void> {
+    // Mark all customer messages in this session as read
+    Array.from(this.chatMessages.values())
+      .filter(msg => msg.sessionId === sessionId && msg.sender === "customer" && !msg.isRead)
+      .forEach(msg => {
+        msg.isRead = true;
+        this.chatMessages.set(msg.id, msg);
+      });
+  }
+
+  async getUnreadMessageCount(sessionId: string): Promise<number> {
+    return Array.from(this.chatMessages.values())
+      .filter(msg => msg.sessionId === sessionId && msg.sender === "customer" && !msg.isRead)
+      .length;
   }
 
   async getChatMessages(sessionId: string): Promise<ChatMessage[]> {

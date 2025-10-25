@@ -15,10 +15,14 @@ export function LiveChat() {
   const { language } = useLanguage();
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Check if chat is currently active (12:00 - 20:00)
-  const now = new Date();
-  const currentHour = now.getHours();
-  const isActive = currentHour >= 12 && currentHour < 20;
+  // Check if chat is currently active
+  // TESTOWO: zawsze aktywny
+  const isActive = true;
+  
+  // PRODUKCJA: odkomentować poniżej aby ograniczyć do 12:00-20:00
+  // const now = new Date();
+  // const currentHour = now.getHours();
+  // const isActive = currentHour >= 12 && currentHour < 20;
 
   const { messages, sendMessage, isConnected, sessionId } = useChat("customer");
 

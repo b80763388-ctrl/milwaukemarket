@@ -46,11 +46,16 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
               <img 
                 src={toolsShopLogo} 
                 alt="Tools Shop" 
-                className="h-10 w-auto"
+                className="h-14 w-auto"
               />
-              <Badge variant="secondary" className="text-xs hidden sm:inline-flex">
-                POWYSTAWOWE
-              </Badge>
+              <div className="flex flex-col">
+                <span className="font-bold text-lg" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                  Sretensky
+                </span>
+                <Badge variant="secondary" className="text-xs">
+                  POWYSTAWOWE
+                </Badge>
+              </div>
             </div>
           </Link>
 
