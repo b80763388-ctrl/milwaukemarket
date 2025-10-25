@@ -14,7 +14,12 @@ const categoryNames: Record<string, string> = {
   szlifierki: "Szlifierki",
   klucze: "Klucze Udarowe",
   mloty: "Młoty",
+  wozki: "Wózki Narzędziowe",
   zestawy: "Zestawy",
+  pily: "Piły",
+  oswietlenie: "Oświetlenie",
+  akcesoria: "Akcesoria",
+  "zestawy-specjalistyczne": "Zestawy Specjalistyczne",
 };
 
 export function CategoryPage({ onAddToCart }: CategoryPageProps) {
