@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, integer, decimal, boolean } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, integer, decimal, boolean, timestamp, json } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -49,3 +49,34 @@ export type CartItem = typeof cartItems.$inferSelect;
 export type CartItemWithProduct = CartItem & {
   product: Product;
 };
+
+// Orders table
+export const orders = pgTable("orders", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  address: text("address").notNull(),
+  city: text("city").notNull(),
+  postalCode: text("postal_code").notNull(),
+  courier: text("courier").notNull(), // "inpost" | "dpd" | "dhl"
+  orderItems: json("order_items").notNull(),
+  totalAmount: decimal("total_amount", { precision: 10, scale: 2 }).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+// Insert schemas
+export const insertOrderSchema = createInsertSchema(orders).omit({
+  id: true,
+  createdAt: true,
+}).extend({
+  email: z.string().email(),
+  phone: z.string().min(9),
+  postalCode: z.string().regex(/^\d{2}-\d{3}$/),
+  courier: z.enum(["inpost", "dpd", "dhl"]),
+});
+
+// Types
+export type InsertOrder = z.infer<typeof insertOrderSchema>;
+export type Order = typeof orders.$inferSelect;

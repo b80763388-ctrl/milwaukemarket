@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertCartItemSchema } from "@shared/schema";
+import { insertCartItemSchema, insertOrderSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -109,6 +109,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error removing from cart:", error);
       res.status(500).json({ error: "Failed to remove from cart" });
+    }
+  });
+
+  // POST /api/orders - Create new order
+  app.post("/api/orders", async (req, res) => {
+    try {
+      const validatedData = insertOrderSchema.parse(req.body);
+      const order = await storage.createOrder(validatedData);
+      res.json(order);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: "Invalid order data", details: error.errors });
+      }
+      console.error("Error creating order:", error);
+      res.status(500).json({ error: "Failed to create order" });
     }
   });
 

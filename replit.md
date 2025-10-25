@@ -36,6 +36,20 @@ Profesjonalny dwujęzyczny (polski/angielski) sklep internetowy e-commerce oferu
 ### CartItemWithProduct
 - Rozszerzenie CartItem z pełnymi danymi produktu
 
+### Order (Zamówienie)
+- `id`: UUID - unikalny identyfikator zamówienia
+- `firstName`: string - imię klienta
+- `lastName`: string - nazwisko klienta
+- `email`: string - adres e-mail
+- `phone`: string - numer telefonu
+- `address`: string - adres dostawy
+- `city`: string - miasto
+- `postalCode`: string - kod pocztowy (format: XX-XXX)
+- `courier`: enum - wybrany kurier ("inpost" | "dpd" | "dhl")
+- `orderItems`: JSON - produkty w zamówieniu (productId, name, quantity, price)
+- `totalAmount`: decimal - łączna kwota zamówienia
+- `createdAt`: timestamp - data utworzenia
+
 ## Architektura Projektu
 
 ### Frontend (Client)
@@ -44,6 +58,7 @@ Profesjonalny dwujęzyczny (polski/angielski) sklep internetowy e-commerce oferu
 - `/produkty` - AllProductsPage: Wszystkie produkty w układzie siatki
 - `/kategoria/:category` - CategoryPage: Produkty według kategorii
 - `/produkt/:slug` - ProductDetailPage: Szczegóły produktu z akordeonem specyfikacji
+- `/checkout` - CheckoutPage: Finalizacja zamówienia z formularzem wysyłkowym i wyborem kuriera
 
 **Komponenty:**
 - `Header`: Sticky navigation z logo Milwaukee, dropdown menu kategorii, koszyk z licznikiem, przełącznik języka
@@ -65,9 +80,11 @@ Profesjonalny dwujęzyczny (polski/angielski) sklep internetowy e-commerce oferu
 - `POST /api/cart` - Dodaj do koszyka
 - `PUT /api/cart/:id` - Aktualizuj ilość
 - `DELETE /api/cart/:id` - Usuń z koszyka
+- `POST /api/orders` - Utwórz nowe zamówienie
 
 **Storage:**
 - MemStorage dla produktów (preloaded z danymi Milwaukee)
+- MemStorage dla zamówień (in-memory persistence)
 - localStorage dla koszyka (frontend)
 
 ## Design System
@@ -139,6 +156,24 @@ shared/
 - Uruchamia Express backend + Vite frontend na tym samym porcie
 
 ## Zmiany Ostatnie
+
+**2025-10-25:** Implementacja checkout z formularzem wysyłkowym i wyborem kuriera
+- Dodano Order model do shared/schema.ts z walidacją Zod
+- Rozszerzono IStorage i MemStorage o createOrder()
+- Dodano endpoint POST /api/orders w server/routes.ts
+- Zaimplementowano CheckoutPage:
+  - Formularz wysyłkowy: imię, nazwisko, email, telefon, adres, miasto, kod pocztowy
+  - Wybór kuriera: InPost, DPD, DHL (z obrazami logo)
+  - Logika blokowania InPost dla dużych produktów (kategorie: wózki, zestawy, zestawy-specjalistyczne)
+  - Podsumowanie zamówienia z listą produktów
+  - Ekran sukcesu po złożeniu zamówienia
+- Dodano route /checkout w App.tsx
+- Dodano Link z CartSidebar "Przejdź do kasy" → /checkout
+- Dodano tłumaczenia checkout (PL/EN) do lib/i18n.ts
+- Walidacja formularza: kod pocztowy XX-XXX, email, telefon min 9 cyfr
+- Frontend schema (frontendOrderSchema) bez backend-only fields
+- Responsywność desktop/mobile, integracja z systemem walut
+- Middleware Express do serwowania /attached_assets (obrazy kurierów)
 
 **2025-10-25:** Naprawa błędnych specyfikacji technicznych produktów
 - Poprawiono błędne specyfikacje na podstawie oficjalnych danych Milwaukee:

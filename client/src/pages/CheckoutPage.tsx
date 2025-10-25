@@ -1,0 +1,539 @@
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Separator } from "@/components/ui/separator";
+import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translate } from "@/lib/i18n";
+import { apiRequest, queryClient } from "@/lib/queryClient";
+import { insertOrderSchema, type CartItemWithProduct } from "@shared/schema";
+import { CheckCircle2, Package, Truck } from "lucide-react";
+import { z } from "zod";
+import inpostLogo from "@assets/image_1761430943388.png";
+import dpdLogo from "@assets/image_1761430962953.png";
+import dhlLogo from "@assets/image_1761430977890.png";
+
+// Frontend form schema (without orderItems and totalAmount which are added in onSubmit)
+const frontendOrderSchema = insertOrderSchema.omit({
+  orderItems: true,
+  totalAmount: true,
+});
+
+type CheckoutFormData = z.infer<typeof frontendOrderSchema>;
+
+function getSessionId(): string {
+  const STORAGE_KEY = "milwaukee-session-id";
+  return localStorage.getItem(STORAGE_KEY) || "";
+}
+
+export function CheckoutPage() {
+  const [, setLocation] = useLocation();
+  const { toast } = useToast();
+  const { language, formatPriceSync } = useLanguage();
+  const [sessionId, setSessionId] = useState<string>("");
+  const [orderSuccess, setOrderSuccess] = useState(false);
+  
+  // Create schema with localized error messages
+  const checkoutFormSchema = frontendOrderSchema.extend({
+    firstName: z.string().min(2, translate("checkout.validation.minLength", language)),
+    lastName: z.string().min(2, translate("checkout.validation.minLength", language)),
+    email: z.string().email(translate("checkout.validation.emailInvalid", language)),
+    phone: z.string().min(9, translate("checkout.validation.phoneMin", language)),
+    address: z.string().min(5, translate("checkout.validation.minLength", language)),
+    city: z.string().min(2, translate("checkout.validation.minLength", language)),
+    postalCode: z.string().regex(/^\d{2}-\d{3}$/, translate("checkout.validation.postalCodeFormat", language)),
+    courier: z.enum(["inpost", "dpd", "dhl"], {
+      errorMap: () => ({ message: translate("checkout.validation.courierRequired", language) }),
+    }),
+  });
+
+  useEffect(() => {
+    setSessionId(getSessionId());
+  }, []);
+
+  const { data: cartItems = [] } = useQuery<CartItemWithProduct[]>({
+    queryKey: ["/api/cart", sessionId],
+    queryFn: async () => {
+      if (!sessionId) return [];
+      const response = await fetch(`/api/cart?sessionId=${sessionId}`);
+      if (!response.ok) throw new Error("Failed to fetch cart");
+      return response.json();
+    },
+    enabled: !!sessionId,
+  });
+
+  // Large items that cannot be shipped via InPost paczkomaty
+  const hasLargeItems = cartItems.some(
+    (item) => 
+      item.product.category === "wozki" || 
+      item.product.category === "zestawy" || 
+      item.product.category === "zestawy-specjalistyczne"
+  );
+
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + parseFloat(item.product.exhibitionPrice) * item.quantity,
+    0
+  );
+
+  const FREE_SHIPPING_THRESHOLD = 500;
+  const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : 29.99;
+  const total = subtotal + shippingCost;
+
+  const form = useForm<CheckoutFormData>({
+    resolver: zodResolver(checkoutFormSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      address: "",
+      city: "",
+      postalCode: "",
+      courier: hasLargeItems ? "dpd" : undefined,
+    },
+  });
+
+  const selectedCourier = form.watch("courier");
+
+  useEffect(() => {
+    if (hasLargeItems && selectedCourier === "inpost") {
+      form.setValue("courier", "dpd");
+    }
+  }, [hasLargeItems, selectedCourier, form]);
+
+  const createOrderMutation = useMutation({
+    mutationFn: async (data: CheckoutFormData) => {
+      const orderItems = cartItems.map((item) => ({
+        productId: item.product.id,
+        name: item.product.name,
+        quantity: item.quantity,
+        price: item.product.exhibitionPrice,
+      }));
+
+      return apiRequest("POST", "/api/orders", {
+        ...data,
+        orderItems,
+        totalAmount: total.toFixed(2),
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/cart", sessionId] });
+      setOrderSuccess(true);
+      window.scrollTo(0, 0);
+    },
+    onError: () => {
+      toast({
+        variant: "destructive",
+        title: translate("error.title", language),
+        description: translate("error.createOrder", language),
+      });
+    },
+  });
+
+  const onSubmit = (data: CheckoutFormData) => {
+    if (cartItems.length === 0) {
+      toast({
+        variant: "destructive",
+        title: translate("error.title", language),
+        description: "Koszyk jest pusty",
+      });
+      return;
+    }
+    createOrderMutation.mutate(data);
+  };
+
+  if (orderSuccess) {
+    return (
+      <div className="container max-w-2xl mx-auto px-4 py-16">
+        <Card className="text-center">
+          <CardContent className="pt-12 pb-12 space-y-6">
+            <div className="flex justify-center">
+              <div className="rounded-full bg-primary/10 p-6">
+                <CheckCircle2 className="h-16 w-16 text-primary" />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold font-heading">
+                {translate("checkout.thankYou", language)}
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                {translate("checkout.success", language)}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                {translate("checkout.orderConfirmation", language)}
+              </p>
+            </div>
+            <div className="pt-4">
+              <Button
+                onClick={() => setLocation("/")}
+                size="lg"
+                data-testid="button-back-to-shop"
+              >
+                {translate("checkout.backToShop", language)}
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="container max-w-2xl mx-auto px-4 py-16 text-center">
+        <Package className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
+        <h2 className="text-2xl font-bold mb-2">Koszyk jest pusty</h2>
+        <p className="text-muted-foreground mb-6">
+          Dodaj produkty do koszyka aby kontynuować
+        </p>
+        <Button onClick={() => setLocation("/")} data-testid="button-go-shopping">
+          Wróć do sklepu
+        </Button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container max-w-6xl mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold font-heading mb-8" data-testid="heading-checkout">
+        {translate("checkout.title", language)}
+      </h1>
+
+      <div className="grid lg:grid-cols-3 gap-8">
+        {/* Checkout Form */}
+        <div className="lg:col-span-2 space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Truck className="h-5 w-5" />
+                {translate("checkout.shippingDetails", language)}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="firstName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{translate("checkout.firstName", language)}</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Jan"
+                              {...field}
+                              data-testid="input-firstName"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="lastName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{translate("checkout.lastName", language)}</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Kowalski"
+                              {...field}
+                              data-testid="input-lastName"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{translate("checkout.email", language)}</FormLabel>
+                          <FormControl>
+                            <Input
+                              type="email"
+                              placeholder="jan.kowalski@example.com"
+                              {...field}
+                              data-testid="input-email"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{translate("checkout.phone", language)}</FormLabel>
+                          <FormControl>
+                            <Input
+                              type="tel"
+                              placeholder="123456789"
+                              {...field}
+                              data-testid="input-phone"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  <FormField
+                    control={form.control}
+                    name="address"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{translate("checkout.address", language)}</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="ul. Przykładowa 123/45"
+                            {...field}
+                            data-testid="input-address"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="city"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{translate("checkout.city", language)}</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Warszawa"
+                              {...field}
+                              data-testid="input-city"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="postalCode"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{translate("checkout.postalCode", language)}</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="00-000"
+                              {...field}
+                              data-testid="input-postalCode"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  <Separator className="my-6" />
+
+                  <FormField
+                    control={form.control}
+                    name="courier"
+                    render={({ field }) => (
+                      <FormItem className="space-y-4">
+                        <FormLabel className="text-base font-semibold">
+                          {translate("checkout.courier", language)}
+                        </FormLabel>
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            value={field.value}
+                            className="space-y-3"
+                          >
+                            <div
+                              className={`flex items-center space-x-4 border rounded-lg p-4 hover-elevate ${
+                                hasLargeItems ? "opacity-50 cursor-not-allowed" : ""
+                              }`}
+                            >
+                              <RadioGroupItem
+                                value="inpost"
+                                id="inpost"
+                                disabled={hasLargeItems}
+                                data-testid="radio-inpost"
+                              />
+                              <label
+                                htmlFor="inpost"
+                                className="flex items-center gap-4 flex-1 cursor-pointer"
+                              >
+                                <img
+                                  src={inpostLogo}
+                                  alt="InPost"
+                                  className="h-10 w-auto object-contain"
+                                />
+                                <div className="flex-1">
+                                  <p className="font-medium">
+                                    {translate("checkout.courierInpost", language)}
+                                  </p>
+                                  {hasLargeItems && (
+                                    <p className="text-xs text-muted-foreground">
+                                      {translate("checkout.courierNotAvailable", language)}
+                                    </p>
+                                  )}
+                                </div>
+                              </label>
+                            </div>
+
+                            <div className="flex items-center space-x-4 border rounded-lg p-4 hover-elevate">
+                              <RadioGroupItem
+                                value="dpd"
+                                id="dpd"
+                                data-testid="radio-dpd"
+                              />
+                              <label
+                                htmlFor="dpd"
+                                className="flex items-center gap-4 flex-1 cursor-pointer"
+                              >
+                                <img
+                                  src={dpdLogo}
+                                  alt="DPD"
+                                  className="h-10 w-auto object-contain"
+                                />
+                                <p className="font-medium">
+                                  {translate("checkout.courierDpd", language)}
+                                </p>
+                              </label>
+                            </div>
+
+                            <div className="flex items-center space-x-4 border rounded-lg p-4 hover-elevate">
+                              <RadioGroupItem
+                                value="dhl"
+                                id="dhl"
+                                data-testid="radio-dhl"
+                              />
+                              <label
+                                htmlFor="dhl"
+                                className="flex items-center gap-4 flex-1 cursor-pointer"
+                              >
+                                <img
+                                  src={dhlLogo}
+                                  alt="DHL"
+                                  className="h-10 w-auto object-contain"
+                                />
+                                <p className="font-medium">
+                                  {translate("checkout.courierDhl", language)}
+                                </p>
+                              </label>
+                            </div>
+                          </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <div className="pt-4">
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      size="lg"
+                      disabled={createOrderMutation.isPending}
+                      data-testid="button-place-order"
+                    >
+                      {createOrderMutation.isPending
+                        ? translate("checkout.processing", language)
+                        : translate("checkout.placeOrder", language)}
+                    </Button>
+                  </div>
+                </form>
+              </Form>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Order Summary */}
+        <div className="lg:col-span-1">
+          <Card className="sticky top-4">
+            <CardHeader>
+              <CardTitle>{translate("checkout.orderSummary", language)}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-3">
+                {cartItems.map((item) => (
+                  <div key={item.id} className="flex gap-3" data-testid={`summary-item-${item.id}`}>
+                    <img
+                      src={item.product.image}
+                      alt={item.product.name}
+                      className="w-16 h-16 object-cover rounded bg-muted"
+                    />
+                    <div className="flex-1 space-y-1">
+                      <p className="text-sm font-medium leading-tight line-clamp-2">
+                        {item.product.name}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        Ilość: {item.quantity}
+                      </p>
+                      <p className="text-sm font-semibold text-primary">
+                        {formatPriceSync(
+                          parseFloat(item.product.exhibitionPrice) * item.quantity
+                        )}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <Separator />
+
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Suma częściowa</span>
+                  <span className="font-medium">{formatPriceSync(subtotal)}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Dostawa</span>
+                  <span className="font-medium">
+                    {shippingCost === 0 ? (
+                      <span className="text-primary font-semibold">DARMOWA</span>
+                    ) : (
+                      formatPriceSync(shippingCost)
+                    )}
+                  </span>
+                </div>
+                <Separator />
+                <div className="flex justify-between text-lg font-bold">
+                  <span>Suma</span>
+                  <span className="text-primary" data-testid="text-checkout-total">
+                    {formatPriceSync(total)}
+                  </span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}

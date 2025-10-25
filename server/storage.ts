@@ -4,6 +4,8 @@ import {
   type CartItem,
   type InsertCartItem,
   type CartItemWithProduct,
+  type Order,
+  type InsertOrder,
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 
@@ -21,15 +23,20 @@ export interface IStorage {
   addToCart(item: InsertCartItem): Promise<CartItem>;
   updateCartItemQuantity(id: string, quantity: number): Promise<CartItem | undefined>;
   removeFromCart(id: string): Promise<boolean>;
+
+  // Orders
+  createOrder(order: InsertOrder): Promise<Order>;
 }
 
 export class MemStorage implements IStorage {
   private products: Map<string, Product>;
   private cartItems: Map<string, CartItem>;
+  private orders: Map<string, Order>;
 
   constructor() {
     this.products = new Map();
     this.cartItems = new Map();
+    this.orders = new Map();
     this.seedProducts();
   }
 
@@ -1904,6 +1911,18 @@ export class MemStorage implements IStorage {
 
   async removeFromCart(id: string): Promise<boolean> {
     return this.cartItems.delete(id);
+  }
+
+  // Orders
+  async createOrder(insertOrder: InsertOrder): Promise<Order> {
+    const id = randomUUID();
+    const order: Order = {
+      ...insertOrder,
+      id,
+      createdAt: new Date(),
+    };
+    this.orders.set(id, order);
+    return order;
   }
 }
 

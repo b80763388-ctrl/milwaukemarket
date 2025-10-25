@@ -1,4 +1,5 @@
 import { X, Minus, Plus, ShoppingBag } from "lucide-react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -206,9 +207,11 @@ export function CartSidebar({
                   </span>
                 </div>
               </div>
-              <Button className="w-full" size="lg" data-testid="button-checkout">
-                Przejdź do kasy
-              </Button>
+              <Link href="/checkout">
+                <Button className="w-full" size="lg" data-testid="button-checkout">
+                  Przejdź do kasy
+                </Button>
+              </Link>
               <Button
                 variant="ghost"
                 className="w-full"

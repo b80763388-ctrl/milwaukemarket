@@ -14,6 +14,7 @@ import { HomePage } from "@/pages/HomePage";
 import { ProductDetailPage } from "@/pages/ProductDetailPage";
 import { CategoryPage } from "@/pages/CategoryPage";
 import { AllProductsPage } from "@/pages/AllProductsPage";
+import { CheckoutPage } from "@/pages/CheckoutPage";
 import { TermsPage } from "@/pages/TermsPage";
 import { PrivacyPage } from "@/pages/PrivacyPage";
 import NotFound from "@/pages/not-found";
@@ -155,6 +156,7 @@ function Router() {
             path="/produkt/:slug"
             component={() => <ProductDetailPage onAddToCart={handleAddToCart} />}
           />
+          <Route path="/checkout" component={CheckoutPage} />
           <Route path="/regulamin" component={TermsPage} />
           <Route path="/polityka-prywatnosci" component={PrivacyPage} />
           <Route component={NotFound} />
