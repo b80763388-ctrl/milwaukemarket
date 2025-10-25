@@ -174,6 +174,8 @@ shared/
 - Frontend schema (frontendOrderSchema) bez backend-only fields
 - Responsywność desktop/mobile, integracja z systemem walut
 - Middleware Express do serwowania /attached_assets (obrazy kurierów)
+- Naprawiono CategoryPage: dodano wszystkie 10 kategorii do categoryNames słownika
+- Testy e2e: pełny checkout flow działa poprawnie, InPost blokowany dla dużych produktów
 
 **2025-10-25:** Naprawa błędnych specyfikacji technicznych produktów
 - Poprawiono błędne specyfikacje na podstawie oficjalnych danych Milwaukee:
