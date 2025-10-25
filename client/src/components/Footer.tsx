@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
-import { SiVisa, SiMastercard } from "react-icons/si";
 import { ExhibitionProductsModal } from "@/components/ExhibitionProductsModal";
 import { ShippingPaymentModal } from "@/components/ShippingPaymentModal";
+import blikLogo from "@assets/image_1761428175926.png";
+import visaLogo from "@assets/image_1761428208056.png";
+import mastercardLogo from "@assets/image_1761428253613.png";
 
 export function Footer() {
   const [exhibitionModalOpen, setExhibitionModalOpen] = useState(false);
@@ -201,13 +203,13 @@ export function Footer() {
             <span>Bezpieczne płatności:</span>
             <div className="flex items-center gap-3">
               <div className="h-8 px-3 bg-background border rounded flex items-center justify-center" data-testid="payment-visa">
-                <SiVisa className="h-5 w-auto text-[#1A1F71]" />
+                <img src={visaLogo} alt="Visa" className="h-5 w-auto object-contain" />
               </div>
               <div className="h-8 px-3 bg-background border rounded flex items-center justify-center" data-testid="payment-mastercard">
-                <SiMastercard className="h-5 w-auto text-[#EB001B]" />
+                <img src={mastercardLogo} alt="Mastercard" className="h-5 w-auto object-contain" />
               </div>
               <div className="h-8 px-3 bg-background border rounded flex items-center justify-center" data-testid="payment-blik">
-                <span className="text-sm font-bold text-foreground">BLIK</span>
+                <img src={blikLogo} alt="BLIK" className="h-5 w-auto object-contain" />
               </div>
             </div>
           </div>
