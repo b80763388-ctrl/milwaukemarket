@@ -21,7 +21,13 @@ export function HomePage({ onAddToCart }: HomePageProps) {
     { name: "Wiertarki", slug: "wiertarki", count: products?.filter(p => p.category === "wiertarki").length || 0 },
     { name: "Szlifierki", slug: "szlifierki", count: products?.filter(p => p.category === "szlifierki").length || 0 },
     { name: "Klucze Udarowe", slug: "klucze", count: products?.filter(p => p.category === "klucze").length || 0 },
+    { name: "Młoty", slug: "mloty", count: products?.filter(p => p.category === "mloty").length || 0 },
     { name: "Wózki Narzędziowe", slug: "wozki", count: products?.filter(p => p.category === "wozki").length || 0 },
+    { name: "Zestawy Narzędzi", slug: "zestawy", count: products?.filter(p => p.category === "zestawy").length || 0 },
+    { name: "Piły", slug: "pily", count: products?.filter(p => p.category === "pily").length || 0 },
+    { name: "Oświetlenie", slug: "oswietlenie", count: products?.filter(p => p.category === "oswietlenie").length || 0 },
+    { name: "Akcesoria", slug: "akcesoria", count: products?.filter(p => p.category === "akcesoria").length || 0 },
+    { name: "Zestawy Specjalistyczne", slug: "zestawy-specjalistyczne", count: products?.filter(p => p.category === "zestawy-specjalistyczne").length || 0 },
   ];
 
   return (

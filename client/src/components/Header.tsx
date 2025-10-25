@@ -1,9 +1,15 @@
-import { ShoppingCart, Menu, X } from "lucide-react";
+import { ShoppingCart, Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import toolsShopLogo from "@assets/generated_images/Tools_Shop_logo_design_986f0e42.png";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface HeaderProps {
   cartItemCount: number;
@@ -14,13 +20,17 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
 
-  const navigation = [
-    { name: "Strona Główna", href: "/" },
+  const categories = [
     { name: "Wiertarki", href: "/kategoria/wiertarki" },
     { name: "Szlifierki", href: "/kategoria/szlifierki" },
     { name: "Klucze Udarowe", href: "/kategoria/klucze" },
     { name: "Młoty", href: "/kategoria/mloty" },
     { name: "Wózki Narzędziowe", href: "/kategoria/wozki" },
+    { name: "Zestawy Narzędzi", href: "/kategoria/zestawy" },
+    { name: "Piły", href: "/kategoria/pily" },
+    { name: "Oświetlenie", href: "/kategoria/oswietlenie" },
+    { name: "Akcesoria", href: "/kategoria/akcesoria" },
+    { name: "Zestawy Specjalistyczne", href: "/kategoria/zestawy-specjalistyczne" },
   ];
 
   return (
@@ -43,16 +53,35 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-2">
-            {navigation.map((item) => (
-              <Link key={item.name} href={item.href} data-testid={`link-nav-${item.name.toLowerCase().replace(/ /g, '-')}`}>
-                <Button
-                  variant={location === item.href ? "secondary" : "ghost"}
-                  className="text-sm font-medium"
-                >
-                  {item.name}
+            <Link href="/" data-testid="link-nav-home">
+              <Button
+                variant={location === "/" ? "secondary" : "ghost"}
+                className="text-sm font-medium"
+              >
+                Strona Główna
+              </Button>
+            </Link>
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-sm font-medium gap-1" data-testid="button-categories">
+                  Kategorie
+                  <ChevronDown className="h-4 w-4" />
                 </Button>
-              </Link>
-            ))}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-56">
+                {categories.map((category) => (
+                  <Link key={category.name} href={category.href}>
+                    <DropdownMenuItem
+                      className="cursor-pointer"
+                      data-testid={`link-category-${category.name.toLowerCase().replace(/ /g, '-')}`}
+                    >
+                      {category.name}
+                    </DropdownMenuItem>
+                  </Link>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
 
           {/* Right Side - Cart & Mobile Menu */}
@@ -97,14 +126,28 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <nav className="lg:hidden py-4 space-y-2 border-t">
-            {navigation.map((item) => (
-              <Link key={item.name} href={item.href} data-testid={`link-mobile-${item.name.toLowerCase().replace(/ /g, '-')}`}>
+            <Link href="/" data-testid="link-mobile-home">
+              <Button
+                variant={location === "/" ? "secondary" : "ghost"}
+                className="w-full justify-start"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Strona Główna
+              </Button>
+            </Link>
+            
+            <div className="px-2 py-1 text-sm font-semibold text-muted-foreground">
+              Kategorie
+            </div>
+            
+            {categories.map((category) => (
+              <Link key={category.name} href={category.href} data-testid={`link-mobile-category-${category.name.toLowerCase().replace(/ /g, '-')}`}>
                 <Button
-                  variant={location === item.href ? "secondary" : "ghost"}
-                  className="w-full justify-start"
+                  variant={location === category.href ? "secondary" : "ghost"}
+                  className="w-full justify-start pl-6"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {item.name}
+                  {category.name}
                 </Button>
               </Link>
             ))}

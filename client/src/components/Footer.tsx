@@ -81,13 +81,33 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/kategoria/zestawy" className="hover:text-foreground transition-colors" data-testid="link-footer-zestawy">
-                  Zestawy
+                <a href="/kategoria/wozki" className="hover:text-foreground transition-colors" data-testid="link-footer-wozki">
+                  Wózki Narzędziowe
                 </a>
               </li>
               <li>
-                <a href="/kategoria/wozki" className="hover:text-foreground transition-colors" data-testid="link-footer-wozki">
-                  Wózki Narzędziowe
+                <a href="/kategoria/zestawy" className="hover:text-foreground transition-colors" data-testid="link-footer-zestawy">
+                  Zestawy Narzędzi
+                </a>
+              </li>
+              <li>
+                <a href="/kategoria/pily" className="hover:text-foreground transition-colors" data-testid="link-footer-pily">
+                  Piły
+                </a>
+              </li>
+              <li>
+                <a href="/kategoria/oswietlenie" className="hover:text-foreground transition-colors" data-testid="link-footer-oswietlenie">
+                  Oświetlenie
+                </a>
+              </li>
+              <li>
+                <a href="/kategoria/akcesoria" className="hover:text-foreground transition-colors" data-testid="link-footer-akcesoria">
+                  Akcesoria
+                </a>
+              </li>
+              <li>
+                <a href="/kategoria/zestawy-specjalistyczne" className="hover:text-foreground transition-colors" data-testid="link-footer-zestawy-specjalistyczne">
+                  Zestawy Specjalistyczne
                 </a>
               </li>
             </ul>

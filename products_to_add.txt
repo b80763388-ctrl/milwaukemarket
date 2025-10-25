@@ -1,0 +1,36 @@
+Produkty do dodania - tymczasowy plik roboczy
+
+WIERTARKI (dodam 4):
+1. M12 FUEL Wiertarka kątowa
+2. M18 Wiertarka udarowa Heavy Duty
+3. M18 FUEL Wiertarka diamentowa
+4. M12 Wiertarka kompaktowa
+
+SZLIFIERKI (dodam 6):
+1. M18 Szlifierka oscylacyjna
+2. M18 Szlifierka prosta
+3. M12 Szlifierka kątowa mini
+4. M18 FUEL Szlifierka kątowa 180mm
+5. M18 Polerka rotacyjna
+6. M18 Szlifierka do betonu
+
+KLUCZE (dodam 8):
+1. M18 FUEL Klucz udarowy 3/4"
+2. M12 Klucz udarowy kompaktowy
+3. M18 Klucz dynamometryczny
+4. M18 FUEL Zakrętarka udarowa
+5. M18 Klucz kątowy udarowy
+6. M12 FUEL Klucz zapadkowy
+7. M18 Klucz udarowy High Torque
+8. M18 ONE-KEY Klucz udarowy
+
+MŁOTY (dodam 9):
+1. M18 FUEL Młot wyburzeniowy
+2. M18 Młot kombinowany SDS-Max
+3. M12 Młot udarowo-obrotowy kompaktowy
+4. M18 FUEL Młot pneumatyczny
+5. M18 Młotek udarowy
+6. M18 FUEL Młot burzący SDS-Max
+7. M18 Młot obrotowy do rdzeni
+8. M12 Młot SDS-Plus mini
+9. M18 FUEL Młot wibracyjny
