@@ -6,6 +6,11 @@ import {
   type CartItemWithProduct,
   type Order,
   type InsertOrder,
+  type ChatSession,
+  type InsertChatSession,
+  type ChatMessage,
+  type InsertChatMessage,
+  type ChatSessionWithMessages,
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 
@@ -28,17 +33,32 @@ export interface IStorage {
   createOrder(order: InsertOrder): Promise<Order>;
   getAllOrders(): Promise<Order[]>;
   getOrderById(id: string): Promise<Order | undefined>;
+
+  // Chat
+  createChatSession(session: InsertChatSession): Promise<ChatSession>;
+  getChatSession(id: string): Promise<ChatSession | undefined>;
+  getAllChatSessions(): Promise<ChatSession[]>;
+  updateChatSessionLastMessage(id: string): Promise<void>;
+  closeChatSession(id: string): Promise<void>;
+  
+  createChatMessage(message: InsertChatMessage): Promise<ChatMessage>;
+  getChatMessages(sessionId: string): Promise<ChatMessage[]>;
+  getChatSessionWithMessages(sessionId: string): Promise<ChatSessionWithMessages | undefined>;
 }
 
 export class MemStorage implements IStorage {
   private products: Map<string, Product>;
   private cartItems: Map<string, CartItem>;
   private orders: Map<string, Order>;
+  private chatSessions: Map<string, ChatSession>;
+  private chatMessages: Map<string, ChatMessage>;
 
   constructor() {
     this.products = new Map();
     this.cartItems = new Map();
     this.orders = new Map();
+    this.chatSessions = new Map();
+    this.chatMessages = new Map();
     this.seedProducts();
   }
 
@@ -1935,6 +1955,80 @@ export class MemStorage implements IStorage {
 
   async getOrderById(id: string): Promise<Order | undefined> {
     return this.orders.get(id);
+  }
+
+  // Chat
+  async createChatSession(insertSession: InsertChatSession): Promise<ChatSession> {
+    const id = randomUUID();
+    const now = new Date();
+    const session: ChatSession = {
+      id,
+      customerName: insertSession.customerName ?? null,
+      customerEmail: insertSession.customerEmail ?? null,
+      status: insertSession.status || "active",
+      createdAt: now,
+      lastMessageAt: now,
+    };
+    this.chatSessions.set(id, session);
+    return session;
+  }
+
+  async getChatSession(id: string): Promise<ChatSession | undefined> {
+    return this.chatSessions.get(id);
+  }
+
+  async getAllChatSessions(): Promise<ChatSession[]> {
+    return Array.from(this.chatSessions.values()).sort((a, b) => 
+      b.lastMessageAt.getTime() - a.lastMessageAt.getTime()
+    );
+  }
+
+  async updateChatSessionLastMessage(id: string): Promise<void> {
+    const session = this.chatSessions.get(id);
+    if (session) {
+      session.lastMessageAt = new Date();
+      this.chatSessions.set(id, session);
+    }
+  }
+
+  async closeChatSession(id: string): Promise<void> {
+    const session = this.chatSessions.get(id);
+    if (session) {
+      session.status = "closed";
+      this.chatSessions.set(id, session);
+    }
+  }
+
+  async createChatMessage(insertMessage: InsertChatMessage): Promise<ChatMessage> {
+    const id = randomUUID();
+    const message: ChatMessage = {
+      ...insertMessage,
+      id,
+      createdAt: new Date(),
+    };
+    this.chatMessages.set(id, message);
+    
+    // Update session's lastMessageAt
+    await this.updateChatSessionLastMessage(insertMessage.sessionId);
+    
+    return message;
+  }
+
+  async getChatMessages(sessionId: string): Promise<ChatMessage[]> {
+    return Array.from(this.chatMessages.values())
+      .filter(msg => msg.sessionId === sessionId)
+      .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
+  }
+
+  async getChatSessionWithMessages(sessionId: string): Promise<ChatSessionWithMessages | undefined> {
+    const session = await this.getChatSession(sessionId);
+    if (!session) return undefined;
+
+    const messages = await this.getChatMessages(sessionId);
+    return {
+      ...session,
+      messages,
+    };
   }
 }
 
