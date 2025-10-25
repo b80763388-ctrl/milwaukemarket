@@ -17,6 +17,14 @@ export function useChat(sender: "customer" | "admin", sessionId?: string): UseCh
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout>();
 
+  // Update currentSessionId when sessionId prop changes (for admin switching sessions)
+  useEffect(() => {
+    if (sessionId !== undefined && sessionId !== currentSessionId) {
+      setCurrentSessionId(sessionId);
+      setMessages([]); // Clear messages when switching sessions
+    }
+  }, [sessionId, currentSessionId]);
+
   const connect = useCallback(() => {
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
     const wsUrl = `${protocol}//${window.location.host}/ws`;
@@ -94,7 +102,7 @@ export function useChat(sender: "customer" | "admin", sessionId?: string): UseCh
         wsRef.current.close();
       }
     };
-  }, [connect]);
+  }, [connect, currentSessionId]); // Reconnect when sessionId changes
 
   const sendMessage = useCallback((message: string) => {
     if (wsRef.current?.readyState === WebSocket.OPEN && currentSessionId) {

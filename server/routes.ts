@@ -1,9 +1,25 @@
-import type { Express } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { WebSocketServer, WebSocket } from "ws";
 import { storage } from "./storage";
 import { insertCartItemSchema, insertOrderSchema, insertChatSessionSchema, insertChatMessageSchema } from "@shared/schema";
 import { z } from "zod";
+
+// Admin authentication middleware
+function adminAuth(req: Request, res: Response, next: NextFunction) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+  
+  const token = authHeader.substring(7);
+  // Simple token validation (in production, use JWT or session)
+  if (!token || token.length < 10) {
+    return res.status(401).json({ error: "Invalid token" });
+  }
+  
+  next();
+}
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // GET /api/products - Get all products
@@ -129,7 +145,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // GET /api/orders - Get all orders (admin only)
-  app.get("/api/orders", async (req, res) => {
+  app.get("/api/orders", adminAuth, async (req, res) => {
     try {
       const orders = await storage.getAllOrders();
       res.json(orders);
@@ -140,7 +156,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // GET /api/orders/:id - Get single order by ID (admin only)
-  app.get("/api/orders/:id", async (req, res) => {
+  app.get("/api/orders/:id", adminAuth, async (req, res) => {
     try {
       const { id } = req.params;
       const order = await storage.getOrderById(id);
@@ -157,7 +173,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // GET /api/chat/sessions - Get all chat sessions (admin only)
-  app.get("/api/chat/sessions", async (req, res) => {
+  app.get("/api/chat/sessions", adminAuth, async (req, res) => {
     try {
       const sessions = await storage.getAllChatSessions();
       res.json(sessions);
@@ -168,7 +184,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // GET /api/chat/sessions/:id - Get chat session with messages (admin only)
-  app.get("/api/chat/sessions/:id", async (req, res) => {
+  app.get("/api/chat/sessions/:id", adminAuth, async (req, res) => {
     try {
       const { id } = req.params;
       const session = await storage.getChatSessionWithMessages(id);
@@ -185,7 +201,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // POST /api/chat/sessions/:id/close - Close chat session (admin only)
-  app.post("/api/chat/sessions/:id/close", async (req, res) => {
+  app.post("/api/chat/sessions/:id/close", adminAuth, async (req, res) => {
     try {
       const { id } = req.params;
       await storage.closeChatSession(id);
