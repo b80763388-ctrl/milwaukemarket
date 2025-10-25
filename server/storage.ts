@@ -26,6 +26,8 @@ export interface IStorage {
 
   // Orders
   createOrder(order: InsertOrder): Promise<Order>;
+  getAllOrders(): Promise<Order[]>;
+  getOrderById(id: string): Promise<Order | undefined>;
 }
 
 export class MemStorage implements IStorage {
@@ -1923,6 +1925,16 @@ export class MemStorage implements IStorage {
     };
     this.orders.set(id, order);
     return order;
+  }
+
+  async getAllOrders(): Promise<Order[]> {
+    return Array.from(this.orders.values()).sort((a, b) => 
+      b.createdAt.getTime() - a.createdAt.getTime()
+    );
+  }
+
+  async getOrderById(id: string): Promise<Order | undefined> {
+    return this.orders.get(id);
   }
 }
 
