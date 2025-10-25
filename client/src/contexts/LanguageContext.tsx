@@ -83,14 +83,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const formatPriceSync = (priceInPLN: number): string => {
     // Synchronous version - will initially show PLN until exchange rates are loaded
     // This is OK for initial render, the async version can be used for more precision
-    const { currencySymbols } = require('@/lib/i18n');
+    const currencySymbols = {
+      PLN: 'zł',
+      EUR: '€',
+      USD: '$',
+      GBP: '£',
+    };
     
     if (currency === 'PLN') {
       return `${priceInPLN.toFixed(2)} ${currencySymbols.PLN}`;
     }
     
     // Use approximate rates for immediate display
-    const approximateRates: Record<typeof currency, number> = {
+    const approximateRates: Record<Currency, number> = {
       PLN: 1,
       EUR: 0.23,
       USD: 0.25,
@@ -103,7 +108,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (currency === 'USD' || currency === 'GBP') {
       return `${symbol}${converted.toFixed(2)}`;
     } else {
-      return `${symbol}${converted.toFixed(2)}`;
+      return `${converted.toFixed(2)} ${symbol}`;
     }
   };
 

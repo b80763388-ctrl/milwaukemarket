@@ -140,6 +140,25 @@ shared/
 
 ## Zmiany Ostatnie
 
+**2025-10-25:** System walut, modale informacyjne, strony prawne
+- Zaimplementowano system automatycznego przeliczania walut:
+  - Automatyczna detekcja kraju użytkownika (PL→PLN, EU→EUR, inne→USD/GBP)
+  - Integracja z Frankfurter API (darmowe, bez limitu zapytań)
+  - Cache kursów walut (1 godzina) w localStorage
+  - Funkcja formatPriceSync() dostępna w LanguageContext
+  - Integracja w ProductCard (CartSidebar i ProductDetailPage do aktualizacji)
+- Dodano modale informacyjne:
+  - ExhibitionProductsModal: Informacje o produktach powystawowych, stan, gwarancja 12 miesięcy
+  - ShippingPaymentModal: Dostawa kurierem (max 21 dni), płatności (karty Visa/Mastercard, BLIK)
+  - Modale zintegrowane z HomePage (przyciski info) i Footer (linki)
+- Dodano strony prawne:
+  - TermsPage (/regulamin): Pełny regulamin sklepu zgodny z prawem polskim
+  - PrivacyPage (/polityka-prywatnosci): Polityka prywatności zgodna z RODO
+  - Routy dodane do App.tsx, linki w Footer
+- Pobrano stock images narzędzi (wiertarki, szlifierki, klucze, piły, młoty)
+  - **Uwaga:** Prawdziwe zdjęcia produktów Milwaukee wymagają licencji od producenta
+  - Stock images reprezentują typy narzędzi, nie konkretne modele Milwaukee
+
 **2025-10-25:** System wielojęzyczny i poprawki gwarancji
 - Zamieniono "gwarancja producenta" na "gwarancja 12 miesięcy" we wszystkich produktach (100 produktów)
 - Poprawiono kategoryzację produktów (piła tarczowa przeniesiona z "wiertarki" do "pily")
