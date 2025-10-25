@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Truck, CheckCircle, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
+import { useLanguage } from "@/contexts/LanguageContext";
 import type { Product } from "@shared/schema";
 import heroImage from "@assets/generated_images/Workshop_hero_background_image_7fd60b9a.png";
 
@@ -12,22 +13,23 @@ interface HomePageProps {
 }
 
 export function HomePage({ onAddToCart }: HomePageProps) {
+  const { t } = useLanguage();
   const { data: products, isLoading } = useQuery<Product[]>({
     queryKey: ["/api/products"],
   });
 
   const featuredProducts = products?.slice(0, 4) || [];
   const categories = [
-    { name: "Wiertarki", slug: "wiertarki", count: products?.filter(p => p.category === "wiertarki").length || 0 },
-    { name: "Szlifierki", slug: "szlifierki", count: products?.filter(p => p.category === "szlifierki").length || 0 },
-    { name: "Klucze Udarowe", slug: "klucze", count: products?.filter(p => p.category === "klucze").length || 0 },
-    { name: "Młoty", slug: "mloty", count: products?.filter(p => p.category === "mloty").length || 0 },
-    { name: "Wózki Narzędziowe", slug: "wozki", count: products?.filter(p => p.category === "wozki").length || 0 },
-    { name: "Zestawy Narzędzi", slug: "zestawy", count: products?.filter(p => p.category === "zestawy").length || 0 },
-    { name: "Piły", slug: "pily", count: products?.filter(p => p.category === "pily").length || 0 },
-    { name: "Oświetlenie", slug: "oswietlenie", count: products?.filter(p => p.category === "oswietlenie").length || 0 },
-    { name: "Akcesoria", slug: "akcesoria", count: products?.filter(p => p.category === "akcesoria").length || 0 },
-    { name: "Zestawy Specjalistyczne", slug: "zestawy-specjalistyczne", count: products?.filter(p => p.category === "zestawy-specjalistyczne").length || 0 },
+    { name: t('category.wiertarki'), slug: "wiertarki", count: products?.filter(p => p.category === "wiertarki").length || 0 },
+    { name: t('category.szlifierki'), slug: "szlifierki", count: products?.filter(p => p.category === "szlifierki").length || 0 },
+    { name: t('category.klucze'), slug: "klucze", count: products?.filter(p => p.category === "klucze").length || 0 },
+    { name: t('category.mloty'), slug: "mloty", count: products?.filter(p => p.category === "mloty").length || 0 },
+    { name: t('category.wozki'), slug: "wozki", count: products?.filter(p => p.category === "wozki").length || 0 },
+    { name: t('category.zestawy'), slug: "zestawy", count: products?.filter(p => p.category === "zestawy").length || 0 },
+    { name: t('category.pily'), slug: "pily", count: products?.filter(p => p.category === "pily").length || 0 },
+    { name: t('category.oswietlenie'), slug: "oswietlenie", count: products?.filter(p => p.category === "oswietlenie").length || 0 },
+    { name: t('category.akcesoria'), slug: "akcesoria", count: products?.filter(p => p.category === "akcesoria").length || 0 },
+    { name: t('category.zestawy-specjalistyczne'), slug: "zestawy-specjalistyczne", count: products?.filter(p => p.category === "zestawy-specjalistyczne").length || 0 },
   ];
 
   return (
@@ -47,22 +49,22 @@ export function HomePage({ onAddToCart }: HomePageProps) {
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8 text-center">
           <Badge className="mb-6 bg-primary text-primary-foreground border-primary-border text-sm px-4 py-2">
-            PRODUKTY POWYSTAWOWE
+            {t('hero.badge')}
           </Badge>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 font-heading">
-            Profesjonalne Narzędzia
+            {t('hero.title')}
             <br />
-            <span className="text-primary">Milwaukee</span> od Tools Shop
+            <span className="text-primary">{t('hero.titleBrand')}</span> {t('hero.titleFrom')}
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Oszczędź do 40% na profesjonalnych narzędziach
+            {t('hero.subtitle1')}
             <br />
-            Produkty powystawowe z pełną gwarancją
+            {t('hero.subtitle2')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="#produkty">
               <Button size="lg" className="text-lg px-8" data-testid="button-hero-shop">
-                Zobacz Ofertę
+                {t('hero.cta.shop')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -72,7 +74,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
               className="text-lg px-8 bg-background/10 backdrop-blur-sm border-white/20 text-white hover:bg-background/20"
               data-testid="button-hero-learn"
             >
-              Dowiedz się więcej
+              {t('hero.cta.learn')}
             </Button>
           </div>
 
@@ -80,15 +82,15 @@ export function HomePage({ onAddToCart }: HomePageProps) {
           <div className="flex flex-wrap items-center justify-center gap-6 mt-12 text-white">
             <div className="flex items-center gap-2">
               <Shield className="h-5 w-5" />
-              <span className="text-sm font-medium">Gwarancja 12 miesięcy</span>
+              <span className="text-sm font-medium">{t('trust.warranty')}</span>
             </div>
             <div className="flex items-center gap-2">
               <Truck className="h-5 w-5" />
-              <span className="text-sm font-medium">Darmowa dostawa od 500 zł</span>
+              <span className="text-sm font-medium">{t('trust.shipping')}</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="h-5 w-5" />
-              <span className="text-sm font-medium">Sprawdzone produkty</span>
+              <span className="text-sm font-medium">{t('trust.verified')}</span>
             </div>
           </div>
         </div>

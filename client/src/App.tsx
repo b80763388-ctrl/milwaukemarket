@@ -9,6 +9,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CartSidebar } from "@/components/CartSidebar";
 import { LiveChat } from "@/components/LiveChat";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import { HomePage } from "@/pages/HomePage";
 import { ProductDetailPage } from "@/pages/ProductDetailPage";
 import { CategoryPage } from "@/pages/CategoryPage";
@@ -172,11 +173,13 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-        <LiveChat />
-      </TooltipProvider>
+      <LanguageProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+          <LiveChat />
+        </TooltipProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }

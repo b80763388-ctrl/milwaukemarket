@@ -10,6 +10,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface HeaderProps {
   cartItemCount: number;
@@ -19,18 +21,19 @@ interface HeaderProps {
 export function Header({ cartItemCount, onCartClick }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
+  const { t } = useLanguage();
 
   const categories = [
-    { name: "Wiertarki", href: "/kategoria/wiertarki" },
-    { name: "Szlifierki", href: "/kategoria/szlifierki" },
-    { name: "Klucze Udarowe", href: "/kategoria/klucze" },
-    { name: "Młoty", href: "/kategoria/mloty" },
-    { name: "Wózki Narzędziowe", href: "/kategoria/wozki" },
-    { name: "Zestawy Narzędzi", href: "/kategoria/zestawy" },
-    { name: "Piły", href: "/kategoria/pily" },
-    { name: "Oświetlenie", href: "/kategoria/oswietlenie" },
-    { name: "Akcesoria", href: "/kategoria/akcesoria" },
-    { name: "Zestawy Specjalistyczne", href: "/kategoria/zestawy-specjalistyczne" },
+    { name: t('category.wiertarki'), href: "/kategoria/wiertarki" },
+    { name: t('category.szlifierki'), href: "/kategoria/szlifierki" },
+    { name: t('category.klucze'), href: "/kategoria/klucze" },
+    { name: t('category.mloty'), href: "/kategoria/mloty" },
+    { name: t('category.wozki'), href: "/kategoria/wozki" },
+    { name: t('category.zestawy'), href: "/kategoria/zestawy" },
+    { name: t('category.pily'), href: "/kategoria/pily" },
+    { name: t('category.oswietlenie'), href: "/kategoria/oswietlenie" },
+    { name: t('category.akcesoria'), href: "/kategoria/akcesoria" },
+    { name: t('category.zestawy-specjalistyczne'), href: "/kategoria/zestawy-specjalistyczne" },
   ];
 
   return (
@@ -58,14 +61,14 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
                 variant={location === "/" ? "secondary" : "ghost"}
                 className="text-sm font-medium"
               >
-                Strona Główna
+                {t('nav.home')}
               </Button>
             </Link>
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="text-sm font-medium gap-1" data-testid="button-categories">
-                  Kategorie
+                  {t('nav.categories')}
                   <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -84,8 +87,11 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             </DropdownMenu>
           </nav>
 
-          {/* Right Side - Cart & Mobile Menu */}
+          {/* Right Side - Language, Cart & Mobile Menu */}
           <div className="flex items-center gap-2">
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+            
             {/* Cart Button */}
             <Button
               variant="ghost"
@@ -132,12 +138,12 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
                 className="w-full justify-start"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Strona Główna
+                {t('nav.home')}
               </Button>
             </Link>
             
             <div className="px-2 py-1 text-sm font-semibold text-muted-foreground">
-              Kategorie
+              {t('nav.categories')}
             </div>
             
             {categories.map((category) => (
