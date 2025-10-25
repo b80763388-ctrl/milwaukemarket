@@ -49,7 +49,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Silnik bezszczotkowy POWERSTATE™",
           "Maksymalny moment obrotowy: 135 Nm",
@@ -73,7 +73,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Średnica tarczy: 125mm",
           "Prędkość obrotowa: 8500 obr/min",
@@ -97,7 +97,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Maksymalny moment obrotowy: 1356 Nm",
           "Moment dokręcania: 1017 Nm",
@@ -121,7 +121,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Energia uderzenia: 2.1J",
           "Wiercenie w betonie: do 26mm",
@@ -145,7 +145,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Moment obrotowy: 60 Nm",
           "Prędkość obrotowa: 0-450/0-1800 obr/min",
@@ -169,7 +169,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Średnica tarczy: 230mm",
           "Prędkość obrotowa: 6600 obr/min",
@@ -193,7 +193,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Maksymalny moment: 220 Nm",
           "Napęd hex 1/4\"",
@@ -206,7 +206,7 @@ export class MemStorage implements IStorage {
       {
         name: "M18 FUEL Pilarka tarczowa 184mm",
         slug: "m18-fuel-pilarka-tarczowa",
-        category: "wiertarki",
+        category: "pily",
         description:
           "Bezprzewodowa pilarka tarczowa M18 FUEL z tarczą 184mm. Moc i precyzja cięcia porównywalna z pilarkami sieciowymi.",
         originalPrice: "899.00",
@@ -217,7 +217,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Średnica tarczy: 184mm",
           "Prędkość obrotowa: 5800 obr/min",
@@ -241,7 +241,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Skok ostrza: 32mm",
           "Prędkość skoku: 0-3000 skoków/min",
@@ -265,7 +265,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Częstotliwość oscylacji: 10000-20000 obr/min",
           "Kąt oscylacji: 4.2°",
@@ -289,7 +289,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Skok ostrza: 26mm",
           "Prędkość ruchu: 0-3500 skoków/min",
@@ -313,7 +313,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Wymiar taśmy: 10x330mm",
           "Prędkość taśmy: 350 m/min",
@@ -337,7 +337,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Prędkość obrotowa: 10000-31000 obr/min",
           "Chwyty: 6mm i 8mm",
@@ -361,7 +361,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "10 szuflad z pełnym wysuwem",
           "Nośność: 680 kg",
@@ -387,7 +387,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "6 szuflad z łożyskami kulkowymi",
           "Nośność: 450 kg",
@@ -413,7 +413,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Pojemność: 170 litrów",
           "Wytrzymały tworzywo sztuczne",
@@ -440,7 +440,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "7 szuflad na łożyskach kulkowych",
           "Blat roboczy ze stali nierdzewnej",
@@ -464,7 +464,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "5 szuflad różnej wysokości",
           "Wymiary: 660 x 330 x 860 mm",
@@ -488,7 +488,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "3 moduły stackowalne",
           "Szafka górna + wózek środkowy + szafka dolna",
@@ -512,7 +512,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "4 szuflady + blat organizacyjny",
           "Panele boczne na narzędzia",
@@ -536,7 +536,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "12 szuflad pełnowymiarowych",
           "Nośność: 1000 kg",
@@ -560,7 +560,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Niska wysokość: 280 mm",
           "6 płaskich szuflad",
@@ -584,7 +584,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: [
           "Uchwyt na rolki papieru",
           "Podajnik taśm klejących",
@@ -608,7 +608,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Głowica kątowa", "Silnik bezszczotkowy", "Moment: 30 Nm", "Kompaktowa konstrukcja"],
       },
       {
@@ -624,7 +624,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Moment: 90 Nm", "Uchwyt 13mm", "Metal uchwyt", "Tryb udarowy"],
       },
       {
@@ -640,7 +640,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Wiercenie diamentowe", "Koron max 162mm", "System chłodzenia wodą", "Elektronika REDLINK"],
       },
       {
@@ -656,7 +656,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Długość: 169mm", "Waga: 0.6kg", "Moment: 20 Nm", "LED podświetlenie"],
       },
       // Dodatkowe szlifierki
@@ -673,7 +673,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Ruch oscylacyjny", "Regulacja prędkości", "Odpylanie", "Płyta 93x186mm"],
       },
       {
@@ -689,7 +689,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Chwyt 6mm", "Prędkość: 28000 obr/min", "Ergonomiczny chwyt", "LED"],
       },
       {
@@ -705,7 +705,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Tarcza: 75mm", "Prędkość: 20000 obr/min", "Kompaktowa", "Waga: 1.4kg"],
       },
       {
@@ -721,7 +721,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Tarcza: 180mm", "Silnik bezszczotkowy", "System AVS", "Blokada wrzeciona"],
       },
       {
@@ -737,7 +737,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Średnica: 180mm", "Prędkość: 0-2800 obr/min", "Regulacja elektroniczna", "Uchwyt boczny"],
       },
       {
@@ -753,7 +753,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Tarcza diamentowa 125mm", "Odśysanie pyłu", "Głębokość cięcia: 45mm", "Prowadnica"],
       },
       // Dodatkowe klucze udarowe
@@ -770,7 +770,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Moment: 1627 Nm", "Gniazdo 3/4\"", "4 tryby pracy", "Silnik POWERSTATE"],
       },
       {
@@ -786,7 +786,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Moment: 203 Nm", "Gniazdo 3/8\"", "Długość: 135mm", "Waga: 1.1kg"],
       },
       {
@@ -802,7 +802,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Zakres: 20-200 Nm", "ONE-KEY", "Dokładność ±2%", "4 tryby pracy"],
       },
       {
@@ -818,7 +818,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Moment: 271 Nm", "Gniazdo 1/4\"", "Tryb Precision Wrench", "Kompaktowa"],
       },
       {
@@ -834,7 +834,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Głowica kątowa", "Moment: 250 Nm", "Gniazdo 1/2\"", "Kompaktowa konstrukcja"],
       },
       {
@@ -850,7 +850,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Gniazdo 3/8\"", "Moment: 61 Nm", "Głowica niskoprofilowa", "LED podświetlenie"],
       },
       {
@@ -866,7 +866,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Moment: 2034 Nm", "Gniazdo 1/2\"", "Friction Ring", "Tryb Auto-Shut Off"],
       },
       {
@@ -882,7 +882,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["ONE-KEY", "Moment: 1492 Nm", "4 tryby", "Bluetooth"],
       },
       // Dodatkowe młoty
@@ -899,7 +899,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Energia udaru: 8.1 J", "SDS-Max", "System AVS", "Silnik bezszczotkowy"],
       },
       {
@@ -915,7 +915,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["SDS-Max", "Energia: 5.7 J", "3 tryby pracy", "System ochrony AVS"],
       },
       {
@@ -931,7 +931,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["SDS-Plus", "Energia: 1.0 J", "Długość: 310mm", "Waga: 2.0kg"],
       },
       {
@@ -947,7 +947,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Udar 1900/min", "Energia: 2.5 J", "Szybkozłącze chwyt", "System AVS"],
       },
       {
@@ -963,7 +963,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["SDS-Plus", "Energia: 1.9 J", "3 tryby pracy", "Uchwyt antywibracyjny"],
       },
       {
@@ -979,7 +979,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Energia: 11.9 J", "SDS-Max", "AVS", "ONE-KEY ready"],
       },
       {
@@ -995,7 +995,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Korony do 162mm", "System chłodzenia wodą", "2 prędkości", "Elektronika REDLINK"],
       },
       {
@@ -1011,7 +1011,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["SDS-Plus", "Energia: 0.9 J", "Waga: 1.7kg", "LED podświetlenie"],
       },
       {
@@ -1027,7 +1027,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Wibracje: 3600/min", "System AVS", "Siła udaru regulowana", "Rączka antywibracyjna"],
       },
       // Dodatkowe zestawy narzędzi
@@ -1044,7 +1044,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["2 narzędzia M18 FUEL", "2x akumulator 5.0Ah", "Ładowarka M12-18FC", "Walizka HD Box"],
       },
       {
@@ -1060,7 +1060,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["3 narzędzia M18 FUEL", "3x akumulator 5.0Ah", "Ładowarka szybka", "Walizka systemowa"],
       },
       {
@@ -1076,7 +1076,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["4 narzędzia M12 FUEL", "2x akumulator 4.0Ah", "Ładowarka", "Torba narzędziowa"],
       },
       {
@@ -1092,7 +1092,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["6 narzędzi M18 FUEL", "3x akumulator 5.0Ah", "Ładowarka podwójna", "Walizki systemowe"],
       },
       {
@@ -1108,7 +1108,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Akumulator M18 5.0Ah", "Ładowarka M12-18FC", "System REDLITHIUM"],
       },
       {
@@ -1124,7 +1124,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["3x akumulator 6.0Ah", "Technologia HIGH OUTPUT", "REDLITHIUM-ION"],
       },
       {
@@ -1140,7 +1140,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["3 narzędzia M18", "2 narzędzia M12", "Akumulatory obu systemów", "Ładowarka uniwersalna"],
       },
       {
@@ -1156,7 +1156,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Lampa główna + reflektor + latarka", "Akumulatory 3.0Ah", "Ładowarka", "Torba"],
       },
       {
@@ -1172,7 +1172,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["8 narzędzi FUEL", "6x akumulator 6.0Ah", "Ładowarka szybka podwójna", "Zestaw walizek"],
       },
       {
@@ -1188,7 +1188,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["5 narzędzi specjalistycznych", "Akumulatory 2.0 + 4.0Ah", "Ładowarka", "Torba narzędziowa"],
       },
       // Piły
@@ -1205,7 +1205,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Skok: 32mm", "System FIXTEC", "Silnik bezszczotkowy", "LED podświetlenie"],
       },
       {
@@ -1221,7 +1221,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Tarcza: 190mm", "Głębokość cięcia: 66mm", "Prowadnica laserowa", "Blokada wrzeciona"],
       },
       {
@@ -1237,7 +1237,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Ultra kompaktowa", "Skok: 19mm", "Szybkomocowanie ostrza", "Waga: 1.4kg"],
       },
       {
@@ -1253,7 +1253,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Taśma 835mm", "Cięcie rur do 125mm", "System chłodzenia", "Elektronika REDLINK"],
       },
       {
@@ -1269,7 +1269,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Skok: 28mm", "Regulacja prędkości", "FIXTEC", "Uchwyt antywibracyjny"],
       },
       {
@@ -1285,7 +1285,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Tarcza: 184mm", "Szyna prowadząca", "Głębokość: 57mm", "System odpylania"],
       },
       {
@@ -1301,7 +1301,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Tarcza: 140mm", "Głębokość: 44mm", "LED", "Kompaktowa konstrukcja"],
       },
       {
@@ -1317,7 +1317,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Tarcza: 203mm", "System chłodzenia", "Cięcie na sucho", "Iskry minimalne"],
       },
       {
@@ -1333,7 +1333,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Długość prowadnicy: 300mm", "Napinanie bez narzędzi", "Automatyczne smarowanie", "Hamulec łańcucha"],
       },
       {
@@ -1349,7 +1349,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Tarcza: 254mm", "Kąt cięcia: 50°", "Laser prowadzący", "Stół roboczy składany"],
       },
       // Oświetlenie
@@ -1366,7 +1366,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["4400 lumenów", "Montaż na statywie", "Obrotowa głowica", "Czas pracy: 8h"],
       },
       {
@@ -1382,7 +1382,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["220 lumenów", "Głowica obrotowa 90°", "Magnes mocujący", "Hak zawieszenia"],
       },
       {
@@ -1398,7 +1398,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["3000 lumenów", "Statyw regulowany", "Odporność IP54", "Kąt świecenia 120°"],
       },
       {
@@ -1414,7 +1414,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Elastyczny wąż 280mm", "LED w głowicy", "Magnes", "Hak zawieszenia"],
       },
       {
@@ -1430,7 +1430,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["4400 lumenów", "Montaż wielopozycyjny", "Statyw składany", "IP54"],
       },
       {
@@ -1446,7 +1446,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["475 lumenów", "Czas pracy: 10h", "3 tryby świecenia", "Pas regulowany"],
       },
       {
@@ -1462,7 +1462,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["1400 lumenów", "Uchwyt magnetyczny", "Hak zawieszenia", "Obrotowa głowica"],
       },
       {
@@ -1478,7 +1478,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["135 lumenów", "Klips do paska", "LED trwałość 50000h", "Wytrzymała obudowa"],
       },
       {
@@ -1494,7 +1494,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["5600 lumenów", "Kontrola Bluetooth ONE-KEY", "Statyw teleskopowy", "4 tryby pracy"],
       },
       {
@@ -1510,7 +1510,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["220 lumenów", "Magnes neodymowy", "Hak mocujący", "3 tryby jasności"],
       },
       // Akcesoria
@@ -1527,7 +1527,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["19 wierteł 1-10mm", "HSS-G", "Kaseta metalowa", "Szlifowane precyzyjnie"],
       },
       {
@@ -1543,7 +1543,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["56 elementów", "Technologia SHOCKWAVE", "Futerał modułowy", "Bity udarowe"],
       },
       {
@@ -1559,7 +1559,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["System stackowania", "Wytrzymały", "Organizery wewnętrzne", "Zamki metalowe"],
       },
       {
@@ -1575,7 +1575,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Długość: 600mm", "Materiał 1680D", "40 kieszeni", "Wzmocnione dno"],
       },
       {
@@ -1591,7 +1591,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["56 elementów", "Gniazdo 1/2\"", "Stal CrV", "Walizka metalowa"],
       },
       {
@@ -1607,7 +1607,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["7 wierteł 5-12mm", "SDS-Plus", "Głowica z węglików", "4-ostrze"],
       },
       {
@@ -1623,7 +1623,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["10 przegródek", "System PACKOUT", "Przezroczysta pokrywa", "Kompaktowy"],
       },
       {
@@ -1639,7 +1639,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Regulowany rozmiar", "Wytrzymały materiał", "Kieszenie na narzędzia", "Uchwyty na młotek"],
       },
       {
@@ -1655,7 +1655,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["5 tarcz 125mm", "Segment turbo", "Do betonu i kamienia", "Otwór 22.2mm"],
       },
       {
@@ -1671,7 +1671,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: false,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["15 ostrzy", "Do drewna i metalu", "Różne długości", "Kaseta z organizacją"],
       },
       // Zestawy specjalistyczne
@@ -1688,7 +1688,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Prasa do rur", "Wiertarka kątowa", "Latarka", "3x akumulator 5.0Ah", "Ładowarka", "Walizki PACKOUT"],
       },
       {
@@ -1704,7 +1704,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Nożyce do blachy", "Wiertarka", "Zakrętarka", "Szlifierka", "4x akumulator", "System PACKOUT"],
       },
       {
@@ -1720,7 +1720,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Wiertarka", "Zakrętarka", "Multitool", "Latarka", "Miernik", "Torba specjalistyczna"],
       },
       {
@@ -1736,7 +1736,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Piła tarczowa", "Piła szablasta", "Wiertarka", "Zakrętarka", "Szlifierka", "6x akumulator"],
       },
       {
@@ -1752,7 +1752,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Nożyce do blachy", "Zakrętarka udarowa", "Wiertarka", "Nożyce prostopadłe", "Akcesoria specjalistyczne"],
       },
       {
@@ -1768,7 +1768,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Klucz udarowy 1/2\"", "Zakrętarka", "Szlifierka", "Lampa obszarowa", "Wózek narzędziowy"],
       },
       {
@@ -1784,7 +1784,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Szlifierka 125mm", "Szlifierka 180mm", "Latarka", "Okulary ochronne", "Akcesoria spawalnicze"],
       },
       {
@@ -1800,7 +1800,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Klucz udarowy", "Wiertarka", "Szlifierka", "Multitool", "Latarka", "Kamera inspekcyjna", "Walizki PACKOUT"],
       },
       {
@@ -1816,7 +1816,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Piła tarczowa", "Wyrzynarka", "Frezarka", "Szlifierka oscylacyjna", "Wiertarka", "System przechowywania"],
       },
       {
@@ -1832,7 +1832,7 @@ export class MemStorage implements IStorage {
         batteryIncluded: true,
         inStock: true,
         condition: "Bardzo dobry - produkt powystawowy",
-        warranty: "12 miesięcy gwarancji producenta",
+        warranty: "gwarancja 12 miesięcy",
         features: ["Prasa do rur", "Wiertarka", "Zakrętarka", "Detektor gazu", "Latarka ATEX", "Narzędzia specjalistyczne"],
       },
     ];
@@ -1870,7 +1870,7 @@ export class MemStorage implements IStorage {
       batteryIncluded: insertProduct.batteryIncluded ?? false,
       inStock: insertProduct.inStock ?? true,
       condition: insertProduct.condition ?? "Bardzo dobry - produkt powystawowy",
-      warranty: insertProduct.warranty ?? "12 miesięcy gwarancji producenta",
+      warranty: insertProduct.warranty ?? "gwarancja 12 miesięcy",
     };
     this.products.set(id, product);
     return product;

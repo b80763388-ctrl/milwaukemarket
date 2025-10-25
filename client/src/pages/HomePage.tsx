@@ -80,7 +80,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
           <div className="flex flex-wrap items-center justify-center gap-6 mt-12 text-white">
             <div className="flex items-center gap-2">
               <Shield className="h-5 w-5" />
-              <span className="text-sm font-medium">Gwarancja producenta</span>
+              <span className="text-sm font-medium">Gwarancja 12 miesięcy</span>
             </div>
             <div className="flex items-center gap-2">
               <Truck className="h-5 w-5" />
