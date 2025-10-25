@@ -196,6 +196,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // POST /api/admin/login - Admin login
+  app.post("/api/admin/login", async (req, res) => {
+    try {
+      const { password } = req.body;
+      const adminPassword = process.env.ADMIN_PASSWORD || "admin123"; // Default password for development
+
+      if (password === adminPassword) {
+        // Generate a simple token (in production, use JWT)
+        const token = Buffer.from(`admin:${Date.now()}`).toString('base64');
+        res.json({ success: true, token });
+      } else {
+        res.status(401).json({ error: "Invalid password" });
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+      res.status(500).json({ error: "Failed to log in" });
+    }
+  });
+
   const httpServer = createServer(app);
 
   // WebSocket server for real-time chat

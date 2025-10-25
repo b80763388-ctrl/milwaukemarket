@@ -17,6 +17,9 @@ import { AllProductsPage } from "@/pages/AllProductsPage";
 import { CheckoutPage } from "@/pages/CheckoutPage";
 import { TermsPage } from "@/pages/TermsPage";
 import { PrivacyPage } from "@/pages/PrivacyPage";
+import AdminLoginPage from "@/pages/AdminLoginPage";
+import AdminDashboardPage from "@/pages/AdminDashboardPage";
+import AdminChatPage from "@/pages/AdminChatPage";
 import NotFound from "@/pages/not-found";
 import type { CartItemWithProduct, Product } from "@shared/schema";
 
@@ -140,12 +143,16 @@ function Router() {
     removeItemMutation.mutate(itemId);
   };
 
+  const isAdminRoute = location.startsWith('/admin');
+
   return (
     <div className="flex flex-col min-h-screen">
-      <Header
-        cartItemCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
-        onCartClick={() => setCartOpen(true)}
-      />
+      {!isAdminRoute && (
+        <Header
+          cartItemCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
+          onCartClick={() => setCartOpen(true)}
+        />
+      )}
 
       <main className="flex-1">
         <Switch>
@@ -165,19 +172,27 @@ function Router() {
           <Route path="/checkout" component={CheckoutPage} />
           <Route path="/regulamin" component={TermsPage} />
           <Route path="/polityka-prywatnosci" component={PrivacyPage} />
+          
+          {/* Admin Routes */}
+          <Route path="/admin/login" component={AdminLoginPage} />
+          <Route path="/admin/dashboard" component={AdminDashboardPage} />
+          <Route path="/admin/chat" component={AdminChatPage} />
+          
           <Route component={NotFound} />
         </Switch>
       </main>
 
-      <Footer />
+      {!isAdminRoute && <Footer />}
 
-      <CartSidebar
-        isOpen={cartOpen}
-        onClose={() => setCartOpen(false)}
-        items={cartItems}
-        onUpdateQuantity={handleUpdateQuantity}
-        onRemoveItem={handleRemoveItem}
-      />
+      {!isAdminRoute && (
+        <CartSidebar
+          isOpen={cartOpen}
+          onClose={() => setCartOpen(false)}
+          items={cartItems}
+          onUpdateQuantity={handleUpdateQuantity}
+          onRemoveItem={handleRemoveItem}
+        />
+      )}
     </div>
   );
 }
