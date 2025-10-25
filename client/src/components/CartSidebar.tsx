@@ -207,7 +207,7 @@ export function CartSidebar({
                   </span>
                 </div>
               </div>
-              <Link href="/checkout">
+              <Link href="/checkout" onClick={onClose}>
                 <Button className="w-full" size="lg" data-testid="button-checkout">
                   Przejdź do kasy
                 </Button>

@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { queryClient, apiRequest } from "./lib/queryClient";
 import { QueryClientProvider, useQuery, useMutation } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -38,11 +38,17 @@ function Router() {
   const [cartOpen, setCartOpen] = useState(false);
   const [sessionId, setSessionId] = useState<string>("");
   const { toast } = useToast();
+  const [location] = useLocation();
 
   // Initialize session ID on mount
   useEffect(() => {
     setSessionId(getSessionId());
   }, []);
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   // Fetch cart from backend
   const { data: cartItems = [] } = useQuery<CartItemWithProduct[]>({

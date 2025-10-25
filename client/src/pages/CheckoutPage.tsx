@@ -208,14 +208,14 @@ export function CheckoutPage() {
   }
 
   return (
-    <div className="container max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold font-heading mb-8" data-testid="heading-checkout">
+    <div className="container max-w-6xl mx-auto px-4 py-4 md:py-8">
+      <h1 className="text-2xl md:text-3xl font-bold font-heading mb-4 md:mb-8" data-testid="heading-checkout">
         {translate("checkout.title", language)}
       </h1>
 
-      <div className="grid lg:grid-cols-3 gap-8">
+      <div className="grid lg:grid-cols-3 gap-4 md:gap-6">
         {/* Checkout Form */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-4 md:space-y-6">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -357,13 +357,13 @@ export function CheckoutPage() {
                     />
                   </div>
 
-                  <Separator className="my-6" />
+                  <Separator className="my-4" />
 
                   <FormField
                     control={form.control}
                     name="courier"
                     render={({ field }) => (
-                      <FormItem className="space-y-4">
+                      <FormItem className="space-y-3">
                         <FormLabel className="text-base font-semibold">
                           {translate("checkout.courier", language)}
                         </FormLabel>
@@ -371,10 +371,10 @@ export function CheckoutPage() {
                           <RadioGroup
                             onValueChange={field.onChange}
                             value={field.value}
-                            className="space-y-3"
+                            className="space-y-2"
                           >
                             <div
-                              className={`flex items-center space-x-4 border rounded-lg p-4 hover-elevate ${
+                              className={`flex items-center space-x-3 border rounded-lg p-3 hover-elevate ${
                                 hasLargeItems ? "opacity-50 cursor-not-allowed" : ""
                               }`}
                             >
@@ -386,12 +386,12 @@ export function CheckoutPage() {
                               />
                               <label
                                 htmlFor="inpost"
-                                className="flex items-center gap-4 flex-1 cursor-pointer"
+                                className="flex items-center gap-3 flex-1 cursor-pointer"
                               >
                                 <img
                                   src={inpostLogo}
                                   alt="InPost"
-                                  className="h-10 w-auto object-contain"
+                                  className="h-8 w-auto object-contain"
                                 />
                                 <div className="flex-1">
                                   <p className="font-medium">
@@ -406,7 +406,7 @@ export function CheckoutPage() {
                               </label>
                             </div>
 
-                            <div className="flex items-center space-x-4 border rounded-lg p-4 hover-elevate">
+                            <div className="flex items-center space-x-3 border rounded-lg p-3 hover-elevate">
                               <RadioGroupItem
                                 value="dpd"
                                 id="dpd"
@@ -414,12 +414,12 @@ export function CheckoutPage() {
                               />
                               <label
                                 htmlFor="dpd"
-                                className="flex items-center gap-4 flex-1 cursor-pointer"
+                                className="flex items-center gap-3 flex-1 cursor-pointer"
                               >
                                 <img
                                   src={dpdLogo}
                                   alt="DPD"
-                                  className="h-10 w-auto object-contain"
+                                  className="h-8 w-auto object-contain"
                                 />
                                 <p className="font-medium">
                                   {translate("checkout.courierDpd", language)}
@@ -427,7 +427,7 @@ export function CheckoutPage() {
                               </label>
                             </div>
 
-                            <div className="flex items-center space-x-4 border rounded-lg p-4 hover-elevate">
+                            <div className="flex items-center space-x-3 border rounded-lg p-3 hover-elevate">
                               <RadioGroupItem
                                 value="dhl"
                                 id="dhl"
@@ -435,12 +435,12 @@ export function CheckoutPage() {
                               />
                               <label
                                 htmlFor="dhl"
-                                className="flex items-center gap-4 flex-1 cursor-pointer"
+                                className="flex items-center gap-3 flex-1 cursor-pointer"
                               >
                                 <img
                                   src={dhlLogo}
                                   alt="DHL"
-                                  className="h-10 w-auto object-contain"
+                                  className="h-8 w-auto object-contain"
                                 />
                                 <p className="font-medium">
                                   {translate("checkout.courierDhl", language)}
@@ -454,7 +454,7 @@ export function CheckoutPage() {
                     )}
                   />
 
-                  <div className="pt-4">
+                  <div className="pt-2">
                     <Button
                       type="submit"
                       className="w-full"
@@ -475,18 +475,18 @@ export function CheckoutPage() {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <Card className="sticky top-4">
-            <CardHeader>
-              <CardTitle>{translate("checkout.orderSummary", language)}</CardTitle>
+          <Card className="lg:sticky lg:top-20">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg">{translate("checkout.orderSummary", language)}</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-3">
+            <CardContent className="space-y-3">
+              <div className="space-y-2">
                 {cartItems.map((item) => (
-                  <div key={item.id} className="flex gap-3" data-testid={`summary-item-${item.id}`}>
+                  <div key={item.id} className="flex gap-2" data-testid={`summary-item-${item.id}`}>
                     <img
                       src={item.product.image}
                       alt={item.product.name}
-                      className="w-16 h-16 object-cover rounded bg-muted"
+                      className="w-14 h-14 object-cover rounded bg-muted"
                     />
                     <div className="flex-1 space-y-1">
                       <p className="text-sm font-medium leading-tight line-clamp-2">

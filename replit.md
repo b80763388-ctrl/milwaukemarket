@@ -157,6 +157,17 @@ shared/
 
 ## Zmiany Ostatnie
 
+**2025-10-25:** Poprawki UX i optymalizacja CheckoutPage
+- Dodano scroll to top przy zmianie route (useEffect w App.tsx)
+- Poprawiono zamykanie koszyka po kliknięciu "Przejdź do kasy"
+- Zoptymalizowano responsywność CheckoutPage:
+  - Zmniejszono paddingi i odstępy na mobilnych urządzeniach (py-4 md:py-8)
+  - Zmniejszono odstępy między elementami formularza (gap-4 md:gap-6)
+  - Zoptymalizowano rozmiary logo kurierów (h-8 zamiast h-10)
+  - Zmniejszono paddingi w courier cards (p-3 zamiast p-4)
+  - Zmniejszono obrazy produktów w podsumowaniu (w-14 zamiast w-16)
+  - Sticky positioning Order Summary dla desktop (lg:top-20)
+
 **2025-10-25:** Implementacja checkout z formularzem wysyłkowym i wyborem kuriera
 - Dodano Order model do shared/schema.ts z walidacją Zod
 - Rozszerzono IStorage i MemStorage o createOrder()
