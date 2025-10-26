@@ -49,7 +49,18 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-26 (Latest):** Image Gallery Fix + Tool Cart Pricing Update
+**2025-10-26 (Latest):** Battery Images + Terms Delivery Update
+- **Battery Product Images Updated**: Replaced images for 3 Milwaukee REDLITHIUM battery products with authentic product photos:
+  - M18 FORGE HD12.0 Starter Kit (999 PLN): Battery + Rapid Charger
+  - M18 FORGE XC8.0 Battery (469 PLN): Single battery with clear branding
+  - M18 HIGH OUTPUT XC6.0 Batteries 2-pack (799 PLN): Two batteries without charger
+- **Terms & Conditions Delivery Update**: Updated delivery information in §5 Dostawa:
+  - Standard fulfillment: 7-14 business days
+  - Maximum delivery time: up to 28 days from order date
+  - Professional, clear language for customer transparency
+- **Total Authentic Images**: 27 products now have authentic Milwaukee product photography (24 tools/combos/accessories + 3 battery products)
+
+**2025-10-26 (Earlier):** Image Gallery Fix + Tool Cart Pricing Update
 - **Image Gallery Display Fix**: Fixed gallery logic in both ProductDetailPage and ProductCard to always display `product.image` as the first/main image, preventing incorrect image order. Product cards (thumbnails) now consistently show the correct primary image. Additional images from `images` array are filtered to exclude duplicates in gallery view.
 - **Tool Cart Pricing Restructure**: Updated all 7 Milwaukee tool cart prices based on size progression (999-2799 PLN):
   - 40" 6-drawer Work Cart: 1499 → 999 PLN (smallest, entry-level)
