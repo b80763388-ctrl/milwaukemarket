@@ -45,35 +45,9 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background">
-      {/* Flag Bar */}
-      <div className="w-full bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-          <div className="flex justify-start items-center gap-3 py-2">
-            <button
-              onClick={() => handleFlagClick('pl', 'PLN')}
-              className={`transition-all hover:scale-110 ${language === 'pl' ? 'ring-2 ring-primary rounded' : 'opacity-60 hover:opacity-100'}`}
-              data-testid="button-flag-pl"
-              title="Polski / PLN"
-            >
-              <img src={plFlag} alt="Poland" className="h-6 w-auto rounded shadow-sm" />
-            </button>
-            <button
-              onClick={() => handleFlagClick('en', 'USD')}
-              className={`transition-all hover:scale-110 ${language === 'en' ? 'ring-2 ring-primary rounded' : 'opacity-60 hover:opacity-100'}`}
-              data-testid="button-flag-us"
-              title="English / USD"
-            >
-              <img src={usFlag} alt="United States" className="h-6 w-auto rounded shadow-sm" />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Header */}
-      <div className="border-b">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-          <div className="flex h-32 items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 w-full border-b bg-background">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="flex h-32 items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" data-testid="link-home">
             <div className="hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer">
@@ -85,8 +59,30 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-2">
+          {/* Flags + Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-6">
+            {/* Flags */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleFlagClick('pl', 'PLN')}
+                className={`transition-all hover:scale-110 ${language === 'pl' ? 'ring-2 ring-primary rounded' : 'opacity-60 hover:opacity-100'}`}
+                data-testid="button-flag-pl"
+                title="Polski / PLN"
+              >
+                <img src={plFlag} alt="Poland" className="h-5 w-auto rounded shadow-sm" />
+              </button>
+              <button
+                onClick={() => handleFlagClick('en', 'USD')}
+                className={`transition-all hover:scale-110 ${language === 'en' ? 'ring-2 ring-primary rounded' : 'opacity-60 hover:opacity-100'}`}
+                data-testid="button-flag-us"
+                title="English / USD"
+              >
+                <img src={usFlag} alt="United States" className="h-5 w-auto rounded shadow-sm" />
+              </button>
+            </div>
+
+            {/* Navigation */}
+            <nav className="flex items-center gap-2">
             <Link href="/" data-testid="link-nav-home">
               <Button
                 variant={location === "/" ? "secondary" : "ghost"}
@@ -116,7 +112,8 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
-          </nav>
+            </nav>
+          </div>
 
           {/* Right Side - Language, Cart & Mobile Menu */}
           <div className="flex items-center gap-2">
@@ -190,7 +187,6 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             ))}
           </nav>
         )}
-        </div>
       </div>
     </header>
   );
