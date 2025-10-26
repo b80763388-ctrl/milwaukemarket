@@ -10,7 +10,7 @@ const reviews = [
     role: "Budowlanka",
     rating: 5,
     comment: {
-      pl: "Kupiłem wiertarkę Milwaukee M18 FUEL i jestem zachwycony! Produkt powystawowy w doskonałym stanie, oszczędziłem prawie 500 zł. Dostawa szybka, obsługa na najwyższym poziomie. Polecam każdemu!",
+      pl: "Kupiłem wiertarkę Milwaukee M18 FUEL i jestem zachwycony! Produkt powystawowy w doskonałym stanie, oszczędziłem prawie 500 zł. Szybka dostawa, obsługa na najwyższym poziomie. Polecam każdemu!",
       en: "I bought the Milwaukee M18 FUEL drill and I'm thrilled! Exhibition product in excellent condition, I saved almost 500 PLN. Fast delivery, top-notch service. Highly recommend!"
     },
     image: "/attached_assets/generated_images/Polish_construction_worker_portrait_27f7ae00.png"
@@ -32,8 +32,8 @@ const reviews = [
     role: "Elektryk",
     rating: 5,
     comment: {
-      pl: "Profesjonalna obsługa i autentyczne produkty Milwaukee. Kupiłem zestaw combo M12 FUEL i nie mogę narzekać. Wszystko dokładnie tak jak w opisie. Dostawa w 2 dni. Na pewno wrócę po więcej narzędzi!",
-      en: "Professional service and authentic Milwaukee products. I bought the M12 FUEL combo set and can't complain. Everything exactly as described. Delivery in 2 days. Will definitely come back for more tools!"
+      pl: "Profesjonalna obsługa i autentyczne produkty Milwaukee. Kupiłem zestaw combo M12 FUEL i nie mogę narzekać. Wszystko dokładnie tak jak w opisie. Szybka dostawa i bezpieczne opakowanie. Na pewno wrócę po więcej narzędzi!",
+      en: "Professional service and authentic Milwaukee products. I bought the M12 FUEL combo set and can't complain. Everything exactly as described. Fast delivery and secure packaging. Will definitely come back for more tools!"
     },
     image: "/attached_assets/generated_images/Mature_Polish_electrician_portrait_bca679c9.png"
   },
