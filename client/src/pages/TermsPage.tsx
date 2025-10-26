@@ -53,7 +53,7 @@ export function TermsPage() {
             "Produkty są wysyłane kurierem na terenie całej Polski.",
             "Koszt dostawy wynosi 29 zł. Darmowa dostawa przysługuje przy zamówieniach powyżej 500 zł.",
             "Standardowy czas realizacji zamówienia wynosi od 7 do 14 dni roboczych.",
-            "Maksymalny czas dostawy wynosi do 28 dni od daty złożenia zamówienia.",
+            "Maksymalny czas dostawy wynosi do 28 dni od daty wysłania zamówienia.",
             "Klient otrzymuje powiadomienie SMS z informacją o planowanej dostawie.",
             "Dostawa odbywa się pod wskazany adres, bezpośrednio do rąk odbiorcy."
           ]
@@ -148,7 +148,7 @@ export function TermsPage() {
             "Products are shipped by courier throughout Poland.",
             "Delivery cost is 29 PLN. Free delivery is available for orders over 500 PLN.",
             "Standard order fulfillment time is 7 to 14 business days.",
-            "Maximum delivery time is up to 28 days from the date of placing the order.",
+            "Maximum delivery time is up to 28 days from the date of shipment.",
             "The customer receives an SMS notification with information about the planned delivery.",
             "Delivery is made to the specified address, directly to the recipient."
           ]

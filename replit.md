@@ -56,7 +56,7 @@ I want the agent to use simple language and provide detailed explanations when n
   - M18 HIGH OUTPUT XC6.0 Batteries 2-pack (799 PLN): Two batteries without charger
 - **Terms & Conditions Delivery Update**: Updated delivery information in §5 Dostawa:
   - Standard fulfillment: 7-14 business days
-  - Maximum delivery time: up to 28 days from order date
+  - Maximum delivery time: up to 28 days from shipment date
   - Professional, clear language for customer transparency
 - **Total Authentic Images**: 27 products now have authentic Milwaukee product photography (24 tools/combos/accessories + 3 battery products)
 
