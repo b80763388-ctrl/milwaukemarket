@@ -8,6 +8,7 @@ import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ExhibitionProductsModal } from "@/components/ExhibitionProductsModal";
 import { ShippingPaymentModal } from "@/components/ShippingPaymentModal";
+import { Reviews } from "@/components/Reviews";
 import type { Product } from "@shared/schema";
 import heroImage from "@assets/generated_images/Workshop_hero_background_image_7fd60b9a.png";
 
@@ -201,6 +202,9 @@ export function HomePage({ onAddToCart }: HomePageProps) {
           </div>
         </div>
       </section>
+
+      {/* Reviews Section */}
+      <Reviews />
 
       {/* Trust Section */}
       <section className="py-16 md:py-20">
