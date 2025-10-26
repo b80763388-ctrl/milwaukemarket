@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import toolsShopLogo from "@assets/generated_images/Tools_Shop_logo_plus_Sretensky_be487a68.png";
+import toolsShopLogo from "@assets/image_1761439850491.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -39,14 +39,14 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex h-24 items-center justify-between gap-4">
+        <div className="flex h-32 items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" data-testid="link-home">
             <div className="hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer">
               <img 
                 src={toolsShopLogo} 
                 alt="Tools Shop Sretensky" 
-                className="h-20 w-auto"
+                className="h-28 w-auto"
               />
             </div>
           </Link>
