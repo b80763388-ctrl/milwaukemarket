@@ -61,6 +61,10 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
       100
   );
 
+  // Combine main image with additional images for gallery
+  const allImages = [product.image, ...(product.images || [])];
+  const hasGallery = allImages.length > 1;
+
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
@@ -100,7 +104,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
               </Badge>
             )}
             <img
-              src={product.images && product.images.length > 0 ? product.images[selectedImageIndex] : product.image}
+              src={allImages[selectedImageIndex]}
               alt={product.name}
               className="w-full h-full object-cover"
               data-testid="img-product-detail"
@@ -108,16 +112,16 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
           </div>
 
           {/* Thumbnail Gallery */}
-          {product.images && product.images.length > 1 && (
-            <div className="grid grid-cols-5 gap-2">
-              {product.images.map((image, index) => (
+          {hasGallery && (
+            <div className="grid grid-cols-4 md:grid-cols-5 gap-3">
+              {allImages.map((image, index) => (
                 <button
                   key={index}
                   onClick={() => setSelectedImageIndex(index)}
-                  className={`aspect-square bg-muted rounded-lg overflow-hidden border-2 transition-all ${
+                  className={`aspect-square bg-white rounded-lg overflow-hidden border-3 transition-all hover:scale-105 ${
                     selectedImageIndex === index
-                      ? "border-primary shadow-md"
-                      : "border-transparent hover:border-muted-foreground/50"
+                      ? "border-primary ring-2 ring-primary ring-offset-2 shadow-lg"
+                      : "border-gray-200 hover:border-primary/50"
                   }`}
                   data-testid={`button-thumbnail-${index}`}
                 >
