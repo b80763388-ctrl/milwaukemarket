@@ -60,7 +60,7 @@ I want the agent to use simple language and provide detailed explanations when n
 ## Recent Changes
 
 **2025-10-26 (Latest):** WebSocket Chat System Optimization & Bug Fixes
-- **Logo Enhancement**: Logo enlarged (h-10 → h-14) and added "Sretensky" branding with Space Grotesk font
+- **Logo Redesign**: Complete new unified logo combining "Tools Shop" and "Sretensky" in Milwaukee-inspired red/black design (h-14, professional industrial branding)
 - **Chat Testing Mode**: Chat widget activated for testing (isActive = true), with commented code for production hours (12:00-20:00)
 - **Read/Unread Message System**: 
   - Added `isRead` boolean field to ChatMessage schema (defaults to false)
