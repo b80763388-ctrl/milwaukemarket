@@ -1,10 +1,11 @@
-import { ShoppingCart, Menu, X, ChevronDown } from "lucide-react";
+import { ShoppingCart, Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import toolsShopLogo from "@assets/image_1761439850491.png";
 import plFlag from "@/assets/flags/pl.png";
+import euFlag from "@/assets/flags/eu.png";
 import usFlag from "@/assets/flags/us.png";
 import {
   DropdownMenu,
@@ -23,7 +24,7 @@ interface HeaderProps {
 export function Header({ cartItemCount, onCartClick }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
-  const { t, language, currency, setLanguage, setCurrency } = useLanguage();
+  const { t } = useLanguage();
 
   const categories = [
     { name: t('category.wiertarki'), href: "/kategoria/wiertarki" },
@@ -38,11 +39,6 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
     { name: t('category.zestawy-specjalistyczne'), href: "/kategoria/zestawy-specjalistyczne" },
     { name: t('category.makita'), href: "/kategoria/makita" },
   ];
-
-  const handleFlagClick = (lang: 'pl' | 'en', curr: 'PLN' | 'USD') => {
-    setLanguage(lang);
-    setCurrency(curr);
-  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background">
@@ -61,24 +57,17 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
 
           {/* Flags + Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-6">
-            {/* Flags */}
+            {/* Flags (decorative) */}
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleFlagClick('pl', 'PLN')}
-                className={`transition-all hover:scale-110 ${language === 'pl' ? 'ring-2 ring-primary rounded' : 'opacity-60 hover:opacity-100'}`}
-                data-testid="button-flag-pl"
-                title="Polski / PLN"
-              >
+              <div className="opacity-90" data-testid="flag-pl">
                 <img src={plFlag} alt="Poland" className="h-5 w-auto rounded shadow-sm" />
-              </button>
-              <button
-                onClick={() => handleFlagClick('en', 'USD')}
-                className={`transition-all hover:scale-110 ${language === 'en' ? 'ring-2 ring-primary rounded' : 'opacity-60 hover:opacity-100'}`}
-                data-testid="button-flag-us"
-                title="English / USD"
-              >
+              </div>
+              <div className="opacity-90" data-testid="flag-eu">
+                <img src={euFlag} alt="European Union" className="h-5 w-auto rounded shadow-sm" />
+              </div>
+              <div className="opacity-90" data-testid="flag-us">
                 <img src={usFlag} alt="United States" className="h-5 w-auto rounded shadow-sm" />
-              </button>
+              </div>
             </div>
 
             {/* Navigation */}
@@ -115,8 +104,28 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             </nav>
           </div>
 
-          {/* Right Side - Language, Cart & Mobile Menu */}
+          {/* Right Side - Contact, Language, Cart & Mobile Menu */}
           <div className="flex items-center gap-2">
+            {/* Phone Icon */}
+            <Button
+              variant="ghost"
+              size="icon"
+              data-testid="button-phone"
+              title="Telefon"
+            >
+              <Phone className="h-5 w-5" />
+            </Button>
+
+            {/* Email Icon */}
+            <Button
+              variant="ghost"
+              size="icon"
+              data-testid="button-email"
+              title="Email"
+            >
+              <Mail className="h-5 w-5" />
+            </Button>
+
             {/* Language Switcher */}
             <LanguageSwitcher />
             
