@@ -162,6 +162,10 @@ function Router() {
             component={() => <AllProductsPage onAddToCart={handleAddToCart} />}
           />
           <Route
+            path="/products"
+            component={() => <AllProductsPage onAddToCart={handleAddToCart} />}
+          />
+          <Route
             path="/kategoria/:category"
             component={() => <CategoryPage onAddToCart={handleAddToCart} />}
           />
