@@ -118,10 +118,10 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
                 <button
                   key={index}
                   onClick={() => setSelectedImageIndex(index)}
-                  className={`aspect-square bg-white rounded-lg overflow-hidden border-3 transition-all hover:scale-105 ${
+                  className={`aspect-square bg-white rounded-lg overflow-hidden border-2 transition-all hover:scale-105 ${
                     selectedImageIndex === index
                       ? "border-primary ring-2 ring-primary ring-offset-2 shadow-lg"
-                      : "border-gray-200 hover:border-primary/50"
+                      : "border-gray-300 hover:border-primary/50"
                   }`}
                   data-testid={`button-thumbnail-${index}`}
                 >
