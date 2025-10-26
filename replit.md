@@ -49,15 +49,16 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-26 (Latest):** SKU Verification + Product Cleanup
-- **SKU Updates for 25+ Milwaukee Products**: Verified and corrected SKU numbers for all power tools to authentic Milwaukee model numbers (e.g., M18FPD3-0 → 2804-20, M18ONEFHIWF12-0 → 2967-20, M18FHX-0X → 2912-20). Accessories retain authentic 4932... series, storage solutions retain MIL-... format. All SKUs now follow official Milwaukee catalog standards.
-- **Product Removals (3 Products)**: Removed discontinued/duplicate items:
-  - M12 Młotowiertarka SDS-Plus Compact
-  - M18 FUEL Szlifierka kątowa 6" z podwójnym spustem
-  - M12 FUEL Szlifierka kątowa 100mm
-- **M18 Starter Kit Description Updated**: Changed from "1 battery" to "2× batteries plus charger" in description and features list to accurately reflect kit contents.
-- **Final Product Count**: 42 Milwaukee products + 3 Makita combo sets = 45 total across 10 categories.
-- **Note**: All products currently use AI-generated placeholder images. Real product photos will be added when available.
+**2025-10-26 (Latest):** Authentic Product Images Applied (24 Products)
+- **Real Product Photos Implemented**: Replaced AI-generated placeholder images with authentic product photos for 24 Milwaukee products:
+  - **Power Tools (17)**: M12/M18 FUEL drills, impact wrenches, hammers, circular saws, chainsaws, reciprocating saws, angle grinders, die grinder
+  - **Combo Sets (4)**: M18 FUEL 2-tool, M18 FUEL 3-tool, M18 starter kit, M12 FUEL 2-tool
+  - **Accessories (4)**: HSS-G drill bit set, SHOCKWAVE impact bit set, PACKOUT storage case, SDS-Plus drill bit set
+- **Image Galleries**: Many products now feature multiple images (primary + gallery images) for better product visualization
+- **Image Sources**: All photos sourced from attached user-provided images (image_1761512... to image_1761514... series)
+- **Remaining AI Images**: 21 products still use AI-generated images (workbenches, lasers, batteries, Makita sets)
+
+**2025-10-26 (Earlier):** SKU Verification + Product Cleanup
 
 **2025-10-26 (Earlier):** Tool Cart Dimensions Added
 - **Complete Dimensions for All 7 Milwaukee Tool Carts**: Added precise dimensions in centimeters (szer × gł × wys format) sourced from official Milwaukee specifications:
