@@ -42,20 +42,15 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" data-testid="link-home">
-            <div className="flex items-center gap-3 hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer">
+            <div className="flex flex-col items-center gap-1 hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer">
               <img 
                 src={toolsShopLogo} 
                 alt="Tools Shop" 
-                className="h-14 w-auto"
+                className="h-10 w-auto"
               />
-              <div className="flex flex-col">
-                <span className="font-bold text-lg" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                  Sretensky
-                </span>
-                <Badge variant="secondary" className="text-xs">
-                  POWYSTAWOWE
-                </Badge>
-              </div>
+              <span className="font-bold text-xl tracking-tight leading-none" style={{ fontFamily: 'Space Grotesk, sans-serif', color: 'hsl(0, 72%, 42%)' }}>
+                SRETENSKY
+              </span>
             </div>
           </Link>
 
