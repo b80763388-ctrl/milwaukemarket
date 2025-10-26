@@ -42,7 +42,7 @@ I want the agent to use simple language and provide detailed explanations when n
 - **Exhibition Products:** Products clearly marked with a "PRODUKT POWYSTAWOWY" badge and 12-month warranty.
 - **Discount System:** Displays savings between original and exhibition prices.
 - **Cart Management:** Sidebar with quantity controls, subtotal, and free delivery progress bar (threshold 500 PLN).
-- **Product Catalog:** 100 products across 10 categories.
+- **Product Catalog:** 28 prawdziwych produktów Milwaukee z dokładnymi specyfikacjami technicznymi z oficjalnych źródeł (2024-2025), podzielonych na 7 kategorii: wiertarki (M18/M12 FUEL), klucze udarowe, młoty (SDS-Plus/SDS-Max), piły (tarczowe/łańcuchowe/szablaste), szlifierki, zestawy, akcesoria.
 - **Navigation:** Dropdown category menus in the header for desktop and mobile.
 - **Payment Icons:** VISA, Mastercard, BLIK displayed in the footer.
 - **Live Chat:** Real-time WebSocket chat system. Floating widget (customer-side) available from 12:00-20:00 with online indicator. Admin interface for managing chat sessions and responding to customers in real-time.
@@ -59,7 +59,18 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-26 (Latest):** WebSocket Chat System Optimization & Bug Fixes
+**2025-10-26 (Latest):** Replacement with Real Milwaukee Products
+- **Product Update**: Replaced all 100 demo products with 28 real Milwaukee products sourced from official Milwaukee Tool documentation (2024-2025)
+- **Detailed Specifications**: Each product now includes accurate technical data:
+  - **M18 FUEL Tools**: Wiertarko-wkrętarka FPD3 (158 Nm, 175mm), Klucz udarowy 1/2\" (1100 ft-lbs), Młot SDS-Plus FHX (2.5J), Młot SDS-Max FHM (11J), Pilarka tarczowa 165mm FCS552, Pilarka łańcuchowa 20cm/35cm, Szlifierka 6\" (9000 RPM), Szlifierka 125mm
+  - **M12 FUEL Tools**: Wiertarka 1/2\", Installation Drill 4-w-1, Stubby Impact Wrenches (1/2\", 3/8\"), Młotowiertarka SDS-Plus (1.1J), Piła HACKZALL, Szlifierka prosta 1/4\"
+  - **Zestawy**: Combo 2/3 narzędzia, zestaw startowy z baterią
+  - **Akcesoria**: Wiertła HSS-G (19szt), Bity SHOCKWAVE (56szt), Walizka PACKOUT, Wiertła SDS-Plus (7szt)
+- **Categories**: Products organized into 7 categories - wiertarki, klucze, mloty, pily, szlifierki, zestawy, akcesoria
+- **Real Specifications**: All products feature genuine manufacturer data including power ratings, dimensions, weights, performance metrics, battery compatibility, and safety features
+- **Model Numbers**: Authentic SKU codes (e.g., M18FPD3-0, M12FUEL-2563-20, M18FHM-0C)
+
+**2025-10-26 (Earlier):** WebSocket Chat System Optimization & Bug Fixes
 - **Logo Implementation**: Using custom "TOOLS SHOP" + lightning bolt + "SRETENSKY" logo in Milwaukee red italic style (h-28/112px, header h-32/128px for prominent branding)
 - **Chat Testing Mode**: Chat widget activated for testing (isActive = true), with commented code for production hours (12:00-20:00)
 - **Read/Unread Message System**: 
