@@ -33,7 +33,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
     { name: t('category.wozki'), slug: "wozki", count: products?.filter(p => p.category === "wozki").length || 0 },
     { name: t('category.zestawy'), slug: "zestawy", count: products?.filter(p => p.category === "zestawy").length || 0 },
     { name: t('category.pily'), slug: "pily", count: products?.filter(p => p.category === "pily").length || 0 },
-    { name: t('category.oswietlenie'), slug: "oswietlenie", count: products?.filter(p => p.category === "oswietlenie").length || 0 },
+    { name: t('category.lasery'), slug: "lasery", count: products?.filter(p => p.category === "lasery").length || 0 },
     { name: t('category.akcesoria'), slug: "akcesoria", count: products?.filter(p => p.category === "akcesoria").length || 0 },
     { name: t('category.zestawy-specjalistyczne'), slug: "zestawy-specjalistyczne", count: products?.filter(p => p.category === "zestawy-specjalistyczne").length || 0 },
   ];
