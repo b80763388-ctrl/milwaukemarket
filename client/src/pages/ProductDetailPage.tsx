@@ -163,7 +163,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
             <div className="flex items-center gap-2 text-green-600">
               <Check className="h-5 w-5" />
               <span className="font-medium" data-testid="text-availability">
-                Dostępny - wysyłka w 24h
+                Dostępny
               </span>
             </div>
           ) : (

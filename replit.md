@@ -49,7 +49,7 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-26 (Latest):** Tool Cart Weights + Toast Notification Removal + Payment Icons
+**2025-10-26 (Latest):** Shipping Info Updates + Payment Icons Unified
 - **Battery Product Images Updated**: Replaced images for 3 Milwaukee REDLITHIUM battery products with authentic product photos:
   - M18 FORGE HD12.0 Starter Kit (999 PLN): Battery + Rapid Charger
   - M18 FORGE XC8.0 Battery (469 PLN): Single battery with clear branding
@@ -72,6 +72,11 @@ I want the agent to use simple language and provide detailed explanations when n
   - 46" Combo High Capacity: 278 kg (614 lbs)
   - 41" Industrial 18-drawer: 227 kg (501 lbs)
 - **Cart Notification Removed**: Removed "Dodano do koszyka" toast notification that was blocking checkout buttons
+- **Shipping Information Updated**:
+  - Removed "wysyłka w 24h" text from product availability (now shows only "Dostępny")
+  - Changed shipping region from Poland to Europe ("na terenie całej europy" / "throughout Europe")
+  - Updated delivery time to "7-14 dni roboczych" (fulfillment time instead of total delivery time)
+- **Payment Icons Unified**: ShippingPaymentModal now uses same payment method icons as footer (Visa, Mastercard, BLIK, Google Pay, Apple Pay) for consistent branding
 - **Total Authentic Images**: 27 products now have authentic Milwaukee product photography (24 tools/combos/accessories + 3 battery products)
 
 **2025-10-26 (Earlier):** Image Gallery Fix + Tool Cart Pricing Update

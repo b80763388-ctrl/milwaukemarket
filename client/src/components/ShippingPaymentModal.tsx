@@ -7,8 +7,11 @@ import {
 } from "@/components/ui/dialog";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Truck, CreditCard, Package, Clock } from "lucide-react";
-import { SiVisa, SiMastercard } from "react-icons/si";
-import { Badge } from "@/components/ui/badge";
+import blikLogo from "@assets/image_1761428175926.png";
+import visaLogo from "@assets/image_1761428208056.png";
+import mastercardLogo from "@assets/image_1761428253613.png";
+import googlePayLogo from "@assets/image_1761521226301.png";
+import applePayLogo from "@assets/image_1761521274408.png";
 
 interface ShippingPaymentModalProps {
   open: boolean;
@@ -24,9 +27,9 @@ export function ShippingPaymentModal({ open, onOpenChange }: ShippingPaymentModa
       description: "Informacje o opcjach dostawy i dostępnych metodach płatności",
       shipping: {
         title: "Dostawa kurierem",
-        subtitle: "Profesjonalna dostawa na terenie całego kraju",
-        time: "Czas dostawy",
-        timeText: "Maksymalnie 21 dni roboczych od momentu złożenia zamówienia. Większość zamówień realizowana jest w ciągu 5-7 dni roboczych.",
+        subtitle: "Profesjonalna dostawa na terenie całej europy",
+        time: "Czas realizacji",
+        timeText: "7-14 dni roboczych od momentu złożenia zamówienia.",
         delivery: "Dostawa pod drzwi",
         deliveryText: "Kurier dostarczy przesyłkę bezpośrednio pod wskazany adres. Otrzymasz powiadomienie SMS z informacją o planowanej dostawie.",
         free: "Darmowa dostawa",
@@ -35,10 +38,7 @@ export function ShippingPaymentModal({ open, onOpenChange }: ShippingPaymentModa
       payment: {
         title: "Metody płatności",
         subtitle: "Bezpieczne i wygodne formy płatności",
-        cards: "Płatności kartą",
-        cardsText: "Akceptujemy wszystkie popularne karty płatnicze:",
-        blik: "BLIK",
-        blikText: "Szybka i bezpieczna płatność mobilna BLIK. Wystarczy kod z aplikacji bankowej.",
+        accepted: "Akceptujemy:",
         security: "Bezpieczeństwo",
         securityText: "Wszystkie płatności są szyfrowane i przetwarzane przez zaufane systemy płatnicze. Twoje dane są w pełni chronione."
       }
@@ -48,9 +48,9 @@ export function ShippingPaymentModal({ open, onOpenChange }: ShippingPaymentModa
       description: "Information about shipping options and available payment methods",
       shipping: {
         title: "Courier delivery",
-        subtitle: "Professional delivery throughout the country",
-        time: "Delivery time",
-        timeText: "Maximum 21 business days from the moment of order placement. Most orders are fulfilled within 5-7 business days.",
+        subtitle: "Professional delivery throughout Europe",
+        time: "Fulfillment time",
+        timeText: "7-14 business days from the moment of order placement.",
         delivery: "Delivery to your door",
         deliveryText: "The courier will deliver the package directly to the specified address. You will receive an SMS notification with information about the planned delivery.",
         free: "Free shipping",
@@ -59,10 +59,7 @@ export function ShippingPaymentModal({ open, onOpenChange }: ShippingPaymentModa
       payment: {
         title: "Payment methods",
         subtitle: "Safe and convenient payment forms",
-        cards: "Card payments",
-        cardsText: "We accept all popular payment cards:",
-        blik: "BLIK",
-        blikText: "Fast and secure mobile payment BLIK. Just a code from your banking app.",
+        accepted: "We accept:",
         security: "Security",
         securityText: "All payments are encrypted and processed by trusted payment systems. Your data is fully protected."
       }
@@ -132,23 +129,26 @@ export function ShippingPaymentModal({ open, onOpenChange }: ShippingPaymentModa
             </div>
 
             <div className="space-y-4 ml-8">
-              {/* Card payments */}
-              <div className="space-y-2">
-                <h4 className="font-semibold">{t.payment.cards}</h4>
-                <p className="text-muted-foreground text-sm">{t.payment.cardsText}</p>
-                <div className="flex items-center gap-3 mt-2">
-                  <SiVisa className="h-8 w-auto text-[#1A1F71]" />
-                  <SiMastercard className="h-8 w-auto text-[#EB001B]" />
+              {/* Accepted payment methods */}
+              <div className="space-y-3">
+                <h4 className="font-semibold">{t.payment.accepted}</h4>
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="h-10 px-4 bg-background border rounded flex items-center justify-center">
+                    <img src={visaLogo} alt="Visa" className="h-6 w-auto object-contain" />
+                  </div>
+                  <div className="h-10 px-4 bg-background border rounded flex items-center justify-center">
+                    <img src={mastercardLogo} alt="Mastercard" className="h-6 w-auto object-contain" />
+                  </div>
+                  <div className="h-10 px-4 bg-background border rounded flex items-center justify-center">
+                    <img src={blikLogo} alt="BLIK" className="h-6 w-auto object-contain" />
+                  </div>
+                  <div className="h-10 px-4 bg-background border rounded flex items-center justify-center">
+                    <img src={googlePayLogo} alt="Google Pay" className="h-8 w-auto object-contain" />
+                  </div>
+                  <div className="h-10 px-4 bg-background border rounded flex items-center justify-center">
+                    <img src={applePayLogo} alt="Apple Pay" className="h-6 w-auto object-contain" />
+                  </div>
                 </div>
-              </div>
-
-              {/* BLIK */}
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <Badge variant="destructive" className="text-sm">BLIK</Badge>
-                  <h4 className="font-semibold">{t.payment.blik}</h4>
-                </div>
-                <p className="text-muted-foreground text-sm">{t.payment.blikText}</p>
               </div>
 
               {/* Security */}

@@ -119,7 +119,7 @@ export const translations = {
     'products.save': 'Oszczędzasz',
     'products.originalPrice': 'Cena katalogowa:',
     'products.exhibitionPrice': 'Cena powystawowa:',
-    'products.available': 'Dostępny - wysyłka w 24h',
+    'products.available': 'Dostępny',
     
     // Categories
     'category.wiertarki': 'Wiertarki',
