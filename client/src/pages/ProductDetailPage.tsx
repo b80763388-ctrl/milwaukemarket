@@ -62,11 +62,11 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
   );
 
   // Combine main image with additional images for gallery
-  // If images array starts with the main image, use it as-is (no duplication)
-  // Otherwise, prepend the main image to the array
-  const allImages = product.images && product.images.length > 0 && product.images[0] === product.image
-    ? product.images
-    : [product.image, ...(product.images || [])];
+  // Always use product.image as the first image, then add additional images (excluding duplicates)
+  const additionalImages = product.images
+    ? product.images.filter((img) => img !== product.image)
+    : [];
+  const allImages = [product.image, ...additionalImages];
   const hasGallery = allImages.length > 1;
 
   return (

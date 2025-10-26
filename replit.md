@@ -49,7 +49,20 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-26 (Latest):** Authentic Product Images Applied (24 Products)
+**2025-10-26 (Latest):** Image Gallery Fix + Tool Cart Pricing Update
+- **Image Gallery Display Fix**: Fixed gallery logic to always display `product.image` as the first image in gallery, preventing incorrect image order. Additional images from `images` array are filtered to exclude duplicates.
+- **Tool Cart Pricing Restructure**: Updated all 7 Milwaukee tool cart prices based on size progression (999-2799 PLN):
+  - 40" 6-drawer Work Cart: 1499 → 999 PLN (smallest, entry-level)
+  - 41" Industrial 18-drawer: 1999 → 1299 PLN
+  - 46" Combo High Capacity: 2399 → 1599 PLN
+  - 52" High Capacity: 2799 → 1899 PLN
+  - 52" Industrial 12-drawer: 3199 → 2199 PLN
+  - 60" Mobile Work Station: 3699 → 2499 PLN
+  - 72" Industrial 18-drawer: 4199 → 2799 PLN (largest, premium)
+- **Price Increments**: Prices increase by 200-300 PLN per size tier, making the product range more accessible while maintaining 30-33% exhibition discounts.
+- **Data Cleanup**: Removed duplicate images from storage.ts for 10 products (7 tool carts + 3 lasers) that had main image repeated in images array.
+
+**2025-10-26 (Earlier):** Authentic Product Images Applied (24 Products)
 - **Real Product Photos Implemented**: Replaced AI-generated placeholder images with authentic product photos for 24 Milwaukee products:
   - **Power Tools (17)**: M12/M18 FUEL drills, impact wrenches, hammers, circular saws, chainsaws, reciprocating saws, angle grinders, die grinder
   - **Combo Sets (4)**: M18 FUEL 2-tool, M18 FUEL 3-tool, M18 starter kit, M12 FUEL 2-tool
