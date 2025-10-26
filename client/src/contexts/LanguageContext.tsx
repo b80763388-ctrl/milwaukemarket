@@ -17,16 +17,22 @@ async function detectCountryFromIP(): Promise<{ country: string; currency: Curre
   try {
     const response = await fetch('https://ipapi.co/json/');
     const data = await response.json();
-    const countryCode = data.country_code || 'US';
+    const countryCode = data.country_code || 'PL';
+    
+    console.log('[IP Detection] Detected country:', countryCode, 'from IP:', data.ip);
     
     const { getCurrencyForCountry } = await import('@/lib/i18n');
     const currency = getCurrencyForCountry(countryCode);
     
+    console.log('[IP Detection] Using currency:', currency);
+    
     return { country: countryCode, currency };
   } catch (error) {
-    console.error('Failed to detect country:', error);
+    console.error('[IP Detection] Failed to detect country:', error);
     const { getCurrencyForCountry } = await import('@/lib/i18n');
-    return { country: 'US', currency: getCurrencyForCountry('US') };
+    const fallbackCurrency = getCurrencyForCountry('PL');
+    console.log('[IP Detection] Using fallback country: PL, currency:', fallbackCurrency);
+    return { country: 'PL', currency: fallbackCurrency };
   }
 }
 
@@ -41,25 +47,22 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    // Check if language and currency are already stored
-    const storedLanguage = localStorage.getItem('language') as Language | null;
-    const storedCurrency = localStorage.getItem('currency') as Currency | null;
-    
-    if (storedLanguage && storedCurrency) {
-      setLanguageState(storedLanguage);
-      setCurrencyState(storedCurrency);
+    // Detect language from IP, but always use PLN for this Polish shop
+    detectCountryFromIP().then(({ country }) => {
+      const detectedLanguage = getDefaultLanguage(country);
+      
+      // This is a Polish shop selling in PLN, always use PLN currency
+      // Users can manually switch language if needed
+      const shopCurrency: Currency = 'PLN';
+      
+      setLanguageState(detectedLanguage);
+      setCurrencyState(shopCurrency);
+      localStorage.setItem('language', detectedLanguage);
+      localStorage.setItem('currency', shopCurrency);
       setIsInitialized(true);
-    } else {
-      // Detect language and currency from IP
-      detectCountryFromIP().then(({ country, currency: detectedCurrency }) => {
-        const detectedLanguage = getDefaultLanguage(country);
-        setLanguageState(detectedLanguage);
-        setCurrencyState(detectedCurrency);
-        localStorage.setItem('language', detectedLanguage);
-        localStorage.setItem('currency', detectedCurrency);
-        setIsInitialized(true);
-      });
-    }
+      
+      console.log('[Language Context] Language:', detectedLanguage, 'Currency:', shopCurrency);
+    });
   }, []);
 
   const setLanguage = (lang: Language) => {
@@ -81,8 +84,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   const formatPriceSync = (priceInPLN: number): string => {
-    // Synchronous version - will initially show PLN until exchange rates are loaded
-    // This is OK for initial render, the async version can be used for more precision
+    // Synchronous version - format prices properly for Polish locale
     const currencySymbols = {
       PLN: 'zł',
       EUR: '€',
@@ -91,7 +93,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     };
     
     if (currency === 'PLN') {
-      return `${priceInPLN.toFixed(2)} ${currencySymbols.PLN}`;
+      // Use Polish number format: comma as decimal separator
+      const formatted = priceInPLN.toFixed(2).replace('.', ',');
+      return `${formatted} ${currencySymbols.PLN}`;
     }
     
     // Use approximate rates for immediate display

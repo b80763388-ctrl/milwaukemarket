@@ -34,6 +34,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
     { name: t('category.oswietlenie'), href: "/kategoria/oswietlenie" },
     { name: t('category.akcesoria'), href: "/kategoria/akcesoria" },
     { name: t('category.zestawy-specjalistyczne'), href: "/kategoria/zestawy-specjalistyczne" },
+    { name: t('category.makita'), href: "/kategoria/makita" },
   ];
 
   return (

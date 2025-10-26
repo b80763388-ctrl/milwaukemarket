@@ -132,6 +132,7 @@ export const translations = {
     'category.oswietlenie': 'Oświetlenie',
     'category.akcesoria': 'Akcesoria',
     'category.zestawy-specjalistyczne': 'Zestawy Specjalistyczne',
+    'category.makita': 'Makita',
     
     // Cart
     'cart.title': 'Koszyk',
@@ -273,6 +274,7 @@ export const translations = {
     'category.oswietlenie': 'Lighting',
     'category.akcesoria': 'Accessories',
     'category.zestawy-specjalistyczne': 'Specialized Sets',
+    'category.makita': 'Makita',
     
     // Cart
     'cart.title': 'Shopping Cart',
