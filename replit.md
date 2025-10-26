@@ -50,7 +50,7 @@ I want the agent to use simple language and provide detailed explanations when n
 ## Recent Changes
 
 **2025-10-26 (Latest):** Image Gallery Fix + Tool Cart Pricing Update
-- **Image Gallery Display Fix**: Fixed gallery logic to always display `product.image` as the first image in gallery, preventing incorrect image order. Additional images from `images` array are filtered to exclude duplicates.
+- **Image Gallery Display Fix**: Fixed gallery logic in both ProductDetailPage and ProductCard to always display `product.image` as the first/main image, preventing incorrect image order. Product cards (thumbnails) now consistently show the correct primary image. Additional images from `images` array are filtered to exclude duplicates in gallery view.
 - **Tool Cart Pricing Restructure**: Updated all 7 Milwaukee tool cart prices based on size progression (999-2799 PLN):
   - 40" 6-drawer Work Cart: 1499 → 999 PLN (smallest, entry-level)
   - 41" Industrial 18-drawer: 1999 → 1299 PLN
