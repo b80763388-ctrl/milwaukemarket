@@ -785,6 +785,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Wymiary: 182.9 × 55.9 × 107.4 cm",
           "18 szuflad soft-close 150 lbs",
           "Blat drewniany pokryty poliuretanem",
           "Udźwig: 3,500 lbs",
@@ -810,6 +811,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Wymiary: 102.9 × 56.1 × 160 cm",
           "18 szuflad soft-close 100 lbs",
           "Kombinacja szafy górnej i dolnej",
           "Konstrukcja stalowa wzmocniona",
@@ -835,6 +837,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Wymiary: 132.1 × 55.9 × 104.9 cm",
           "12 szuflad soft-close 120 lbs",
           "Blat drewniany 1.2\" z poliuretanem",
           "Udźwig: 2,500 lbs",
@@ -860,6 +863,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Wymiary: 114.3 × 56.1 × 99.1 cm",
           "6 szuflad soft-close 100 lbs",
           "Blat stalowy nierdzewny",
           "Udźwig: 1,800 lbs",
@@ -885,6 +889,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Wymiary: 175.8 × 62 × 97 cm",
           "Udźwig: 2,200 lbs",
           "Pegboard 22\" wielopozycyjny",
           "Blat twardy 1\" odwracany",
@@ -910,6 +915,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Wymiary: 116.8 × 55.9 × 150 cm",
           "Combo szafa górna + dolna",
           "Prowadnice 100 lbs soft-close",
           "Udźwig: 1,800 lbs",
@@ -935,6 +941,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Wymiary: 132.1 × 55.9 × 104.1 cm",
           "Blat drewniany 1.2\" odwracany",
           "Wysokość robocza ergonomiczna 41\"",
           "Prowadnice soft-close 100 lbs",

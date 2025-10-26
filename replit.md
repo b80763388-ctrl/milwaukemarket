@@ -49,7 +49,18 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-26 (Latest):** Laser Category + Flag-based Language Switcher + Image Galleries
+**2025-10-26 (Latest):** Tool Cart Dimensions Added
+- **Complete Dimensions for All 7 Milwaukee Tool Carts**: Added precise dimensions in centimeters (szer × gł × wys format) sourced from official Milwaukee specifications:
+  - 72" 18-drawer Industrial: 182.9 × 55.9 × 107.4 cm
+  - 52" 12-drawer Industrial: 132.1 × 55.9 × 104.9 cm
+  - 52" 11-drawer High Capacity: 132.1 × 55.9 × 104.1 cm
+  - 60" 11-drawer Mobile Work Station: 175.8 × 62 × 97 cm
+  - 46" Combo 18-drawer: 116.8 × 55.9 × 150 cm
+  - 41" Combo 18-drawer: 102.9 × 56.1 × 160 cm
+  - 40" 6-drawer Work Cart: 114.3 × 56.1 × 99.1 cm
+- **Display Format**: Dimensions appear as the first feature item in the product details, ensuring customers can quickly assess size requirements for workshop space planning.
+
+**2025-10-26 (Earlier):** Laser Category + Flag-based Language Switcher + Image Galleries
 - **New Category "lasery"**: Replaced "oswietlenie" (lighting) category with professional laser tools:
   - M12™ Zielony laser 3-płaszczyznowy 360° z automatycznym wypoziomowaniem i odbiornikiem - 2799 → 1899 PLN
   - M18™ Zielony laser obrotowy wewnętrzny z pilotem/odbiornikiem i uchwytem ściennym - 3999 → 2699 PLN
