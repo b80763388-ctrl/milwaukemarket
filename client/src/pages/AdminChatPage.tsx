@@ -26,16 +26,12 @@ export default function AdminChatPage() {
     }
   }, [setLocation]);
 
-  const { data: sessions, isLoading } = useQuery<ChatSession[]>({
+  type ChatSessionWithUnread = ChatSession & { unreadCount: number };
+
+  const { data: sessions, isLoading } = useQuery<ChatSessionWithUnread[]>({
     queryKey: ["/api/chat/sessions"],
     refetchInterval: 5000, // Refresh every 5 seconds
   });
-
-  // Calculate unread count for each session
-  const getUnreadCount = (session: ChatSession) => {
-    // This will be calculated on the backend, but for now we'll use a simple approach
-    return 0; // Placeholder - will be updated when we fetch session details
-  };
 
   return (
     <div className="min-h-screen bg-muted/30">
@@ -79,46 +75,43 @@ export default function AdminChatPage() {
                   </div>
                 ) : sessions && sessions.length > 0 ? (
                   <div className="divide-y">
-                    {sessions.map((session) => {
-                      const unreadCount = getUnreadCount(session);
-                      return (
-                        <button
-                          key={session.id}
-                          className={`w-full p-4 text-left hover-elevate ${
-                            selectedSessionId === session.id ? 'bg-muted' : ''
-                          }`}
-                          onClick={() => setSelectedSessionId(session.id)}
-                          data-testid={`session-${session.id}`}
-                        >
-                          <div className="flex items-center justify-between mb-1">
-                            <div className="flex items-center gap-2">
-                              <p className="font-medium text-sm">
-                                {session.customerName || (language === 'pl' ? 'Anonim' : 'Anonymous')}
-                              </p>
-                              {unreadCount > 0 && (
-                                <Badge variant="destructive" className="text-xs h-5 min-w-5 flex items-center justify-center rounded-full px-1.5">
-                                  {unreadCount}
-                                </Badge>
-                              )}
-                            </div>
-                            <Badge variant={session.status === 'active' ? 'default' : 'secondary'} className="text-xs">
-                              {session.status}
-                            </Badge>
+                    {sessions.map((session) => (
+                      <button
+                        key={session.id}
+                        className={`w-full p-4 text-left hover-elevate ${
+                          selectedSessionId === session.id ? 'bg-muted' : ''
+                        }`}
+                        onClick={() => setSelectedSessionId(session.id)}
+                        data-testid={`session-${session.id}`}
+                      >
+                        <div className="flex items-center justify-between mb-1">
+                          <div className="flex items-center gap-2">
+                            <p className="font-medium text-sm">
+                              {session.customerName || (language === 'pl' ? 'Anonim' : 'Anonymous')}
+                            </p>
+                            {session.unreadCount > 0 && (
+                              <Badge variant="destructive" className="text-xs h-5 min-w-5 flex items-center justify-center rounded-full px-1.5">
+                                {session.unreadCount}
+                              </Badge>
+                            )}
                           </div>
-                          {session.customerEmail && (
-                            <p className="text-xs text-muted-foreground mb-1">{session.customerEmail}</p>
-                          )}
-                          <p className="text-xs text-muted-foreground">
-                            {new Date(session.lastMessageAt).toLocaleString(language, {
-                              day: '2-digit',
-                              month: '2-digit',
-                              hour: '2-digit',
-                              minute: '2-digit',
-                            })}
-                          </p>
-                        </button>
-                      );
-                    })}
+                          <Badge variant={session.status === 'active' ? 'default' : 'secondary'} className="text-xs">
+                            {session.status}
+                          </Badge>
+                        </div>
+                        {session.customerEmail && (
+                          <p className="text-xs text-muted-foreground mb-1">{session.customerEmail}</p>
+                        )}
+                        <p className="text-xs text-muted-foreground">
+                          {new Date(session.lastMessageAt).toLocaleString(language, {
+                            day: '2-digit',
+                            month: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })}
+                        </p>
+                      </button>
+                    ))}
                   </div>
                 ) : (
                   <div className="p-8 text-center text-muted-foreground">
@@ -168,16 +161,23 @@ function ChatWindow({ sessionId }: { sessionId: string }) {
       return apiRequest("POST", `/api/chat/sessions/${sessionId}/mark-read`, {});
     },
     onSuccess: () => {
+      // Invalidate sessions list to update unread counts
       queryClient.invalidateQueries({ queryKey: ["/api/chat/sessions"] });
     },
   });
 
-  // Mark as read when session is opened
+  // Mark as read when session is opened (only once)
   useEffect(() => {
-    if (sessionId && messages.length > 0) {
-      markAsReadMutation.mutate();
+    // Only mark as read once when session is first opened with messages
+    if (sessionId) {
+      // Small delay to ensure messages are loaded
+      const timer = setTimeout(() => {
+        markAsReadMutation.mutate();
+      }, 500);
+      
+      return () => clearTimeout(timer);
     }
-  }, [sessionId, messages.length]);
+  }, [sessionId]); // Only depend on sessionId, not messages.length
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {

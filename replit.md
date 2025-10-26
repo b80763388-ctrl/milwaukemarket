@@ -59,6 +59,17 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
+**2025-10-25 (Latest):** UI Improvements & Read/Unread Message Tracking
+- **Logo Enhancement**: Logo enlarged (h-10 → h-14) and added "Sretensky" branding with Space Grotesk font
+- **Chat Testing Mode**: Chat widget activated for testing (isActive = true), with commented code for production hours (12:00-20:00)
+- **Read/Unread Message System**: 
+  - Added `isRead` boolean field to ChatMessage schema (defaults to false)
+  - New storage methods: `markMessagesAsRead()` and `getUnreadMessageCount()`
+  - New API endpoint: POST `/api/chat/sessions/:id/mark-read` (admin only)
+  - AdminChatPage automatically marks customer messages as read when admin opens session
+  - Unread message badges displayed on session list (red circular badge with count)
+- **Security**: All new admin endpoints protected with adminAuth middleware
+
 **2025-10-25:** Admin Panel & Real-time Chat Implementation
 - Implemented full admin panel with authentication and order management:
   - **AdminLoginPage** (/admin/login): Password-protected login (ADMIN_PASSWORD env or default "admin123")

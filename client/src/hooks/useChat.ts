@@ -16,14 +16,25 @@ export function useChat(sender: "customer" | "admin", sessionId?: string): UseCh
   const [isTyping, setIsTyping] = useState(false);
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout>();
+  const currentSessionIdRef = useRef<string | null>(currentSessionId);
+
+  // Keep ref in sync with state
+  useEffect(() => {
+    currentSessionIdRef.current = currentSessionId;
+  }, [currentSessionId]);
 
   // Update currentSessionId when sessionId prop changes (for admin switching sessions)
   useEffect(() => {
     if (sessionId !== undefined && sessionId !== currentSessionId) {
       setCurrentSessionId(sessionId);
       setMessages([]); // Clear messages when switching sessions
+      
+      // Reconnect with new session for admin
+      if (wsRef.current) {
+        wsRef.current.close();
+      }
     }
-  }, [sessionId, currentSessionId]);
+  }, [sessionId]);
 
   const connect = useCallback(() => {
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
@@ -36,10 +47,10 @@ export function useChat(sender: "customer" | "admin", sessionId?: string): UseCh
       console.log("WebSocket connected");
       setIsConnected(true);
 
-      // Join session
+      // Join session using ref to avoid dependency
       ws.send(JSON.stringify({
         type: 'join',
-        sessionId: currentSessionId,
+        sessionId: currentSessionIdRef.current,
         sender,
       }));
     };
@@ -89,7 +100,7 @@ export function useChat(sender: "customer" | "admin", sessionId?: string): UseCh
     ws.onerror = (error) => {
       console.error("WebSocket error:", error);
     };
-  }, [currentSessionId, sender]);
+  }, [sender]); // Only depend on sender, not currentSessionId
 
   useEffect(() => {
     connect();
@@ -102,10 +113,10 @@ export function useChat(sender: "customer" | "admin", sessionId?: string): UseCh
         wsRef.current.close();
       }
     };
-  }, [connect, currentSessionId]); // Reconnect when sessionId changes
+  }, [connect]); // Only reconnect when connect function changes, not when sessionId changes
 
   const sendMessage = useCallback((message: string) => {
-    if (wsRef.current?.readyState === WebSocket.OPEN && currentSessionId) {
+    if (wsRef.current?.readyState === WebSocket.OPEN && currentSessionIdRef.current) {
       wsRef.current.send(JSON.stringify({
         type: 'message',
         sender,
@@ -114,7 +125,7 @@ export function useChat(sender: "customer" | "admin", sessionId?: string): UseCh
     } else {
       console.error('WebSocket is not connected or no session');
     }
-  }, [sender, currentSessionId]);
+  }, [sender]); // Use ref for currentSessionId to avoid dependency
 
   return {
     messages,

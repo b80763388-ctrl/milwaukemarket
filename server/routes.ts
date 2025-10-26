@@ -172,11 +172,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // GET /api/chat/sessions - Get all chat sessions (admin only)
+  // GET /api/chat/sessions - Get all chat sessions with unread counts (admin only)
   app.get("/api/chat/sessions", adminAuth, async (req, res) => {
     try {
       const sessions = await storage.getAllChatSessions();
-      res.json(sessions);
+      
+      // Add unread count to each session
+      const sessionsWithUnread = await Promise.all(
+        sessions.map(async (session) => {
+          const unreadCount = await storage.getUnreadMessageCount(session.id);
+          return { ...session, unreadCount };
+        })
+      );
+      
+      res.json(sessionsWithUnread);
     } catch (error) {
       console.error("Error fetching chat sessions:", error);
       res.status(500).json({ error: "Failed to fetch chat sessions" });
@@ -253,10 +262,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   wss.on('connection', (ws: WebSocket) => {
     let currentSessionId: string | null = null;
+    console.log('[WebSocket] New connection established');
 
     ws.on('message', async (data: Buffer) => {
       try {
         const message = JSON.parse(data.toString());
+        console.log('[WebSocket] Received:', message.type, message);
 
         // Handle different message types
         switch (message.type) {
@@ -301,6 +312,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
           case 'message':
             // Client sends a message
+            console.log('[WebSocket] Received message:', { 
+              currentSessionId, 
+              sender: message.sender, 
+              message: message.message 
+            });
+            
             if (!currentSessionId) {
               ws.send(JSON.stringify({ type: 'error', message: 'Not joined to a session' }));
               return;
@@ -311,6 +328,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
               sender: message.sender, // "customer" or "admin"
               message: message.message,
             });
+            
+            console.log('[WebSocket] Message saved to storage:', chatMessage);
 
             // Broadcast to all clients in this session
             const sessionConnections = connections.get(currentSessionId);
