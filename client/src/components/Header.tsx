@@ -55,22 +55,21 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             </div>
           </Link>
 
-          {/* Flags + Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
-            {/* Flags (decorative) */}
-            <div className="flex items-center gap-2">
-              <div className="opacity-90" data-testid="flag-pl">
-                <img src={plFlag} alt="Poland" className="h-5 w-auto rounded shadow-sm" />
-              </div>
-              <div className="opacity-90" data-testid="flag-eu">
-                <img src={euFlag} alt="European Union" className="h-5 w-auto rounded shadow-sm" />
-              </div>
-              <div className="opacity-90" data-testid="flag-us">
-                <img src={usFlag} alt="United States" className="h-5 w-auto rounded shadow-sm" />
-              </div>
+          {/* Flags (decorative) */}
+          <div className="hidden lg:flex items-center gap-2 ml-4">
+            <div className="opacity-90" data-testid="flag-pl">
+              <img src={plFlag} alt="Poland" className="h-5 w-auto rounded shadow-sm" />
             </div>
+            <div className="opacity-90" data-testid="flag-eu">
+              <img src={euFlag} alt="European Union" className="h-5 w-auto rounded shadow-sm" />
+            </div>
+            <div className="opacity-90" data-testid="flag-us">
+              <img src={usFlag} alt="United States" className="h-5 w-auto rounded shadow-sm" />
+            </div>
+          </div>
 
-            {/* Navigation */}
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-2">
             <nav className="flex items-center gap-2">
             <Link href="/" data-testid="link-nav-home">
               <Button
