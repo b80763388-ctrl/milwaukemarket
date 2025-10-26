@@ -62,7 +62,11 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
   );
 
   // Combine main image with additional images for gallery
-  const allImages = [product.image, ...(product.images || [])];
+  // If images array starts with the main image, use it as-is (no duplication)
+  // Otherwise, prepend the main image to the array
+  const allImages = product.images && product.images.length > 0 && product.images[0] === product.image
+    ? product.images
+    : [product.image, ...(product.images || [])];
   const hasGallery = allImages.length > 1;
 
   return (
