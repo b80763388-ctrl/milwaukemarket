@@ -21,7 +21,8 @@ I want the agent to use simple language and provide detailed explanations when n
 - **Component Library:** Shadcn UI with custom theming.
 - **Responsiveness:** Optimized for mobile, tablet, and desktop.
 - **Pages:** Includes public-facing pages (Homepage, Products, Category, Product Detail, Checkout, Legal) and admin pages (Login, Dashboard, Chat Management).
-- **Components:** Features a sticky header, product cards, cart sidebar, footer, and a LiveChat widget.
+- **Components:** Features a sticky header with flag-based language/region switcher, product cards with image galleries, cart sidebar, footer, and a LiveChat widget.
+- **Language Switcher:** Dual implementation - flag icons (PL/US) in top white bar for visual language/currency selection, plus globe icon for alternative access.
 
 ### Technical Implementations
 - **Frontend:** React, TypeScript, TailwindCSS, Shadcn UI, i18n, React Query for data fetching, localStorage for cart and admin token.
@@ -33,8 +34,8 @@ I want the agent to use simple language and provide detailed explanations when n
 ### Feature Specifications
 - **Product Display:** "Exhibition products" clearly marked with discount and warranty information.
 - **Cart & Checkout:** Sidebar with quantity controls, free delivery progress, and a multi-step checkout process with courier selection.
-- **Product Catalog:** Comprehensive catalog of 45 products (42 Milwaukee + 3 Makita combo sets) across 10 categories, with detailed specifications. Realistic prices based on market research (Milwaukee workbenches 5499-8999 PLN, Makita combos 1799-3799 PLN).
-- **Navigation:** Category dropdowns in header.
+- **Product Catalog:** Comprehensive catalog of 45 products (42 Milwaukee + 3 Makita combo sets) across 10 categories, with detailed specifications. Realistic prices based on market research (Milwaukee workbenches 5499-8999 PLN, Makita combos 1799-3799 PLN). All products support image galleries with thumbnail navigation.
+- **Navigation:** Category dropdowns in header including: wiertarki, szlifierki, klucze, młoty, wózki, zestawy, piły, lasery, akcesoria, zestawy specjalistyczne, makita.
 - **Live Chat:** Floating widget for customers and a dedicated admin interface for managing real-time chat sessions, including unread message indicators.
 - **Internationalization:** Bilingual (PL/EN) support with IP-based language detection and a currency conversion system.
 - **Admin Panel:** Password-protected access to dashboard (orders, revenue) and chat management.
@@ -48,7 +49,22 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-26 (Latest):** Makita Category + Realistic Pricing + Review Updates
+**2025-10-26 (Latest):** Laser Category + Flag-based Language Switcher + Image Galleries
+- **New Category "lasery"**: Replaced "oswietlenie" (lighting) category with professional laser tools:
+  - M12™ Zielony laser 3-płaszczyznowy 360° z automatycznym wypoziomowaniem i odbiornikiem - 2799 → 1899 PLN
+  - M18™ Zielony laser obrotowy wewnętrzny z pilotem/odbiornikiem i uchwytem ściennym - 3999 → 2699 PLN
+  - M12™ Zielony laser 3-płaszczyznowy 360° - zestaw - 2299 → 1549 PLN
+- **Flag-based Language/Region Switcher**: Added PL 🇵🇱 and US 🇺🇸 flags in top white bar for intuitive language and currency selection:
+  - 🇵🇱 = Polski + PLN (prices in złoty)
+  - 🇺🇸 = English + USD (automatic currency conversion via Frankfurter API)
+  - Visual feedback with ring border for active flag, smooth hover animations
+  - Dual language switcher maintained (flags + globe icon) for user preference
+- **Product Image Galleries**: Extended schema to support multiple images per product with `images` array field:
+  - Frontend components (ProductCard, ProductDetailPage) now display image galleries with thumbnail navigation
+  - Graceful fallback to single image for legacy products
+  - All new laser and tool cart products feature 2-3 image galleries
+
+**2025-10-26 (Earlier):** Makita Category + Realistic Pricing + Review Updates
 - **New Category "makita"**: Added 3 authentic Makita 18V LXT combo sets:
   - DLX2283TJ: 2-piece (drill+impact driver) 2599 → 1799 PLN
   - DLX2153TJ1: 2-piece (SDS hammer+grinder) 2799 → 1899 PLN  
