@@ -203,7 +203,7 @@ export function Footer() {
                 <img src={blikLogo} alt="BLIK" className="h-5 w-auto object-contain" />
               </div>
               <div className="h-8 px-3 bg-background border rounded flex items-center justify-center" data-testid="payment-googlepay">
-                <img src={googlePayLogo} alt="Google Pay" className="h-6 w-auto object-contain" />
+                <img src={googlePayLogo} alt="Google Pay" className="h-7 w-auto object-contain" />
               </div>
               <div className="h-8 px-3 bg-background border rounded flex items-center justify-center" data-testid="payment-applepay">
                 <img src={applePayLogo} alt="Apple Pay" className="h-5 w-auto object-contain" />
