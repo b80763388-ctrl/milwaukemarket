@@ -44,7 +44,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
 
           {/* Product Image */}
           <img
-            src={product.image}
+            src={product.images && product.images.length > 0 ? product.images[0] : product.image}
             alt={product.name}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             data-testid="img-product"

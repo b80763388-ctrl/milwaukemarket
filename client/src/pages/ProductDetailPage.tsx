@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams, Link } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
   });
 
   const product = products?.find((p) => p.slug === slug);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   if (isLoading) {
     return (
@@ -78,8 +80,9 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
 
       {/* Product Detail Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Left - Image */}
+        {/* Left - Image Gallery */}
         <div className="space-y-4">
+          {/* Main Image */}
           <div className="relative aspect-square bg-muted rounded-lg overflow-hidden">
             <Badge
               variant="destructive"
@@ -97,12 +100,36 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
               </Badge>
             )}
             <img
-              src={product.image}
+              src={product.images && product.images.length > 0 ? product.images[selectedImageIndex] : product.image}
               alt={product.name}
               className="w-full h-full object-cover"
               data-testid="img-product-detail"
             />
           </div>
+
+          {/* Thumbnail Gallery */}
+          {product.images && product.images.length > 1 && (
+            <div className="grid grid-cols-5 gap-2">
+              {product.images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedImageIndex(index)}
+                  className={`aspect-square bg-muted rounded-lg overflow-hidden border-2 transition-all ${
+                    selectedImageIndex === index
+                      ? "border-primary shadow-md"
+                      : "border-transparent hover:border-muted-foreground/50"
+                  }`}
+                  data-testid={`button-thumbnail-${index}`}
+                >
+                  <img
+                    src={image}
+                    alt={`${product.name} - ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Right - Info */}
