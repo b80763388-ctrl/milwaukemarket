@@ -77,6 +77,7 @@ I want the agent to use simple language and provide detailed explanations when n
   - Changed shipping region from Poland to Europe ("na terenie całej europy" / "throughout Europe")
   - Updated delivery time to "7-14 dni roboczych" (fulfillment time instead of total delivery time)
 - **Payment Icons Unified**: ShippingPaymentModal now uses same payment method icons as footer (Visa, Mastercard, BLIK, Google Pay, Apple Pay) for consistent branding
+- **Checkout Fulfillment Time Added**: Added prominent fulfillment time notice (7-14 business days) on checkout page below courier selection
 - **Total Authentic Images**: 27 products now have authentic Milwaukee product photography (24 tools/combos/accessories + 3 battery products)
 
 **2025-10-26 (Earlier):** Image Gallery Fix + Tool Cart Pricing Update

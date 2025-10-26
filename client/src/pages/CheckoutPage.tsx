@@ -21,7 +21,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { translate } from "@/lib/i18n";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { insertOrderSchema, type CartItemWithProduct } from "@shared/schema";
-import { CheckCircle2, Package, Truck } from "lucide-react";
+import { CheckCircle2, Clock, Package, Truck } from "lucide-react";
 import { z } from "zod";
 import inpostLogo from "@assets/image_1761430943388.png";
 import dpdLogo from "@assets/image_1761430962953.png";
@@ -453,6 +453,19 @@ export function CheckoutPage() {
                       </FormItem>
                     )}
                   />
+
+                  {/* Fulfillment time info */}
+                  <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3">
+                    <Clock className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-sm">
+                        {translate("checkout.fulfillmentTime", language)}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {translate("checkout.fulfillmentInfo", language)}
+                      </p>
+                    </div>
+                  </div>
 
                   <div className="pt-2">
                     <Button
