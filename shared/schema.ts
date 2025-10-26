@@ -13,6 +13,7 @@ export const products = pgTable("products", {
   originalPrice: decimal("original_price", { precision: 10, scale: 2 }).notNull(),
   exhibitionPrice: decimal("exhibition_price", { precision: 10, scale: 2 }).notNull(),
   image: text("image").notNull(),
+  images: text("images").array(),
   sku: text("sku").notNull().unique(),
   voltage: text("voltage"), // "18V", "12V" etc
   batteryIncluded: boolean("battery_included").default(false),
