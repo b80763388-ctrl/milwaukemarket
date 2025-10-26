@@ -13,6 +13,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -106,24 +111,53 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
           {/* Right Side - Contact, Language, Cart & Mobile Menu */}
           <div className="flex items-center gap-2">
             {/* Phone Icon */}
-            <Button
-              variant="ghost"
-              size="icon"
-              data-testid="button-phone"
-              title="Telefon"
-            >
-              <Phone className="h-5 w-5" />
-            </Button>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  data-testid="button-phone"
+                  title="Telefon"
+                >
+                  <Phone className="h-5 w-5" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto">
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <Phone className="h-4 w-4 text-muted-foreground" />
+                    <a href="tel:+48123456789" className="font-medium hover:text-primary transition-colors">
+                      +48 123 456 789
+                    </a>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Pn-Pt: 8:00 - 18:00
+                  </p>
+                </div>
+              </PopoverContent>
+            </Popover>
 
             {/* Email Icon */}
-            <Button
-              variant="ghost"
-              size="icon"
-              data-testid="button-email"
-              title="Email"
-            >
-              <Mail className="h-5 w-5" />
-            </Button>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  data-testid="button-email"
+                  title="Email"
+                >
+                  <Mail className="h-5 w-5" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto">
+                <div className="flex items-center gap-2">
+                  <Mail className="h-4 w-4 text-muted-foreground" />
+                  <a href="mailto:sklep@tools-shop.pl" className="font-medium hover:text-primary transition-colors">
+                    sklep@tools-shop.pl
+                  </a>
+                </div>
+              </PopoverContent>
+            </Popover>
 
             {/* Language Switcher */}
             <LanguageSwitcher />

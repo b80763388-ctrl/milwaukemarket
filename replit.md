@@ -49,7 +49,7 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-26 (Latest):** Battery Images + Terms Delivery Update
+**2025-10-26 (Latest):** UI Improvements + Payment Icons + Terms Update
 - **Battery Product Images Updated**: Replaced images for 3 Milwaukee REDLITHIUM battery products with authentic product photos:
   - M18 FORGE HD12.0 Starter Kit (999 PLN): Battery + Rapid Charger
   - M18 FORGE XC8.0 Battery (469 PLN): Single battery with clear branding
@@ -57,7 +57,13 @@ I want the agent to use simple language and provide detailed explanations when n
 - **Terms & Conditions Delivery Update**: Updated delivery information in §5 Dostawa:
   - Standard fulfillment: 7-14 business days
   - Maximum delivery time: up to 28 days from shipment date
+  - Delivery time points moved to end of §5 for better flow
   - Professional, clear language for customer transparency
+- **Payment Icons Expanded**: Added Google Pay and Apple Pay logos to footer alongside existing Visa, Mastercard, and BLIK
+- **Header Contact Improvements**: Phone and email icons in header are now clickable popovers:
+  - Phone popover displays: +48 123 456 789 with business hours (Pn-Pt: 8:00-18:00)
+  - Email popover displays: sklep@tools-shop.pl as clickable mailto link
+- **Social Media Cleanup**: Removed Facebook, Instagram, and YouTube icons from footer
 - **Total Authentic Images**: 27 products now have authentic Milwaukee product photography (24 tools/combos/accessories + 3 battery products)
 
 **2025-10-26 (Earlier):** Image Gallery Fix + Tool Cart Pricing Update

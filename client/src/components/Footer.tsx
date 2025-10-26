@@ -8,6 +8,8 @@ import { ShippingPaymentModal } from "@/components/ShippingPaymentModal";
 import blikLogo from "@assets/image_1761428175926.png";
 import visaLogo from "@assets/image_1761428208056.png";
 import mastercardLogo from "@assets/image_1761428253613.png";
+import googlePayLogo from "@assets/image_1761521226301.png";
+import applePayLogo from "@assets/image_1761521274408.png";
 
 export function Footer() {
   const [exhibitionModalOpen, setExhibitionModalOpen] = useState(false);
@@ -199,6 +201,12 @@ export function Footer() {
               </div>
               <div className="h-8 px-3 bg-background border rounded flex items-center justify-center" data-testid="payment-blik">
                 <img src={blikLogo} alt="BLIK" className="h-5 w-auto object-contain" />
+              </div>
+              <div className="h-8 px-3 bg-background border rounded flex items-center justify-center" data-testid="payment-googlepay">
+                <img src={googlePayLogo} alt="Google Pay" className="h-5 w-auto object-contain" />
+              </div>
+              <div className="h-8 px-3 bg-background border rounded flex items-center justify-center" data-testid="payment-applepay">
+                <img src={applePayLogo} alt="Apple Pay" className="h-5 w-auto object-contain" />
               </div>
             </div>
           </div>
