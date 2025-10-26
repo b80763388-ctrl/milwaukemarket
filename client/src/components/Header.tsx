@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import toolsShopLogo from "@assets/generated_images/Tools_Shop_with_Sretensky_addition_761228dc.png";
+import toolsShopLogo from "@assets/generated_images/Tools_Shop_logo_plus_Sretensky_be487a68.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
