@@ -751,8 +751,8 @@ export class MemStorage implements IStorage {
         category: "wozki",
         description:
           "Mobilny stół warsztatowy Milwaukee 52\" High Capacity Industrial z 12 szufladami. Drewniany blat roboczy 1.2\" pokryty poliuretanem dla maksymalnej ochrony. Prowadnice 120 lbs soft-close w każdej szufladzie. Korpus spawany z blachy 18-gauge na ramie z kątownika 6-gauge wytrzymuje 2,500 lbs. Centrum zasilania z 6 gniazdami i 2 portami USB. Organizer na narzędzia akumulatorowe i miejsca na ładowarki Milwaukee. Kółka przemysłowe 5\" z hamulcami.",
-        originalPrice: "3199.00",
-        exhibitionPrice: "2199.00",
+        originalPrice: "2199.00",
+        exhibitionPrice: "1499.00",
         image: "/attached_assets/image_1761504956393.png",
         images: ["/attached_assets/image_1761504962721.png", "/attached_assets/image_1761504984256.png"],
         sku: "MIL-52-12DRW",
