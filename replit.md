@@ -33,7 +33,7 @@ I want the agent to use simple language and provide detailed explanations when n
 ### Feature Specifications
 - **Product Display:** "Exhibition products" clearly marked with discount and warranty information.
 - **Cart & Checkout:** Sidebar with quantity controls, free delivery progress, and a multi-step checkout process with courier selection.
-- **Product Catalog:** Comprehensive catalog of 42 Milwaukee tools across 9 categories, with detailed specifications.
+- **Product Catalog:** Comprehensive catalog of 45 products (42 Milwaukee + 3 Makita combo sets) across 10 categories, with detailed specifications. Realistic prices based on market research (Milwaukee workbenches 5499-8999 PLN, Makita combos 1799-3799 PLN).
 - **Navigation:** Category dropdowns in header.
 - **Live Chat:** Floating widget for customers and a dedicated admin interface for managing real-time chat sessions, including unread message indicators.
 - **Internationalization:** Bilingual (PL/EN) support with IP-based language detection and a currency conversion system.
@@ -45,3 +45,28 @@ I want the agent to use simple language and provide detailed explanations when n
 - **react-icons/si:** For various icons (e.g., payment icons).
 - **Shadcn UI:** Re-usable UI components.
 - **Zod:** For schema validation.
+
+## Recent Changes
+
+**2025-10-26 (Latest):** Makita Category + Realistic Pricing + Review Updates
+- **New Category "makita"**: Added 3 authentic Makita 18V LXT combo sets:
+  - DLX2283TJ: 2-piece (drill+impact driver) 2599 → 1799 PLN
+  - DLX2153TJ1: 2-piece (SDS hammer+grinder) 2799 → 1899 PLN  
+  - DLX4084T: 4-piece complete set 5499 → 3799 PLN
+- **Realistic Workbench Pricing**: Updated Milwaukee workbench prices based on market research (US prices + import):
+  - 72" 18-drawer: 12999 → 8999 PLN (was 7999 → 5499)
+  - 52" 12-drawer: 9999 → 6799 PLN (was 6999 → 4699)
+  - 52" 11-drawer: 7999 → 5499 PLN (was 4599 → 3099)
+- **Review Improvements**: Removed specific delivery times ("dostawa w 2 dni" → "szybka dostawa")
+- **Product Images**: All products use authentic user-provided images from Milwaukee.com screenshots
+- **Total Products**: 45 across 10 categories (42 Milwaukee + 3 Makita)
+
+**2025-10-26 (Earlier):** Customer Reviews + Expanded Milwaukee Catalog
+- **Customer Reviews Section**: Added authentic 5-star customer reviews carousel on homepage with professional customer portraits
+- **5 New Milwaukee Products**:
+  - MX FUEL ROCKET Lampa wieżowa (MXF040-1XC) - 4999 → 3299 PLN
+  - M18 ROVER Lampa robocza (2368-20) - 899 → 599 PLN
+  - M18 FORGE HD12.0 Zestaw (48-59-1300) - 1499 → 999 PLN
+  - M18 FORGE XC8.0 Bateria (48-11-1881) - 699 → 469 PLN
+  - M18 XC6.0 Baterie 2szt (48-11-1862) - 1199 → 799 PLN
+- **9 Milwaukee Workbenches**: 36"-72" professional mobile workbenches

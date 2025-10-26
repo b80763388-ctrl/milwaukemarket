@@ -54,8 +54,8 @@ const reviews = [
     role: "Mechanik",
     rating: 5,
     comment: {
-      pl: "Zamówiłem wózek narzędziowy Milwaukee 52\" - rewelacja! Stan idealny, wszystkie szuflady działają płynnie. Cena 4699 zł zamiast 6999 zł to super oszczędność. Polecam ten sklep każdemu profesjonaliście!",
-      en: "I ordered the Milwaukee 52\" tool cabinet - amazing! Perfect condition, all drawers work smoothly. Price 4699 PLN instead of 6999 PLN is great savings. I recommend this shop to every professional!"
+      pl: "Zamówiłem wózek narzędziowy Milwaukee 52\" - rewelacja! Stan idealny, wszystkie szuflady działają płynnie. Produkt powystawowy znacznie tańszy niż nowy. Polecam ten sklep każdemu profesjonaliście!",
+      en: "I ordered the Milwaukee 52\" tool cabinet - amazing! Perfect condition, all drawers work smoothly. Exhibition product much cheaper than new. I recommend this shop to every professional!"
     },
     image: "/attached_assets/generated_images/Young_Polish_mechanic_portrait_972206d4.png"
   }
