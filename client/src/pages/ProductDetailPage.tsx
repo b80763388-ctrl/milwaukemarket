@@ -231,6 +231,34 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
             </div>
           </div>
 
+          {/* Dimensions - if available */}
+          {product.features.some(f => f.startsWith("Wymiary:")) && (
+            <div className="pt-4">
+              <Card className="bg-muted/50">
+                <CardContent className="p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2"/>
+                        <path d="M3 9h18"/>
+                        <path d="M9 21V9"/>
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-base mb-1">Wymiary produktu</div>
+                      <div className="text-lg font-medium text-foreground" data-testid="text-dimensions">
+                        {product.features.find(f => f.startsWith("Wymiary:"))?.replace("Wymiary: ", "")}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-1">
+                        szerokość × głębokość × wysokość
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )}
+
           {/* Description */}
           <div className="pt-4">
             <h3 className="font-semibold text-lg mb-2">Opis produktu</h3>
