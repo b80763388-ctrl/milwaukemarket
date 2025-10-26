@@ -710,6 +710,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Waga: 278 kg (613 lbs)",
           "Wymiary: 182.9 × 55.9 × 107.4 cm",
           "18 szuflad soft-close 150 lbs",
           "Blat drewniany pokryty poliuretanem",
@@ -736,6 +737,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Waga: 227 kg (501 lbs)",
           "Wymiary: 102.9 × 56.1 × 160 cm",
           "18 szuflad soft-close 100 lbs",
           "Kombinacja szafy górnej i dolnej",
@@ -762,6 +764,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Waga: 178 kg (393 lbs)",
           "Wymiary: 132.1 × 55.9 × 104.9 cm",
           "12 szuflad soft-close 120 lbs",
           "Blat drewniany 1.2\" z poliuretanem",
@@ -814,6 +817,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Waga: 182 kg (402 lbs)",
           "Wymiary: 175.8 × 62 × 97 cm",
           "Udźwig: 2,200 lbs",
           "Pegboard 22\" wielopozycyjny",
@@ -840,6 +844,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Waga: 278 kg (614 lbs)",
           "Wymiary: 116.8 × 55.9 × 150 cm",
           "Combo szafa górna + dolna",
           "Prowadnice 100 lbs soft-close",
@@ -866,6 +871,7 @@ export class MemStorage implements IStorage {
         condition: "Bardzo dobry - produkt powystawowy",
         warranty: "gwarancja 12 miesięcy",
         features: [
+          "Waga: 157 kg (346 lbs)",
           "Wymiary: 132.1 × 55.9 × 104.1 cm",
           "Blat drewniany 1.2\" odwracany",
           "Wysokość robocza ergonomiczna 41\"",

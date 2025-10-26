@@ -77,10 +77,6 @@ function Router() {
     },
     onSuccess: (product: Product) => {
       queryClient.invalidateQueries({ queryKey: ["/api/cart", sessionId] });
-      toast({
-        title: "Dodano do koszyka",
-        description: product.name,
-      });
       setCartOpen(true);
     },
     onError: () => {

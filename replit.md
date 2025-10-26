@@ -49,7 +49,7 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-26 (Latest):** UI Improvements + Payment Icons + Terms Update
+**2025-10-26 (Latest):** Tool Cart Weights + Toast Notification Removal + Payment Icons
 - **Battery Product Images Updated**: Replaced images for 3 Milwaukee REDLITHIUM battery products with authentic product photos:
   - M18 FORGE HD12.0 Starter Kit (999 PLN): Battery + Rapid Charger
   - M18 FORGE XC8.0 Battery (469 PLN): Single battery with clear branding
@@ -64,6 +64,14 @@ I want the agent to use simple language and provide detailed explanations when n
   - Phone popover displays: +48 123 456 789 with business hours (Pn-Pt: 8:00-18:00)
   - Email popover displays: sklep@tools-shop.pl as clickable mailto link
 - **Social Media Cleanup**: Removed Facebook, Instagram, and YouTube icons from footer
+- **Tool Cart Weights Added**: All 6 Milwaukee tool carts now display accurate weights from official specifications:
+  - 72" Industrial 18-drawer: 278 kg (613 lbs)
+  - 52" Industrial 12-drawer: 178 kg (393 lbs)
+  - 52" High Capacity 11-drawer: 157 kg (346 lbs)
+  - 60" Mobile Work Station: 182 kg (402 lbs)
+  - 46" Combo High Capacity: 278 kg (614 lbs)
+  - 41" Industrial 18-drawer: 227 kg (501 lbs)
+- **Cart Notification Removed**: Removed "Dodano do koszyka" toast notification that was blocking checkout buttons
 - **Total Authentic Images**: 27 products now have authentic Milwaukee product photography (24 tools/combos/accessories + 3 battery products)
 
 **2025-10-26 (Earlier):** Image Gallery Fix + Tool Cart Pricing Update
