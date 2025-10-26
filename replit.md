@@ -42,7 +42,7 @@ I want the agent to use simple language and provide detailed explanations when n
 - **Exhibition Products:** Products clearly marked with a "PRODUKT POWYSTAWOWY" badge and 12-month warranty.
 - **Discount System:** Displays savings between original and exhibition prices.
 - **Cart Management:** Sidebar with quantity controls, subtotal, and free delivery progress bar (threshold 500 PLN).
-- **Product Catalog:** 28 prawdziwych produktów Milwaukee z dokładnymi specyfikacjami technicznymi z oficjalnych źródeł (2024-2025), podzielonych na 7 kategorii: wiertarki (M18/M12 FUEL), klucze udarowe, młoty (SDS-Plus/SDS-Max), piły (tarczowe/łańcuchowe/szablaste), szlifierki, zestawy, akcesoria.
+- **Product Catalog:** 37 prawdziwych produktów Milwaukee z dokładnymi specyfikacjami technicznymi z oficjalnych źródeł (2024-2025), podzielonych na 8 kategorii: wiertarki (M18/M12 FUEL), klucze udarowe, młoty (SDS-Plus/SDS-Max), piły (tarczowe/łańcuchowe/szablaste), szlifierki, zestawy, akcesoria, wózki narzędziowe (36"-72" workbenches).
 - **Navigation:** Dropdown category menus in the header for desktop and mobile.
 - **Payment Icons:** VISA, Mastercard, BLIK displayed in the footer.
 - **Live Chat:** Real-time WebSocket chat system. Floating widget (customer-side) available from 12:00-20:00 with online indicator. Admin interface for managing chat sessions and responding to customers in real-time.
@@ -59,7 +59,24 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-26 (Latest):** Product Catalog Completion - 28 Products with Professional Images
+**2025-10-26 (Latest):** Wózki Narzędziowe - 9 Professional Workbenches Added
+- **New Category**: Added "wózki" (tool workbenches/storage) category with 9 Milwaukee professional mobile workbenches
+- **New Products**: 9 high-capacity workbenches ranging from 36" to 72":
+  - 72" High Capacity 18-drawer mobile workbench (48-22-8572) - 7999 PLN → 5499 PLN
+  - 52" High Capacity 12-drawer mobile workbench (48-22-8559) - 6999 PLN → 4699 PLN
+  - 52" High Capacity 11-drawer mobile workbench (48-22-8553) - 4599 PLN → 3099 PLN
+  - 46" Steel Storage Combo (48-22-8500) - 7699 PLN → 5199 PLN
+  - 46" 8-drawer steel cabinet (48-22-8520) - 5499 PLN → 3699 PLN
+  - 60" Mobile Work Station with pegboard (48-22-8560) - 3199 PLN → 2099 PLN
+  - 40" 6-drawer stainless steel top (48-22-8540) - 3599 PLN → 2399 PLN
+  - 40" 6-drawer wood top (48-22-8539) - 2799 PLN → 1899 PLN
+  - 36" High Capacity combo (48-22-8536) - 6799 PLN → 4599 PLN
+- **Product Features**: All workbenches include detailed dimensions, weight capacity, soft-close drawer specs, power centers, and storage capacity
+- **Polish Descriptions**: Professional translations with complete technical specifications from official Milwaukee documentation
+- **Images**: User-provided authentic Milwaukee product images for all 9 workbenches
+- **Total Catalog**: Expanded to 37 products across 8 categories
+
+**2025-10-26 (Earlier):** Product Catalog Completion - 28 Products with Professional Images
 - **Missing Products Fixed**: Re-added 4 products that were accidentally removed during previous edits:
   - M12 FUEL młotowiertarka SDS-Plus (młoty) - SKU M12FUEL-CH-0
   - M12 FUEL Pilarka tarczowa 140mm (piły) - SKU M12FUEL-CS140-0
