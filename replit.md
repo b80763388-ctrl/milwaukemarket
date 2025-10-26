@@ -49,18 +49,15 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-26 (Latest):** SKU Verification + Product Images Update + Product Cleanup
-- **SKU Updates for 25+ Milwaukee Products**: Research and verified correct SKU numbers for all power tools, replacing placeholder SKUs with authentic Milwaukee model numbers (e.g., M18FPD3-0 → 2804-20, M18ONEFHIWF12-0 → 2967-20). Accessories retain authentic 4932... series, storage solutions retain MIL-... format.
-- **Product Images Updated (17 Products)**: Replaced placeholder images with authentic product photos across 3 batches:
-  - Batch 1: Drills, impact wrenches, rotary hammers (7 products)
-  - Batch 2: Saws - circular, chainsaws, reciprocating (6 products)  
-  - Batch 3: Grinders and combo kits (4 products)
+**2025-10-26 (Latest):** SKU Verification + Product Cleanup
+- **SKU Updates for 25+ Milwaukee Products**: Verified and corrected SKU numbers for all power tools to authentic Milwaukee model numbers (e.g., M18FPD3-0 → 2804-20, M18ONEFHIWF12-0 → 2967-20, M18FHX-0X → 2912-20). Accessories retain authentic 4932... series, storage solutions retain MIL-... format. All SKUs now follow official Milwaukee catalog standards.
 - **Product Removals (3 Products)**: Removed discontinued/duplicate items:
   - M12 Młotowiertarka SDS-Plus Compact
   - M18 FUEL Szlifierka kątowa 6" z podwójnym spustem
   - M12 FUEL Szlifierka kątowa 100mm
-- **M18 Starter Kit Description Updated**: Changed from "1 battery" to "2× batteries plus charger" in description and features list.
+- **M18 Starter Kit Description Updated**: Changed from "1 battery" to "2× batteries plus charger" in description and features list to accurately reflect kit contents.
 - **Final Product Count**: 42 Milwaukee products + 3 Makita combo sets = 45 total across 10 categories.
+- **Note**: All products currently use AI-generated placeholder images. Real product photos will be added when available.
 
 **2025-10-26 (Earlier):** Tool Cart Dimensions Added
 - **Complete Dimensions for All 7 Milwaukee Tool Carts**: Added precise dimensions in centimeters (szer × gł × wys format) sourced from official Milwaukee specifications:
