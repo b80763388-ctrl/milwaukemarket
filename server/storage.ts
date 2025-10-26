@@ -1016,7 +1016,7 @@ export class MemStorage implements IStorage {
           "Zestaw 2 baterii M18 REDLITHIUM HIGH OUTPUT XC6.0 zapewnia 50% więcej mocy i działa 50% chłodniej niż baterie M18 REDLITHIUM XC. Zoptymalizowana kombinacja rozmiaru i zwiększonej mocy zapewnia doskonałe rozwiązanie dla całej gamy produktów M18. Zapewnia zanikającą moc wolną i działa znacznie dłużej przez ciężkie aplikacje, pozwalając profesjonalistom pchać baterie XC dalej i dłużej niż wcześniej. Bateria M18 REDLITHIUM HIGH OUTPUT XC6.0 zapewnia zwiększoną moc w ekstremalnie zimnych warunkach pogodowych (poniżej 0F / -18C) i zapewnia więcej pracy na ładowanie. W pełni kompatybilna z ponad 150+ rozwiązaniami M18.",
         originalPrice: "1199.00",
         exhibitionPrice: "799.00",
-        image: "/attached_assets/image_1761519064717.png",
+        image: "/attached_assets/image_1761519211395.png",
         images: null,
         sku: "48-11-1862",
         voltage: "18V",
