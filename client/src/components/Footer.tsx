@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { ExhibitionProductsModal } from "@/components/ExhibitionProductsModal";
 import { ShippingPaymentModal } from "@/components/ShippingPaymentModal";
 import blikLogo from "@assets/image_1761428175926.png";
@@ -51,17 +51,6 @@ export function Footer() {
             <p className="text-sm text-muted-foreground">
               Profesjonalne narzędzia w atrakcyjnych cenach. Produkty powystawowe z pełną gwarancją producenta.
             </p>
-            <div className="flex gap-2">
-              <Button variant="ghost" size="icon" data-testid="button-social-facebook">
-                <Facebook className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" data-testid="button-social-instagram">
-                <Instagram className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" data-testid="button-social-youtube">
-                <Youtube className="h-5 w-5" />
-              </Button>
-            </div>
           </div>
 
           {/* Column 2 - Products */}
