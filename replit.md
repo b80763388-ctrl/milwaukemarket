@@ -44,7 +44,10 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-27 (Latest):** Milwaukee Specialized Sets Category + 2 New Premium Products
+**2025-10-27 (Latest):** M12 FUEL Stubby Photo Fix + Milwaukee Specialized Sets + Price Updates
+- **M12 FUEL Stubby Photo Fix**: 
+  - Swapped main product image with gallery image for M12 FUEL Stubby 1/2" (SKU: 2563-20) - correct thumbnail now displayed
+  - Added new main image for M12 FUEL Stubby 3/8" (SKU: 2562-20) with gallery support (2 images total)
 - **Category Renamed**: "Zestawy specjalistyczne" → **"Zestawy specjalistyczne Milwaukee"**
   - New slug: "zestawy-specjalistyczne-milwaukee"
   - Updated everywhere: HomePage, Header navigation, i18n translations (PL/EN)
