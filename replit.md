@@ -44,7 +44,34 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-27 (Latest):** Terms Update + M12 FUEL Stubby Photo Fix + Milwaukee Specialized Sets + Price Updates
+**2025-10-27 (Latest):** Automatic Email Notifications + Translations System Fix + Currency Auto-Detection
+- **Automatic Order Confirmation Emails**: 
+  - Integrated Resend API for professional email delivery
+  - Beautiful HTML email template with order details, products list, delivery info
+  - Sent automatically after successful order placement (POST /api/orders)
+  - Includes: order number, products, total amount, shipping address, fulfillment time (7-14 days)
+  - Branded with Tools Shop colors and Milwaukee red theme
+  - File: `server/email.ts` with `sendOrderConfirmationEmail()` function
+- **Translations System Fully Fixed**:
+  - LanguageContext now uses detected currency from IP (removed hardcoded PLN)
+  - ProductCard uses `t()` for all text (exhibition badge, "Add to cart", "You save", stock status)
+  - CategoryPage uses `t()` for all text (category names, "Back", product count, empty state)
+  - Added `nameEn` field to Product schema for English product names
+  - All 43 products have `nameEn` field (4 with English names, rest with null for future translation)
+  - Product names display in correct language based on user's language setting
+- **New Translations Added** (PL/EN):
+  - `products.outOfStock`: "Brak w magazynie" / "Out of stock"
+  - `category.back`: "Powrót" / "Back"  
+  - `category.productsCount`: "produktów" / "products"
+  - `category.noProducts`: "Brak produktów w tej kategorii" / "No products in this category"
+  - `category.backHome`: "Wróć do strony głównej" / "Back to Home"
+- **Currency Auto-Detection Working**:
+  - Detects user country from IP (ipapi.co)
+  - Sets appropriate currency: PLN (Poland), EUR (EU), GBP (UK), USD (US/other)
+  - Converts all prices using real-time exchange rates (Frankfurter API)
+  - Displays prices in user's local currency with proper formatting
+
+**2025-10-27 (Earlier):** Terms Update + M12 FUEL Stubby Photo Fix + Milwaukee Specialized Sets + Price Updates
 - **Footer Categories Update**: Added both new categories to Footer navigation:
   - "Zestawy Specjalistyczne Milwaukee" (updated from old "Zestawy Specjalistyczne")
   - "Zestawy Makita" (newly added)

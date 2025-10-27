@@ -4,6 +4,7 @@ import { WebSocketServer, WebSocket } from "ws";
 import { storage } from "./storage";
 import { insertCartItemSchema, insertOrderSchema, insertChatSessionSchema, insertChatMessageSchema } from "@shared/schema";
 import { z } from "zod";
+import { sendOrderConfirmationEmail } from "./email";
 
 // Admin authentication middleware
 function adminAuth(req: Request, res: Response, next: NextFunction) {
@@ -140,6 +141,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertOrderSchema.parse(req.body);
       const order = await storage.createOrder(validatedData);
+      
+      // Send order confirmation email (async, don't wait for it)
+      const orderItems = order.orderItems as Array<{ productId: string; name: string; quantity: number; price: string }>;
+      sendOrderConfirmationEmail({
+        order,
+        products: orderItems.map(item => ({
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price,
+        })),
+      }).catch(err => {
+        console.error('[EMAIL] Failed to send order confirmation email:', err);
+        // Don't fail the order if email fails
+      });
+      
       res.json(order);
     } catch (error) {
       if (error instanceof z.ZodError) {
