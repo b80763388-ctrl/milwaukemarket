@@ -75,9 +75,6 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
       <div className="absolute top-32 right-16 w-64 h-64 bg-gradient-to-br from-primary/10 to-rose-500/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-32 left-16 w-80 h-80 bg-gradient-to-tl from-amber-500/10 to-slate-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}} />
       
-      {/* Subtle Floating Elements */}
-      <div className="absolute top-1/3 right-1/3 w-16 h-16 border-2 border-primary/8 rounded-full animate-pulse" style={{animationDuration: '3s'}} />
-      <div className="absolute bottom-1/4 left-1/4 w-12 h-12 border-2 border-slate-400/8 rounded-full animate-pulse" style={{animationDuration: '4s', animationDelay: '0.5s'}} />
       
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
@@ -278,8 +275,8 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
 
           {/* Description */}
           <div className="pt-4">
-            <h3 className="font-semibold text-lg mb-2">Opis produktu</h3>
-            <p className="text-muted-foreground" data-testid="text-product-description">
+            <h3 className="font-semibold text-lg mb-2 text-white">Opis produktu</h3>
+            <p className="text-gray-300" data-testid="text-product-description">
               {product.description}
             </p>
           </div>
@@ -295,7 +292,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
                   {product.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                      <span>{feature}</span>
+                      <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
                   {product.batteryIncluded && (
@@ -315,8 +312,8 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
                 Stan Produktu
               </AccordionTrigger>
               <AccordionContent>
-                <p className="mb-4">{product.condition}</p>
-                <p className="text-sm text-muted-foreground">
+                <p className="mb-4 text-gray-300">{product.condition}</p>
+                <p className="text-sm text-gray-400">
                   Produkt był wcześniej wystawiony w salonie sprzedaży lub prezentowany na targach. 
                   Został dokładnie sprawdzony przez naszych specjalistów i jest w pełni sprawny technicz.
                   Może posiadać minimalne ślady użytkowania na obudowie.
@@ -329,8 +326,8 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
                 Gwarancja
               </AccordionTrigger>
               <AccordionContent>
-                <p className="mb-4">{product.warranty}</p>
-                <p className="text-sm text-muted-foreground">
+                <p className="mb-4 text-gray-300">{product.warranty}</p>
+                <p className="text-sm text-gray-400">
                   Na wszystkie produkty powystawowe udzielamy pełnej gwarancji producenta Milwaukee. 
                   Gwarancja obejmuje wszelkie wady fabryczne i problemy techniczne. 
                   W przypadku awarii, narzędzie zostanie naprawione lub wymienione na nowe.
