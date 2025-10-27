@@ -150,10 +150,10 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
         <div className="space-y-6">
           {/* Title & SKU */}
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 font-heading" data-testid="text-product-name">
+            <h1 className="text-3xl md:text-4xl font-bold mb-2 font-heading text-white" data-testid="text-product-name">
               {product.name}
             </h1>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-4 text-sm text-gray-400">
               <span data-testid="text-product-sku">SKU: {product.sku}</span>
               {product.voltage && (
                 <>
