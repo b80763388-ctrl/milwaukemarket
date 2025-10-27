@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ProductCard } from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Shield, Truck, CheckCircle, ArrowRight } from "lucide-react";
+import { Shield, Truck, CheckCircle, ArrowRight, Drill, Disc3, Wrench, Hammer, ShoppingCart, Boxes, CircleDashed, Ruler, Settings, Package, PackageOpen } from "lucide-react";
 import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ExhibitionProductsModal } from "@/components/ExhibitionProductsModal";
@@ -25,6 +25,21 @@ export function HomePage({ onAddToCart }: HomePageProps) {
   });
 
   const featuredProducts = products?.slice(0, 4) || [];
+  
+  const categoryConfig = {
+    wiertarki: { icon: Drill, gradient: "from-red-500 to-red-600" },
+    szlifierki: { icon: Disc3, gradient: "from-orange-500 to-orange-600" },
+    klucze: { icon: Wrench, gradient: "from-blue-500 to-blue-600" },
+    mloty: { icon: Hammer, gradient: "from-purple-500 to-purple-600" },
+    wozki: { icon: ShoppingCart, gradient: "from-green-500 to-green-600" },
+    zestawy: { icon: Boxes, gradient: "from-indigo-500 to-indigo-600" },
+    pily: { icon: CircleDashed, gradient: "from-yellow-500 to-yellow-600" },
+    lasery: { icon: Ruler, gradient: "from-pink-500 to-pink-600" },
+    akcesoria: { icon: Settings, gradient: "from-teal-500 to-teal-600" },
+    "zestawy-specjalistyczne-milwaukee": { icon: Package, gradient: "from-red-600 to-red-700" },
+    "zestawy-makita": { icon: PackageOpen, gradient: "from-cyan-500 to-cyan-600" },
+  };
+  
   const categories = [
     { name: t('category.wiertarki'), slug: "wiertarki", count: products?.filter(p => p.category === "wiertarki").length || 0 },
     { name: t('category.szlifierki'), slug: "szlifierki", count: products?.filter(p => p.category === "szlifierki").length || 0 },
@@ -180,26 +195,52 @@ export function HomePage({ onAddToCart }: HomePageProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {categories.map((category) => (
-              <Link key={category.slug} href={`/kategoria/${category.slug}`}>
-                <div
-                  className="bg-card border rounded-lg p-8 text-center hover-elevate active-elevate-2 cursor-pointer"
-                  data-testid={`card-category-${category.slug}`}
-                >
-                  <h3 className="text-2xl font-bold mb-2 font-heading">
-                    {category.name}
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {category.count} produktów
-                  </p>
-                  <Button variant="ghost" data-testid={`button-category-${category.slug}`}>
-                    Zobacz kategorię
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-              </Link>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {categories.map((category) => {
+              const Icon = categoryConfig[category.slug as keyof typeof categoryConfig].icon;
+              const gradient = categoryConfig[category.slug as keyof typeof categoryConfig].gradient;
+              
+              return (
+                <Link key={category.slug} href={`/kategoria/${category.slug}`}>
+                  <div
+                    className="group relative overflow-hidden rounded-xl hover-elevate active-elevate-2 cursor-pointer transition-all duration-300"
+                    data-testid={`card-category-${category.slug}`}
+                  >
+                    {/* Gradient Background */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-90 group-hover:opacity-100 transition-opacity`} />
+                    
+                    {/* Content */}
+                    <div className="relative z-10 p-8 text-white">
+                      {/* Icon */}
+                      <div className="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm group-hover:scale-110 transition-transform">
+                        <Icon className="h-8 w-8" />
+                      </div>
+                      
+                      {/* Category Name */}
+                      <h3 className="text-2xl font-bold mb-2 font-heading">
+                        {category.name}
+                      </h3>
+                      
+                      {/* Product Count Badge */}
+                      <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm">
+                        <span className="text-sm font-medium">{category.count} {t('category.productsCount')}</span>
+                      </div>
+                      
+                      {/* CTA */}
+                      <div className="flex items-center gap-2 text-sm font-medium group-hover:gap-3 transition-all">
+                        {t('nav.allProducts')}
+                        <ArrowRight className="h-4 w-4" />
+                      </div>
+                    </div>
+                    
+                    {/* Decorative Pattern */}
+                    <div className="absolute bottom-0 right-0 w-32 h-32 opacity-10">
+                      <Icon className="w-full h-full transform rotate-12" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
