@@ -82,8 +82,8 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             <nav className="flex items-center gap-2">
               <Link href="/" data-testid="link-nav-home">
                 <Button
-                  variant="outline"
-                  className="text-sm font-medium bg-white text-slate-900 border-white hover:bg-gray-100"
+                  variant="default"
+                  className="text-sm font-medium bg-primary hover:bg-primary/90"
                 >
                   {t('nav.home')}
                 </Button>
