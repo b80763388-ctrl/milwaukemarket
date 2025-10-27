@@ -124,12 +124,21 @@ export default function AdminChatPage() {
                           <p className="text-xs text-muted-foreground mb-1">{session.customerEmail}</p>
                         )}
                         <p className="text-xs text-muted-foreground">
-                          {new Date(session.lastMessageAt).toLocaleString(language, {
-                            day: '2-digit',
-                            month: '2-digit',
-                            hour: '2-digit',
-                            minute: '2-digit',
-                          })}
+                          {(() => {
+                            const timestamp = session.status === 'closed' && session.closedAt 
+                              ? session.closedAt 
+                              : session.lastMessageAt;
+                            const label = session.status === 'closed' && session.closedAt
+                              ? (language === 'pl' ? 'Zamknięto' : 'Closed')
+                              : '';
+                            const formattedTime = new Date(timestamp).toLocaleString(language, {
+                              day: '2-digit',
+                              month: '2-digit',
+                              hour: '2-digit',
+                              minute: '2-digit',
+                            });
+                            return label ? `${label}: ${formattedTime}` : formattedTime;
+                          })()}
                         </p>
                       </button>
                     ))}
