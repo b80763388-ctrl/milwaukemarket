@@ -50,14 +50,14 @@ I want the agent to use simple language and provide detailed explanations when n
   - Updated everywhere: HomePage, Header navigation, i18n translations (PL/EN)
   - Translations: "Zestawy specjalistyczne Milwaukee" (PL) / "Milwaukee Specialized Sets" (EN)
 - **New Product: Milwaukee M18 FUEL Zestaw Combo 7 Narzędzi 3697-27**
-  - Price: **2899 zł** (original 5199 zł, -44%)
+  - Price: **2599 zł** (original 5199 zł, -50%)
   - 7 brushless FUEL tools with POWERSTATE motors
   - Includes: hammer drill, impact driver, SAWZALL, circular saw, grinder (8500 RPM), impact wrench (4-mode), LED light
   - 2x REDLITHIUM XC5.0 batteries (5.0Ah) + M18/M12 charger + 2 bags
   - 8 high-quality product images
   - SKU: 3697-27, compatible with 250+ M18 tools
 - **New Product: Milwaukee M18 FORCE LOGIC Prasa do Rur 2773-22L**
-  - Price: **8999 zł** (original 16399 zł, -45%)
+  - Price: **2999 zł** (original 16399 zł, -82%)
   - Professional pipe pressing tool 1/2"-1" with adjustable stroke
   - 7,200 lbs crimping force, smallest extended-length press tool
   - REDLINK Intelligence: auto-cycle, pre-press battery check

@@ -1128,7 +1128,7 @@ export class MemStorage implements IStorage {
         description:
           "Profesjonalny zestaw 7 narzędzi M18 FUEL™ z silnikami bezszczotkowymi POWERSTATE™ zapewniającymi dłuższą żywotność i większą moc. Zawiera: wiertarko-wkrętarkę udarową 1/2\" (2904-20), zakrętarkę udarową 1/4\" hex (2953-20), pilarkę szablastą SAWZALL (2821-20), pilarkę tarczową 6-1/2\" (2730-20), szlifierkę kątową 4-1/2\"/5\" z hamulcem (2880-20, 8500 RPM), klucz udarowy 1/2\" (2962-20 z 4-trybową regulacją DRIVE CONTROL) oraz lampę LED (2735-20). System REDLINK PLUS™ Intelligence chroni przed przeciążeniem. W zestawie 2x akumulatory M18 REDLITHIUM XC5.0 (5.0 Ah), ładowarka multi-voltage M18/M12 i 2 torby. Kompatybilny z ponad 250 narzędziami M18.",
         originalPrice: "5199.00",
-        exhibitionPrice: "2899.00",
+        exhibitionPrice: "2599.00",
         image: "/attached_assets/image_1761573883563.png",
         images: [
           "/attached_assets/image_1761573943530.png",
@@ -1165,7 +1165,7 @@ export class MemStorage implements IStorage {
         description:
           "Profesjonalne narzędzie do prasowania rur M18™ FORCE LOGIC™ Long Throw z regulowanym skokiem dla optymalnego czasu cyklu. Najmniejsze narzędzie prasujące o wydłużonej długości na rynku z konstrukcją in-line umożliwiającą jednorękową obsługę i dostęp do ciasnych przestrzeni. Siła zaciskania 7,200 lbs, zakres średnic 1/2\"-1\" (z możliwością rozszerzenia do 2\" z opcjonalnymi szczękami). Inteligencja REDLINK™: automatyczny cykl zapewnia pełne zaprasowanie za każdym razem, kontrola baterii przed prasowaniem zapobiega niekompletnym zaprasowaniom. Zielony wskaźnik LED sygnalizuje ukończenie prasowania. Najdłuższy w branży okres kalibracji: 50,000 cykli. Silnik bezszczotkowy dla maksymalnej trwałości. W zestawie: 3 szczęki IPS-IA (1/2\", 3/4\", 1\"), 2x akumulator M18 REDLITHIUM XC 3.0Ah, ładowarka M18/M12 i wytrzymała walizka.",
         originalPrice: "16399.00",
-        exhibitionPrice: "8999.00",
+        exhibitionPrice: "2999.00",
         image: "/attached_assets/image_1761574082885.png",
         images: ["/attached_assets/image_1761574089572.png"],
         sku: "2773-22L",
