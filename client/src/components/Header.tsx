@@ -46,16 +46,21 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-800/50 bg-gradient-to-r from-slate-900 via-gray-900 to-zinc-900 backdrop-blur-sm">
+      {/* Subtle Decorative Element */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-red-500/5 pointer-events-none" />
+      
+      <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex h-32 items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" data-testid="link-home">
-            <div className="hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer">
+            <div className="relative hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer">
+              {/* Gradient pod logiem */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-red-500/20 to-orange-500/30 rounded-lg blur-md" />
               <img 
                 src={toolsShopLogo} 
                 alt="Tools Shop Sretensky" 
-                className="h-28 w-auto"
+                className="h-28 w-auto relative mix-blend-multiply dark:mix-blend-screen"
               />
             </div>
           </Link>
@@ -78,8 +83,8 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             <nav className="flex items-center gap-2">
             <Link href="/" data-testid="link-nav-home">
               <Button
-                variant={location === "/" ? "secondary" : "ghost"}
-                className="text-sm font-medium"
+                variant={location === "/" ? "default" : "ghost"}
+                className={location === "/" ? "text-sm font-medium bg-primary hover:bg-primary/90" : "text-sm font-medium text-white hover:bg-white/10"}
               >
                 {t('nav.home')}
               </Button>
@@ -87,7 +92,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-sm font-medium gap-1" data-testid="button-categories">
+                <Button variant="ghost" className="text-sm font-medium gap-1 text-white hover:bg-white/10" data-testid="button-categories">
                   {t('nav.categories')}
                   <ChevronDown className="h-4 w-4" />
                 </Button>
@@ -116,6 +121,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
                 <Button
                   variant="ghost"
                   size="icon"
+                  className="text-white hover:bg-white/10"
                   data-testid="button-phone"
                   title="Telefon"
                 >
@@ -143,6 +149,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
                 <Button
                   variant="ghost"
                   size="icon"
+                  className="text-white hover:bg-white/10"
                   data-testid="button-email"
                   title="Email"
                 >
@@ -166,7 +173,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             <Button
               variant="ghost"
               size="icon"
-              className="relative"
+              className="relative text-white hover:bg-white/10"
               onClick={onCartClick}
               data-testid="button-cart"
             >
@@ -186,7 +193,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden"
+              className="lg:hidden text-white hover:bg-white/10"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="button-mobile-menu"
             >
@@ -201,26 +208,26 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="lg:hidden py-4 space-y-2 border-t">
+          <nav className="lg:hidden py-4 space-y-2 border-t border-slate-800/50">
             <Link href="/" data-testid="link-mobile-home">
               <Button
-                variant={location === "/" ? "secondary" : "ghost"}
-                className="w-full justify-start"
+                variant={location === "/" ? "default" : "ghost"}
+                className={location === "/" ? "w-full justify-start bg-primary hover:bg-primary/90" : "w-full justify-start text-white hover:bg-white/10"}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t('nav.home')}
               </Button>
             </Link>
             
-            <div className="px-2 py-1 text-sm font-semibold text-muted-foreground">
+            <div className="px-2 py-1 text-sm font-semibold text-gray-400">
               {t('nav.categories')}
             </div>
             
             {categories.map((category) => (
               <Link key={category.name} href={category.href} data-testid={`link-mobile-category-${category.name.toLowerCase().replace(/ /g, '-')}`}>
                 <Button
-                  variant={location === category.href ? "secondary" : "ghost"}
-                  className="w-full justify-start pl-6"
+                  variant={location === category.href ? "default" : "ghost"}
+                  className={location === category.href ? "w-full justify-start pl-6 bg-primary hover:bg-primary/90" : "w-full justify-start pl-6 text-white hover:bg-white/10"}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {category.name}
