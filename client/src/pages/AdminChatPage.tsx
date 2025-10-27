@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useChat } from "@/hooks/useChat";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { queryClient, apiRequest } from "@/lib/queryClient";
@@ -16,6 +17,7 @@ import type { ChatSession, ChatMessage } from "@shared/schema";
 export default function AdminChatPage() {
   const [, setLocation] = useLocation();
   const [selectedSessionId, setSelectedSessionId] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<"active" | "closed">("active");
   const { language } = useLanguage();
 
   // Check if user is logged in
@@ -29,7 +31,16 @@ export default function AdminChatPage() {
   type ChatSessionWithUnread = ChatSession & { unreadCount: number };
 
   const { data: sessions, isLoading } = useQuery<ChatSessionWithUnread[]>({
-    queryKey: ["/api/chat/sessions"],
+    queryKey: ["/api/chat/sessions", activeTab],
+    queryFn: async () => {
+      const response = await fetch(`/api/chat/sessions?status=${activeTab}`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('adminToken')}`,
+        },
+      });
+      if (!response.ok) throw new Error('Failed to fetch sessions');
+      return response.json();
+    },
     refetchInterval: 5000, // Refresh every 5 seconds
   });
 
@@ -61,12 +72,22 @@ export default function AdminChatPage() {
           {/* Sessions List */}
           <Card className="md:col-span-1">
             <CardHeader>
-              <CardTitle className="text-sm">
+              <CardTitle className="text-sm mb-3">
                 {language === 'pl' ? 'Sesje czatu' : 'Chat Sessions'}
               </CardTitle>
+              <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "active" | "closed")}>
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="active" data-testid="tab-active-chats">
+                    {language === 'pl' ? 'Aktywne' : 'Active'}
+                  </TabsTrigger>
+                  <TabsTrigger value="closed" data-testid="tab-closed-chats">
+                    {language === 'pl' ? 'Zamknięte' : 'Closed'}
+                  </TabsTrigger>
+                </TabsList>
+              </Tabs>
             </CardHeader>
             <CardContent className="p-0">
-              <ScrollArea className="h-[calc(100vh-16rem)]">
+              <ScrollArea className="h-[calc(100vh-20rem)]">
                 {isLoading ? (
                   <div className="p-4 space-y-3">
                     {[1, 2, 3].map((i) => (
@@ -117,7 +138,10 @@ export default function AdminChatPage() {
                   <div className="p-8 text-center text-muted-foreground">
                     <MessageCircle className="h-12 w-12 mx-auto mb-4 opacity-50" />
                     <p className="text-sm">
-                      {language === 'pl' ? 'Brak aktywnych czatów' : 'No active chats'}
+                      {activeTab === 'active' 
+                        ? (language === 'pl' ? 'Brak aktywnych czatów' : 'No active chats')
+                        : (language === 'pl' ? 'Brak zamkniętych czatów' : 'No closed chats')
+                      }
                     </p>
                   </div>
                 )}
@@ -166,6 +190,17 @@ function ChatWindow({ sessionId }: { sessionId: string }) {
     },
   });
 
+  // Close chat session mutation
+  const closeChatMutation = useMutation({
+    mutationFn: async () => {
+      return apiRequest("POST", `/api/chat/sessions/${sessionId}/close`, {});
+    },
+    onSuccess: () => {
+      // Invalidate sessions list to refresh
+      queryClient.invalidateQueries({ queryKey: ["/api/chat/sessions"] });
+    },
+  });
+
   // Mark as read when session is opened (only once)
   useEffect(() => {
     // Only mark as read once when session is first opened with messages
@@ -207,11 +242,23 @@ function ChatWindow({ sessionId }: { sessionId: string }) {
           <CardTitle className="text-sm">
             {language === 'pl' ? 'Konwersacja' : 'Conversation'}
           </CardTitle>
-          <div className="flex items-center gap-2">
-            <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
-            <span className="text-xs text-muted-foreground">
-              {isConnected ? (language === 'pl' ? 'Połączono' : 'Connected') : (language === 'pl' ? 'Rozłączono' : 'Disconnected')}
-            </span>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
+              <span className="text-xs text-muted-foreground">
+                {isConnected ? (language === 'pl' ? 'Połączono' : 'Connected') : (language === 'pl' ? 'Rozłączono' : 'Disconnected')}
+              </span>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => closeChatMutation.mutate()}
+              disabled={closeChatMutation.isPending}
+              data-testid="button-close-chat"
+            >
+              <X className="h-4 w-4 mr-1" />
+              {language === 'pl' ? 'Zamknij chat' : 'Close chat'}
+            </Button>
           </div>
         </div>
       </CardHeader>
