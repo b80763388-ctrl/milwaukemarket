@@ -1261,6 +1261,7 @@ export class MemStorage implements IStorage {
     const product: Product = { 
       ...insertProduct, 
       id,
+      nameEn: insertProduct.nameEn ?? null,
       images: insertProduct.images ?? null,
       voltage: insertProduct.voltage ?? null,
       batteryIncluded: insertProduct.batteryIncluded ?? false,
