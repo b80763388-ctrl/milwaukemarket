@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ProductCard } from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Shield, Truck, CheckCircle, ArrowRight, Drill, Disc3, Wrench, Hammer, ShoppingCart, Boxes, CircleDashed, Ruler, Settings, Package, PackageOpen } from "lucide-react";
+import { Shield, Truck, CheckCircle, ArrowRight, Drill, Disc3, Wrench, Hammer, Container, Boxes, CircleDashed, Ruler, Settings, Package, PackageOpen } from "lucide-react";
 import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ExhibitionProductsModal } from "@/components/ExhibitionProductsModal";
@@ -31,7 +31,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
     szlifierki: { icon: Disc3, gradient: "from-orange-500 to-orange-600" },
     klucze: { icon: Wrench, gradient: "from-blue-500 to-blue-600" },
     mloty: { icon: Hammer, gradient: "from-purple-500 to-purple-600" },
-    wozki: { icon: ShoppingCart, gradient: "from-green-500 to-green-600" },
+    wozki: { icon: Container, gradient: "from-green-500 to-green-600" },
     zestawy: { icon: Boxes, gradient: "from-indigo-500 to-indigo-600" },
     pily: { icon: CircleDashed, gradient: "from-yellow-500 to-yellow-600" },
     lasery: { icon: Ruler, gradient: "from-pink-500 to-pink-600" },
