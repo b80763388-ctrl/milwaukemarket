@@ -259,6 +259,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Store active connections: sessionId -> Set<WebSocket>
   const connections = new Map<string, Set<WebSocket>>();
+  
+  // Store pending customer info for connections without session yet
+  const pendingCustomerInfo = new Map<WebSocket, { customerName?: string; customerEmail?: string }>();
 
   wss.on('connection', (ws: WebSocket) => {
     let currentSessionId: string | null = null;
@@ -275,38 +278,43 @@ export async function registerRoutes(app: Express): Promise<Server> {
             // Client joins a chat session
             const joinSessionId = message.sessionId as string | undefined;
             
-            // If session doesn't exist, create it
-            let session = joinSessionId ? await storage.getChatSession(joinSessionId) : null;
-            if (!session) {
-              session = await storage.createChatSession({
-                customerName: message.customerName || null,
-                customerEmail: message.customerEmail || null,
-                status: "active",
+            // For admin or existing session, join immediately
+            if (message.sender === 'admin' || joinSessionId) {
+              let session = joinSessionId ? await storage.getChatSession(joinSessionId) : null;
+              
+              if (session) {
+                currentSessionId = session.id;
+
+                // Add connection to session
+                if (!connections.has(currentSessionId)) {
+                  connections.set(currentSessionId, new Set());
+                }
+                connections.get(currentSessionId)!.add(ws);
+
+                // Send session info back to client
+                if (ws.readyState === WebSocket.OPEN) {
+                  ws.send(JSON.stringify({
+                    type: 'session',
+                    sessionId: currentSessionId,
+                    session,
+                  }));
+
+                  // Send chat history
+                  const messages = await storage.getChatMessages(currentSessionId);
+                  ws.send(JSON.stringify({
+                    type: 'history',
+                    messages,
+                  }));
+                }
+              }
+            } else {
+              // For new customer connections, save customer info but don't create session yet
+              // Session will be created when they send first message
+              pendingCustomerInfo.set(ws, {
+                customerName: message.customerName || undefined,
+                customerEmail: message.customerEmail || undefined,
               });
-            }
-            
-            currentSessionId = session.id;
-
-            // Add connection to session
-            if (!connections.has(currentSessionId)) {
-              connections.set(currentSessionId, new Set());
-            }
-            connections.get(currentSessionId)!.add(ws);
-
-            // Send session info back to client
-            if (ws.readyState === WebSocket.OPEN) {
-              ws.send(JSON.stringify({
-                type: 'session',
-                sessionId: currentSessionId,
-                session,
-              }));
-
-              // Send chat history
-              const messages = await storage.getChatMessages(currentSessionId);
-              ws.send(JSON.stringify({
-                type: 'history',
-                messages,
-              }));
+              console.log('[WebSocket] Customer info saved, waiting for first message to create session');
             }
             break;
 
@@ -317,6 +325,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
               sender: message.sender, 
               message: message.message 
             });
+            
+            // If no session yet and this is a customer, create session now
+            if (!currentSessionId && message.sender === 'customer') {
+              // Use customerName from message (sent with first message) or from pending info
+              const customerInfo = pendingCustomerInfo.get(ws);
+              const finalCustomerName = message.customerName || customerInfo?.customerName || null;
+              
+              const session = await storage.createChatSession({
+                customerName: finalCustomerName,
+                customerEmail: customerInfo?.customerEmail || null,
+                status: "active",
+              });
+              
+              currentSessionId = session.id;
+              
+              // Add connection to session
+              if (!connections.has(currentSessionId)) {
+                connections.set(currentSessionId, new Set());
+              }
+              connections.get(currentSessionId)!.add(ws);
+              
+              // Clean up pending info
+              pendingCustomerInfo.delete(ws);
+              
+              // Send session info back to client
+              if (ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({
+                  type: 'session',
+                  sessionId: currentSessionId,
+                  session,
+                }));
+              }
+              
+              console.log('[WebSocket] Session created on first message:', currentSessionId);
+            }
             
             if (!currentSessionId) {
               ws.send(JSON.stringify({ type: 'error', message: 'Not joined to a session' }));
@@ -330,6 +373,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
             });
             
             console.log('[WebSocket] Message saved to storage:', chatMessage);
+
+            // Update last message timestamp
+            await storage.updateChatSessionLastMessage(currentSessionId);
 
             // Broadcast to all clients in this session
             const sessionConnections = connections.get(currentSessionId);
@@ -386,6 +432,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
           }
         }
       }
+      // Clean up pending customer info
+      pendingCustomerInfo.delete(ws);
     });
 
     ws.on('error', (error) => {

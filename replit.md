@@ -49,7 +49,7 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-26 (Latest):** Shipping Info Updates + Payment Icons Unified
+**2025-10-27 (Latest):** Live Chat Improvements - Name Required + Footer Update
 - **Battery Product Images Updated**: Replaced images for 3 Milwaukee REDLITHIUM battery products with authentic product photos:
   - M18 FORGE HD12.0 Starter Kit (999 PLN): Battery + Rapid Charger
   - M18 FORGE XC8.0 Battery (469 PLN): Single battery with clear branding
@@ -79,6 +79,14 @@ I want the agent to use simple language and provide detailed explanations when n
 - **Payment Icons Unified**: ShippingPaymentModal now uses same payment method icons as footer (Visa, Mastercard, BLIK, Google Pay, Apple Pay) for consistent branding
 - **Checkout Fulfillment Time Added**: Added prominent fulfillment time notice (7-14 business days) on checkout page below courier selection
 - **Total Authentic Images**: 27 products now have authentic Milwaukee product photography (24 tools/combos/accessories + 3 battery products)
+
+**2025-10-26 (Earlier):** Shipping Info Updates + Payment Icons Unified
+- **Live Chat Name Requirement**: Added mandatory name input before starting chat - prevents empty/ghost sessions in admin panel
+  - Name form displayed before chat interface loads
+  - Customer name saved in localStorage for returning users
+  - Chat session created only when first message is sent (not on connection)
+  - Admin panel now shows only real conversations with messages
+- **Footer Category Update**: Changed "Oświetlenie" to "Lasery" in footer navigation to match current product catalog
 
 **2025-10-26 (Earlier):** Image Gallery Fix + Tool Cart Pricing Update
 - **Image Gallery Display Fix**: Fixed gallery logic in both ProductDetailPage and ProductCard to always display `product.image` as the first/main image, preventing incorrect image order. Product cards (thumbnails) now consistently show the correct primary image. Additional images from `images` array are filtered to exclude duplicates in gallery view.

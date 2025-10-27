@@ -12,6 +12,8 @@ import { translate } from "@/lib/i18n";
 export function LiveChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [messageText, setMessageText] = useState("");
+  const [customerName, setCustomerName] = useState("");
+  const [nameSubmitted, setNameSubmitted] = useState(false);
   const { language } = useLanguage();
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -24,7 +26,16 @@ export function LiveChat() {
   // const currentHour = now.getHours();
   // const isActive = currentHour >= 12 && currentHour < 20;
 
-  const { messages, sendMessage, isConnected, sessionId } = useChat("customer");
+  // Check if user has previously provided their name
+  useEffect(() => {
+    const savedName = localStorage.getItem('chat-customer-name');
+    if (savedName) {
+      setCustomerName(savedName);
+      setNameSubmitted(true);
+    }
+  }, []);
+
+  const { messages, sendMessage, isConnected, sessionId } = useChat("customer", undefined, customerName);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -34,8 +45,8 @@ export function LiveChat() {
   }, [messages]);
 
   const handleSendMessage = () => {
-    if (messageText.trim() && isConnected) {
-      sendMessage(messageText.trim());
+    if (messageText.trim() && isConnected && nameSubmitted && customerName.trim()) {
+      sendMessage(messageText.trim(), customerName);
       setMessageText("");
     }
   };
@@ -44,6 +55,20 @@ export function LiveChat() {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
+    }
+  };
+
+  const handleNameSubmit = () => {
+    if (customerName.trim()) {
+      localStorage.setItem('chat-customer-name', customerName.trim());
+      setNameSubmitted(true);
+    }
+  };
+
+  const handleNameKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleNameSubmit();
     }
   };
 
@@ -78,53 +103,92 @@ export function LiveChat() {
           {/* Messages Area */}
           <ScrollArea className="flex-1 p-4" ref={scrollRef}>
             <div className="space-y-3">
-              {/* Welcome Message */}
-              {messages.length === 0 && (
-                <div className="flex items-start gap-3">
-                  <div className="bg-primary/10 rounded-full p-2 flex-shrink-0">
-                    <MessageCircle className="h-5 w-5 text-primary" />
+              {/* Name Form - shown if name not submitted */}
+              {!nameSubmitted ? (
+                <div className="flex flex-col items-center justify-center h-full space-y-4 py-8">
+                  <div className="bg-primary/10 rounded-full p-4 mb-2">
+                    <MessageCircle className="h-8 w-8 text-primary" />
                   </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-medium mb-1">
-                      {language === 'pl' ? 'Witamy w Tools Shop!' : 'Welcome to Tools Shop!'}
-                    </p>
+                  <div className="text-center space-y-2 px-4">
+                    <h3 className="font-semibold text-lg">
+                      {language === 'pl' ? 'Witamy w Live Chat!' : 'Welcome to Live Chat!'}
+                    </h3>
                     <p className="text-sm text-muted-foreground">
-                      {isActive
-                        ? language === 'pl' 
-                          ? "Jesteśmy dostępni i chętnie pomożemy. Napisz do nas!" 
-                          : "We're available and happy to help. Write to us!"
-                        : language === 'pl'
-                          ? "Aktualnie jesteśmy niedostępni. Wrócimy wkrótce!"
-                          : "We're currently unavailable. We'll be back soon!"}
+                      {language === 'pl'
+                        ? 'Podaj swoje imię, aby rozpocząć rozmowę'
+                        : 'Enter your name to start the conversation'}
                     </p>
                   </div>
+                  <div className="w-full px-4 space-y-3">
+                    <Input
+                      placeholder={language === 'pl' ? "Twoje imię" : "Your name"}
+                      value={customerName}
+                      onChange={(e) => setCustomerName(e.target.value)}
+                      onKeyPress={handleNameKeyPress}
+                      autoFocus
+                      data-testid="input-customer-name"
+                    />
+                    <Button
+                      onClick={handleNameSubmit}
+                      disabled={!customerName.trim()}
+                      className="w-full"
+                      data-testid="button-submit-name"
+                    >
+                      {language === 'pl' ? 'Rozpocznij czat' : 'Start chat'}
+                    </Button>
+                  </div>
                 </div>
-              )}
+              ) : (
+                <>
+                  {/* Welcome Message */}
+                  {messages.length === 0 && (
+                    <div className="flex items-start gap-3">
+                      <div className="bg-primary/10 rounded-full p-2 flex-shrink-0">
+                        <MessageCircle className="h-5 w-5 text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium mb-1">
+                          {language === 'pl' ? `Witaj ${customerName}!` : `Hello ${customerName}!`}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {isActive
+                            ? language === 'pl' 
+                              ? "Jesteśmy dostępni i chętnie pomożemy. Napisz do nas!" 
+                              : "We're available and happy to help. Write to us!"
+                            : language === 'pl'
+                              ? "Aktualnie jesteśmy niedostępni. Wrócimy wkrótce!"
+                              : "We're currently unavailable. We'll be back soon!"}
+                        </p>
+                      </div>
+                    </div>
+                  )}
 
-              {/* Chat Messages */}
-              {messages.map((msg) => (
-                <div
-                  key={msg.id}
-                  className={`flex ${msg.sender === 'customer' ? 'justify-end' : 'justify-start'}`}
-                  data-testid={`chat-message-${msg.id}`}
-                >
-                  <div
-                    className={`max-w-[75%] rounded-lg px-3 py-2 ${
-                      msg.sender === 'customer'
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-muted'
-                    }`}
-                  >
-                    <p className="text-sm whitespace-pre-wrap break-words">{msg.message}</p>
-                    <p className="text-xs opacity-70 mt-1">
-                      {new Date(msg.createdAt).toLocaleTimeString(language, {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                      })}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                  {/* Chat Messages */}
+                  {messages.map((msg) => (
+                    <div
+                      key={msg.id}
+                      className={`flex ${msg.sender === 'customer' ? 'justify-end' : 'justify-start'}`}
+                      data-testid={`chat-message-${msg.id}`}
+                    >
+                      <div
+                        className={`max-w-[75%] rounded-lg px-3 py-2 ${
+                          msg.sender === 'customer'
+                            ? 'bg-primary text-primary-foreground'
+                            : 'bg-muted'
+                        }`}
+                      >
+                        <p className="text-sm whitespace-pre-wrap break-words">{msg.message}</p>
+                        <p className="text-xs opacity-70 mt-1">
+                          {new Date(msg.createdAt).toLocaleTimeString(language, {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
           </ScrollArea>
 
@@ -147,7 +211,7 @@ export function LiveChat() {
           )}
 
           {/* Input Area */}
-          {isActive ? (
+          {isActive && nameSubmitted ? (
             <div className="p-4 border-t flex-shrink-0">
               <div className="flex gap-2">
                 <Input
@@ -172,6 +236,12 @@ export function LiveChat() {
                   {language === 'pl' ? 'Łączenie...' : 'Connecting...'}
                 </p>
               )}
+            </div>
+          ) : !nameSubmitted && isActive ? (
+            <div className="p-4 border-t flex-shrink-0">
+              <p className="text-sm text-center text-muted-foreground">
+                {language === 'pl' ? 'Podaj swoje imię powyżej aby rozpocząć czat' : 'Enter your name above to start chatting'}
+              </p>
             </div>
           ) : (
             <div className="p-4 border-t flex-shrink-0">

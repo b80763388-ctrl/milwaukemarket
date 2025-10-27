@@ -3,13 +3,17 @@ import type { ChatMessage, ChatSession } from "@shared/schema";
 
 interface UseChatReturn {
   messages: ChatMessage[];
-  sendMessage: (message: string) => void;
+  sendMessage: (message: string, nameForFirstMessage?: string) => void;
   isConnected: boolean;
   sessionId: string | null;
   isTyping: boolean;
 }
 
-export function useChat(sender: "customer" | "admin", sessionId?: string): UseChatReturn {
+export function useChat(
+  sender: "customer" | "admin", 
+  sessionId?: string,
+  customerName?: string
+): UseChatReturn {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isConnected, setIsConnected] = useState(false);
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(sessionId || null);
@@ -52,6 +56,7 @@ export function useChat(sender: "customer" | "admin", sessionId?: string): UseCh
         type: 'join',
         sessionId: currentSessionIdRef.current,
         sender,
+        customerName: sender === 'customer' ? customerName : undefined,
       }));
     };
 
@@ -115,17 +120,18 @@ export function useChat(sender: "customer" | "admin", sessionId?: string): UseCh
     };
   }, [connect]); // Only reconnect when connect function changes, not when sessionId changes
 
-  const sendMessage = useCallback((message: string) => {
-    if (wsRef.current?.readyState === WebSocket.OPEN && currentSessionIdRef.current) {
+  const sendMessage = useCallback((message: string, nameForFirstMessage?: string) => {
+    if (wsRef.current?.readyState === WebSocket.OPEN) {
       wsRef.current.send(JSON.stringify({
         type: 'message',
         sender,
         message,
+        customerName: sender === 'customer' && !currentSessionIdRef.current ? (nameForFirstMessage || customerName) : undefined,
       }));
     } else {
-      console.error('WebSocket is not connected or no session');
+      console.error('WebSocket is not connected');
     }
-  }, [sender]); // Use ref for currentSessionId to avoid dependency
+  }, [sender, customerName]); // Use ref for currentSessionId to avoid dependency
 
   return {
     messages,

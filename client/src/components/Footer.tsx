@@ -95,8 +95,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/kategoria/oswietlenie" className="hover:text-foreground transition-colors" data-testid="link-footer-oswietlenie">
-                  Oświetlenie
+                <a href="/kategoria/lasery" className="hover:text-foreground transition-colors" data-testid="link-footer-lasery">
+                  Lasery
                 </a>
               </li>
               <li>
