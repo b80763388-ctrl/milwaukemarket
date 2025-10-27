@@ -35,7 +35,7 @@ export function LiveChat() {
     }
   }, []);
 
-  const { messages, sendMessage, isConnected, sessionId } = useChat("customer", undefined, customerName);
+  const { messages, sendMessage, isConnected, sessionId, isChatClosed, resetChat } = useChat("customer", undefined, customerName);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -45,7 +45,7 @@ export function LiveChat() {
   }, [messages]);
 
   const handleSendMessage = () => {
-    if (messageText.trim() && isConnected && nameSubmitted && customerName.trim()) {
+    if (messageText.trim() && isConnected && nameSubmitted && customerName.trim() && !isChatClosed) {
       sendMessage(messageText.trim(), customerName);
       setMessageText("");
     }
@@ -70,6 +70,13 @@ export function LiveChat() {
       e.preventDefault();
       handleNameSubmit();
     }
+  };
+
+  const handleStartNewChat = () => {
+    localStorage.removeItem('chat-customer-name');
+    setCustomerName('');
+    setNameSubmitted(false);
+    resetChat();
   };
 
   return (
@@ -211,7 +218,30 @@ export function LiveChat() {
           )}
 
           {/* Input Area */}
-          {isActive && nameSubmitted ? (
+          {isChatClosed ? (
+            <div className="p-4 border-t flex-shrink-0 bg-muted/30">
+              <div className="text-center space-y-3">
+                <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-3">
+                  <p className="text-sm font-medium text-yellow-700 dark:text-yellow-400">
+                    {language === 'pl' ? '⚠️ Chat został zamknięty' : '⚠️ Chat has been closed'}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {language === 'pl' 
+                      ? 'Administrator zamknął tę konwersację.'
+                      : 'An administrator has closed this conversation.'}
+                  </p>
+                </div>
+                <Button
+                  variant="default"
+                  className="w-full"
+                  onClick={handleStartNewChat}
+                  data-testid="button-start-new-chat"
+                >
+                  {language === 'pl' ? 'Rozpocznij nowy chat' : 'Start new chat'}
+                </Button>
+              </div>
+            </div>
+          ) : isActive && nameSubmitted ? (
             <div className="p-4 border-t flex-shrink-0">
               <div className="flex gap-2">
                 <Input
@@ -219,13 +249,13 @@ export function LiveChat() {
                   value={messageText}
                   onChange={(e) => setMessageText(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  disabled={!isConnected}
+                  disabled={!isConnected || isChatClosed}
                   data-testid="input-chat-message"
                 />
                 <Button
                   size="icon"
                   onClick={handleSendMessage}
-                  disabled={!messageText.trim() || !isConnected}
+                  disabled={!messageText.trim() || !isConnected || isChatClosed}
                   data-testid="button-send-message"
                 >
                   <Send className="h-4 w-4" />

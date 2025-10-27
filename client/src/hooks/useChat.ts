@@ -7,6 +7,8 @@ interface UseChatReturn {
   isConnected: boolean;
   sessionId: string | null;
   isTyping: boolean;
+  isChatClosed: boolean;
+  resetChat: () => void;
 }
 
 export function useChat(
@@ -18,9 +20,12 @@ export function useChat(
   const [isConnected, setIsConnected] = useState(false);
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(sessionId || null);
   const [isTyping, setIsTyping] = useState(false);
+  const [isChatClosed, setIsChatClosed] = useState(false);
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout>();
+  const manualReconnectTimeoutRef = useRef<NodeJS.Timeout>();
   const currentSessionIdRef = useRef<string | null>(currentSessionId);
+  const isManualResetRef = useRef(false);
 
   // Keep ref in sync with state
   useEffect(() => {
@@ -83,6 +88,11 @@ export function useChat(
             }
             break;
 
+          case 'chat_closed':
+            console.log('Chat closed by admin');
+            setIsChatClosed(true);
+            break;
+
           case 'error':
             console.error('Chat error:', data.message);
             break;
@@ -96,10 +106,15 @@ export function useChat(
       console.log("WebSocket disconnected");
       setIsConnected(false);
 
-      // Reconnect after 3 seconds
-      reconnectTimeoutRef.current = setTimeout(() => {
-        connect();
-      }, 3000);
+      // Only auto-reconnect if not a manual reset
+      if (!isManualResetRef.current) {
+        reconnectTimeoutRef.current = setTimeout(() => {
+          connect();
+        }, 3000);
+      } else {
+        // Reset the flag after handling
+        isManualResetRef.current = false;
+      }
     };
 
     ws.onerror = (error) => {
@@ -113,6 +128,9 @@ export function useChat(
     return () => {
       if (reconnectTimeoutRef.current) {
         clearTimeout(reconnectTimeoutRef.current);
+      }
+      if (manualReconnectTimeoutRef.current) {
+        clearTimeout(manualReconnectTimeoutRef.current);
       }
       if (wsRef.current) {
         wsRef.current.close();
@@ -133,11 +151,45 @@ export function useChat(
     }
   }, [sender, customerName]); // Use ref for currentSessionId to avoid dependency
 
+  const resetChat = useCallback(() => {
+    setCurrentSessionId(null);
+    setMessages([]);
+    setIsChatClosed(false);
+    currentSessionIdRef.current = null; // Clear ref to prevent rejoining closed session
+    
+    // Clear any pending auto-reconnect
+    if (reconnectTimeoutRef.current) {
+      clearTimeout(reconnectTimeoutRef.current);
+    }
+    
+    // Clear any pending manual reconnect to prevent duplicates
+    if (manualReconnectTimeoutRef.current) {
+      clearTimeout(manualReconnectTimeoutRef.current);
+    }
+    
+    // Set flag to prevent auto-reconnect on close
+    isManualResetRef.current = true;
+    
+    // Close existing WebSocket
+    if (wsRef.current) {
+      wsRef.current.close();
+      wsRef.current = null;
+    }
+    
+    // Schedule manual reconnect with clean state
+    manualReconnectTimeoutRef.current = setTimeout(() => {
+      manualReconnectTimeoutRef.current = undefined;
+      connect();
+    }, 100);
+  }, [connect]);
+
   return {
     messages,
     sendMessage,
     isConnected,
     sessionId: currentSessionId,
     isTyping,
+    isChatClosed,
+    resetChat,
   };
 }

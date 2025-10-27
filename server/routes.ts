@@ -387,6 +387,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
               return;
             }
 
+            // Check if session is closed
+            const session = await storage.getChatSession(currentSessionId);
+            if (session && session.status === 'closed') {
+              // Notify customer that chat is closed
+              if (message.sender === 'customer' && ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({ 
+                  type: 'chat_closed', 
+                  message: 'This chat session has been closed by an administrator.'
+                }));
+              }
+              console.log('[WebSocket] Message rejected - session is closed:', currentSessionId);
+              return;
+            }
+
             const chatMessage = await storage.createChatMessage({
               sessionId: currentSessionId,
               sender: message.sender, // "customer" or "admin"
