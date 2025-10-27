@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import toolsShopLogo from "@assets/image_1761439850491.png";
+import toolsShopLogo from "@assets/tools_shop_sretsensky_transparent_1761595436944.png";
 import plFlag from "@/assets/flags/pl.png";
 import euFlag from "@/assets/flags/eu.png";
 import usFlag from "@/assets/flags/us.png";
@@ -60,7 +60,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
               <img 
                 src={toolsShopLogo} 
                 alt="Tools Shop Sretensky" 
-                className="h-28 w-auto relative mix-blend-multiply dark:mix-blend-screen"
+                className="h-28 w-auto relative z-10"
               />
             </div>
           </Link>
