@@ -60,8 +60,8 @@ const reviews = [
     role: "Instalator",
     rating: 5,
     comment: {
-      pl: "Kupiłem klucz udarowy Milwaukee M18 i baterie REDLITHIUM. Produkt powystawowy nie różni się od nowego! Moc, jakość, wszystko na najwyższym poziomie. Dostawa 10 dni, ale warto było czekać.",
-      en: "I bought the Milwaukee M18 impact wrench and REDLITHIUM batteries. Exhibition product no different from new! Power, quality, everything top-notch. 10 day delivery but worth the wait."
+      pl: "Kupiłem klucz udarowy Milwaukee M18 i baterie REDLITHIUM. Produkt powystawowy nie różni się od nowego! Moc, jakość, wszystko na najwyższym poziomie. Świetny stosunek ceny do jakości!",
+      en: "I bought the Milwaukee M18 impact wrench and REDLITHIUM batteries. Exhibition product no different from new! Power, quality, everything top-notch. Great value for money!"
     }
   },
   {
