@@ -55,7 +55,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900">
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         {/* Hero Image with Dark Overlay */}
