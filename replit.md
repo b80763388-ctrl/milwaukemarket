@@ -34,8 +34,8 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ### Feature Specifications
 - **Product Display:** Products clearly marked as "Exhibition" with discount and warranty information, featuring image galleries with thumbnail navigation.
-- **Product Catalog:** Comprehensive catalog of 45 products (Milwaukee and Makita) across 10 categories, with detailed specifications and realistic pricing.
-- **Navigation:** Category dropdowns in header including: wiertarki, szlifierki, klucze, młoty, wózki, zestawy, piły, lasery, akcesoria, zestawy specjalistyczne, makita.
+- **Product Catalog:** Comprehensive catalog of 45 products (Milwaukee and Makita) across 11 categories, with detailed specifications and realistic pricing.
+- **Navigation:** Category dropdowns in header including: wiertarki, szlifierki, klucze, młoty, wózki, zestawy, piły, lasery, akcesoria, zestawy specjalistyczne, zestawy makita.
 - **Cart & Checkout:** Sidebar with quantity controls, free delivery progress, and a multi-step checkout process with courier selection. Prominent fulfillment time notice (7-14 business days).
 - **Live Chat:** Floating widget for customers with mandatory name input, and a dedicated admin interface for managing real-time chat sessions (active/closed tabs, unread indicators, chat closing functionality).
 - **Internationalization:** Bilingual (PL/EN) support with IP-based language detection and real-time currency conversion.
@@ -44,7 +44,21 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-27 (Latest):** Customer Reviews Privacy Update
+**2025-10-27 (Latest):** Makita Products Update & Category Rename
+- **Updated Makita Product Prices**:
+  - Makita DLX2283TJ: 1299 zł → **689 zł** (2 images added)
+  - Makita DLX2153TJ1: 2099 zł → **1399 zł** (1 image added)
+- **Product Replacement**: Replaced Makita DLX4084T with **DLX4155TX1**
+  - New 4-tool combo set with brushless motors and XPT technology
+  - Includes: DDF486 drill (125Nm), DTD153 impact driver (175Nm), DGA504 grinder (125mm), DHR243 hammer + DX07 dust extraction + HEPA filter
+  - Price: **1699 zł** (1 image)
+  - 2x BL1850B 5.0Ah batteries + DC18RC charger + carrying bag
+- **Category Renamed**: "Makita" → **"Zestawy Makita"** (Makita Sets)
+  - Updated everywhere: HomePage, Header navigation, i18n translations (PL/EN)
+  - All 3 Makita products now under "zestawy-makita" category
+- **New Product Images**: Added 4 new product images from user upload
+
+**2025-10-27 (Earlier):** Customer Reviews Privacy Update
 - **Removed Customer Photos**: All profile pictures removed from review cards for enhanced privacy
 - **First Names Only**: Customer names simplified to first names only (removed surnames):
   - "Paweł Kowalski" → "Paweł"

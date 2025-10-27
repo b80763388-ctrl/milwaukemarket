@@ -42,7 +42,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
     { name: t('category.lasery'), href: "/kategoria/lasery" },
     { name: t('category.akcesoria'), href: "/kategoria/akcesoria" },
     { name: t('category.zestawy-specjalistyczne'), href: "/kategoria/zestawy-specjalistyczne" },
-    { name: t('category.makita'), href: "/kategoria/makita" },
+    { name: t('category.zestawy-makita'), href: "/kategoria/zestawy-makita" },
   ];
 
   return (

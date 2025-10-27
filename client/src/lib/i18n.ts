@@ -132,7 +132,7 @@ export const translations = {
     'category.lasery': 'Lasery',
     'category.akcesoria': 'Akcesoria',
     'category.zestawy-specjalistyczne': 'Zestawy Specjalistyczne',
-    'category.makita': 'Makita',
+    'category.zestawy-makita': 'Zestawy Makita',
     
     // Cart
     'cart.title': 'Koszyk',
@@ -276,7 +276,7 @@ export const translations = {
     'category.lasery': 'Lasers',
     'category.akcesoria': 'Accessories',
     'category.zestawy-specjalistyczne': 'Specialized Sets',
-    'category.makita': 'Makita',
+    'category.zestawy-makita': 'Makita Sets',
     
     // Cart
     'cart.title': 'Shopping Cart',
