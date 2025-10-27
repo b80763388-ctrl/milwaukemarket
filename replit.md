@@ -44,7 +44,19 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-27 (Latest):** Automatic Email Notifications + Translations System Fix + Currency Auto-Detection
+**2025-10-27 (Latest):** Language-Currency Sync + Email Deployment Fix
+- **Language → Currency Synchronization**:
+  - PL (Polski) → automatically switches to PLN zł
+  - EN (English) → automatically switches to EUR €
+  - Page auto-refreshes on language change to update all prices
+  - Removed IP-based currency detection (was causing EUR to show for DK/EU servers)
+  - localStorage priority: saved language preferences always respected
+- **Email Deployment Instructions**:
+  - Added documentation: RESEND_API_KEY must be added as "Deployment Secret" (not auto-synced from development)
+  - Development emails work locally, production requires manual secret configuration
+  - File: `server/email.ts` - professional Polish HTML template ready
+
+**2025-10-27 (Earlier):** Automatic Email Notifications + Translations System Fix + Currency Auto-Detection
 - **Automatic Order Confirmation Emails**: 
   - Integrated Resend API for professional email delivery
   - Beautiful HTML email template with order details, products list, delivery info
