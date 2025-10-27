@@ -44,7 +44,11 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-27 (Latest):** M12 FUEL Stubby Photo Fix + Milwaukee Specialized Sets + Price Updates
+**2025-10-27 (Latest):** Terms Update + M12 FUEL Stubby Photo Fix + Milwaukee Specialized Sets + Price Updates
+- **Terms & Conditions Update**: Added important delivery information to §5:
+  - All products sourced from United States (US)
+  - All chargers and cable-powered devices equipped with EU standard plugs
+  - Updated in both Polish and English versions
 - **M12 FUEL Stubby Photo Fix**: 
   - Swapped main product image with gallery image for M12 FUEL Stubby 1/2" (SKU: 2563-20) - correct thumbnail now displayed
   - Added new main image for M12 FUEL Stubby 3/8" (SKU: 2562-20) with gallery support (2 images total)

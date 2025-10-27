@@ -50,7 +50,8 @@ export function TermsPage() {
         {
           title: "§5 Dostawa",
           items: [
-            "Produkty są wysyłane kurierem na terenie całej Polski.",
+            "Wszystkie produkty są sprowadzane ze Stanów Zjednoczonych (US) i wysyłane kurierem na terenie całej Europy.",
+            "Wszystkie ładowarki oraz urządzenia zasilane kablem są wyposażone w wtyczkę standardu EU (europejskiego).",
             "Koszt dostawy wynosi 29 zł. Darmowa dostawa przysługuje przy zamówieniach powyżej 500 zł.",
             "Klient otrzymuje powiadomienie SMS z informacją o planowanej dostawie.",
             "Dostawa odbywa się pod wskazany adres, bezpośrednio do rąk odbiorcy.",
@@ -145,7 +146,8 @@ export function TermsPage() {
         {
           title: "§5 Delivery",
           items: [
-            "Products are shipped by courier throughout Poland.",
+            "All products are sourced from the United States (US) and shipped by courier throughout Europe.",
+            "All chargers and cable-powered devices are equipped with EU (European) standard plugs.",
             "Delivery cost is 29 PLN. Free delivery is available for orders over 500 PLN.",
             "The customer receives an SMS notification with information about the planned delivery.",
             "Delivery is made to the specified address, directly to the recipient.",
