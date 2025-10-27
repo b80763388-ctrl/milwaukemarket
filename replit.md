@@ -49,7 +49,19 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-27 (Latest):** Live Chat Improvements - Name Required + Footer Update
+**2025-10-27 (Latest):** Admin Chat Management - Close & Auto-cleanup + Secure Password
+- **Admin Chat Close Feature**: Admins can now close chat sessions with "Zamknij chat" button:
+  - Separate tabs: "Aktywne" / "Zamknięte" for better organization
+  - Closed chats show closure timestamp: "Zamknięto: [date]"
+  - Backend API: POST /api/chat/sessions/:id/close
+  - Schema: Added closedAt timestamp field to chatSessions
+- **Auto-cleanup Old Chats**: DELETE /api/chat/cleanup?days=N endpoint deletes closed chats older than N days (default: 2)
+  - Storage method: deleteOldClosedChats() removes both sessions and their messages
+  - Prevents database bloat from old conversations
+- **Secure Admin Password**: 
+  - Removed visible password hint from login page
+  - Admin password now securely stored in Replit Secrets (ADMIN_PASSWORD)
+  - Password hidden during typing with show/hide toggle
 - **Battery Product Images Updated**: Replaced images for 3 Milwaukee REDLITHIUM battery products with authentic product photos:
   - M18 FORGE HD12.0 Starter Kit (999 PLN): Battery + Rapid Charger
   - M18 FORGE XC8.0 Battery (469 PLN): Single battery with clear branding
