@@ -15,10 +15,10 @@ export function AllProductsPage({ onAddToCart }: AllProductsPageProps) {
   });
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-zinc-50 dark:from-slate-950 dark:to-zinc-950 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-950 via-gray-950 to-zinc-950 overflow-hidden">
       {/* Animated Decorative Elements */}
-      <div className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-primary/8 to-rose-500/8 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 left-10 w-80 h-80 bg-gradient-to-tl from-amber-500/8 to-orange-500/8 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}} />
+      <div className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-primary/10 to-rose-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 left-10 w-80 h-80 bg-gradient-to-tl from-amber-500/10 to-orange-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}} />
       
       {/* Geometric Pattern Overlay */}
       <div className="absolute inset-0 opacity-[0.02]" style={{

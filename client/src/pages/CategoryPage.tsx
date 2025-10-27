@@ -21,10 +21,10 @@ export function CategoryPage({ onAddToCart }: CategoryPageProps) {
   const categoryName = category ? t(`category.${category}`) : "";
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-neutral-50 to-stone-50 dark:from-slate-950 dark:to-stone-950 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-950 via-neutral-950 to-stone-950 overflow-hidden">
       {/* Category-specific decorative elements */}
-      <div className="absolute top-10 right-20 w-72 h-72 bg-gradient-to-br from-primary/6 to-violet-500/6 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 left-20 w-96 h-96 bg-gradient-to-tl from-indigo-500/6 to-slate-500/6 rounded-full blur-3xl" />
+      <div className="absolute top-10 right-20 w-72 h-72 bg-gradient-to-br from-primary/8 to-violet-500/8 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-20 w-96 h-96 bg-gradient-to-tl from-indigo-500/8 to-slate-500/8 rounded-full blur-3xl" />
       
       {/* Subtle Decorative Elements */}
       <div className="absolute top-1/4 left-1/3 w-20 h-20 border-2 border-primary/10 rounded-lg rotate-12 animate-pulse" style={{animationDuration: '4s'}} />

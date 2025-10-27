@@ -70,10 +70,10 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
   const hasGallery = allImages.length > 1;
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-50 via-neutral-50 to-slate-50 dark:from-gray-950 dark:to-slate-950 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-950 via-neutral-950 to-slate-950 overflow-hidden">
       {/* Floating Decorative Elements */}
-      <div className="absolute top-32 right-16 w-64 h-64 bg-gradient-to-br from-primary/7 to-rose-500/7 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-32 left-16 w-80 h-80 bg-gradient-to-tl from-amber-500/7 to-slate-500/7 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}} />
+      <div className="absolute top-32 right-16 w-64 h-64 bg-gradient-to-br from-primary/10 to-rose-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-32 left-16 w-80 h-80 bg-gradient-to-tl from-amber-500/10 to-slate-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}} />
       
       {/* Subtle Floating Elements */}
       <div className="absolute top-1/3 right-1/3 w-16 h-16 border-2 border-primary/8 rounded-full animate-pulse" style={{animationDuration: '3s'}} />

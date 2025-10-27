@@ -20,7 +20,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   );
 
   return (
-    <Card className="group hover-elevate overflow-hidden" data-testid={`card-product-${product.id}`}>
+    <Card className="group hover-elevate overflow-hidden bg-slate-900/50 border-slate-800/50 backdrop-blur-sm" data-testid={`card-product-${product.id}`}>
       <Link href={`/produkt/${product.slug}`} data-testid={`link-product-${product.slug}`}>
         <div className="relative aspect-square overflow-hidden bg-muted">
           {/* Exhibition Badge */}
@@ -56,12 +56,12 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         <Link href={`/produkt/${product.slug}`}>
           <div className="space-y-1">
             <h3
-              className="font-semibold text-lg leading-tight line-clamp-2 hover:text-primary transition-colors"
+              className="font-semibold text-lg leading-tight line-clamp-2 text-white hover:text-primary transition-colors"
               data-testid="text-product-name"
             >
               {language === 'en' && product.nameEn ? product.nameEn : product.name}
             </h3>
-            <p className="text-sm text-muted-foreground" data-testid="text-product-sku">
+            <p className="text-sm text-gray-400" data-testid="text-product-sku">
               SKU: {product.sku}
             </p>
           </div>
@@ -79,12 +79,12 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           </div>
           <div className="flex items-center gap-2">
             <span
-              className="text-sm text-muted-foreground line-through"
+              className="text-sm text-gray-500 line-through"
               data-testid="text-original-price"
             >
               {formatPriceSync(parseFloat(product.originalPrice))}
             </span>
-            <span className="text-sm font-medium text-destructive">
+            <span className="text-sm font-medium text-green-400">
               {t('products.save')} {formatPriceSync(parseFloat(product.originalPrice) - parseFloat(product.exhibitionPrice))}
             </span>
           </div>
