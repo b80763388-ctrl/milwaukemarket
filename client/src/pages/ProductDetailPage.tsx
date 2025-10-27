@@ -70,7 +70,16 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
   const hasGallery = allImages.length > 1;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-50 via-neutral-50 to-slate-50 dark:from-gray-950 dark:to-slate-950 overflow-hidden">
+      {/* Floating Decorative Elements */}
+      <div className="absolute top-32 right-16 w-64 h-64 bg-gradient-to-br from-primary/7 to-rose-500/7 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-32 left-16 w-80 h-80 bg-gradient-to-tl from-amber-500/7 to-slate-500/7 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}} />
+      
+      {/* Subtle Floating Elements */}
+      <div className="absolute top-1/3 right-1/3 w-16 h-16 border-2 border-primary/8 rounded-full animate-pulse" style={{animationDuration: '3s'}} />
+      <div className="absolute bottom-1/4 left-1/4 w-12 h-12 border-2 border-slate-400/8 rounded-full animate-pulse" style={{animationDuration: '4s', animationDelay: '0.5s'}} />
+      
+      <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
         <Link href="/" data-testid="link-breadcrumb-home">
@@ -330,6 +339,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
             </AccordionItem>
           </Accordion>
         </div>
+      </div>
       </div>
     </div>
   );

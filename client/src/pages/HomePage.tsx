@@ -136,8 +136,12 @@ export function HomePage({ onAddToCart }: HomePageProps) {
       <ShippingPaymentModal open={shippingModalOpen} onOpenChange={setShippingModalOpen} />
 
       {/* Featured Products */}
-      <section id="produkty" className="py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+      <section id="produkty" className="relative py-16 md:py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
+        
+        <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Badge variant="secondary" className="mb-4">
               OFERTY SPECJALNE
@@ -184,8 +188,13 @@ export function HomePage({ onAddToCart }: HomePageProps) {
       </section>
 
       {/* Categories Section */}
-      <section className="py-16 md:py-20 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+      <section className="relative py-16 md:py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 overflow-hidden">
+        {/* Decorative Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        }} />
+        
+        <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">
               Kategorie Produktów
@@ -249,8 +258,12 @@ export function HomePage({ onAddToCart }: HomePageProps) {
       <Reviews />
 
       {/* Trust Section */}
-      <section className="py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+      <section className="relative py-16 md:py-20 bg-gradient-to-br from-primary/5 via-background to-blue-500/5 overflow-hidden">
+        {/* Decorative Shapes */}
+        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-tl from-blue-500/10 to-transparent rounded-full blur-3xl" />
+        
+        <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center space-y-4">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary">

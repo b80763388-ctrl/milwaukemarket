@@ -115,8 +115,12 @@ export function Reviews() {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+    <section className="relative py-16 md:py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-950 dark:to-purple-950 overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-tl from-blue-500/10 to-indigo-500/10 rounded-full blur-3xl" />
+      
+      <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             {language === 'pl' ? 'Opinie Naszych Klientów' : 'Customer Reviews'}

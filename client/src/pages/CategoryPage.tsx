@@ -21,7 +21,16 @@ export function CategoryPage({ onAddToCart }: CategoryPageProps) {
   const categoryName = category ? t(`category.${category}`) : "";
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-neutral-50 to-stone-50 dark:from-slate-950 dark:to-stone-950 overflow-hidden">
+      {/* Category-specific decorative elements */}
+      <div className="absolute top-10 right-20 w-72 h-72 bg-gradient-to-br from-primary/6 to-violet-500/6 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-20 w-96 h-96 bg-gradient-to-tl from-indigo-500/6 to-slate-500/6 rounded-full blur-3xl" />
+      
+      {/* Subtle Decorative Elements */}
+      <div className="absolute top-1/4 left-1/3 w-20 h-20 border-2 border-primary/10 rounded-lg rotate-12 animate-pulse" style={{animationDuration: '4s'}} />
+      <div className="absolute bottom-1/3 right-1/4 w-24 h-24 border-2 border-slate-400/10 rounded-lg -rotate-12 animate-pulse" style={{animationDuration: '5s', animationDelay: '1s'}} />
+      
+      <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
         <Link href="/" data-testid="link-breadcrumb-home">
@@ -81,6 +90,7 @@ export function CategoryPage({ onAddToCart }: CategoryPageProps) {
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 }
