@@ -52,9 +52,12 @@ I want the agent to use simple language and provide detailed explanations when n
   - Removed IP-based currency detection (was causing EUR to show for DK/EU servers)
   - localStorage priority: saved language preferences always respected
 - **Email Deployment Instructions**:
-  - Added documentation: RESEND_API_KEY must be added as "Deployment Secret" (not auto-synced from development)
-  - Development emails work locally, production requires manual secret configuration
-  - File: `server/email.ts` - professional Polish HTML template ready
+  - RESEND_API_KEY must be added as "Deployment Secret" in production
+  - **IMPORTANT**: Resend free plan (sandbox mode) only sends to verified addresses
+  - **To send to ALL customers**: Verify your domain at https://resend.com/domains
+  - Alternative: Add test emails at https://resend.com/audiences or upgrade to paid plan
+  - File: `server/email.ts` - professional Polish HTML template with detailed error logging
+  - Deployment logs show exact error messages with solutions
 
 **2025-10-27 (Earlier):** Automatic Email Notifications + Translations System Fix + Currency Auto-Detection
 - **Automatic Order Confirmation Emails**: 

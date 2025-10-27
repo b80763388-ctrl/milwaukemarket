@@ -149,16 +149,38 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData): Promise<
   `;
 
   try {
-    await resend.emails.send({
+    const result = await resend.emails.send({
       from: 'Tools Shop <onboarding@resend.dev>', // W przyszłości zmień na własną domenę
       to: order.email,
       subject: `✓ Potwierdzenie zamówienia #${order.id.substring(0, 8).toUpperCase()} - Tools Shop`,
       html: htmlContent,
     });
 
-    console.log(`[EMAIL] Order confirmation sent to ${order.email} for order ${order.id}`);
-  } catch (error) {
-    console.error('[EMAIL] Failed to send order confirmation:', error);
+    console.log(`[EMAIL] ✅ Order confirmation sent successfully!`);
+    console.log(`[EMAIL]    → To: ${order.email}`);
+    console.log(`[EMAIL]    → Order: ${order.id}`);
+    console.log(`[EMAIL]    → Resend ID: ${result.data?.id || 'N/A'}`);
+  } catch (error: any) {
+    console.error('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.error('[EMAIL] ❌ FAILED to send order confirmation email');
+    console.error('[EMAIL]    → To:', order.email);
+    console.error('[EMAIL]    → Order:', order.id);
+    console.error('[EMAIL]    → Error:', error?.message || error);
+    console.error('[EMAIL]    → Full error:', JSON.stringify(error, null, 2));
+    
+    if (error?.message?.includes('API key')) {
+      console.error('[EMAIL] ⚠️  RESEND_API_KEY missing or invalid!');
+      console.error('[EMAIL]    → Add RESEND_API_KEY in deployment secrets');
+    }
+    
+    if (error?.message?.includes('sandbox') || error?.statusCode === 403) {
+      console.error('[EMAIL] ⚠️  SANDBOX MODE - Can only send to verified addresses!');
+      console.error('[EMAIL]    → Solution 1: Verify your domain at https://resend.com/domains');
+      console.error('[EMAIL]    → Solution 2: Add test emails at https://resend.com/audiences');
+      console.error('[EMAIL]    → Solution 3: Upgrade to paid plan');
+    }
+    
+    console.error('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     // Nie rzucamy błędu - zamówienie zostało złożone, email jest nice-to-have
   }
 }
