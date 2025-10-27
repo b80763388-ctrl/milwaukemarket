@@ -176,6 +176,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Stubby 1/2\" Impact Wrench Gen 2",
+        nameEn: null,
         slug: "m12-fuel-stubby-12-gen2",
         category: "klucze",
         description:
@@ -201,6 +202,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Stubby 3/8\" Impact Wrench Gen 2",
+        nameEn: null,
         slug: "m12-fuel-stubby-38-gen2",
         category: "klucze",
         description:
@@ -228,6 +230,7 @@ export class MemStorage implements IStorage {
       // MŁOTY SDS-PLUS i SDS-MAX
       {
         name: "M18 FUEL Młot udarowo-obrotowy SDS-Plus FHX",
+        nameEn: null,
         slug: "m18-fuel-mlot-sds-plus-fhx",
         category: "mloty",
         description:
@@ -253,6 +256,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18 FUEL Młot wyburzeniowy SDS-Max FHM",
+        nameEn: null,
         slug: "m18-fuel-mlot-sds-max-fhm",
         category: "mloty",
         description:
@@ -279,6 +283,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Młotowiertarka SDS-Plus",
+        nameEn: null,
         slug: "m12-fuel-mlotowiertarka-sds-plus",
         category: "mloty",
         description:
@@ -306,6 +311,7 @@ export class MemStorage implements IStorage {
       // PIŁY
       {
         name: "M18 FUEL Pilarka tarczowa 165mm FCS552",
+        nameEn: null,
         slug: "m18-fuel-pilarka-tarczowa-165mm",
         category: "pily",
         description:
@@ -332,6 +338,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18 FUEL Pilarka łańcuchowa HATCHET 20cm",
+        nameEn: null,
         slug: "m18-fuel-pilarka-lancuchowa-20cm",
         category: "pily",
         description:
@@ -357,6 +364,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18 FUEL Pilarka łańcuchowa 35cm FCHS",
+        nameEn: null,
         slug: "m18-fuel-pilarka-lancuchowa-35cm",
         category: "pily",
         description:
@@ -382,6 +390,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18 FUEL Piła szablasta SAWZALL FSZ",
+        nameEn: null,
         slug: "m18-fuel-pila-szablasta-sawzall",
         category: "pily",
         description:
@@ -406,6 +415,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Piła szablasta HACKZALL",
+        nameEn: null,
         slug: "m12-fuel-pila-hackzall",
         category: "pily",
         description:
@@ -430,6 +440,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Pilarka tarczowa 140mm",
+        nameEn: null,
         slug: "m12-fuel-pilarka-tarczowa-140mm",
         category: "pily",
         description:
@@ -457,6 +468,7 @@ export class MemStorage implements IStorage {
       // SZLIFIERKI
       {
         name: "M18 FUEL Szlifierka kątowa 125mm",
+        nameEn: null,
         slug: "m18-fuel-szlifierka-katowa-125mm",
         category: "szlifierki",
         description:
@@ -482,6 +494,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Szlifierka prosta 1/4\" Die Grinder",
+        nameEn: null,
         slug: "m12-fuel-szlifierka-prosta-14",
         category: "szlifierki",
         description:
@@ -508,6 +521,7 @@ export class MemStorage implements IStorage {
       // ZESTAWY
       {
         name: "Zestaw combo M18 FUEL 2 narzędzia",
+        nameEn: null,
         slug: "zestaw-combo-m18-fuel-2-narzedzia",
         category: "zestawy",
         description:
@@ -532,6 +546,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Zestaw combo M18 FUEL 3 narzędzia",
+        nameEn: null,
         slug: "zestaw-combo-m18-fuel-3-narzedzia",
         category: "zestawy",
         description:
@@ -556,6 +571,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Zestaw startowy M18 bateria + ładowarka",
+        nameEn: null,
         slug: "zestaw-startowy-m18-bateria-ladowarka",
         category: "zestawy",
         description:
@@ -579,6 +595,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Zestaw combo M12 FUEL 2 narzędzia",
+        nameEn: null,
         slug: "zestaw-combo-m12-fuel-2-narzedzia",
         category: "zestawy",
         description:
@@ -605,6 +622,7 @@ export class MemStorage implements IStorage {
       // AKCESORIA
       {
         name: "Zestaw wierteł HSS-G Milwaukee 19szt",
+        nameEn: null,
         slug: "zestaw-wiertel-hss-g-19szt",
         category: "akcesoria",
         description:
@@ -628,6 +646,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Zestaw bitów SHOCKWAVE 56szt",
+        nameEn: null,
         slug: "zestaw-bitow-shockwave-56szt",
         category: "akcesoria",
         description:
@@ -652,6 +671,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Walizka systemowa PACKOUT",
+        nameEn: null,
         slug: "walizka-systemowa-packout",
         category: "akcesoria",
         description:
@@ -676,6 +696,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Wiertła SDS-Plus SHOCKWAVE 7szt",
+        nameEn: null,
         slug: "wiertla-sds-plus-shockwave-7szt",
         category: "akcesoria",
         description:
@@ -702,6 +723,7 @@ export class MemStorage implements IStorage {
       // WÓZKI NARZĘDZIOWE
       {
         name: "Mobilny stół warsztatowy 72\" Industrial z 18 szufladami",
+        nameEn: null,
         slug: "mobilny-stol-warsztatowy-72-industrial-18-szuflad",
         category: "wozki",
         description:
@@ -729,6 +751,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Szafa stalowa 41\" Industrial z 18 szufladami",
+        nameEn: null,
         slug: "szafa-stalowa-41-industrial-18-szuflad",
         category: "wozki",
         description:
@@ -756,6 +779,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Mobilny stół warsztatowy 52\" Industrial z 12 szufladami",
+        nameEn: null,
         slug: "mobilny-stol-warsztatowy-52-industrial-12-szuflad",
         category: "wozki",
         description:
@@ -783,6 +807,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Mobilna stacja robocza 40\" z blatem stalowym i 6 szufladami",
+        nameEn: null,
         slug: "mobilna-stacja-robocza-40-blat-stalowy-6-szuflad",
         category: "wozki",
         description:
@@ -809,6 +834,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Mobilna stacja robocza 60\"",
+        nameEn: null,
         slug: "mobilna-stacja-robocza-60",
         category: "wozki",
         description:
@@ -836,6 +862,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Combo szafa stalowa 46\" High Capacity",
+        nameEn: null,
         slug: "combo-szafa-stalowa-46-high-capacity",
         category: "wozki",
         description:
@@ -863,6 +890,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Mobilny stół warsztatowy 52\" High Capacity",
+        nameEn: null,
         slug: "mobilny-stol-warsztatowy-52-high-capacity",
         category: "wozki",
         description:
@@ -892,6 +920,7 @@ export class MemStorage implements IStorage {
       // LASERY
       {
         name: "M12™ Zielony laser 3-płaszczyznowy 360° z automatycznym wypoziomowaniem i odbiornikiem",
+        nameEn: null,
         slug: "m12-zielony-laser-3-plaszczyznowy-360-auto-alignment",
         category: "lasery",
         description:
@@ -918,6 +947,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18™ Zielony laser obrotowy wewnętrzny z pilotem/odbiornikiem i uchwytem ściennym",
+        nameEn: null,
         slug: "m18-zielony-laser-obrotowy-wewnetrzny-kit",
         category: "lasery",
         description:
@@ -944,6 +974,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12™ Zielony laser 3-płaszczyznowy 360° - zestaw",
+        nameEn: null,
         slug: "m12-zielony-laser-3-plaszczyznowy-360-kit",
         category: "lasery",
         description:
@@ -972,6 +1003,7 @@ export class MemStorage implements IStorage {
       // BATERIE I ŁADOWARKI (dodane do kategorii akcesoria)
       {
         name: "M18 REDLITHIUM FORGE HD12.0 Zestaw startowy",
+        nameEn: null,
         slug: "m18-redlithium-forge-hd12-zestaw-startowy",
         category: "akcesoria",
         description:
@@ -998,6 +1030,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18 REDLITHIUM FORGE XC8.0 Bateria",
+        nameEn: null,
         slug: "m18-redlithium-forge-xc8-bateria",
         category: "akcesoria",
         description:
@@ -1023,6 +1056,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18 REDLITHIUM HIGH OUTPUT XC6.0 Baterie (2 szt)",
+        nameEn: null,
         slug: "m18-redlithium-high-output-xc6-baterie-2szt",
         category: "akcesoria",
         description:
@@ -1050,6 +1084,7 @@ export class MemStorage implements IStorage {
       // ZESTAWY MAKITA
       {
         name: "Makita DLX2283TJ Zestaw Combo 18V LXT 2-częściowy",
+        nameEn: null,
         slug: "makita-dlx2283tj-zestaw-combo-2-czesciowy",
         category: "zestawy-makita",
         description:
@@ -1075,6 +1110,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Makita DLX2153TJ1 Zestaw Combo Młot + Szlifierka 18V",
+        nameEn: null,
         slug: "makita-dlx2153tj1-zestaw-mlot-szlifierka",
         category: "zestawy-makita",
         description:
@@ -1100,6 +1136,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Makita DLX4155TX1 Zestaw Combo 18V LXT 4-częściowy",
+        nameEn: null,
         slug: "makita-dlx4155tx1-zestaw-combo-4-czesciowy",
         category: "zestawy-makita",
         description:
@@ -1127,6 +1164,7 @@ export class MemStorage implements IStorage {
       // ZESTAWY SPECJALISTYCZNE MILWAUKEE
       {
         name: "Milwaukee M18 FUEL Zestaw Combo 7 Narzędzi 3697-27",
+        nameEn: null,
         slug: "milwaukee-m18-fuel-zestaw-7-narzedzi",
         category: "zestawy-specjalistyczne-milwaukee",
         description:
@@ -1164,6 +1202,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Milwaukee M18 FORCE LOGIC Prasa do Rur 1/2\"-1\" 2773-22L",
+        nameEn: null,
         slug: "milwaukee-m18-force-logic-prasa-do-rur",
         category: "zestawy-specjalistyczne-milwaukee",
         description:
