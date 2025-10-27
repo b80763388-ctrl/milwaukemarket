@@ -115,10 +115,10 @@ export function Reviews() {
   ];
 
   return (
-    <section className="relative py-16 md:py-20 bg-gradient-to-br from-slate-950 via-gray-950 to-zinc-950 overflow-hidden">
+    <section className="relative py-16 md:py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900 overflow-hidden">
       {/* Decorative Background Elements */}
-      <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-primary/12 to-purple-500/12 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-tl from-blue-500/12 to-indigo-500/12 rounded-full blur-3xl" />
+      <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-tl from-blue-500/10 to-indigo-500/10 rounded-full blur-3xl" />
       
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center mb-12">

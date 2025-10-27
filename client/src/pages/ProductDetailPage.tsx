@@ -70,7 +70,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
   const hasGallery = allImages.length > 1;
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-950 via-neutral-950 to-slate-950 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900 overflow-hidden">
       {/* Floating Decorative Elements */}
       <div className="absolute top-32 right-16 w-64 h-64 bg-gradient-to-br from-primary/10 to-rose-500/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-32 left-16 w-80 h-80 bg-gradient-to-tl from-amber-500/10 to-slate-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}} />
@@ -131,10 +131,10 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
                 <button
                   key={index}
                   onClick={() => setSelectedImageIndex(index)}
-                  className={`aspect-square bg-white rounded-lg overflow-hidden border-2 transition-all hover:scale-105 ${
+                  className={`aspect-square bg-slate-800 rounded-lg overflow-hidden border-2 transition-all hover:scale-105 ${
                     selectedImageIndex === index
                       ? "border-primary ring-2 ring-primary ring-offset-2 shadow-lg"
-                      : "border-gray-300 hover:border-primary/50"
+                      : "border-slate-700 hover:border-primary/50"
                   }`}
                   data-testid={`button-thumbnail-${index}`}
                 >

@@ -136,10 +136,10 @@ export function HomePage({ onAddToCart }: HomePageProps) {
       <ShippingPaymentModal open={shippingModalOpen} onOpenChange={setShippingModalOpen} />
 
       {/* Featured Products */}
-      <section id="produkty" className="relative py-16 md:py-20 bg-gradient-to-br from-gray-950 to-slate-900 overflow-hidden">
+      <section id="produkty" className="relative py-16 md:py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900 overflow-hidden">
         {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/8 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/8 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
         
         <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -188,10 +188,10 @@ export function HomePage({ onAddToCart }: HomePageProps) {
       </section>
 
       {/* Categories Section */}
-      <section className="relative py-16 md:py-20 bg-gradient-to-b from-gray-950 to-slate-950 overflow-hidden">
+      <section className="relative py-16 md:py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900 overflow-hidden">
         {/* Subtle Decorative Elements */}
-        <div className="absolute top-10 right-20 w-96 h-96 bg-gradient-to-br from-primary/8 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-20 w-80 h-80 bg-gradient-to-tl from-red-500/8 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-10 right-20 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-20 w-80 h-80 bg-gradient-to-tl from-red-500/10 to-transparent rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-slate-800/40 to-transparent rounded-full blur-3xl" />
         
         <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
@@ -258,10 +258,10 @@ export function HomePage({ onAddToCart }: HomePageProps) {
       <Reviews />
 
       {/* Trust Section */}
-      <section className="relative py-16 md:py-20 bg-gradient-to-br from-slate-950 via-gray-950 to-zinc-950 overflow-hidden">
+      <section className="relative py-16 md:py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900 overflow-hidden">
         {/* Decorative Shapes */}
-        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-br from-primary/12 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-tl from-blue-500/12 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-tl from-blue-500/10 to-transparent rounded-full blur-3xl" />
         
         <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -21,10 +21,10 @@ export function CategoryPage({ onAddToCart }: CategoryPageProps) {
   const categoryName = category ? t(`category.${category}`) : "";
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-950 via-neutral-950 to-stone-950 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900 overflow-hidden">
       {/* Category-specific decorative elements */}
-      <div className="absolute top-10 right-20 w-72 h-72 bg-gradient-to-br from-primary/8 to-violet-500/8 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 left-20 w-96 h-96 bg-gradient-to-tl from-indigo-500/8 to-slate-500/8 rounded-full blur-3xl" />
+      <div className="absolute top-10 right-20 w-72 h-72 bg-gradient-to-br from-primary/10 to-violet-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-20 w-96 h-96 bg-gradient-to-tl from-indigo-500/10 to-slate-500/10 rounded-full blur-3xl" />
       
       {/* Subtle Decorative Elements */}
       <div className="absolute top-1/4 left-1/3 w-20 h-20 border-2 border-primary/10 rounded-lg rotate-12 animate-pulse" style={{animationDuration: '4s'}} />
@@ -48,10 +48,10 @@ export function CategoryPage({ onAddToCart }: CategoryPageProps) {
             {t('category.back')}
           </Button>
         </Link>
-        <h1 className="text-3xl md:text-4xl font-bold mb-2 font-heading" data-testid="text-category-title">
+        <h1 className="text-3xl md:text-4xl font-bold mb-2 font-heading text-white" data-testid="text-category-title">
           {categoryName}
         </h1>
-        <p className="text-lg text-muted-foreground" data-testid="text-category-count">
+        <p className="text-lg text-gray-300" data-testid="text-category-count">
           {categoryProducts.length} {t('category.productsCount')}
         </p>
       </div>
