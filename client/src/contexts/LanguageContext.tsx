@@ -41,29 +41,57 @@ function getDefaultLanguage(countryCode: string): Language {
   return countryCode === 'PL' ? 'pl' : 'en';
 }
 
+function getCurrencyForLanguage(lang: Language): Currency {
+  // PL → PLN, EN → EUR
+  return lang === 'pl' ? 'PLN' : 'EUR';
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>('pl');
   const [currency, setCurrencyState] = useState<Currency>('PLN');
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    // Detect language and currency from IP
-    detectCountryFromIP().then(({ country, currency: detectedCurrency }) => {
-      const detectedLanguage = getDefaultLanguage(country);
-      
-      setLanguageState(detectedLanguage);
-      setCurrencyState(detectedCurrency);
-      localStorage.setItem('language', detectedLanguage);
-      localStorage.setItem('currency', detectedCurrency);
+    // Check localStorage first, otherwise detect from IP
+    const savedLanguage = localStorage.getItem('language') as Language | null;
+    
+    if (savedLanguage) {
+      // Use saved preferences
+      const savedCurrency = getCurrencyForLanguage(savedLanguage);
+      setLanguageState(savedLanguage);
+      setCurrencyState(savedCurrency);
       setIsInitialized(true);
-      
-      console.log('[Language Context] Language:', detectedLanguage, 'Currency:', detectedCurrency);
-    });
+      console.log('[Language Context] Using saved - Language:', savedLanguage, 'Currency:', savedCurrency);
+    } else {
+      // Detect language from IP
+      detectCountryFromIP().then(({ country }) => {
+        const detectedLanguage = getDefaultLanguage(country);
+        const detectedCurrency = getCurrencyForLanguage(detectedLanguage);
+        
+        setLanguageState(detectedLanguage);
+        setCurrencyState(detectedCurrency);
+        localStorage.setItem('language', detectedLanguage);
+        localStorage.setItem('currency', detectedCurrency);
+        setIsInitialized(true);
+        
+        console.log('[Language Context] Detected - Language:', detectedLanguage, 'Currency:', detectedCurrency);
+      });
+    }
   }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem('language', lang);
+    
+    // Automatically change currency when language changes
+    const newCurrency = getCurrencyForLanguage(lang);
+    setCurrencyState(newCurrency);
+    localStorage.setItem('currency', newCurrency);
+    
+    console.log('[Language Change] Language:', lang, '→ Currency:', newCurrency);
+    
+    // Force reload to ensure all prices update
+    window.location.reload();
   };
 
   const setCurrency = (curr: Currency) => {
