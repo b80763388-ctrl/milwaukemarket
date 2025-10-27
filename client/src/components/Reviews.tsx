@@ -53,6 +53,46 @@ const reviews = [
       pl: "Zamówiłem wózek narzędziowy Milwaukee 52\" - rewelacja! Stan idealny, wszystkie szuflady działają płynnie. Produkt powystawowy znacznie tańszy niż nowy. Polecam ten sklep każdemu profesjonaliście!",
       en: "I ordered the Milwaukee 52\" tool cabinet - amazing! Perfect condition, all drawers work smoothly. Exhibition product much cheaper than new. I recommend this shop to every professional!"
     }
+  },
+  {
+    id: 6,
+    name: "Krzysztof",
+    role: "Instalator",
+    rating: 5,
+    comment: {
+      pl: "Kupiłem klucz udarowy Milwaukee M18 i baterie REDLITHIUM. Produkt powystawowy nie różni się od nowego! Moc, jakość, wszystko na najwyższym poziomie. Dostawa 10 dni, ale warto było czekać.",
+      en: "I bought the Milwaukee M18 impact wrench and REDLITHIUM batteries. Exhibition product no different from new! Power, quality, everything top-notch. 10 day delivery but worth the wait."
+    }
+  },
+  {
+    id: 7,
+    name: "Marek",
+    role: "Dekarz",
+    rating: 5,
+    comment: {
+      pl: "Laser liniowy Milwaukee - precyzja w najlepszym wydaniu! Stan idealny, wszystkie funkcje działają bez zarzutu. Cena o wiele lepsza niż w tradycyjnych sklepach. Polecam!",
+      en: "Milwaukee line laser - precision at its best! Perfect condition, all functions work flawlessly. Much better price than traditional stores. Highly recommend!"
+    }
+  },
+  {
+    id: 8,
+    name: "Piotr",
+    role: "Ślusarz",
+    rating: 5,
+    comment: {
+      pl: "Zestaw M18 FUEL to strzał w dziesiątkę! Dwie super wiertarki w jednym zestawie, produkty powystawowe wyglądają jak nowe. Świetna inwestycja dla każdego fachowca.",
+      en: "M18 FUEL combo set is a bullseye! Two great drills in one package, exhibition products look like new. Great investment for any professional."
+    }
+  },
+  {
+    id: 9,
+    name: "Bartosz",
+    role: "Monter",
+    rating: 5,
+    comment: {
+      pl: "Piła łańcuchowa Milwaukee M18 to maszyna! Moc jak na akumulatorówkę niesamowita. Produkt powystawowy bez śladów użytkowania. Obsługa klienta rewelacyjna, odpowiedzi na wszystkie pytania błyskawiczne.",
+      en: "Milwaukee M18 chainsaw is a beast! Amazing power for a cordless tool. Exhibition product with no signs of use. Customer service excellent, lightning-fast responses to all questions."
+    }
   }
 ];
 
@@ -63,7 +103,7 @@ export function Reviews() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % reviews.length);
-    }, 5000); // Change every 5 seconds
+    }, 6000); // Change every 6 seconds
 
     return () => clearInterval(interval);
   }, []);
