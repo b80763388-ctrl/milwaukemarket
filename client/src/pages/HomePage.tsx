@@ -143,13 +143,13 @@ export function HomePage({ onAddToCart }: HomePageProps) {
         
         <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4">
+            <Badge variant="secondary" className="mb-4 bg-white/20 text-white border-white/30">
               OFERTY SPECJALNE
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading text-white">
               Wyróżnione Produkty Powystawowe
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Najlepsze oferty na profesjonalne narzędzia w wyjątkowych cenach
             </p>
           </div>
@@ -196,10 +196,10 @@ export function HomePage({ onAddToCart }: HomePageProps) {
         
         <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading text-white">
               Kategorie Produktów
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-gray-300">
               Przeglądaj narzędzia według typu
             </p>
           </div>
@@ -266,29 +266,29 @@ export function HomePage({ onAddToCart }: HomePageProps) {
         <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center space-y-4">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary">
                 <Shield className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-bold">Gwarancja Producenta</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-xl font-bold text-white">Gwarancja Producenta</h3>
+              <p className="text-gray-300">
                 Wszystkie produkty objęte są pełną gwarancją producenta na 12 miesięcy
               </p>
             </div>
             <div className="text-center space-y-4">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary">
                 <Truck className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-bold">Darmowa Dostawa</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-xl font-bold text-white">Darmowa Dostawa</h3>
+              <p className="text-gray-300">
                 Darmowa dostawa dla zamówień powyżej 500 zł. Szybka realizacja i bezpieczne opakowanie
               </p>
             </div>
             <div className="text-center space-y-4">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary">
                 <CheckCircle className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-bold">Produkty Sprawdzone</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-xl font-bold text-white">Produkty Sprawdzone</h3>
+              <p className="text-gray-300">
                 Każdy produkt powystawowy jest dokładnie sprawdzony i gotowy do użycia
               </p>
             </div>

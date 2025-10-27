@@ -122,10 +122,10 @@ export function Reviews() {
       
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
             {language === 'pl' ? 'Opinie Naszych Klientów' : 'Customer Reviews'}
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-gray-300">
             {language === 'pl' 
               ? 'Zobacz co mówią profesjonaliści o naszych produktach' 
               : 'See what professionals say about our products'}
@@ -136,7 +136,7 @@ export function Reviews() {
           {visibleReviews.map((review, idx) => (
             <Card 
               key={`${review.id}-${idx}`} 
-              className="hover-elevate transition-all duration-300"
+              className="hover-elevate transition-all duration-300 bg-slate-900/50 border-slate-800/50 backdrop-blur-sm"
               style={{
                 opacity: idx === 0 ? 1 : 0.7,
                 transform: idx === 0 ? 'scale(1.02)' : 'scale(1)',
@@ -145,8 +145,8 @@ export function Reviews() {
             >
               <CardContent className="p-6">
                 <div className="mb-4">
-                  <h3 className="font-semibold text-lg" data-testid={`review-name-${review.id}`}>{review.name}</h3>
-                  <p className="text-sm text-muted-foreground" data-testid={`review-role-${review.id}`}>{review.role}</p>
+                  <h3 className="font-semibold text-lg text-white" data-testid={`review-name-${review.id}`}>{review.name}</h3>
+                  <p className="text-sm text-gray-400" data-testid={`review-role-${review.id}`}>{review.role}</p>
                 </div>
 
                 <div className="flex gap-1 mb-3" data-testid={`review-rating-${review.id}`}>
@@ -155,7 +155,7 @@ export function Reviews() {
                   ))}
                 </div>
 
-                <p className="text-muted-foreground leading-relaxed" data-testid={`review-comment-${review.id}`}>
+                <p className="text-gray-300 leading-relaxed" data-testid={`review-comment-${review.id}`}>
                   {language === 'pl' ? review.comment.pl : review.comment.en}
                 </p>
               </CardContent>
