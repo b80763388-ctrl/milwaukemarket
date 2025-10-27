@@ -104,11 +104,6 @@ export default function AdminLoginPage() {
                   )}
                 </Button>
               </div>
-              <p className="text-xs text-muted-foreground">
-                {language === 'pl'
-                  ? 'Domyślne hasło: admin123 (tylko dla rozwoju)'
-                  : 'Default password: admin123 (for development only)'}
-              </p>
             </div>
 
             <Button
