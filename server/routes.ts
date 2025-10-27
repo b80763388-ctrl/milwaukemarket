@@ -175,7 +175,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // GET /api/chat/sessions - Get all chat sessions with unread counts (admin only)
   app.get("/api/chat/sessions", adminAuth, async (req, res) => {
     try {
-      const sessions = await storage.getAllChatSessions();
+      const { status } = req.query;
+      
+      let sessions;
+      if (status === 'active') {
+        sessions = await storage.getActiveChatSessions();
+      } else if (status === 'closed') {
+        sessions = await storage.getClosedChatSessions();
+      } else {
+        sessions = await storage.getAllChatSessions();
+      }
       
       // Add unread count to each session
       const sessionsWithUnread = await Promise.all(
@@ -230,6 +239,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error marking messages as read:", error);
       res.status(500).json({ error: "Failed to mark messages as read" });
+    }
+  });
+
+  // DELETE /api/chat/cleanup - Delete old closed chats (admin only)
+  app.delete("/api/chat/cleanup", adminAuth, async (req, res) => {
+    try {
+      const daysOld = parseInt(req.query.days as string) || 2;
+      const deletedCount = await storage.deleteOldClosedChats(daysOld);
+      res.json({ success: true, deletedCount });
+    } catch (error) {
+      console.error("Error cleaning up old chats:", error);
+      res.status(500).json({ error: "Failed to clean up old chats" });
     }
   });
 
