@@ -51,66 +51,66 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-red-500/5 pointer-events-none" />
       
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex h-20 items-center gap-6">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" data-testid="link-home">
-            <div className="hover-elevate active-elevate-2 px-2 py-1 rounded-md cursor-pointer flex-shrink-0">
+            <div className="hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer flex-shrink-0">
               <img 
                 src={toolsShopLogo} 
                 alt="Tools Shop Sretensky" 
-                className="h-12 w-auto"
+                className="h-16 w-auto"
               />
             </div>
           </Link>
 
-          {/* Flags (decorative) */}
-          <div className="hidden lg:flex items-center gap-2">
-            <div className="opacity-90" data-testid="flag-pl">
-              <img src={plFlag} alt="Poland" className="h-5 w-auto rounded shadow-sm" />
+          {/* Center Section: Flags + Navigation */}
+          <div className="hidden lg:flex items-center gap-6">
+            {/* Flags (decorative) */}
+            <div className="flex items-center gap-2">
+              <div className="opacity-90" data-testid="flag-pl">
+                <img src={plFlag} alt="Poland" className="h-5 w-auto rounded shadow-sm" />
+              </div>
+              <div className="opacity-90" data-testid="flag-eu">
+                <img src={euFlag} alt="European Union" className="h-5 w-auto rounded shadow-sm" />
+              </div>
+              <div className="opacity-90" data-testid="flag-us">
+                <img src={usFlag} alt="United States" className="h-5 w-auto rounded shadow-sm" />
+              </div>
             </div>
-            <div className="opacity-90" data-testid="flag-eu">
-              <img src={euFlag} alt="European Union" className="h-5 w-auto rounded shadow-sm" />
-            </div>
-            <div className="opacity-90" data-testid="flag-us">
-              <img src={usFlag} alt="United States" className="h-5 w-auto rounded shadow-sm" />
-            </div>
-          </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-2">
-            <Link href="/" data-testid="link-nav-home">
-              <Button
-                variant={location === "/" ? "default" : "ghost"}
-                className={location === "/" ? "text-sm font-medium bg-primary hover:bg-primary/90" : "text-sm font-medium text-white hover:bg-white/10"}
-              >
-                {t('nav.home')}
-              </Button>
-            </Link>
-            
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-sm font-medium gap-1 text-white hover:bg-white/10" data-testid="button-categories">
-                  {t('nav.categories')}
-                  <ChevronDown className="h-4 w-4" />
+            {/* Desktop Navigation */}
+            <nav className="flex items-center gap-2">
+              <Link href="/" data-testid="link-nav-home">
+                <Button
+                  variant={location === "/" ? "default" : "ghost"}
+                  className={location === "/" ? "text-sm font-medium bg-primary hover:bg-primary/90" : "text-sm font-medium text-white hover:bg-white/10"}
+                >
+                  {t('nav.home')}
                 </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-56">
-                {categories.map((category) => (
-                  <Link key={category.name} href={category.href}>
-                    <DropdownMenuItem
-                      className="cursor-pointer"
-                      data-testid={`link-category-${category.name.toLowerCase().replace(/ /g, '-')}`}
-                    >
-                      {category.name}
-                    </DropdownMenuItem>
-                  </Link>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </nav>
-          
-          {/* Spacer */}
-          <div className="flex-1"></div>
+              </Link>
+              
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="text-sm font-medium gap-1 text-white hover:bg-white/10" data-testid="button-categories">
+                    {t('nav.categories')}
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-56">
+                  {categories.map((category) => (
+                    <Link key={category.name} href={category.href}>
+                      <DropdownMenuItem
+                        className="cursor-pointer"
+                        data-testid={`link-category-${category.name.toLowerCase().replace(/ /g, '-')}`}
+                      >
+                        {category.name}
+                      </DropdownMenuItem>
+                    </Link>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </nav>
+          </div>
 
           {/* Right Side - Contact, Language, Cart & Mobile Menu */}
           <div className="flex items-center gap-2">
