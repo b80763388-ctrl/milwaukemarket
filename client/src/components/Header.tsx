@@ -51,20 +51,20 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-red-500/5 pointer-events-none" />
       
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex h-32 items-center gap-4">
+        <div className="flex h-20 items-center gap-6">
           {/* Logo */}
           <Link href="/" data-testid="link-home">
-            <div className="hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer flex-shrink-0">
+            <div className="hover-elevate active-elevate-2 px-2 py-1 rounded-md cursor-pointer flex-shrink-0">
               <img 
                 src={toolsShopLogo} 
                 alt="Tools Shop Sretensky" 
-                className="h-28 w-auto"
+                className="h-12 w-auto"
               />
             </div>
           </Link>
 
           {/* Flags (decorative) */}
-          <div className="hidden lg:flex items-center gap-2 ml-4">
+          <div className="hidden lg:flex items-center gap-2">
             <div className="opacity-90" data-testid="flag-pl">
               <img src={plFlag} alt="Poland" className="h-5 w-auto rounded shadow-sm" />
             </div>
