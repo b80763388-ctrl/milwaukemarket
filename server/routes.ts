@@ -22,6 +22,12 @@ function adminAuth(req: Request, res: Response, next: NextFunction) {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Store WebSocket connections for broadcast (shared across HTTP and WS routes)
+  const connections = new Map<string, Set<WebSocket>>();
+  
+  // Store pending customer info for connections without session yet
+  const pendingCustomerInfo = new Map<WebSocket, { customerName?: string; customerEmail?: string }>();
+
   // GET /api/products - Get all products
   app.get("/api/products", async (req, res) => {
     try {
@@ -223,6 +229,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { id } = req.params;
       await storage.closeChatSession(id);
+      
+      console.log('[Close Chat] Session closed in DB:', id);
+      console.log('[Close Chat] Total active connections:', connections.size);
+      console.log('[Close Chat] All session IDs:', Array.from(connections.keys()));
+      
+      // Broadcast chat_closed to all participants in this session
+      const sessionConnections = connections.get(id);
+      console.log('[Close Chat] Found', sessionConnections?.size || 0, 'connections for session', id);
+      
+      if (sessionConnections) {
+        const closeMessage = JSON.stringify({
+          type: 'chat_closed',
+          message: 'This chat session has been closed by an administrator.'
+        });
+        
+        let sentCount = 0;
+        sessionConnections.forEach(client => {
+          if (client.readyState === WebSocket.OPEN) {
+            client.send(closeMessage);
+            sentCount++;
+          }
+        });
+        
+        console.log('[Close Chat] Broadcasted chat_closed to', sentCount, '/', sessionConnections.size, 'clients');
+      } else {
+        console.log('[Close Chat] WARNING: No WebSocket connections found for session', id);
+      }
+      
       res.json({ success: true });
     } catch (error) {
       console.error("Error closing chat session:", error);
@@ -277,12 +311,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // WebSocket server for real-time chat
   const wss = new WebSocketServer({ server: httpServer, path: '/ws' });
-
-  // Store active connections: sessionId -> Set<WebSocket>
-  const connections = new Map<string, Set<WebSocket>>();
-  
-  // Store pending customer info for connections without session yet
-  const pendingCustomerInfo = new Map<WebSocket, { customerName?: string; customerEmail?: string }>();
 
   wss.on('connection', (ws: WebSocket) => {
     let currentSessionId: string | null = null;

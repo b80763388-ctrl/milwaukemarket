@@ -49,11 +49,28 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-27 (Latest):** Admin Chat Management - Close & Auto-cleanup + Secure Password
+**2025-10-27 (Latest):** Live Chat Close - Real-time Customer Notification + Duplicate Connection Fix
+- **Real-time Chat Close Broadcast**: When admin closes chat, customer receives immediate WebSocket notification:
+  - Backend broadcasts `chat_closed` event to all session participants
+  - Customer sees warning: "⚠️ Chat został zamknięty - Administrator zamknął tę konwersację"
+  - "Rozpocznij nowy chat" button allows customer to start fresh conversation
+  - Input/send button immediately disabled on closed state
+  - Prevents customers from unknowingly sending messages to closed sessions
+- **Duplicate WebSocket Connection Fix**: Resolved multiple WebSocket connections on chat reset:
+  - Added `manualReconnectTimeoutRef` to track manual reconnects
+  - `isManualResetRef` flag prevents auto-reconnect during manual reset
+  - Both timers cleared before scheduling new reconnect
+  - Guarantees single active WebSocket connection
+- **WebSocket Architecture**: Moved `connections` Map to top of registerRoutes for shared access:
+  - HTTP endpoints can broadcast to WebSocket clients
+  - Single source of truth for all active session connections
+  - Admin close endpoint broadcasts to all participants immediately
+
+**2025-10-27 (Earlier):** Admin Chat Management - Close & Auto-cleanup + Secure Password
 - **Admin Chat Close Feature**: Admins can now close chat sessions with "Zamknij chat" button:
   - Separate tabs: "Aktywne" / "Zamknięte" for better organization
   - Closed chats show closure timestamp: "Zamknięto: [date]"
-  - Backend API: POST /api/chat/sessions/:id/close
+  - Backend API: POST /api/chat/sessions/:id/close (now with WebSocket broadcast)
   - Schema: Added closedAt timestamp field to chatSessions
 - **Auto-cleanup Old Chats**: DELETE /api/chat/cleanup?days=N endpoint deletes closed chats older than N days (default: 2)
   - Storage method: deleteOldClosedChats() removes both sessions and their messages
