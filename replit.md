@@ -40,7 +40,37 @@ I want the agent to use simple language and provide detailed explanations when n
 - **Live Chat:** Floating widget for customers with mandatory name input, and a dedicated admin interface for managing real-time chat sessions (active/closed tabs, unread indicators, chat closing functionality).
 - **Internationalization:** Bilingual (PL/EN) support with IP-based language detection and real-time currency conversion.
 - **Admin Panel:** Password-protected access to dashboard (orders, revenue) and chat management functionalities, including automatic cleanup of old chat sessions.
-- **Customer Reviews:** Carousel of authentic 5-star customer reviews on the homepage.
+- **Customer Reviews:** Carousel of authentic 5-star customer reviews on the homepage with first names only and no photos.
+
+## Recent Changes
+
+**2025-10-27 (Latest):** Customer Reviews Privacy Update
+- **Removed Customer Photos**: All profile pictures removed from review cards for enhanced privacy
+- **First Names Only**: Customer names simplified to first names only (removed surnames):
+  - "Paweł Kowalski" → "Paweł"
+  - "Tomasz Wiśniewski" → "Tomasz"
+  - "Jan Nowak" → "Jan"
+  - "Anna Zawadzka" → "Anna"
+  - "Michał Krawczyk" → "Michał"
+- **Cleaner UI**: Review cards now display only name, role, rating (5 stars), and comment without avatars
+- **Layout Updated**: Removed flex container with avatar image, simplified to vertical layout
+
+**2025-10-27 (Earlier):** Live Chat Close - Real-time Customer Notification + Duplicate Connection Fix
+- **Real-time Chat Close Broadcast**: When admin closes chat, customer receives immediate WebSocket notification:
+  - Backend broadcasts `chat_closed` event to all session participants
+  - Customer sees warning: "⚠️ Chat został zamknięty - Administrator zamknął tę konwersację"
+  - "Rozpocznij nowy chat" button allows customer to start fresh conversation
+  - Input/send button immediately disabled on closed state
+  - Prevents customers from unknowingly sending messages to closed sessions
+- **Duplicate WebSocket Connection Fix**: Resolved multiple WebSocket connections on chat reset:
+  - Added `manualReconnectTimeoutRef` to track manual reconnects
+  - `isManualResetRef` flag prevents auto-reconnect during manual reset
+  - Both timers cleared before scheduling new reconnect
+  - Guarantees single active WebSocket connection
+- **WebSocket Architecture**: Moved `connections` Map to top of registerRoutes for shared access:
+  - HTTP endpoints can broadcast to WebSocket clients
+  - Single source of truth for all active session connections
+  - Admin close endpoint broadcasts to all participants immediately
 
 ## External Dependencies
 - **Frankfurter API:** For real-time currency exchange rates.

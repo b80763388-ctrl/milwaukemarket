@@ -6,58 +6,53 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const reviews = [
   {
     id: 1,
-    name: "Paweł Kowalski",
+    name: "Paweł",
     role: "Budowlanka",
     rating: 5,
     comment: {
       pl: "Kupiłem wiertarkę Milwaukee M18 FUEL i jestem zachwycony! Produkt powystawowy w doskonałym stanie, oszczędziłem prawie 500 zł. Szybka dostawa, obsługa na najwyższym poziomie. Polecam każdemu!",
       en: "I bought the Milwaukee M18 FUEL drill and I'm thrilled! Exhibition product in excellent condition, I saved almost 500 PLN. Fast delivery, top-notch service. Highly recommend!"
-    },
-    image: "/attached_assets/generated_images/Polish_construction_worker_portrait_27f7ae00.png"
+    }
   },
   {
     id: 2,
-    name: "Tomasz Wiśniewski",
+    name: "Tomasz",
     role: "Stolarz",
     rating: 5,
     comment: {
       pl: "Świetny sklep! Zamówiłem pilarkę tarczową i młot Milwaukee. Narzędzia jak nowe, opakowania oryginalne. Ceny powystawowe to prawdziwa okazja. Gwarancja 12 miesięcy daje pewność.",
       en: "Great shop! I ordered a circular saw and Milwaukee hammer. Tools like new, original packaging. Exhibition prices are a real deal. 12-month warranty gives confidence."
-    },
-    image: "/attached_assets/generated_images/Young_Polish_carpenter_portrait_4f419205.png"
+    }
   },
   {
     id: 3,
-    name: "Jan Nowak",
+    name: "Jan",
     role: "Elektryk",
     rating: 5,
     comment: {
       pl: "Profesjonalna obsługa i autentyczne produkty Milwaukee. Kupiłem zestaw combo M12 FUEL i nie mogę narzekać. Wszystko dokładnie tak jak w opisie. Szybka dostawa i bezpieczne opakowanie. Na pewno wrócę po więcej narzędzi!",
       en: "Professional service and authentic Milwaukee products. I bought the M12 FUEL combo set and can't complain. Everything exactly as described. Fast delivery and secure packaging. Will definitely come back for more tools!"
-    },
-    image: "/attached_assets/generated_images/Mature_Polish_electrician_portrait_bca679c9.png"
+    }
   },
   {
     id: 4,
-    name: "Anna Zawadzka",
+    name: "Anna",
     role: "Renowacje",
     rating: 5,
     comment: {
       pl: "Najlepszy sklep z narzędziami Milwaukee w Polsce! Szlifierka kątowa którą kupiłam działa perfekcyjnie. Cena powystawowa o 30% niższa niż w zwykłych sklepach. Obsługa bardzo pomocna, odpowiadali na wszystkie pytania.",
       en: "Best Milwaukee tool shop in Poland! The angle grinder I bought works perfectly. Exhibition price 30% lower than regular stores. Very helpful service, answered all questions."
-    },
-    image: "/attached_assets/generated_images/Polish_renovation_specialist_woman_8ba0a82f.png"
+    }
   },
   {
     id: 5,
-    name: "Michał Krawczyk",
+    name: "Michał",
     role: "Mechanik",
     rating: 5,
     comment: {
       pl: "Zamówiłem wózek narzędziowy Milwaukee 52\" - rewelacja! Stan idealny, wszystkie szuflady działają płynnie. Produkt powystawowy znacznie tańszy niż nowy. Polecam ten sklep każdemu profesjonaliście!",
       en: "I ordered the Milwaukee 52\" tool cabinet - amazing! Perfect condition, all drawers work smoothly. Exhibition product much cheaper than new. I recommend this shop to every professional!"
-    },
-    image: "/attached_assets/generated_images/Young_Polish_mechanic_portrait_972206d4.png"
+    }
   }
 ];
 
@@ -105,17 +100,9 @@ export function Reviews() {
               data-testid={`review-card-${review.id}`}
             >
               <CardContent className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <img
-                    src={review.image}
-                    alt={review.name}
-                    className="w-16 h-16 rounded-full object-cover"
-                    data-testid={`review-avatar-${review.id}`}
-                  />
-                  <div>
-                    <h3 className="font-semibold text-lg" data-testid={`review-name-${review.id}`}>{review.name}</h3>
-                    <p className="text-sm text-muted-foreground" data-testid={`review-role-${review.id}`}>{review.role}</p>
-                  </div>
+                <div className="mb-4">
+                  <h3 className="font-semibold text-lg" data-testid={`review-name-${review.id}`}>{review.name}</h3>
+                  <p className="text-sm text-muted-foreground" data-testid={`review-role-${review.id}`}>{review.role}</p>
                 </div>
 
                 <div className="flex gap-1 mb-3" data-testid={`review-rating-${review.id}`}>
