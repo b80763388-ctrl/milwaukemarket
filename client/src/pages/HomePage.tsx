@@ -27,17 +27,17 @@ export function HomePage({ onAddToCart }: HomePageProps) {
   const featuredProducts = products?.slice(0, 4) || [];
   
   const categoryConfig = {
-    wiertarki: { icon: Drill, gradient: "from-red-500 to-red-600" },
-    szlifierki: { icon: Disc3, gradient: "from-orange-500 to-orange-600" },
-    klucze: { icon: Wrench, gradient: "from-blue-500 to-blue-600" },
-    mloty: { icon: Hammer, gradient: "from-purple-500 to-purple-600" },
-    wozki: { icon: Container, gradient: "from-green-500 to-green-600" },
-    zestawy: { icon: Boxes, gradient: "from-indigo-500 to-indigo-600" },
-    pily: { icon: CircleDashed, gradient: "from-yellow-500 to-yellow-600" },
-    lasery: { icon: Ruler, gradient: "from-pink-500 to-pink-600" },
-    akcesoria: { icon: Settings, gradient: "from-teal-500 to-teal-600" },
-    "zestawy-specjalistyczne-milwaukee": { icon: Package, gradient: "from-red-600 to-red-700" },
-    "zestawy-makita": { icon: PackageOpen, gradient: "from-cyan-500 to-cyan-600" },
+    wiertarki: { icon: Drill, gradient: "from-primary to-red-700" },
+    szlifierki: { icon: Disc3, gradient: "from-slate-700 to-slate-900" },
+    klucze: { icon: Wrench, gradient: "from-zinc-700 to-zinc-900" },
+    mloty: { icon: Hammer, gradient: "from-gray-700 to-gray-900" },
+    wozki: { icon: Container, gradient: "from-slate-800 to-black" },
+    zestawy: { icon: Boxes, gradient: "from-primary/90 to-red-800" },
+    pily: { icon: CircleDashed, gradient: "from-neutral-700 to-neutral-900" },
+    lasery: { icon: Ruler, gradient: "from-stone-700 to-stone-900" },
+    akcesoria: { icon: Settings, gradient: "from-gray-800 to-zinc-900" },
+    "zestawy-specjalistyczne-milwaukee": { icon: Package, gradient: "from-primary to-red-900" },
+    "zestawy-makita": { icon: PackageOpen, gradient: "from-slate-600 to-slate-800" },
   };
   
   const categories = [
@@ -188,11 +188,11 @@ export function HomePage({ onAddToCart }: HomePageProps) {
       </section>
 
       {/* Categories Section */}
-      <section className="relative py-16 md:py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 overflow-hidden">
-        {/* Decorative Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }} />
+      <section className="relative py-16 md:py-20 bg-gradient-to-b from-white via-gray-50/50 to-white dark:from-gray-950 dark:to-gray-900 overflow-hidden">
+        {/* Subtle Decorative Elements */}
+        <div className="absolute top-10 right-20 w-96 h-96 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-20 w-80 h-80 bg-gradient-to-tl from-red-500/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-slate-100/40 to-transparent dark:from-slate-800/40 rounded-full blur-3xl" />
         
         <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
