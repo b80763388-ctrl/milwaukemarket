@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import toolsShopLogo from "@assets/tools_shop_sretsensky_transparent_1761595436944.png";
+import toolsShopLogo from "@assets/29f7271b-2d01-45a4-97e1-d56fae6fa3bb__1_-removebg-preview_1761596331644.png";
 import plFlag from "@/assets/flags/pl.png";
 import euFlag from "@/assets/flags/eu.png";
 import usFlag from "@/assets/flags/us.png";
@@ -51,22 +51,20 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-red-500/5 pointer-events-none" />
       
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex h-32 items-center justify-between gap-4">
+        <div className="flex h-32 items-center gap-4">
           {/* Logo */}
           <Link href="/" data-testid="link-home">
-            <div className="relative hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer">
-              {/* Gradient pod logiem */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-red-500/20 to-orange-500/30 rounded-lg blur-md" />
+            <div className="hover-elevate active-elevate-2 px-3 py-2 rounded-md cursor-pointer flex-shrink-0">
               <img 
                 src={toolsShopLogo} 
                 alt="Tools Shop Sretensky" 
-                className="h-28 w-auto relative z-10"
+                className="h-28 w-auto"
               />
             </div>
           </Link>
 
           {/* Flags (decorative) */}
-          <div className="hidden lg:flex items-center gap-2 ml-4">
+          <div className="hidden lg:flex items-center gap-2">
             <div className="opacity-90" data-testid="flag-pl">
               <img src={plFlag} alt="Poland" className="h-5 w-auto rounded shadow-sm" />
             </div>
@@ -79,8 +77,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-2">
-            <nav className="flex items-center gap-2">
+          <nav className="hidden lg:flex items-center gap-2">
             <Link href="/" data-testid="link-nav-home">
               <Button
                 variant={location === "/" ? "default" : "ghost"}
@@ -110,8 +107,10 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
-            </nav>
-          </div>
+          </nav>
+          
+          {/* Spacer */}
+          <div className="flex-1"></div>
 
           {/* Right Side - Contact, Language, Cart & Mobile Menu */}
           <div className="flex items-center gap-2">
