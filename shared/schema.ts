@@ -6,7 +6,8 @@ import { z } from "zod";
 // Products table - Milwaukee tools
 export const products = pgTable("products", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  name: text("name").notNull(),
+  name: text("name").notNull(), // Polish name
+  nameEn: text("name_en"), // English name
   slug: text("slug").notNull().unique(),
   category: text("category").notNull(), // "wiertarki", "szlifierki", "klucze", "mloty", "zestawy"
   description: text("description").notNull(),

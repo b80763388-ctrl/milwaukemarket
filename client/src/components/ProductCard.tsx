@@ -12,7 +12,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, onAddToCart }: ProductCardProps) {
-  const { formatPriceSync, t } = useLanguage();
+  const { formatPriceSync, t, language } = useLanguage();
   const discountPercent = Math.round(
     ((parseFloat(product.originalPrice) - parseFloat(product.exhibitionPrice)) /
       parseFloat(product.originalPrice)) *
@@ -59,7 +59,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
               className="font-semibold text-lg leading-tight line-clamp-2 hover:text-primary transition-colors"
               data-testid="text-product-name"
             >
-              {product.name}
+              {language === 'en' && product.nameEn ? product.nameEn : product.name}
             </h3>
             <p className="text-sm text-muted-foreground" data-testid="text-product-sku">
               SKU: {product.sku}

@@ -70,6 +70,7 @@ export class MemStorage implements IStorage {
       // WIERTARKI M18 FUEL
       {
         name: "M18 FUEL Wiertarko-wkrętarka udarowa FPD3",
+        nameEn: "M18 FUEL Hammer Drill/Driver FPD3",
         slug: "m18-fuel-fpd3-wiertarko-wkretarka",
         category: "wiertarki",
         description:
@@ -97,6 +98,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Wiertarka 1/2\" Drill Driver",
+        nameEn: "M12 FUEL 1/2\" Drill Driver",
         slug: "m12-fuel-wiertarka-drill-driver",
         category: "wiertarki",
         description:
@@ -122,6 +124,7 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Installation Drill/Driver 4-w-1",
+        nameEn: "M12 FUEL 4-in-1 Installation Drill/Driver",
         slug: "m12-fuel-installation-drill-4w1",
         category: "wiertarki",
         description:
@@ -148,6 +151,7 @@ export class MemStorage implements IStorage {
       // KLUCZE UDAROWE
       {
         name: "M18 FUEL Klucz udarowy 1/2\" High Torque",
+        nameEn: "M18 FUEL 1/2\" High Torque Impact Wrench",
         slug: "m18-fuel-klucz-udarowy-12",
         category: "klucze",
         description:
