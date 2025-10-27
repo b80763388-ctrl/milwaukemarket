@@ -45,6 +45,9 @@ I want the agent to use simple language and provide detailed explanations when n
 ## Recent Changes
 
 **2025-10-27 (Latest):** Terms Update + M12 FUEL Stubby Photo Fix + Milwaukee Specialized Sets + Price Updates
+- **Footer Categories Update**: Added both new categories to Footer navigation:
+  - "Zestawy Specjalistyczne Milwaukee" (updated from old "Zestawy Specjalistyczne")
+  - "Zestawy Makita" (newly added)
 - **Terms & Conditions Update**: Added important delivery information to §5:
   - All products sourced from United States (US)
   - All chargers and cable-powered devices equipped with EU standard plugs

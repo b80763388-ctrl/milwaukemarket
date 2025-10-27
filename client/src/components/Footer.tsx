@@ -105,8 +105,13 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/kategoria/zestawy-specjalistyczne" className="hover:text-foreground transition-colors" data-testid="link-footer-zestawy-specjalistyczne">
-                  Zestawy Specjalistyczne
+                <a href="/kategoria/zestawy-specjalistyczne-milwaukee" className="hover:text-foreground transition-colors" data-testid="link-footer-zestawy-specjalistyczne-milwaukee">
+                  Zestawy Specjalistyczne Milwaukee
+                </a>
+              </li>
+              <li>
+                <a href="/kategoria/zestawy-makita" className="hover:text-foreground transition-colors" data-testid="link-footer-zestawy-makita">
+                  Zestawy Makita
                 </a>
               </li>
             </ul>
