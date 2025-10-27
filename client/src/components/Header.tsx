@@ -41,7 +41,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
     { name: t('category.pily'), href: "/kategoria/pily" },
     { name: t('category.lasery'), href: "/kategoria/lasery" },
     { name: t('category.akcesoria'), href: "/kategoria/akcesoria" },
-    { name: t('category.zestawy-specjalistyczne'), href: "/kategoria/zestawy-specjalistyczne" },
+    { name: t('category.zestawy-specjalistyczne-milwaukee'), href: "/kategoria/zestawy-specjalistyczne-milwaukee" },
     { name: t('category.zestawy-makita'), href: "/kategoria/zestawy-makita" },
   ];
 

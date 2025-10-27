@@ -35,7 +35,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
     { name: t('category.pily'), slug: "pily", count: products?.filter(p => p.category === "pily").length || 0 },
     { name: t('category.lasery'), slug: "lasery", count: products?.filter(p => p.category === "lasery").length || 0 },
     { name: t('category.akcesoria'), slug: "akcesoria", count: products?.filter(p => p.category === "akcesoria").length || 0 },
-    { name: t('category.zestawy-specjalistyczne'), slug: "zestawy-specjalistyczne", count: products?.filter(p => p.category === "zestawy-specjalistyczne").length || 0 },
+    { name: t('category.zestawy-specjalistyczne-milwaukee'), slug: "zestawy-specjalistyczne-milwaukee", count: products?.filter(p => p.category === "zestawy-specjalistyczne-milwaukee").length || 0 },
     { name: t('category.zestawy-makita'), slug: "zestawy-makita", count: products?.filter(p => p.category === "zestawy-makita").length || 0 },
   ];
 

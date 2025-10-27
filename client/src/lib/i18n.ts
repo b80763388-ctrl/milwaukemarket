@@ -131,7 +131,7 @@ export const translations = {
     'category.pily': 'Piły',
     'category.lasery': 'Lasery',
     'category.akcesoria': 'Akcesoria',
-    'category.zestawy-specjalistyczne': 'Zestawy Specjalistyczne',
+    'category.zestawy-specjalistyczne-milwaukee': 'Zestawy specjalistyczne Milwaukee',
     'category.zestawy-makita': 'Zestawy Makita',
     
     // Cart
@@ -275,7 +275,7 @@ export const translations = {
     'category.pily': 'Saws',
     'category.lasery': 'Lasers',
     'category.akcesoria': 'Accessories',
-    'category.zestawy-specjalistyczne': 'Specialized Sets',
+    'category.zestawy-specjalistyczne-milwaukee': 'Milwaukee Specialized Sets',
     'category.zestawy-makita': 'Makita Sets',
     
     // Cart
