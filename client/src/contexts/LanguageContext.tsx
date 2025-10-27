@@ -47,21 +47,17 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    // Detect language from IP, but always use PLN for this Polish shop
-    detectCountryFromIP().then(({ country }) => {
+    // Detect language and currency from IP
+    detectCountryFromIP().then(({ country, currency: detectedCurrency }) => {
       const detectedLanguage = getDefaultLanguage(country);
       
-      // This is a Polish shop selling in PLN, always use PLN currency
-      // Users can manually switch language if needed
-      const shopCurrency: Currency = 'PLN';
-      
       setLanguageState(detectedLanguage);
-      setCurrencyState(shopCurrency);
+      setCurrencyState(detectedCurrency);
       localStorage.setItem('language', detectedLanguage);
-      localStorage.setItem('currency', shopCurrency);
+      localStorage.setItem('currency', detectedCurrency);
       setIsInitialized(true);
       
-      console.log('[Language Context] Language:', detectedLanguage, 'Currency:', shopCurrency);
+      console.log('[Language Context] Language:', detectedLanguage, 'Currency:', detectedCurrency);
     });
   }, []);
 

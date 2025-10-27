@@ -12,7 +12,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, onAddToCart }: ProductCardProps) {
-  const { formatPriceSync } = useLanguage();
+  const { formatPriceSync, t } = useLanguage();
   const discountPercent = Math.round(
     ((parseFloat(product.originalPrice) - parseFloat(product.exhibitionPrice)) /
       parseFloat(product.originalPrice)) *
@@ -29,7 +29,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
             className="absolute top-3 left-3 z-10 text-xs font-semibold uppercase tracking-wide"
             data-testid="badge-exhibition"
           >
-            PRODUKT POWYSTAWOWY
+            {t('products.exhibitionBadge')}
           </Badge>
 
           {/* Discount Badge */}
@@ -85,7 +85,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
               {formatPriceSync(parseFloat(product.originalPrice))}
             </span>
             <span className="text-sm font-medium text-destructive">
-              Oszczędzasz {formatPriceSync(parseFloat(product.originalPrice) - parseFloat(product.exhibitionPrice))}
+              {t('products.save')} {formatPriceSync(parseFloat(product.originalPrice) - parseFloat(product.exhibitionPrice))}
             </span>
           </div>
         </div>
@@ -93,11 +93,11 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         {/* Stock Status */}
         {product.inStock ? (
           <Badge variant="secondary" className="text-xs">
-            Dostępny
+            {t('products.available')}
           </Badge>
         ) : (
           <Badge variant="outline" className="text-xs">
-            Brak w magazynie
+            {t('products.outOfStock')}
           </Badge>
         )}
       </CardContent>
@@ -113,7 +113,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           data-testid="button-add-to-cart"
         >
           <ShoppingCart className="mr-2 h-4 w-4" />
-          Dodaj do koszyka
+          {t('products.addToCart')}
         </Button>
       </CardFooter>
     </Card>

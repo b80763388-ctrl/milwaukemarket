@@ -120,6 +120,7 @@ export const translations = {
     'products.originalPrice': 'Cena katalogowa:',
     'products.exhibitionPrice': 'Cena powystawowa:',
     'products.available': 'Dostępny',
+    'products.outOfStock': 'Brak w magazynie',
     
     // Categories
     'category.wiertarki': 'Wiertarki',
@@ -133,6 +134,10 @@ export const translations = {
     'category.akcesoria': 'Akcesoria',
     'category.zestawy-specjalistyczne-milwaukee': 'Zestawy specjalistyczne Milwaukee',
     'category.zestawy-makita': 'Zestawy Makita',
+    'category.back': 'Powrót',
+    'category.productsCount': 'produktów',
+    'category.noProducts': 'Brak produktów w tej kategorii',
+    'category.backHome': 'Wróć do strony głównej',
     
     // Cart
     'cart.title': 'Koszyk',
@@ -263,7 +268,8 @@ export const translations = {
     'products.save': 'You save',
     'products.originalPrice': 'Original price:',
     'products.exhibitionPrice': 'Exhibition price:',
-    'products.available': 'Available - ships in 24h',
+    'products.available': 'Available',
+    'products.outOfStock': 'Out of stock',
     
     // Categories
     'category.wiertarki': 'Drills',
@@ -277,6 +283,10 @@ export const translations = {
     'category.akcesoria': 'Accessories',
     'category.zestawy-specjalistyczne-milwaukee': 'Milwaukee Specialized Sets',
     'category.zestawy-makita': 'Makita Sets',
+    'category.back': 'Back',
+    'category.productsCount': 'products',
+    'category.noProducts': 'No products in this category',
+    'category.backHome': 'Back to Home',
     
     // Cart
     'cart.title': 'Shopping Cart',
