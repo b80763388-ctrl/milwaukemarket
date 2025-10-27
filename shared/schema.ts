@@ -90,6 +90,7 @@ export const chatSessions = pgTable("chat_sessions", {
   status: text("status").notNull().default("active"), // "active" | "closed"
   createdAt: timestamp("created_at").defaultNow().notNull(),
   lastMessageAt: timestamp("last_message_at").defaultNow().notNull(),
+  closedAt: timestamp("closed_at"),
 });
 
 // Chat messages table
@@ -107,6 +108,7 @@ export const insertChatSessionSchema = createInsertSchema(chatSessions).omit({
   id: true,
   createdAt: true,
   lastMessageAt: true,
+  closedAt: true,
 });
 
 export const insertChatMessageSchema = createInsertSchema(chatMessages).omit({

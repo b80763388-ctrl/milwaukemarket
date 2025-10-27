@@ -38,8 +38,11 @@ export interface IStorage {
   createChatSession(session: InsertChatSession): Promise<ChatSession>;
   getChatSession(id: string): Promise<ChatSession | undefined>;
   getAllChatSessions(): Promise<ChatSession[]>;
+  getActiveChatSessions(): Promise<ChatSession[]>;
+  getClosedChatSessions(): Promise<ChatSession[]>;
   updateChatSessionLastMessage(id: string): Promise<void>;
   closeChatSession(id: string): Promise<void>;
+  deleteOldClosedChats(daysOld: number): Promise<number>;
   
   createChatMessage(message: InsertChatMessage): Promise<ChatMessage>;
   getChatMessages(sessionId: string): Promise<ChatMessage[]>;
@@ -1245,6 +1248,7 @@ export class MemStorage implements IStorage {
       status: insertSession.status || "active",
       createdAt: now,
       lastMessageAt: now,
+      closedAt: null,
     };
     this.chatSessions.set(id, session);
     return session;
@@ -1260,6 +1264,22 @@ export class MemStorage implements IStorage {
     );
   }
 
+  async getActiveChatSessions(): Promise<ChatSession[]> {
+    return Array.from(this.chatSessions.values())
+      .filter(session => session.status === "active")
+      .sort((a, b) => b.lastMessageAt.getTime() - a.lastMessageAt.getTime());
+  }
+
+  async getClosedChatSessions(): Promise<ChatSession[]> {
+    return Array.from(this.chatSessions.values())
+      .filter(session => session.status === "closed")
+      .sort((a, b) => {
+        const aTime = a.closedAt?.getTime() || a.lastMessageAt.getTime();
+        const bTime = b.closedAt?.getTime() || b.lastMessageAt.getTime();
+        return bTime - aTime;
+      });
+  }
+
   async updateChatSessionLastMessage(id: string): Promise<void> {
     const session = this.chatSessions.get(id);
     if (session) {
@@ -1272,8 +1292,36 @@ export class MemStorage implements IStorage {
     const session = this.chatSessions.get(id);
     if (session) {
       session.status = "closed";
+      session.closedAt = new Date();
       this.chatSessions.set(id, session);
     }
+  }
+
+  async deleteOldClosedChats(daysOld: number = 2): Promise<number> {
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - daysOld);
+    
+    let deletedCount = 0;
+    
+    // Delete sessions and their messages
+    const sessionsToDelete = Array.from(this.chatSessions.entries())
+      .filter(([_, session]) => session.status === "closed" && session.closedAt && session.closedAt < cutoffDate);
+    
+    for (const [sessionId, _] of sessionsToDelete) {
+      // Delete all messages for this session
+      const messagesToDelete = Array.from(this.chatMessages.entries())
+        .filter(([_, msg]) => msg.sessionId === sessionId);
+      
+      for (const [msgId, _] of messagesToDelete) {
+        this.chatMessages.delete(msgId);
+      }
+      
+      // Delete the session
+      this.chatSessions.delete(sessionId);
+      deletedCount++;
+    }
+    
+    return deletedCount;
   }
 
   async createChatMessage(insertMessage: InsertChatMessage): Promise<ChatMessage> {
