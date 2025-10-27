@@ -82,8 +82,8 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             <nav className="flex items-center gap-2">
               <Link href="/" data-testid="link-nav-home">
                 <Button
-                  variant={location === "/" ? "default" : "ghost"}
-                  className={location === "/" ? "text-sm font-medium bg-primary hover:bg-primary/90" : "text-sm font-medium text-white hover:bg-white/10"}
+                  variant="outline"
+                  className="text-sm font-medium bg-white text-slate-900 border-white hover:bg-gray-100"
                 >
                   {t('nav.home')}
                 </Button>
@@ -117,15 +117,13 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             {/* Phone Icon */}
             <Popover>
               <PopoverTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-white hover:bg-white/10"
+                <button
+                  className="w-10 h-10 rounded-lg bg-slate-800/90 border border-slate-700/50 flex items-center justify-center hover:bg-slate-700/90 transition-colors"
                   data-testid="button-phone"
                   title="Telefon"
                 >
-                  <Phone className="h-5 w-5" />
-                </Button>
+                  <Phone className="h-5 w-5 text-primary" />
+                </button>
               </PopoverTrigger>
               <PopoverContent className="w-auto">
                 <div className="flex flex-col gap-2">
@@ -145,15 +143,13 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             {/* Email Icon */}
             <Popover>
               <PopoverTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-white hover:bg-white/10"
+                <button
+                  className="w-10 h-10 rounded-lg bg-slate-800/90 border border-slate-700/50 flex items-center justify-center hover:bg-slate-700/90 transition-colors"
                   data-testid="button-email"
                   title="Email"
                 >
-                  <Mail className="h-5 w-5" />
-                </Button>
+                  <Mail className="h-5 w-5 text-primary" />
+                </button>
               </PopoverTrigger>
               <PopoverContent className="w-auto">
                 <div className="flex items-center gap-2">
@@ -169,14 +165,12 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
             <LanguageSwitcher />
             
             {/* Cart Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="relative text-white hover:bg-white/10"
+            <button
+              className="relative w-10 h-10 rounded-lg bg-slate-800/90 border border-slate-700/50 flex items-center justify-center hover:bg-slate-700/90 transition-colors"
               onClick={onCartClick}
               data-testid="button-cart"
             >
-              <ShoppingCart className="h-5 w-5" />
+              <ShoppingCart className="h-5 w-5 text-primary" />
               {cartItemCount > 0 && (
                 <Badge
                   variant="destructive"
@@ -186,7 +180,7 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
                   {cartItemCount}
                 </Badge>
               )}
-            </Button>
+            </button>
 
             {/* Mobile Menu Button */}
             <Button
