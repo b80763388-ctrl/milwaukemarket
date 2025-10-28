@@ -24,7 +24,7 @@ export function CartSidebar({
   onUpdateQuantity,
   onRemoveItem,
 }: CartSidebarProps) {
-  const { t, currency } = useLanguage();
+  const { t, language, currency } = useLanguage();
   const [convertedPrices, setConvertedPrices] = useState<{ [key: string]: number }>({});
   const [convertedThreshold, setConvertedThreshold] = useState(500);
   const [convertedShipping, setConvertedShipping] = useState(29.99);
@@ -147,7 +147,7 @@ export function CartSidebar({
                     />
                     <div className="flex-1 space-y-2">
                       <h4 className="font-semibold text-sm leading-tight line-clamp-2">
-                        {item.product.name}
+                        {language === 'en' && item.product.nameEn ? item.product.nameEn : item.product.name}
                       </h4>
                       <div className="flex items-center gap-2">
                         <span className="font-bold text-primary">

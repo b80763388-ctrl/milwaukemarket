@@ -724,7 +724,7 @@ export function CheckoutPage() {
                     />
                     <div className="flex-1 space-y-1">
                       <p className="text-sm font-medium leading-tight line-clamp-2">
-                        {item.product.name}
+                        {language === 'en' && item.product.nameEn ? item.product.nameEn : item.product.name}
                       </p>
                       <p className="text-sm text-muted-foreground">
                         {t('checkout.summary.quantity')} {item.quantity}
@@ -779,33 +779,33 @@ export function CheckoutPage() {
               </div>
             </div>
             <DialogTitle className="text-center text-2xl">
-              Dane do przelewu
+              {t('checkout.transfer.title')}
             </DialogTitle>
             <DialogDescription className="text-center">
-              Zamówienie zostało złożone. Proszę dokonać przelewu na poniższe konto bankowe.
+              {t('checkout.transfer.description')}
             </DialogDescription>
           </DialogHeader>
           
           <div className="space-y-4 py-4">
             <div className="bg-muted/50 rounded-lg p-4 space-y-3">
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Nazwa odbiorcy</p>
+                <p className="text-xs text-muted-foreground mb-1">{t('checkout.transfer.recipient')}</p>
                 <p className="font-semibold">Tools Shop Sp. z o.o.</p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Numer konta</p>
+                <p className="text-xs text-muted-foreground mb-1">{t('checkout.transfer.accountNumber')}</p>
                 <p className="font-mono font-semibold text-sm">
                   PL 12 3456 7890 1234 5678 9012 3456
                 </p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Kwota</p>
+                <p className="text-xs text-muted-foreground mb-1">{t('checkout.transfer.amount')}</p>
                 <p className="font-bold text-lg text-primary">
                   {formatPriceSync(total)}
                 </p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Tytuł przelewu</p>
+                <p className="text-xs text-muted-foreground mb-1">{t('checkout.transfer.title2')}</p>
                 <p className="font-semibold">{orderId}</p>
               </div>
             </div>
@@ -816,10 +816,10 @@ export function CheckoutPage() {
               </svg>
               <div>
                 <p className="font-semibold text-sm text-blue-900 dark:text-blue-100">
-                  Potwierdzenie zamówienia
+                  {t('checkout.transfer.confirmationTitle')}
                 </p>
                 <p className="text-sm text-blue-700 dark:text-blue-300">
-                  Po zaksięgowaniu przelewu otrzymasz wiadomość e-mail z potwierdzeniem i szczegółami dotyczącymi wysyłki.
+                  {t('checkout.transfer.confirmationText')}
                 </p>
               </div>
             </div>
@@ -834,7 +834,7 @@ export function CheckoutPage() {
               className="flex-1"
               data-testid="button-confirm-transfer"
             >
-              Rozumiem
+              {t('checkout.transfer.understand')}
             </Button>
           </div>
         </DialogContent>

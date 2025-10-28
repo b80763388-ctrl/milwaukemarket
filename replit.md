@@ -50,7 +50,29 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-28 (Latest):** Complete UI Internationalization + Reviews Translation
+**2025-10-28 (Latest):** Product Names Translation + Payment Modal + Fulfillment Time Update
+- **Order Summary Product Names Translation**:
+  - Product names in checkout order summary now display in selected language
+  - Product names in cart sidebar also translate correctly
+  - Uses `nameEn` for English, `name` for Polish
+  - All 43 products properly translated throughout checkout flow
+- **Bank Transfer Modal Full Translation**:
+  - "Dane do przelewu" / "Bank Transfer Details"
+  - "Nazwa odbiorcy" / "Recipient name"
+  - "Numer konta" / "Account number"
+  - "Kwota" / "Amount"
+  - "Tytuł przelewu" / "Transfer title"
+  - "Potwierdzenie zamówienia" / "Order confirmation"
+  - Complete bilingual modal for payment instructions
+- **Fulfillment Time Changed to 5-10 Days**:
+  - Updated from "7-14 business days" to "5-10 business days"
+  - Changed in: checkout page, shipping modal, email templates
+  - **NOT changed in Terms page** (kept at 7-14 days as requested)
+  - Both Polish and English versions updated
+- **Files Changed**: `client/src/pages/CheckoutPage.tsx`, `client/src/lib/i18n.ts`, `client/src/components/ShippingPaymentModal.tsx`, `client/src/components/CartSidebar.tsx`
+- **Result**: Complete checkout and payment flow now fully bilingual with updated fulfillment timeline
+
+**2025-10-28 (Earlier):** Complete UI Internationalization + Reviews Translation
 - **"View All Products" Button Fixed**:
   - Changed from invisible outline variant to prominent red button
   - Now clearly visible with Milwaukee red background and shadow
