@@ -144,13 +144,13 @@ export function HomePage({ onAddToCart }: HomePageProps) {
         <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Badge variant="secondary" className="mb-4 bg-white/20 text-white border-white/30">
-              OFERTY SPECJALNE
+              {t('products.featured')}
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading text-white">
-              Wyróżnione Produkty Powystawowe
+              {t('products.featured.title')}
             </h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Najlepsze oferty na profesjonalne narzędzia w wyjątkowych cenach
+              {t('products.featured.subtitle')}
             </p>
           </div>
 
@@ -179,7 +179,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
           <div className="text-center mt-12">
             <Link href="/produkty">
               <Button size="lg" variant="outline" data-testid="button-view-all">
-                Zobacz wszystkie produkty
+                {t('products.viewAll')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>

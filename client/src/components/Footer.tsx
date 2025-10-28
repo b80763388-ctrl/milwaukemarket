@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { ExhibitionProductsModal } from "@/components/ExhibitionProductsModal";
 import { ShippingPaymentModal } from "@/components/ShippingPaymentModal";
+import { useLanguage } from "@/contexts/LanguageContext";
 import blikLogo from "@assets/image_1761428175926.png";
 import visaLogo from "@assets/image_1761428208056.png";
 import mastercardLogo from "@assets/image_1761428253613.png";
@@ -12,6 +13,7 @@ import googlePayLogo from "@assets/image_1761521226301.png";
 import applePayLogo from "@assets/image_1761521274408.png";
 
 export function Footer() {
+  const { t } = useLanguage();
   const [exhibitionModalOpen, setExhibitionModalOpen] = useState(false);
   const [shippingModalOpen, setShippingModalOpen] = useState(false);
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
@@ -33,16 +35,16 @@ export function Footer() {
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold font-heading bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
-                  Bądź na bieżąco z ofertami
+                  {t('footer.newsletter.title')}
                 </h3>
                 <p className="text-gray-300 text-sm md:text-base">
-                  Zapisz się do newslettera i otrzymuj informacje o najnowszych produktach powystawowych
+                  {t('footer.newsletter.text')}
                 </p>
                 {!newsletterSubscribed ? (
                   <div className="flex gap-2 max-w-md mx-auto pt-2">
                     <Input
                       type="email"
-                      placeholder="Twój adres e-mail"
+                      placeholder={t('footer.newsletter.email')}
                       className="flex-1 bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-400 focus-visible:ring-primary"
                       data-testid="input-newsletter-email"
                     />
@@ -52,7 +54,7 @@ export function Footer() {
                       data-testid="button-newsletter-submit"
                     >
                       <Mail className="mr-2 h-4 w-4" />
-                      Zapisz się
+                      {t('footer.newsletter.submit')}
                     </Button>
                   </div>
                 ) : (
@@ -61,9 +63,9 @@ export function Footer() {
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      Dziękujemy za zapisanie się do newslettera!
+                      {t('footer.newsletter.success')}
                     </div>
-                    <p className="text-gray-400 text-sm mt-2">Wkrótce otrzymasz informacje o najlepszych ofertach</p>
+                    <p className="text-gray-400 text-sm mt-2">{t('footer.newsletter.successInfo')}</p>
                   </div>
                 )}
               </div>
@@ -81,67 +83,67 @@ export function Footer() {
               TOOLS SHOP
             </h4>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Profesjonalne narzędzia w atrakcyjnych cenach. Produkty powystawowe z pełną gwarancją producenta.
+              {t('footer.about')}
             </p>
           </div>
 
           {/* Column 2 - Products */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-white mb-4">Produkty</h4>
+            <h4 className="font-semibold text-white mb-4">{t('footer.products')}</h4>
             <ul className="space-y-2.5 text-sm text-gray-400">
               <li>
                 <a href="/kategoria/wiertarki" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-wiertarki">
-                  Wiertarki
+                  {t('category.wiertarki')}
                 </a>
               </li>
               <li>
                 <a href="/kategoria/szlifierki" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-szlifierki">
-                  Szlifierki
+                  {t('category.szlifierki')}
                 </a>
               </li>
               <li>
                 <a href="/kategoria/klucze" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-klucze">
-                  Klucze Udarowe
+                  {t('category.klucze')}
                 </a>
               </li>
               <li>
                 <a href="/kategoria/mloty" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-mloty">
-                  Młoty
+                  {t('category.mloty')}
                 </a>
               </li>
               <li>
                 <a href="/kategoria/wozki" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-wozki">
-                  Wózki Narzędziowe
+                  {t('category.wozki')}
                 </a>
               </li>
               <li>
                 <a href="/kategoria/zestawy" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-zestawy">
-                  Zestawy Narzędzi
+                  {t('category.zestawy')}
                 </a>
               </li>
               <li>
                 <a href="/kategoria/pily" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-pily">
-                  Piły
+                  {t('category.pily')}
                 </a>
               </li>
               <li>
                 <a href="/kategoria/lasery" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-lasery">
-                  Lasery
+                  {t('category.lasery')}
                 </a>
               </li>
               <li>
                 <a href="/kategoria/akcesoria" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-akcesoria">
-                  Akcesoria
+                  {t('category.akcesoria')}
                 </a>
               </li>
               <li>
                 <a href="/kategoria/zestawy-specjalistyczne-milwaukee" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-zestawy-specjalistyczne-milwaukee">
-                  Zestawy Specjalistyczne Milwaukee
+                  {t('category.zestawy-specjalistyczne-milwaukee')}
                 </a>
               </li>
               <li>
                 <a href="/kategoria/zestawy-makita" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-zestawy-makita">
-                  Zestawy Makita
+                  {t('category.zestawy-makita')}
                 </a>
               </li>
             </ul>
@@ -149,7 +151,7 @@ export function Footer() {
 
           {/* Column 3 - Info */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-white mb-4">Informacje</h4>
+            <h4 className="font-semibold text-white mb-4">{t('footer.info')}</h4>
             <ul className="space-y-2.5 text-sm text-gray-400">
               <li>
                 <button
@@ -157,7 +159,7 @@ export function Footer() {
                   className="hover:text-primary hover:translate-x-1 transition-all inline-block text-left"
                   data-testid="link-footer-about-exhibition"
                 >
-                  O produktach powystawowych
+                  {t('footer.exhibitionProducts')}
                 </button>
               </li>
               <li>
@@ -166,7 +168,7 @@ export function Footer() {
                   className="hover:text-primary hover:translate-x-1 transition-all inline-block text-left"
                   data-testid="link-footer-delivery"
                 >
-                  Dostawa i płatności
+                  {t('footer.shipping')}
                 </button>
               </li>
               <li>
@@ -175,17 +177,17 @@ export function Footer() {
                   className="hover:text-primary hover:translate-x-1 transition-all inline-block text-left"
                   data-testid="link-footer-returns"
                 >
-                  Zwroty i reklamacje
+                  {t('footer.returns')}
                 </button>
               </li>
               <li>
                 <a href="/regulamin" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-terms">
-                  Regulamin
+                  {t('footer.terms')}
                 </a>
               </li>
               <li>
                 <a href="/polityka-prywatnosci" className="hover:text-primary hover:translate-x-1 transition-all inline-block" data-testid="link-footer-privacy">
-                  Polityka prywatności
+                  {t('footer.privacy')}
                 </a>
               </li>
             </ul>
@@ -193,7 +195,7 @@ export function Footer() {
 
           {/* Column 4 - Contact */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-white mb-4">Kontakt</h4>
+            <h4 className="font-semibold text-white mb-4">{t('footer.contact')}</h4>
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start gap-3 group">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -201,7 +203,7 @@ export function Footer() {
                 </div>
                 <div>
                   <div className="font-medium text-white">+48 123 456 789</div>
-                  <div className="text-xs text-gray-500">Pn-Pt: 8:00 - 18:00</div>
+                  <div className="text-xs text-gray-500">{t('footer.contact.hours')}</div>
                 </div>
               </li>
               <li className="flex items-start gap-3 group">
@@ -229,10 +231,10 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-gray-400">
           <div className="text-center md:text-left">
-            © {new Date().getFullYear()} Tools Shop. Wszystkie prawa zastrzeżone.
+            © {new Date().getFullYear()} {t('footer.copyright')}
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <span className="text-gray-500">Bezpieczne płatności:</span>
+            <span className="text-gray-500">{t('footer.payments')}</span>
             <div className="flex items-center gap-2">
               <div className="h-10 px-3 bg-white/5 backdrop-blur-sm border border-slate-700/50 rounded-lg flex items-center justify-center hover:bg-white/10 hover:border-slate-600 transition-all" data-testid="payment-visa">
                 <img src={visaLogo} alt="Visa" className="h-5 w-auto object-contain" />
