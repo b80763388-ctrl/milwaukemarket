@@ -14,6 +14,8 @@ import applePayLogo from "@assets/image_1761521274408.png";
 export function Footer() {
   const [exhibitionModalOpen, setExhibitionModalOpen] = useState(false);
   const [shippingModalOpen, setShippingModalOpen] = useState(false);
+  const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
+  
   return (
     <footer className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900 text-white mt-20 overflow-hidden">
       {/* Decorative Background Elements */}
@@ -36,18 +38,34 @@ export function Footer() {
                 <p className="text-gray-300 text-sm md:text-base">
                   Zapisz się do newslettera i otrzymuj informacje o najnowszych produktach powystawowych
                 </p>
-                <div className="flex gap-2 max-w-md mx-auto pt-2">
-                  <Input
-                    type="email"
-                    placeholder="Twój adres e-mail"
-                    className="flex-1 bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-400 focus-visible:ring-primary"
-                    data-testid="input-newsletter-email"
-                  />
-                  <Button className="bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20" data-testid="button-newsletter-submit">
-                    <Mail className="mr-2 h-4 w-4" />
-                    Zapisz się
-                  </Button>
-                </div>
+                {!newsletterSubscribed ? (
+                  <div className="flex gap-2 max-w-md mx-auto pt-2">
+                    <Input
+                      type="email"
+                      placeholder="Twój adres e-mail"
+                      className="flex-1 bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-400 focus-visible:ring-primary"
+                      data-testid="input-newsletter-email"
+                    />
+                    <Button 
+                      onClick={() => setNewsletterSubscribed(true)}
+                      className="bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20" 
+                      data-testid="button-newsletter-submit"
+                    >
+                      <Mail className="mr-2 h-4 w-4" />
+                      Zapisz się
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="pt-4 text-center" data-testid="text-newsletter-success">
+                    <div className="inline-flex items-center gap-2 text-green-400 text-lg font-medium">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Dziękujemy za zapisanie się do newslettera!
+                    </div>
+                    <p className="text-gray-400 text-sm mt-2">Wkrótce otrzymasz informacje o najlepszych ofertach</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
