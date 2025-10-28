@@ -50,7 +50,19 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-28 (Latest):** Checkout Summary Translation Keys Fixed
+**2025-10-28 (Latest):** About Us Button Added to Header Navigation
+- **New Feature - About Us Modal**:
+  - Added clickable "O nas" / "About Us" button in header navigation (next to Categories)
+  - Opens a modal dialog with company information
+  - Content includes: "Operating since 2023", company passion for tools, full contact info
+  - Contact details: phone, email, opening hours
+  - Company address with clickable Google Maps link
+  - Fully bilingual (PL/EN) with all translations
+  - Available on both desktop and mobile navigation
+- **Files Changed**: `client/src/components/Header.tsx`, `client/src/lib/i18n.ts`
+- **Result**: Users can easily access company information and contact details from any page
+
+**2025-10-28 (Earlier):** Checkout Summary Translation Keys Fixed
 - **Issue Resolved**:
   - Fixed missing translation keys in checkout summary section
   - Added `checkout.summary.*` keys to i18n.ts for both PL and EN

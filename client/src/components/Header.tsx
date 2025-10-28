@@ -1,4 +1,4 @@
-import { ShoppingCart, Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
+import { ShoppingCart, Menu, X, ChevronDown, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
@@ -18,6 +18,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Separator } from "@/components/ui/separator";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -28,6 +35,7 @@ interface HeaderProps {
 
 export function Header({ cartItemCount, onCartClick }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [aboutDialogOpen, setAboutDialogOpen] = useState(false);
   const [location] = useLocation();
   const { t } = useLanguage();
 
@@ -109,6 +117,15 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
+              
+              <Button
+                variant="ghost"
+                className="text-sm font-medium text-white hover:bg-white/10"
+                onClick={() => setAboutDialogOpen(true)}
+                data-testid="button-about-us"
+              >
+                {t('nav.aboutUs')}
+              </Button>
             </nav>
           </div>
 
@@ -227,9 +244,105 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
                 </Button>
               </Link>
             ))}
+            
+            <Button
+              variant="ghost"
+              className="w-full justify-start text-white hover:bg-white/10"
+              onClick={() => {
+                setAboutDialogOpen(true);
+                setMobileMenuOpen(false);
+              }}
+              data-testid="button-mobile-about-us"
+            >
+              {t('nav.aboutUs')}
+            </Button>
           </nav>
         )}
       </div>
+
+      {/* About Us Dialog */}
+      <Dialog open={aboutDialogOpen} onOpenChange={setAboutDialogOpen}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-heading">{t('about.title')}</DialogTitle>
+          </DialogHeader>
+          
+          <div className="space-y-4">
+            {/* Since 2023 */}
+            <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
+              <p className="text-lg font-semibold text-primary text-center">
+                {t('about.since')}
+              </p>
+            </div>
+            
+            {/* Description */}
+            <p className="text-muted-foreground leading-relaxed">
+              {t('about.description')}
+            </p>
+            
+            <Separator />
+            
+            {/* Contact Section */}
+            <div className="space-y-3">
+              <h3 className="font-semibold text-lg">{t('about.contact')}</h3>
+              
+              {/* Phone */}
+              <div className="flex items-start gap-3">
+                <Phone className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">{t('about.phone')}</p>
+                  <a href="tel:+48123456789" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    +48 123 456 789
+                  </a>
+                </div>
+              </div>
+              
+              {/* Email */}
+              <div className="flex items-start gap-3">
+                <Mail className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">{t('about.email')}</p>
+                  <a href="mailto:sklep@tools-shop.pl" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    sklep@tools-shop.pl
+                  </a>
+                </div>
+              </div>
+              
+              {/* Opening Hours */}
+              <div className="flex items-start gap-3">
+                <Clock className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">{t('about.hours')}</p>
+                  <p className="text-sm text-muted-foreground">{t('about.hoursWeekday')}</p>
+                  <p className="text-sm text-muted-foreground">{t('about.hoursWeekend')}</p>
+                </div>
+              </div>
+              
+              {/* Address */}
+              <div className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">{t('about.address')}</p>
+                  <p className="text-sm text-muted-foreground">
+                    Tools Shop Sp. z o.o.<br />
+                    ul. Przykładowa 123<br />
+                    00-001 Warszawa, Polska
+                  </p>
+                  <a 
+                    href="https://www.google.com/maps/place/Warsaw,+Poland/@52.2319581,20.7547684,10z" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm text-primary hover:underline mt-1"
+                  >
+                    <MapPin className="h-3 w-3" />
+                    {t('about.viewOnMap')}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </header>
   );
 }

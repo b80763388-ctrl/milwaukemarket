@@ -111,6 +111,7 @@ export const translations = {
     // Header & Navigation
     'nav.home': 'Strona Główna',
     'nav.categories': 'Kategorie',
+    'nav.aboutUs': 'O nas',
     'nav.allProducts': 'Wszystkie Produkty',
     'nav.cart': 'Koszyk',
     
@@ -212,6 +213,19 @@ export const translations = {
     'footer.privacy': 'Polityka prywatności',
     'footer.copyright': 'Tools Shop. Wszystkie prawa zastrzeżone.',
     'footer.payments': 'Bezpieczne płatności:',
+    
+    // About Us
+    'about.title': 'O nas',
+    'about.since': 'Działamy od 2023 roku',
+    'about.description': 'Jesteśmy pasjonatami narzędzi i profesjonalnego sprzętu. Nasza misja to dostarczanie wysokiej jakości produktów powystawowych Milwaukee i Makita w atrakcyjnych cenach. Każde narzędzie jest dokładnie sprawdzone i objęte pełną gwarancją producenta.',
+    'about.contact': 'Kontakt',
+    'about.address': 'Adres firmy',
+    'about.viewOnMap': 'Zobacz na mapie Google',
+    'about.phone': 'Telefon',
+    'about.email': 'Email',
+    'about.hours': 'Godziny otwarcia',
+    'about.hoursWeekday': 'Poniedziałek - Piątek: 8:00 - 18:00',
+    'about.hoursWeekend': 'Sobota - Niedziela: Nieczynne',
     
     // LiveChat
     'chat.title': 'Live Chat',
@@ -350,6 +364,7 @@ export const translations = {
     // Header & Navigation
     'nav.home': 'Home',
     'nav.categories': 'Categories',
+    'nav.aboutUs': 'About Us',
     'nav.allProducts': 'All Products',
     'nav.cart': 'Cart',
     
@@ -451,6 +466,19 @@ export const translations = {
     'footer.privacy': 'Privacy policy',
     'footer.copyright': 'Tools Shop. All rights reserved.',
     'footer.payments': 'Secure payments:',
+    
+    // About Us
+    'about.title': 'About Us',
+    'about.since': 'Operating since 2023',
+    'about.description': 'We are passionate about tools and professional equipment. Our mission is to deliver high-quality Milwaukee and Makita exhibition products at attractive prices. Every tool is thoroughly inspected and covered by full manufacturer warranty.',
+    'about.contact': 'Contact',
+    'about.address': 'Company Address',
+    'about.viewOnMap': 'View on Google Maps',
+    'about.phone': 'Phone',
+    'about.email': 'Email',
+    'about.hours': 'Opening Hours',
+    'about.hoursWeekday': 'Monday - Friday: 8:00 AM - 6:00 PM',
+    'about.hoursWeekend': 'Saturday - Sunday: Closed',
     
     // LiveChat
     'chat.title': 'Live Chat',
