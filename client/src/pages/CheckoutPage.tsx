@@ -31,6 +31,9 @@ import dhlLogo from "@assets/image_1761430977890.png";
 const frontendOrderSchema = insertOrderSchema.omit({
   orderItems: true,
   totalAmount: true,
+}).extend({
+  companyName: z.string().optional(),
+  nip: z.string().optional(),
 });
 
 type CheckoutFormData = z.infer<typeof frontendOrderSchema>;
@@ -46,6 +49,7 @@ export function CheckoutPage() {
   const { language, formatPriceSync } = useLanguage();
   const [sessionId, setSessionId] = useState<string>("");
   const [orderSuccess, setOrderSuccess] = useState(false);
+  const [customerType, setCustomerType] = useState<"individual" | "company">("individual");
   
   // Create schema with localized error messages
   const checkoutFormSchema = frontendOrderSchema.extend({
@@ -59,6 +63,12 @@ export function CheckoutPage() {
     courier: z.enum(["inpost", "dpd", "dhl"], {
       errorMap: () => ({ message: translate("checkout.validation.courierRequired", language) }),
     }),
+    companyName: customerType === "company" 
+      ? z.string().min(2, "Nazwa firmy jest wymagana")
+      : z.string().optional(),
+    nip: customerType === "company"
+      ? z.string().regex(/^\d{10}$/, "NIP musi zawierać 10 cyfr")
+      : z.string().optional(),
   });
 
   useEffect(() => {
@@ -104,6 +114,8 @@ export function CheckoutPage() {
       city: "",
       postalCode: "",
       courier: hasLargeItems ? "dpd" : undefined,
+      companyName: "",
+      nip: "",
     },
   });
 
@@ -226,6 +238,88 @@ export function CheckoutPage() {
             <CardContent>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                  {/* Customer Type Toggle */}
+                  <div className="space-y-3">
+                    <label className="text-sm font-semibold">Typ klienta</label>
+                    <RadioGroup 
+                      value={customerType} 
+                      onValueChange={(value) => setCustomerType(value as "individual" | "company")}
+                      className="grid grid-cols-2 gap-4"
+                    >
+                      <div className={`flex items-center space-x-2 border rounded-lg p-3 cursor-pointer ${customerType === "individual" ? "border-primary bg-primary/5" : "border-border"}`}>
+                        <RadioGroupItem value="individual" id="individual" data-testid="radio-individual" />
+                        <label htmlFor="individual" className="font-medium cursor-pointer flex-1">
+                          Osoba prywatna
+                        </label>
+                      </div>
+                      <div className={`flex items-center space-x-2 border rounded-lg p-3 cursor-pointer ${customerType === "company" ? "border-primary bg-primary/5" : "border-border"}`}>
+                        <RadioGroupItem value="company" id="company" data-testid="radio-company" />
+                        <label htmlFor="company" className="font-medium cursor-pointer flex-1">
+                          Firma
+                        </label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+
+                  {/* Company Fields (conditional) */}
+                  {customerType === "company" && (
+                    <>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="companyName"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Nazwa firmy</FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="Nazwa Sp. z o.o."
+                                  {...field}
+                                  data-testid="input-companyName"
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="nip"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>NIP</FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="1234567890"
+                                  maxLength={10}
+                                  {...field}
+                                  data-testid="input-nip"
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      {/* VAT Invoice Info */}
+                      <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 flex items-start gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div>
+                          <p className="font-semibold text-sm text-blue-900 dark:text-blue-100">
+                            Faktura VAT
+                          </p>
+                          <p className="text-sm text-blue-700 dark:text-blue-300">
+                            Faktura VAT zostanie dołączona do przesyłki z towarem
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  <Separator className="my-4" />
+
                   <div className="grid sm:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
