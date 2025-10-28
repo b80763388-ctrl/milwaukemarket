@@ -262,81 +262,89 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
 
       {/* About Us Dialog */}
       <Dialog open={aboutDialogOpen} onOpenChange={setAboutDialogOpen}>
-        <DialogContent className="sm:max-w-lg">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-heading">{t('about.title')}</DialogTitle>
-          </DialogHeader>
+        <DialogContent className="sm:max-w-lg overflow-hidden relative bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900 border-slate-700">
+          {/* Decorative Background Elements */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-red-500/5 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-32 translate-x-32 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-red-500/10 rounded-full blur-3xl translate-y-32 -translate-x-32 pointer-events-none" />
           
-          <div className="space-y-4">
-            {/* Since 2023 */}
-            <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
-              <p className="text-lg font-semibold text-primary text-center">
-                {t('about.since')}
+          <div className="relative z-10">
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-heading text-white">{t('about.title')}</DialogTitle>
+            </DialogHeader>
+            
+            <div className="space-y-4">
+              {/* Since 2023 */}
+              <div className="relative bg-gradient-to-r from-primary/20 via-primary/10 to-red-500/20 border border-primary/30 rounded-lg p-4 shadow-lg shadow-primary/20">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-red-500/5 rounded-lg blur-xl" />
+                <p className="relative text-lg font-semibold text-primary text-center">
+                  {t('about.since')}
+                </p>
+              </div>
+            
+              {/* Description */}
+              <p className="text-gray-300 leading-relaxed">
+                {t('about.description')}
               </p>
-            </div>
-            
-            {/* Description */}
-            <p className="text-muted-foreground leading-relaxed">
-              {t('about.description')}
-            </p>
-            
-            <Separator />
-            
-            {/* Contact Section */}
-            <div className="space-y-3">
-              <h3 className="font-semibold text-lg">{t('about.contact')}</h3>
               
-              {/* Phone */}
-              <div className="flex items-start gap-3">
-                <Phone className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-sm font-medium">{t('about.phone')}</p>
-                  <a href="tel:+48123456789" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    +48 123 456 789
-                  </a>
+              <Separator className="bg-slate-700" />
+              
+              {/* Contact Section */}
+              <div className="space-y-3">
+                <h3 className="font-semibold text-lg text-white">{t('about.contact')}</h3>
+              
+                {/* Phone */}
+                <div className="flex items-start gap-3 bg-slate-800/30 p-3 rounded-lg border border-slate-700/50">
+                  <Phone className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-medium text-white">{t('about.phone')}</p>
+                    <a href="tel:+48123456789" className="text-sm text-gray-300 hover:text-primary transition-colors">
+                      +48 123 456 789
+                    </a>
+                  </div>
                 </div>
-              </div>
-              
-              {/* Email */}
-              <div className="flex items-start gap-3">
-                <Mail className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-sm font-medium">{t('about.email')}</p>
-                  <a href="mailto:sklep@tools-shop.pl" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    sklep@tools-shop.pl
-                  </a>
+                
+                {/* Email */}
+                <div className="flex items-start gap-3 bg-slate-800/30 p-3 rounded-lg border border-slate-700/50">
+                  <Mail className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-medium text-white">{t('about.email')}</p>
+                    <a href="mailto:sklep@tools-shop.pl" className="text-sm text-gray-300 hover:text-primary transition-colors">
+                      sklep@tools-shop.pl
+                    </a>
+                  </div>
                 </div>
-              </div>
-              
-              {/* Opening Hours */}
-              <div className="flex items-start gap-3">
-                <Clock className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-sm font-medium">{t('about.hours')}</p>
-                  <p className="text-sm text-muted-foreground">{t('about.hoursWeekday')}</p>
-                  <p className="text-sm text-muted-foreground">{t('about.hoursWeekend')}</p>
+                
+                {/* Opening Hours */}
+                <div className="flex items-start gap-3 bg-slate-800/30 p-3 rounded-lg border border-slate-700/50">
+                  <Clock className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-medium text-white">{t('about.hours')}</p>
+                    <p className="text-sm text-gray-300">{t('about.hoursWeekday')}</p>
+                    <p className="text-sm text-gray-300">{t('about.hoursWeekend')}</p>
+                  </div>
                 </div>
-              </div>
-              
-              {/* Address */}
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-sm font-medium">{t('about.address')}</p>
-                  <p className="text-sm text-muted-foreground">
-                    Tools Shop Sp. z o.o.<br />
-                    ul. Przykładowa 123<br />
-                    00-001 Warszawa, Polska
-                  </p>
-                  <a 
-                    href="https://www.google.com/maps/place/Warsaw,+Poland/@52.2319581,20.7547684,10z" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-sm text-primary hover:underline mt-1"
-                  >
-                    <MapPin className="h-3 w-3" />
-                    {t('about.viewOnMap')}
-                  </a>
+                
+                {/* Address */}
+                <div className="flex items-start gap-3 bg-slate-800/30 p-3 rounded-lg border border-slate-700/50">
+                  <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-medium text-white">{t('about.address')}</p>
+                    <p className="text-sm text-gray-300">
+                      Tools Shop Sp. z o.o.<br />
+                      ul. Przykładowa 123<br />
+                      00-001 Warszawa, Polska
+                    </p>
+                    <a 
+                      href="https://www.google.com/maps/place/Warsaw,+Poland/@52.2319581,20.7547684,10z" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm text-primary hover:underline mt-1"
+                    >
+                      <MapPin className="h-3 w-3" />
+                      {t('about.viewOnMap')}
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
