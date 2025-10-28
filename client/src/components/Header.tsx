@@ -262,18 +262,17 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
 
       {/* About Us Dialog */}
       <Dialog open={aboutDialogOpen} onOpenChange={setAboutDialogOpen}>
-        <DialogContent className="sm:max-w-lg overflow-hidden relative bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900 border-slate-700">
+        <DialogContent className="sm:max-w-lg overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900 border-slate-700">
           {/* Decorative Background Elements */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-red-500/5 pointer-events-none" />
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-32 translate-x-32 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-red-500/10 rounded-full blur-3xl translate-y-32 -translate-x-32 pointer-events-none" />
           
-          <div className="relative z-10">
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-heading text-white">{t('about.title')}</DialogTitle>
-            </DialogHeader>
-            
-            <div className="space-y-4">
+          <DialogHeader className="relative z-10">
+            <DialogTitle className="text-2xl font-heading text-white">{t('about.title')}</DialogTitle>
+          </DialogHeader>
+          
+          <div className="space-y-4 relative z-10">
               {/* Since 2023 */}
               <div className="relative bg-gradient-to-r from-primary/20 via-primary/10 to-red-500/20 border border-primary/30 rounded-lg p-4 shadow-lg shadow-primary/20">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-red-500/5 rounded-lg blur-xl" />
@@ -347,7 +346,6 @@ export function Header({ cartItemCount, onCartClick }: HeaderProps) {
                   </div>
                 </div>
               </div>
-            </div>
           </div>
         </DialogContent>
       </Dialog>
