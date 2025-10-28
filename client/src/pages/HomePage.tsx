@@ -63,7 +63,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
           <img
             src={heroImage}
             alt="Tools Shop Workshop"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/50" />
         </div>

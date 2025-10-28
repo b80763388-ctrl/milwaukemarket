@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translate } from "@/lib/i18n";
@@ -65,6 +66,7 @@ export function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState<"online" | "transfer">("online");
   const [transferModalOpen, setTransferModalOpen] = useState(false);
   const [orderId, setOrderId] = useState<string>("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
   
   // Create schema with localized error messages
   const checkoutFormSchema = frontendOrderSchema.extend({
@@ -688,12 +690,38 @@ export function CheckoutPage() {
                     </RadioGroup>
                   </div>
 
+                  {/* Terms Acceptance */}
+                  <div className="pt-2 pb-2 border-t">
+                    <div className="flex items-start gap-3">
+                      <Checkbox
+                        id="terms"
+                        checked={termsAccepted}
+                        onCheckedChange={(checked) => setTermsAccepted(checked as boolean)}
+                        data-testid="checkbox-terms"
+                      />
+                      <label
+                        htmlFor="terms"
+                        className="text-sm leading-tight cursor-pointer"
+                      >
+                        {t('checkout.acceptTerms')}{' '}
+                        <Link href="/regulamin" className="text-primary hover:underline font-medium">
+                          {t('checkout.termsLink')}
+                        </Link>
+                      </label>
+                    </div>
+                    {!termsAccepted && form.formState.isSubmitted && (
+                      <p className="text-sm text-destructive mt-2">
+                        {t('checkout.acceptTermsRequired')}
+                      </p>
+                    )}
+                  </div>
+
                   <div className="pt-2">
                     <Button
                       type="submit"
                       className="w-full"
                       size="lg"
-                      disabled={createOrderMutation.isPending}
+                      disabled={createOrderMutation.isPending || !termsAccepted}
                       data-testid="button-place-order"
                     >
                       {createOrderMutation.isPending
