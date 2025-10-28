@@ -276,7 +276,7 @@ export function CheckoutPage() {
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                   {/* Customer Type Toggle */}
                   <div className="space-y-3">
-                    <label className="text-sm font-semibold">Typ klienta</label>
+                    <label className="text-sm font-semibold">{t('checkout.customerType')}</label>
                     <RadioGroup 
                       value={customerType} 
                       onValueChange={(value) => setCustomerType(value as "individual" | "company")}
@@ -681,7 +681,7 @@ export function CheckoutPage() {
                             <span className="font-medium">{t('checkout.paymentBankTransfer')}</span>
                           </div>
                           <p className="text-sm text-muted-foreground">
-                            Dane do przelewu zostaną wyświetlone po złożeniu zamówienia
+                            {t('checkout.paymentBankTransferNote')}
                           </p>
                         </label>
                       </div>
