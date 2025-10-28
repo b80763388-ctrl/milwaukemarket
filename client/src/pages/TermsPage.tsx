@@ -136,7 +136,7 @@ export function TermsPage() {
         {
           title: "§4 Prices and Payments",
           items: [
-            "All prices in the store are given in Polish zloty (PLN) and include VAT.",
+            "All prices in the store are given in Euro (EUR) and include VAT.",
             "For customers from other countries, prices are automatically converted to the appropriate currency at the current exchange rate.",
             "The store accepts the following payment methods: credit cards (Visa, Mastercard), BLIK.",
             "Payments are processed by trusted payment systems while maintaining the highest security standards.",

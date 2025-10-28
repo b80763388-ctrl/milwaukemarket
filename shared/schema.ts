@@ -63,7 +63,7 @@ export const orders = pgTable("orders", {
   address: text("address").notNull(),
   city: text("city").notNull(),
   postalCode: text("postal_code").notNull(),
-  courier: text("courier").notNull(), // "inpost" | "dpd" | "dhl"
+  courier: text("courier").notNull(), // "inpost" | "dpd" | "dhl" | "gls" | "ups"
   orderItems: json("order_items").notNull(),
   totalAmount: decimal("total_amount", { precision: 10, scale: 2 }).notNull(),
   language: text("language").default("pl"), // "pl" | "en"
@@ -79,7 +79,7 @@ export const insertOrderSchema = createInsertSchema(orders).omit({
   email: z.string().email(),
   phone: z.string().min(9),
   postalCode: z.string().regex(/^\d{2}-\d{3}$/),
-  courier: z.enum(["inpost", "dpd", "dhl"]),
+  courier: z.enum(["inpost", "dpd", "dhl", "gls", "ups"]),
 });
 
 // Types

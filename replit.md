@@ -50,7 +50,32 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-28 (Latest):** Fulfillment Time Updated to 5-10 Days Site-Wide
+**2025-10-28 (Latest):** GLS & UPS Couriers Added + Company Checkout Translation
+- **New Courier Options Added**:
+  - Added GLS and UPS to available courier options
+  - Total of 5 couriers: InPost, DPD, DHL, GLS, UPS
+  - Courier logos displayed on checkout page
+  - Fully bilingual support (PL/EN)
+  - Database schema updated to support new couriers
+- **Files Changed**: `shared/schema.ts`, `client/src/lib/i18n.ts`, `client/src/pages/CheckoutPage.tsx`
+- **Assets Added**: GLS logo (`image_1761659833145.png`), UPS logo (`image_1761659857194.png`)
+- **Result**: Customers now have more delivery options with professional courier services
+
+**2025-10-28 (Earlier):** Company Checkout Translation + Terms Page EUR Update
+- **Company Fields Fully Translated on Checkout**:
+  - "Nazwa firmy" / "Company name" with proper placeholders
+  - "NIP" (Poland) / "VAT Number" (International) - appropriate for EU customers
+  - VAT invoice note: "Faktura VAT zostanie dołączona do przesyłki" / "VAT invoice will be included with the shipment"
+  - Validation messages translated using i18n keys
+  - Removed NIP length restriction (was 10 digits) to support international VAT numbers
+- **Terms Page Currency Updated**:
+  - English version: Changed from "Polish zloty (PLN)" to "Euro (EUR)"
+  - Aligns with international customer base
+  - Polish version remains PLN
+- **Files Changed**: `client/src/lib/i18n.ts`, `client/src/pages/CheckoutPage.tsx`, `client/src/pages/TermsPage.tsx`
+- **Result**: Complete bilingual support for B2B checkout with proper EU VAT number handling
+
+**2025-10-28 (Earlier):** Fulfillment Time Updated to 5-10 Days Site-Wide
 - **Email Template Updated**:
   - Polish: "Czas realizacji: 5-10 dni roboczych"
   - English: "Fulfillment time: 5-10 business days"

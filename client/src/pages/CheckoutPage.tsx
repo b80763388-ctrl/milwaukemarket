@@ -27,6 +27,8 @@ import { z } from "zod";
 import inpostLogo from "@assets/image_1761430943388.png";
 import dpdLogo from "@assets/image_1761430962953.png";
 import dhlLogo from "@assets/image_1761430977890.png";
+import glsLogo from "@assets/image_1761659833145.png";
+import upsLogo from "@assets/image_1761659857194.png";
 import blikLogo from "@assets/image_1761428175926.png";
 import visaLogo from "@assets/image_1761428208056.png";
 import mastercardLogo from "@assets/image_1761428253613.png";
@@ -77,14 +79,14 @@ export function CheckoutPage() {
     address: z.string().min(5, translate("checkout.validation.minLength", language)),
     city: z.string().min(2, translate("checkout.validation.minLength", language)),
     postalCode: z.string().regex(/^\d{2}-\d{3}$/, translate("checkout.validation.postalCodeFormat", language)),
-    courier: z.enum(["inpost", "dpd", "dhl"], {
+    courier: z.enum(["inpost", "dpd", "dhl", "gls", "ups"], {
       errorMap: () => ({ message: translate("checkout.validation.courierRequired", language) }),
     }),
     companyName: customerType === "company" 
-      ? z.string().min(2, "Nazwa firmy jest wymagana")
+      ? z.string().min(2, translate("checkout.validation.minLength", language))
       : z.string().optional(),
     nip: customerType === "company"
-      ? z.string().regex(/^\d{10}$/, "NIP musi zawierać 10 cyfr")
+      ? z.string().min(8, translate("checkout.validation.minLength", language))
       : z.string().optional(),
   });
 
@@ -308,10 +310,10 @@ export function CheckoutPage() {
                           name="companyName"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Nazwa firmy</FormLabel>
+                              <FormLabel>{t('checkout.companyName')}</FormLabel>
                               <FormControl>
                                 <Input
-                                  placeholder="Nazwa Sp. z o.o."
+                                  placeholder={t('checkout.companyNamePlaceholder')}
                                   {...field}
                                   data-testid="input-companyName"
                                 />
@@ -325,11 +327,10 @@ export function CheckoutPage() {
                           name="nip"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>NIP</FormLabel>
+                              <FormLabel>{t('checkout.nip')}</FormLabel>
                               <FormControl>
                                 <Input
-                                  placeholder="1234567890"
-                                  maxLength={10}
+                                  placeholder={t('checkout.nipPlaceholder')}
                                   {...field}
                                   data-testid="input-nip"
                                 />
@@ -340,18 +341,10 @@ export function CheckoutPage() {
                         />
                       </div>
                       {/* VAT Invoice Info */}
-                      <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 flex items-start gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <div>
-                          <p className="font-semibold text-sm text-blue-900 dark:text-blue-100">
-                            Faktura VAT
-                          </p>
-                          <p className="text-sm text-blue-700 dark:text-blue-300">
-                            Faktura VAT zostanie dołączona do przesyłki z towarem
-                          </p>
-                        </div>
+                      <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3">
+                        <p className="text-sm text-blue-900 dark:text-blue-100">
+                          {t('checkout.vatInvoiceNote')}
+                        </p>
                       </div>
                     </>
                   )}
@@ -576,6 +569,48 @@ export function CheckoutPage() {
                                 />
                                 <p className="font-medium">
                                   {translate("checkout.courierDhl", language)}
+                                </p>
+                              </label>
+                            </div>
+
+                            <div className="flex items-center space-x-3 border rounded-lg p-3 hover-elevate">
+                              <RadioGroupItem
+                                value="gls"
+                                id="gls"
+                                data-testid="radio-gls"
+                              />
+                              <label
+                                htmlFor="gls"
+                                className="flex items-center gap-3 flex-1 cursor-pointer"
+                              >
+                                <img
+                                  src={glsLogo}
+                                  alt="GLS"
+                                  className="h-8 w-auto object-contain"
+                                />
+                                <p className="font-medium">
+                                  {translate("checkout.courierGls", language)}
+                                </p>
+                              </label>
+                            </div>
+
+                            <div className="flex items-center space-x-3 border rounded-lg p-3 hover-elevate">
+                              <RadioGroupItem
+                                value="ups"
+                                id="ups"
+                                data-testid="radio-ups"
+                              />
+                              <label
+                                htmlFor="ups"
+                                className="flex items-center gap-3 flex-1 cursor-pointer"
+                              >
+                                <img
+                                  src={upsLogo}
+                                  alt="UPS"
+                                  className="h-8 w-auto object-contain"
+                                />
+                                <p className="font-medium">
+                                  {translate("checkout.courierUps", language)}
                                 </p>
                               </label>
                             </div>
