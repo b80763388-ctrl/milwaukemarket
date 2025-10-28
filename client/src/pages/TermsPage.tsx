@@ -55,7 +55,7 @@ export function TermsPage() {
             "Koszt dostawy wynosi 29 zł. Darmowa dostawa przysługuje przy zamówieniach powyżej 500 zł.",
             "Klient otrzymuje powiadomienie SMS z informacją o planowanej dostawie.",
             "Dostawa odbywa się pod wskazany adres, bezpośrednio do rąk odbiorcy.",
-            "Standardowy czas realizacji zamówienia wynosi od 7 do 14 dni roboczych.",
+            "Standardowy czas realizacji zamówienia wynosi od 5 do 10 dni roboczych.",
             "Maksymalny czas dostawy wynosi do 28 dni od daty wysłania zamówienia."
           ]
         },
@@ -151,7 +151,7 @@ export function TermsPage() {
             "Delivery cost is €7. Free delivery is available for orders over €115.",
             "The customer receives an SMS notification with information about the planned delivery.",
             "Delivery is made to the specified address, directly to the recipient.",
-            "Standard order fulfillment time is 7 to 14 business days.",
+            "Standard order fulfillment time is 5 to 10 business days.",
             "Maximum delivery time is up to 28 days from the date of shipment."
           ]
         },

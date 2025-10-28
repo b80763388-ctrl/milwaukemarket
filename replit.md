@@ -50,7 +50,19 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-28 (Latest):** Terms Acceptance + Mobile Hero Optimization
+**2025-10-28 (Latest):** Fulfillment Time Updated to 5-10 Days Site-Wide
+- **Email Template Updated**:
+  - Polish: "Czas realizacji: 5-10 dni roboczych"
+  - English: "Fulfillment time: 5-10 business days"
+  - Updated in order confirmation emails
+- **Terms Page Updated**:
+  - Polish: "Standardowy czas realizacji zamówienia wynosi od 5 do 10 dni roboczych"
+  - English: "Standard order fulfillment time is 5 to 10 business days"
+  - Updated in §5 Delivery section
+- **Files Changed**: `server/email.ts`, `client/src/pages/TermsPage.tsx`
+- **Result**: All fulfillment time references now consistently show 5-10 business days across entire site
+
+**2025-10-28 (Earlier):** Terms Acceptance + Mobile Hero Optimization
 - **Terms and Conditions Checkbox Added to Checkout**:
   - Required checkbox with link to terms page (/regulamin)
   - User must accept terms before placing order
