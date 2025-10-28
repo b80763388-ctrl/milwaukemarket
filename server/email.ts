@@ -150,7 +150,7 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData): Promise<
 
   try {
     const result = await resend.emails.send({
-      from: 'Tools Shop <onboarding@resend.dev>', // W przyszłości zmień na własną domenę
+      from: 'Tools Shop <zamowienia@tools-shop-sretensky.com>',
       to: order.email,
       subject: `✓ Potwierdzenie zamówienia #${order.id.substring(0, 8).toUpperCase()} - Tools Shop`,
       html: htmlContent,
