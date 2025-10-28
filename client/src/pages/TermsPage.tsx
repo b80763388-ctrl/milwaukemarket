@@ -201,21 +201,21 @@ export function TermsPage() {
   const t = content[language];
 
   return (
-    <div className="min-h-screen py-12">
+    <div className="min-h-screen py-12 bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900">
       <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="space-y-8">
           <div>
-            <h1 className="text-4xl font-bold font-heading mb-2">{t.title}</h1>
-            <p className="text-sm text-muted-foreground">{t.lastUpdate}</p>
+            <h1 className="text-4xl font-bold font-heading mb-2 text-white">{t.title}</h1>
+            <p className="text-sm text-gray-400">{t.lastUpdate}</p>
           </div>
 
           <div className="space-y-8">
             {t.sections.map((section, index) => (
               <div key={index} className="space-y-4">
-                <h2 className="text-2xl font-semibold font-heading">{section.title}</h2>
+                <h2 className="text-2xl font-semibold font-heading text-white">{section.title}</h2>
                 <ol className="space-y-3 list-decimal list-inside">
                   {section.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="text-muted-foreground leading-relaxed pl-2">
+                    <li key={itemIndex} className="text-gray-300 leading-relaxed pl-2">
                       {item}
                     </li>
                   ))}
@@ -224,11 +224,11 @@ export function TermsPage() {
             ))}
           </div>
 
-          <div className="mt-12 p-6 bg-muted rounded-lg">
-            <h3 className="font-semibold mb-2">
+          <div className="mt-12 p-6 bg-slate-800/50 border border-slate-700 rounded-lg">
+            <h3 className="font-semibold mb-2 text-white">
               {language === 'pl' ? 'Kontakt' : 'Contact'}
             </h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-300">
               Tools Shop Sp. z o.o.<br />
               ul. Przykładowa 123<br />
               00-001 Warszawa, Polska<br />

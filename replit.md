@@ -50,7 +50,18 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-28 (Latest):** GLS & UPS Couriers Added + Company Checkout Translation
+**2025-10-28 (Latest):** Terms & Privacy Pages Readability Improved
+- **Enhanced Text Visibility**:
+  - Changed from dark gray text (`text-muted-foreground`) to bright white/gray
+  - Headings: `text-white` for maximum contrast
+  - Body text: `text-gray-300` for excellent readability
+  - Dates: `text-gray-400` for subtle contrast
+  - Added gradient background: `from-slate-900 via-gray-900 to-zinc-900`
+  - Contact cards: Semi-transparent slate background with border
+- **Files Changed**: `client/src/pages/TermsPage.tsx`, `client/src/pages/PrivacyPage.tsx`
+- **Result**: Terms and Privacy pages now have excellent readability on dark background
+
+**2025-10-28 (Earlier):** GLS & UPS Couriers Added + Company Checkout Translation
 - **New Courier Options Added**:
   - Added GLS and UPS to available courier options
   - Total of 5 couriers: InPost, DPD, DHL, GLS, UPS
