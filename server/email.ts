@@ -3,6 +3,68 @@ import type { Order } from '@shared/schema';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+type Language = 'pl' | 'en';
+type Currency = 'PLN' | 'EUR';
+
+const emailTranslations = {
+  pl: {
+    subject: 'Potwierdzenie zamówienia',
+    headerSubtitle: 'Profesjonalne narzędzia Milwaukee & Makita',
+    orderAccepted: 'Zamówienie Przyjęte!',
+    thankYou: 'Dziękujemy za zakupy w Tools Shop',
+    orderDetails: 'Szczegóły Zamówienia',
+    orderNumber: 'Numer zamówienia:',
+    orderDate: 'Data złożenia:',
+    status: 'Status:',
+    statusPending: 'Oczekuje na płatność',
+    orderedProducts: 'Zamówione Produkty',
+    product: 'Produkt',
+    quantity: 'Ilość',
+    price: 'Cena',
+    totalToPay: 'RAZEM DO ZAPŁATY:',
+    shippingData: 'Dane Do Wysyłki',
+    courier: 'Kurier:',
+    fulfillmentTime: '⏰ Czas realizacji: 7-14 dni roboczych od momentu złożenia zamówienia. Wszystkie produkty są sprowadzane z EU oraz US.',
+    whatNext: 'Co Dalej?',
+    step1: 'Oczekujemy na płatność',
+    step2: 'Po zaksięgowaniu płatności rozpoczniemy proces realizacji',
+    step3: 'Otrzymasz potwierdzenie wysyłki z numerem przesyłki',
+    step4: 'Kurier dostarczy paczkę na wyznaczony adres',
+    warranty: '🛡️ Gwarancja: Wszystkie produkty objęte są 12-miesięczną gwarancją Milwaukee/Makita. Produkty powystawowe w bardzo dobrym stanie technicznym.',
+    questions: 'Masz pytania? Skontaktuj się z nami:',
+    contactInfo: '📧 sklep@tools-shop.pl | ☎️ +48 123 456 789 lub przez chat na stronie',
+    copyright: 'Tools Shop - Profesjonalne narzędzia w atrakcyjnych cenach',
+  },
+  en: {
+    subject: 'Order Confirmation',
+    headerSubtitle: 'Professional Milwaukee & Makita Tools',
+    orderAccepted: 'Order Accepted!',
+    thankYou: 'Thank you for shopping at Tools Shop',
+    orderDetails: 'Order Details',
+    orderNumber: 'Order number:',
+    orderDate: 'Order date:',
+    status: 'Status:',
+    statusPending: 'Awaiting payment',
+    orderedProducts: 'Ordered Products',
+    product: 'Product',
+    quantity: 'Quantity',
+    price: 'Price',
+    totalToPay: 'TOTAL TO PAY:',
+    shippingData: 'Shipping Information',
+    courier: 'Courier:',
+    fulfillmentTime: '⏰ Fulfillment time: 7-14 business days from order placement. All products are sourced from EU and US.',
+    whatNext: 'What\'s Next?',
+    step1: 'We are waiting for payment',
+    step2: 'After payment confirmation, we will start order processing',
+    step3: 'You will receive shipping confirmation with tracking number',
+    step4: 'Courier will deliver the package to your address',
+    warranty: '🛡️ Warranty: All products come with 12-month Milwaukee/Makita warranty. Exhibition products in excellent technical condition.',
+    questions: 'Have questions? Contact us:',
+    contactInfo: '📧 sklep@tools-shop.pl | ☎️ +48 123 456 789 or via chat on website',
+    copyright: 'Tools Shop - Professional tools at attractive prices',
+  },
+};
+
 interface OrderEmailData {
   order: Order;
   products: Array<{
@@ -10,17 +72,24 @@ interface OrderEmailData {
     quantity: number;
     price: string;
   }>;
+  language?: Language;
+  currency?: Currency;
 }
 
 export async function sendOrderConfirmationEmail(data: OrderEmailData): Promise<void> {
-  const { order, products } = data;
+  const { order, products, language = 'pl', currency = 'PLN' } = data;
+  const t = emailTranslations[language];
+  
+  // Currency symbol
+  const currencySymbol = currency === 'PLN' ? 'zł' : '€';
+  const locale = language === 'pl' ? 'pl-PL' : 'en-US';
   
   // Format products list for email
   const productsHtml = products.map(p => `
     <tr style="border-bottom: 1px solid #e5e7eb;">
       <td style="padding: 12px 8px;">${p.name}</td>
       <td style="padding: 12px 8px; text-align: center;">${p.quantity}</td>
-      <td style="padding: 12px 8px; text-align: right; font-weight: 600;">${p.price} zł</td>
+      <td style="padding: 12px 8px; text-align: right; font-weight: 600;">${p.price} ${currencySymbol}</td>
     </tr>
   `).join('');
 
@@ -35,28 +104,28 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData): Promise<
         <!-- Header -->
         <div style="background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%); color: white; padding: 30px 20px; text-align: center; border-radius: 8px 8px 0 0;">
           <h1 style="margin: 0; font-size: 28px; font-weight: bold;">TOOLS SHOP</h1>
-          <p style="margin: 8px 0 0 0; font-size: 14px; opacity: 0.9;">Profesjonalne narzędzia Milwaukee & Makita</p>
+          <p style="margin: 8px 0 0 0; font-size: 14px; opacity: 0.9;">${t.headerSubtitle}</p>
         </div>
 
         <!-- Main Content -->
         <div style="background: #ffffff; padding: 30px 20px; border: 1px solid #e5e7eb; border-top: none;">
           <!-- Success Message -->
           <div style="background: #d1fae5; border: 2px solid #10b981; border-radius: 8px; padding: 20px; margin-bottom: 30px; text-align: center;">
-            <h2 style="color: #065f46; margin: 0 0 8px 0; font-size: 24px;">✓ Zamówienie Przyjęte!</h2>
-            <p style="color: #047857; margin: 0; font-size: 16px;">Dziękujemy za zakupy w Tools Shop</p>
+            <h2 style="color: #065f46; margin: 0 0 8px 0; font-size: 24px;">✓ ${t.orderAccepted}</h2>
+            <p style="color: #047857; margin: 0; font-size: 16px;">${t.thankYou}</p>
           </div>
 
           <!-- Order Info -->
           <div style="margin-bottom: 30px;">
-            <h3 style="color: #b91c1c; margin: 0 0 16px 0; font-size: 18px; border-bottom: 2px solid #b91c1c; padding-bottom: 8px;">Szczegóły Zamówienia</h3>
+            <h3 style="color: #b91c1c; margin: 0 0 16px 0; font-size: 18px; border-bottom: 2px solid #b91c1c; padding-bottom: 8px;">${t.orderDetails}</h3>
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
-                <td style="padding: 8px 0; color: #6b7280;">Numer zamówienia:</td>
+                <td style="padding: 8px 0; color: #6b7280;">${t.orderNumber}</td>
                 <td style="padding: 8px 0; text-align: right; font-weight: 600; font-family: monospace;">#${order.id.substring(0, 8).toUpperCase()}</td>
               </tr>
               <tr>
-                <td style="padding: 8px 0; color: #6b7280;">Data złożenia:</td>
-                <td style="padding: 8px 0; text-align: right; font-weight: 600;">${new Date(order.createdAt).toLocaleDateString('pl-PL', { 
+                <td style="padding: 8px 0; color: #6b7280;">${t.orderDate}</td>
+                <td style="padding: 8px 0; text-align: right; font-weight: 600;">${new Date(order.createdAt).toLocaleDateString(locale, { 
                   year: 'numeric', 
                   month: 'long', 
                   day: 'numeric',
@@ -65,9 +134,9 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData): Promise<
                 })}</td>
               </tr>
               <tr>
-                <td style="padding: 8px 0; color: #6b7280;">Status:</td>
+                <td style="padding: 8px 0; color: #6b7280;">${t.status}</td>
                 <td style="padding: 8px 0; text-align: right;">
-                  <span style="background: #fef3c7; color: #92400e; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">Oczekuje na płatność</span>
+                  <span style="background: #fef3c7; color: #92400e; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">${t.statusPending}</span>
                 </td>
               </tr>
             </table>
@@ -75,13 +144,13 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData): Promise<
 
           <!-- Products -->
           <div style="margin-bottom: 30px;">
-            <h3 style="color: #b91c1c; margin: 0 0 16px 0; font-size: 18px; border-bottom: 2px solid #b91c1c; padding-bottom: 8px;">Zamówione Produkty</h3>
+            <h3 style="color: #b91c1c; margin: 0 0 16px 0; font-size: 18px; border-bottom: 2px solid #b91c1c; padding-bottom: 8px;">${t.orderedProducts}</h3>
             <table style="width: 100%; border-collapse: collapse; border: 1px solid #e5e7eb; border-radius: 8px;">
               <thead>
                 <tr style="background: #f9fafb; border-bottom: 2px solid #e5e7eb;">
-                  <th style="padding: 12px 8px; text-align: left; font-weight: 600; color: #374151;">Produkt</th>
-                  <th style="padding: 12px 8px; text-align: center; font-weight: 600; color: #374151;">Ilość</th>
-                  <th style="padding: 12px 8px; text-align: right; font-weight: 600; color: #374151;">Cena</th>
+                  <th style="padding: 12px 8px; text-align: left; font-weight: 600; color: #374151;">${t.product}</th>
+                  <th style="padding: 12px 8px; text-align: center; font-weight: 600; color: #374151;">${t.quantity}</th>
+                  <th style="padding: 12px 8px; text-align: right; font-weight: 600; color: #374151;">${t.price}</th>
                 </tr>
               </thead>
               <tbody>
@@ -89,8 +158,8 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData): Promise<
               </tbody>
               <tfoot>
                 <tr style="background: #f9fafb; border-top: 2px solid #b91c1c;">
-                  <td colspan="2" style="padding: 16px 8px; font-weight: 600; font-size: 16px;">RAZEM DO ZAPŁATY:</td>
-                  <td style="padding: 16px 8px; text-align: right; font-weight: bold; font-size: 18px; color: #b91c1c;">${order.totalAmount} zł</td>
+                  <td colspan="2" style="padding: 16px 8px; font-weight: 600; font-size: 16px;">${t.totalToPay}</td>
+                  <td style="padding: 16px 8px; text-align: right; font-weight: bold; font-size: 18px; color: #b91c1c;">${order.totalAmount} ${currencySymbol}</td>
                 </tr>
               </tfoot>
             </table>
@@ -98,50 +167,50 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData): Promise<
 
           <!-- Delivery Info -->
           <div style="margin-bottom: 30px;">
-            <h3 style="color: #b91c1c; margin: 0 0 16px 0; font-size: 18px; border-bottom: 2px solid #b91c1c; padding-bottom: 8px;">Dane Do Wysyłki</h3>
+            <h3 style="color: #b91c1c; margin: 0 0 16px 0; font-size: 18px; border-bottom: 2px solid #b91c1c; padding-bottom: 8px;">${t.shippingData}</h3>
             <div style="background: #f9fafb; padding: 16px; border-radius: 8px; border-left: 4px solid #b91c1c;">
               <p style="margin: 0 0 4px 0; font-weight: 600; font-size: 16px;">${order.firstName} ${order.lastName}</p>
               <p style="margin: 4px 0; color: #6b7280;">${order.address}</p>
               <p style="margin: 4px 0; color: #6b7280;">${order.postalCode} ${order.city}</p>
               <p style="margin: 4px 0; color: #6b7280;">Tel: ${order.phone}</p>
-              <p style="margin: 4px 0; color: #6b7280;">Kurier: <strong>${order.courier.toUpperCase()}</strong></p>
+              <p style="margin: 4px 0; color: #6b7280;">${t.courier} <strong>${order.courier.toUpperCase()}</strong></p>
             </div>
           </div>
 
           <!-- Fulfillment Time Warning -->
           <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 16px; border-radius: 4px; margin-bottom: 30px;">
             <p style="margin: 0; color: #92400e; font-size: 14px;">
-              <strong>⏰ Czas realizacji:</strong> 7-14 dni roboczych od momentu złożenia zamówienia. Wszystkie produkty są sprowadzane ze Stanów Zjednoczonych (US).
+              <strong>${t.fulfillmentTime}</strong>
             </p>
           </div>
 
           <!-- Next Steps -->
           <div style="margin-bottom: 30px;">
-            <h3 style="color: #b91c1c; margin: 0 0 16px 0; font-size: 18px; border-bottom: 2px solid #b91c1c; padding-bottom: 8px;">Co Dalej?</h3>
+            <h3 style="color: #b91c1c; margin: 0 0 16px 0; font-size: 18px; border-bottom: 2px solid #b91c1c; padding-bottom: 8px;">${t.whatNext}</h3>
             <ol style="margin: 0; padding-left: 20px; color: #374151;">
-              <li style="margin-bottom: 12px;">Oczekujemy na płatność za zamówienie</li>
-              <li style="margin-bottom: 12px;">Po zaksięgowaniu płatności rozpoczniemy proces realizacji</li>
-              <li style="margin-bottom: 12px;">Otrzymasz potwierdzenie wysyłki z numerem przesyłki</li>
-              <li style="margin-bottom: 12px;">Kurier dostarczy paczkę w ciągu 7-14 dni roboczych</li>
+              <li style="margin-bottom: 12px;">${t.step1}</li>
+              <li style="margin-bottom: 12px;">${t.step2}</li>
+              <li style="margin-bottom: 12px;">${t.step3}</li>
+              <li style="margin-bottom: 12px;">${t.step4}</li>
             </ol>
           </div>
 
           <!-- Warranty Info -->
           <div style="background: #dbeafe; border-left: 4px solid #3b82f6; padding: 16px; border-radius: 4px; margin-bottom: 20px;">
             <p style="margin: 0; color: #1e40af; font-size: 14px;">
-              <strong>🛡️ Gwarancja:</strong> Wszystkie produkty objęte są 12-miesięczną gwarancją Milwaukee/Makita. Produkty powystawowe w bardzo dobrym stanie technicznym.
+              <strong>${t.warranty}</strong>
             </p>
           </div>
         </div>
 
         <!-- Footer -->
         <div style="background: #f9fafb; padding: 20px; text-align: center; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
-          <p style="margin: 0 0 12px 0; color: #6b7280; font-size: 14px;">Masz pytania? Skontaktuj się z nami:</p>
+          <p style="margin: 0 0 12px 0; color: #6b7280; font-size: 14px;">${t.questions}</p>
           <p style="margin: 0; color: #b91c1c; font-weight: 600;">
-            📧 sklep@tools-shop.pl | ☎️ +48 123 456 789
+            ${t.contactInfo}
           </p>
           <p style="margin: 16px 0 0 0; color: #9ca3af; font-size: 12px;">
-            © ${new Date().getFullYear()} Tools Shop - Profesjonalne narzędzia w atrakcyjnych cenach
+            © ${new Date().getFullYear()} ${t.copyright}
           </p>
         </div>
       </body>
@@ -152,7 +221,7 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData): Promise<
     const result = await resend.emails.send({
       from: 'Tools Shop <zamowienia@tools-shop-sretensky.com>',
       to: order.email,
-      subject: `✓ Potwierdzenie zamówienia #${order.id.substring(0, 8).toUpperCase()} - Tools Shop`,
+      subject: `✓ ${t.subject} #${order.id.substring(0, 8).toUpperCase()} - Tools Shop`,
       html: htmlContent,
     });
 

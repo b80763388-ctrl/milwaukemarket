@@ -66,6 +66,8 @@ export const orders = pgTable("orders", {
   courier: text("courier").notNull(), // "inpost" | "dpd" | "dhl"
   orderItems: json("order_items").notNull(),
   totalAmount: decimal("total_amount", { precision: 10, scale: 2 }).notNull(),
+  language: text("language").default("pl"), // "pl" | "en"
+  currency: text("currency").default("PLN"), // "PLN" | "EUR"
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 

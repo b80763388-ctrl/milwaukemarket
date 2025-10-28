@@ -50,7 +50,31 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-28 (Latest):** ProductDetailPage Full Internationalization + Currency Conversion + Visibility Fix
+**2025-10-28 (Latest):** Email Template Internationalization + Language/Currency Support
+- **Email Template Redesigned**:
+  - Updated to exact format requested by user (table layout, clear sections)
+  - Added "lub przez chat na stronie" / "or via chat on website" to contact info
+  - Changed fulfillment message from "US only" to "EU oraz US" / "EU and US"
+  - Professional layout matching brand style (Milwaukee red gradient header)
+- **Bilingual Email System**:
+  - Email automatically sent in user's selected language (PL/EN)
+  - All email content translated: subject, headers, product table, shipping info, warranty
+  - Date formatting adapts to language (Polish: "28 października 2025", English: "October 28, 2025")
+  - Currency symbols match language selection (PLN → zł, EUR → €)
+- **Language/Currency Integration**:
+  - Added `language` and `currency` fields to Orders schema
+  - CheckoutPage now sends user's language and currency with order
+  - Backend passes language/currency to email sending function
+  - Email template uses correct locale and currency formatting
+- **Email Translations Include**:
+  - Order confirmation messages, product details, shipping information
+  - "What's Next?" steps, warranty information, contact details
+  - All status labels, table headers, and call-to-action text
+- **Files Changed**: `server/email.ts`, `server/routes.ts`, `client/src/pages/CheckoutPage.tsx`, `client/src/lib/i18n.ts`, `shared/schema.ts`
+- **Database Updated**: Added `language` and `currency` columns to `orders` table
+- **Result**: Complete bilingual email system - customers receive order confirmation in their chosen language with correct currency formatting
+
+**2025-10-28 (Earlier):** ProductDetailPage Full Internationalization + Currency Conversion + Visibility Fix
 - **Full Translation of Product Detail Page**:
   - All UI elements translated: breadcrumbs, buttons ("Add to Cart", "Back to Home"), labels
   - Product info: "Available", "Out of stock", "Original price", "Exhibition price", "You save"

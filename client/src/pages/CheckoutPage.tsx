@@ -58,7 +58,7 @@ function getSessionId(): string {
 export function CheckoutPage() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
-  const { language, formatPriceSync, t } = useLanguage();
+  const { language, currency, formatPriceSync, t } = useLanguage();
   const [sessionId, setSessionId] = useState<string>("");
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [customerType, setCustomerType] = useState<"individual" | "company">("individual");
@@ -165,6 +165,8 @@ export function CheckoutPage() {
         ...data,
         orderItems,
         totalAmount: total.toFixed(2),
+        language,
+        currency,
       });
     },
     onSuccess: (data: any) => {

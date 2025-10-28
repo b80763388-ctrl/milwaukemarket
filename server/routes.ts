@@ -151,6 +151,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
           quantity: item.quantity,
           price: item.price,
         })),
+        language: (order.language as 'pl' | 'en') || 'pl',
+        currency: (order.currency as 'PLN' | 'EUR') || 'PLN',
       }).catch(err => {
         console.error('[EMAIL] Failed to send order confirmation email:', err);
         // Don't fail the order if email fails
