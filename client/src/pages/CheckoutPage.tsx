@@ -711,7 +711,7 @@ export function CheckoutPage() {
         <div className="lg:col-span-1">
           <Card className="lg:sticky lg:top-20">
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg">{translate("checkout.orderSummary", language)}</CardTitle>
+              <CardTitle className="text-lg">{t('checkout.summary.title')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="space-y-2">
@@ -727,7 +727,7 @@ export function CheckoutPage() {
                         {item.product.name}
                       </p>
                       <p className="text-sm text-muted-foreground">
-                        Ilość: {item.quantity}
+                        {t('checkout.summary.quantity')} {item.quantity}
                       </p>
                       <p className="text-sm font-semibold text-primary">
                         {formatPriceSync(
@@ -743,14 +743,14 @@ export function CheckoutPage() {
 
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Suma częściowa</span>
+                  <span className="text-muted-foreground">{t('checkout.summary.subtotal')}</span>
                   <span className="font-medium">{formatPriceSync(subtotal)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Dostawa</span>
+                  <span className="text-muted-foreground">{t('checkout.summary.shipping')}</span>
                   <span className="font-medium">
                     {shippingCost === 0 ? (
-                      <span className="text-primary font-semibold">DARMOWA</span>
+                      <span className="text-primary font-semibold">{t('checkout.summary.free')}</span>
                     ) : (
                       formatPriceSync(shippingCost)
                     )}
@@ -758,7 +758,7 @@ export function CheckoutPage() {
                 </div>
                 <Separator />
                 <div className="flex justify-between text-lg font-bold">
-                  <span>Suma</span>
+                  <span>{t('checkout.summary.total')}</span>
                   <span className="text-primary" data-testid="text-checkout-total">
                     {formatPriceSync(total)}
                   </span>

@@ -50,7 +50,32 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-28 (Latest):** Email Template Internationalization + Language/Currency Support
+**2025-10-28 (Latest):** Complete UI Internationalization + Reviews Translation
+- **"View All Products" Button Fixed**:
+  - Changed from invisible outline variant to prominent red button
+  - Now clearly visible with Milwaukee red background and shadow
+  - Matches hero section CTA styling
+- **Currency Conversion Throughout Site**:
+  - Changed all hardcoded "500 PLN" references to "€115" in English version
+  - Updated: trust badges, shipping modal, terms page, customer reviews
+  - Free shipping threshold properly converts: PL→500 zł, EN→€115
+  - Added helper function `getFreeShippingThreshold()` for dynamic conversion
+- **Checkout Page Full Translation**:
+  - "Order Summary" / "Podsumowanie Zamówienia"
+  - "Quantity:" / "Ilość:"
+  - "Subtotal" / "Suma częściowa"
+  - "Shipping" / "Dostawa"
+  - "FREE" / "DARMOWA"
+  - "Total" / "Suma"
+  - All summary fields now properly translate based on language selection
+- **Customer Reviews Professions Translated**:
+  - All reviewer roles now bilingual (Construction Worker, Carpenter, Electrician, etc.)
+  - Reviews component uses `review.role[language]` for proper translation
+  - 9 professions translated: Budowlanka→Construction Worker, Stolarz→Carpenter, Elektryk→Electrician, etc.
+- **Files Changed**: `client/src/pages/HomePage.tsx`, `client/src/lib/i18n.ts`, `client/src/components/ShippingPaymentModal.tsx`, `client/src/pages/TermsPage.tsx`, `client/src/components/Reviews.tsx`, `client/src/pages/CheckoutPage.tsx`
+- **Result**: Complete bilingual experience - all UI elements, currency amounts, and professional titles properly translate
+
+**2025-10-28 (Earlier):** Email Template Internationalization + Language/Currency Support
 - **Email Template Redesigned**:
   - Updated to exact format requested by user (table layout, clear sections)
   - Added "lub przez chat na stronie" / "or via chat on website" to contact info

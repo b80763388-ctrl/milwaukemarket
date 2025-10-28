@@ -7,17 +7,23 @@ const reviews = [
   {
     id: 1,
     name: "Paweł",
-    role: "Budowlanka",
+    role: {
+      pl: "Budowlanka",
+      en: "Construction Worker"
+    },
     rating: 5,
     comment: {
       pl: "Kupiłem wiertarkę Milwaukee M18 FUEL i jestem zachwycony! Produkt powystawowy w doskonałym stanie, oszczędziłem prawie 500 zł. Szybka dostawa, obsługa na najwyższym poziomie. Polecam każdemu!",
-      en: "I bought the Milwaukee M18 FUEL drill and I'm thrilled! Exhibition product in excellent condition, I saved almost 500 PLN. Fast delivery, top-notch service. Highly recommend!"
+      en: "I bought the Milwaukee M18 FUEL drill and I'm thrilled! Exhibition product in excellent condition, I saved almost €115. Fast delivery, top-notch service. Highly recommend!"
     }
   },
   {
     id: 2,
     name: "Tomasz",
-    role: "Stolarz",
+    role: {
+      pl: "Stolarz",
+      en: "Carpenter"
+    },
     rating: 5,
     comment: {
       pl: "Świetny sklep! Zamówiłem pilarkę tarczową i młot Milwaukee. Narzędzia jak nowe, opakowania oryginalne. Ceny powystawowe to prawdziwa okazja. Gwarancja 12 miesięcy daje pewność.",
@@ -27,7 +33,10 @@ const reviews = [
   {
     id: 3,
     name: "Jan",
-    role: "Elektryk",
+    role: {
+      pl: "Elektryk",
+      en: "Electrician"
+    },
     rating: 5,
     comment: {
       pl: "Profesjonalna obsługa i autentyczne produkty Milwaukee. Kupiłem zestaw combo M12 FUEL i nie mogę narzekać. Wszystko dokładnie tak jak w opisie. Szybka dostawa i bezpieczne opakowanie. Na pewno wrócę po więcej narzędzi!",
@@ -37,7 +46,10 @@ const reviews = [
   {
     id: 4,
     name: "Anna",
-    role: "Renowacje",
+    role: {
+      pl: "Renowacje",
+      en: "Renovation Contractor"
+    },
     rating: 5,
     comment: {
       pl: "Najlepszy sklep z narzędziami Milwaukee w Polsce! Szlifierka kątowa którą kupiłam działa perfekcyjnie. Cena powystawowa o 30% niższa niż w zwykłych sklepach. Obsługa bardzo pomocna, odpowiadali na wszystkie pytania.",
@@ -47,7 +59,10 @@ const reviews = [
   {
     id: 5,
     name: "Michał",
-    role: "Mechanik",
+    role: {
+      pl: "Mechanik",
+      en: "Mechanic"
+    },
     rating: 5,
     comment: {
       pl: "Zamówiłem wózek narzędziowy Milwaukee 52\" - rewelacja! Stan idealny, wszystkie szuflady działają płynnie. Produkt powystawowy znacznie tańszy niż nowy. Polecam ten sklep każdemu profesjonaliście!",
@@ -57,7 +72,10 @@ const reviews = [
   {
     id: 6,
     name: "Krzysztof",
-    role: "Instalator",
+    role: {
+      pl: "Instalator",
+      en: "Installer"
+    },
     rating: 5,
     comment: {
       pl: "Kupiłem klucz udarowy Milwaukee M18 i baterie REDLITHIUM. Produkt powystawowy nie różni się od nowego! Moc, jakość, wszystko na najwyższym poziomie. Świetny stosunek ceny do jakości!",
@@ -67,7 +85,10 @@ const reviews = [
   {
     id: 7,
     name: "Marek",
-    role: "Dekarz",
+    role: {
+      pl: "Dekarz",
+      en: "Roofer"
+    },
     rating: 5,
     comment: {
       pl: "Laser liniowy Milwaukee - precyzja w najlepszym wydaniu! Stan idealny, wszystkie funkcje działają bez zarzutu. Cena o wiele lepsza niż w tradycyjnych sklepach. Polecam!",
@@ -77,7 +98,10 @@ const reviews = [
   {
     id: 8,
     name: "Piotr",
-    role: "Ślusarz",
+    role: {
+      pl: "Ślusarz",
+      en: "Metalworker"
+    },
     rating: 5,
     comment: {
       pl: "Zestaw M18 FUEL to strzał w dziesiątkę! Dwie super wiertarki w jednym zestawie, produkty powystawowe wyglądają jak nowe. Świetna inwestycja dla każdego fachowca.",
@@ -87,7 +111,10 @@ const reviews = [
   {
     id: 9,
     name: "Bartosz",
-    role: "Monter",
+    role: {
+      pl: "Monter",
+      en: "Fitter"
+    },
     rating: 5,
     comment: {
       pl: "Piła łańcuchowa Milwaukee M18 to maszyna! Moc jak na akumulatorówkę niesamowita. Produkt powystawowy bez śladów użytkowania. Obsługa klienta rewelacyjna, odpowiedzi na wszystkie pytania błyskawiczne.",
@@ -146,7 +173,7 @@ export function Reviews() {
               <CardContent className="p-6">
                 <div className="mb-4">
                   <h3 className="font-semibold text-lg text-white" data-testid={`review-name-${review.id}`}>{review.name}</h3>
-                  <p className="text-sm text-gray-400" data-testid={`review-role-${review.id}`}>{review.role}</p>
+                  <p className="text-sm text-gray-400" data-testid={`review-role-${review.id}`}>{language === 'pl' ? review.role.pl : review.role.en}</p>
                 </div>
 
                 <div className="flex gap-1 mb-3" data-testid={`review-rating-${review.id}`}>

@@ -148,7 +148,7 @@ export function TermsPage() {
           items: [
             "All products are sourced from the United States (US) and shipped by courier throughout Europe.",
             "All chargers and cable-powered devices are equipped with EU (European) standard plugs.",
-            "Delivery cost is 29 PLN. Free delivery is available for orders over 500 PLN.",
+            "Delivery cost is €7. Free delivery is available for orders over €115.",
             "The customer receives an SMS notification with information about the planned delivery.",
             "Delivery is made to the specified address, directly to the recipient.",
             "Standard order fulfillment time is 7 to 14 business days.",

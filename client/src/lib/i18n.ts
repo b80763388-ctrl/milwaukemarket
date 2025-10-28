@@ -73,6 +73,25 @@ export async function convertPrice(priceInPLN: number, toCurrency: Currency): Pr
   return priceInPLN * rates[toCurrency];
 }
 
+// Free shipping threshold in PLN
+export const FREE_SHIPPING_THRESHOLD_PLN = 500;
+
+// Get formatted free shipping threshold for current currency
+export async function getFreeShippingThreshold(currency: Currency): Promise<string> {
+  if (currency === 'PLN') {
+    return '500 zł';
+  }
+  
+  const converted = await convertPrice(FREE_SHIPPING_THRESHOLD_PLN, currency);
+  const symbol = currencySymbols[currency];
+  
+  if (currency === 'EUR') {
+    return `${symbol}${Math.round(converted)}`;
+  }
+  
+  return `${symbol}${Math.round(converted)}`;
+}
+
 export function formatCurrency(amount: number, currency: Currency): string {
   const symbol = currencySymbols[currency];
   const rounded = Math.round(amount * 100) / 100;
@@ -267,6 +286,12 @@ export const translations = {
     'checkout.validation.postalCodeFormat': 'Kod pocztowy w formacie XX-XXX',
     'checkout.validation.minLength': 'Zbyt krótka wartość',
     'checkout.validation.courierRequired': 'Wybierz kuriera',
+    'checkout.summary.title': 'Podsumowanie Zamówienia',
+    'checkout.summary.quantity': 'Ilość:',
+    'checkout.summary.subtotal': 'Suma częściowa',
+    'checkout.summary.shipping': 'Dostawa',
+    'checkout.summary.free': 'DARMOWA',
+    'checkout.summary.total': 'Suma',
     
     // Messages
     'error.title': 'Błąd',
@@ -322,7 +347,7 @@ export const translations = {
     
     // Trust Badges
     'trust.warranty': '12 months warranty',
-    'trust.shipping': 'Free shipping from 500 PLN',
+    'trust.shipping': 'Free shipping from €115',
     'trust.verified': 'Verified products',
     
     // Products
@@ -362,7 +387,7 @@ export const translations = {
     'home.trust.warranty.title': 'Manufacturer Warranty',
     'home.trust.warranty.text': 'All products are covered by full 12-month manufacturer warranty',
     'home.trust.shipping.title': 'Free Shipping',
-    'home.trust.shipping.text': 'Free shipping for orders over 500 PLN. Fast delivery and secure packaging',
+    'home.trust.shipping.text': 'Free shipping for orders over €115. Fast delivery and secure packaging',
     'home.trust.verified.title': 'Verified Products',
     'home.trust.verified.text': 'Every exhibition product is thoroughly inspected and ready to use',
     
@@ -482,6 +507,12 @@ export const translations = {
     'checkout.validation.postalCodeFormat': 'Postal code format: XX-XXX',
     'checkout.validation.minLength': 'Value too short',
     'checkout.validation.courierRequired': 'Please select a courier',
+    'checkout.summary.title': 'Order Summary',
+    'checkout.summary.quantity': 'Quantity:',
+    'checkout.summary.subtotal': 'Subtotal',
+    'checkout.summary.shipping': 'Shipping',
+    'checkout.summary.free': 'FREE',
+    'checkout.summary.total': 'Total',
     
     // Messages
     'error.title': 'Error',

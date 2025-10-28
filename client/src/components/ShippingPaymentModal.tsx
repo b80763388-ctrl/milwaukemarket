@@ -54,7 +54,7 @@ export function ShippingPaymentModal({ open, onOpenChange }: ShippingPaymentModa
         delivery: "Delivery to your door",
         deliveryText: "The courier will deliver the package directly to the specified address. You will receive an SMS notification with information about the planned delivery.",
         free: "Free shipping",
-        freeText: "We offer free shipping for orders over 500 PLN. For orders below this amount, the shipping cost is 29 PLN."
+        freeText: "We offer free shipping for orders over €115. For orders below this amount, the shipping cost is €7."
       },
       payment: {
         title: "Payment methods",

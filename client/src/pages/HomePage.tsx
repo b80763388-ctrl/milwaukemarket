@@ -178,7 +178,11 @@ export function HomePage({ onAddToCart }: HomePageProps) {
 
           <div className="text-center mt-12">
             <Link href="/produkty">
-              <Button size="lg" variant="outline" data-testid="button-view-all">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-white border-2 border-primary hover:border-primary/80 shadow-lg hover:shadow-xl transition-all"
+                data-testid="button-view-all"
+              >
                 {t('products.viewAll')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
