@@ -47,3 +47,21 @@ I want the agent to use simple language and provide detailed explanations when n
 - **Shadcn UI:** Re-usable UI components.
 - **Zod:** For schema validation.
 - **Resend API:** For sending order confirmation emails.
+
+## Recent Changes
+
+**2025-10-28 (Latest):** Terms Acceptance + Mobile Hero Optimization
+- **Terms and Conditions Checkbox Added to Checkout**:
+  - Required checkbox with link to terms page (/regulamin)
+  - User must accept terms before placing order
+  - Submit button disabled until terms accepted
+  - Error message if form submitted without accepting terms
+  - Fully bilingual: "Akceptuję regulamin sklepu" / "I accept the terms and conditions"
+- **Mobile Hero Section Fully Optimized**:
+  - Increased mobile height to 85vh (from 70vh) to prevent text cutoff
+  - Reduced all text sizes for mobile: title from text-4xl to text-2xl
+  - Reduced badge, subtitle, icons, and trust badges sizes on mobile
+  - Smaller margins and padding throughout hero section
+  - Full-width buttons on mobile, inline on tablet+
+  - All content (badge, title, subtitle, buttons, trust badges) now fits perfectly without cutoff
+- **Files Changed**: `client/src/pages/CheckoutPage.tsx`, `client/src/lib/i18n.ts`, `client/src/pages/HomePage.tsx`

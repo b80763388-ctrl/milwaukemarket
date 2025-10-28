@@ -57,7 +57,7 @@ export function HomePage({ onAddToCart }: HomePageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900">
       {/* Hero Section */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[85vh] sm:h-[70vh] min-h-[600px] sm:min-h-[500px] flex items-center justify-center overflow-hidden">
         {/* Hero Image with Dark Overlay */}
         <div className="absolute inset-0">
           <img
@@ -70,30 +70,30 @@ export function HomePage({ onAddToCart }: HomePageProps) {
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8 text-center">
-          <Badge className="mb-6 bg-primary text-primary-foreground border-primary-border text-sm px-4 py-2">
+          <Badge className="mb-3 sm:mb-6 bg-primary text-primary-foreground border-primary-border text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2">
             {t('hero.badge')}
           </Badge>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 font-heading">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-3 sm:mb-6 font-heading leading-tight">
             {t('hero.title')}
             <br />
             <span className="text-primary">{t('hero.titleBrand')}</span> {t('hero.titleFrom')}
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-xl md:text-2xl text-white/90 mb-4 sm:mb-8 max-w-2xl mx-auto leading-snug">
             {t('hero.subtitle1')}
             <br />
             {t('hero.subtitle2')}
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <Link href="#produkty">
-              <Button size="lg" className="text-lg px-8" data-testid="button-hero-shop">
+              <Button size="default" className="sm:text-lg sm:px-8 w-full sm:w-auto" data-testid="button-hero-shop">
                 {t('hero.cta.shop')}
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </Link>
             <Button
-              size="lg"
+              size="default"
               variant="outline"
-              className="text-lg px-8 bg-background/10 backdrop-blur-sm border-white/20 text-white hover:bg-background/20"
+              className="sm:text-lg sm:px-8 bg-background/10 backdrop-blur-sm border-white/20 text-white hover:bg-background/20 w-full sm:w-auto"
               onClick={() => setExhibitionModalOpen(true)}
               data-testid="button-hero-learn"
             >
@@ -102,30 +102,30 @@ export function HomePage({ onAddToCart }: HomePageProps) {
           </div>
 
           {/* Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-6 mt-12 text-white">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-6 sm:mt-12 text-white">
             <button
               onClick={() => setExhibitionModalOpen(true)}
-              className="flex items-center gap-2 hover-elevate active-elevate-2 px-3 py-2 rounded-md transition-colors"
+              className="flex items-center gap-2 hover-elevate active-elevate-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition-colors"
               data-testid="badge-warranty-info"
             >
-              <Shield className="h-5 w-5" />
-              <span className="text-sm font-medium">{t('trust.warranty')}</span>
+              <Shield className="h-4 w-4 sm:h-5 sm:w-5" />
+              <span className="text-xs sm:text-sm font-medium">{t('trust.warranty')}</span>
             </button>
             <button
               onClick={() => setShippingModalOpen(true)}
-              className="flex items-center gap-2 hover-elevate active-elevate-2 px-3 py-2 rounded-md transition-colors"
+              className="flex items-center gap-2 hover-elevate active-elevate-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition-colors"
               data-testid="badge-shipping-info"
             >
-              <Truck className="h-5 w-5" />
-              <span className="text-sm font-medium">{t('trust.shipping')}</span>
+              <Truck className="h-4 w-4 sm:h-5 sm:w-5" />
+              <span className="text-xs sm:text-sm font-medium">{t('trust.shipping')}</span>
             </button>
             <button
               onClick={() => setExhibitionModalOpen(true)}
-              className="flex items-center gap-2 hover-elevate active-elevate-2 px-3 py-2 rounded-md transition-colors"
+              className="flex items-center gap-2 hover-elevate active-elevate-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition-colors"
               data-testid="badge-verified-info"
             >
-              <CheckCircle className="h-5 w-5" />
-              <span className="text-sm font-medium">{t('trust.verified')}</span>
+              <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5" />
+              <span className="text-xs sm:text-sm font-medium">{t('trust.verified')}</span>
             </button>
           </div>
         </div>
