@@ -50,7 +50,16 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-28 (Latest):** Terms & Privacy Pages Readability Improved
+**2025-10-28 (Latest):** Checkout Summary Translation Keys Fixed
+- **Issue Resolved**:
+  - Fixed missing translation keys in checkout summary section
+  - Added `checkout.summary.*` keys to i18n.ts for both PL and EN
+  - Keys added: title, quantity, subtotal, shipping, free, total
+  - Checkout summary now displays properly translated text instead of translation keys
+- **Files Changed**: `client/src/lib/i18n.ts`
+- **Result**: Checkout summary section now fully bilingual with proper translations
+
+**2025-10-28 (Earlier):** Terms & Privacy Pages Readability Improved
 - **Enhanced Text Visibility**:
   - Changed from dark gray text (`text-muted-foreground`) to bright white/gray
   - Headings: `text-white` for maximum contrast
