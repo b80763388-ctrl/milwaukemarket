@@ -197,10 +197,10 @@ export function HomePage({ onAddToCart }: HomePageProps) {
         <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading text-white">
-              Kategorie Produktów
+              {t('home.categories.title')}
             </h2>
             <p className="text-lg text-gray-300">
-              Przeglądaj narzędzia według typu
+              {t('home.categories.subtitle')}
             </p>
           </div>
 
@@ -269,27 +269,27 @@ export function HomePage({ onAddToCart }: HomePageProps) {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary">
                 <Shield className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-bold text-white">Gwarancja Producenta</h3>
+              <h3 className="text-xl font-bold text-white">{t('home.trust.warranty.title')}</h3>
               <p className="text-gray-300">
-                Wszystkie produkty objęte są pełną gwarancją producenta na 12 miesięcy
+                {t('home.trust.warranty.text')}
               </p>
             </div>
             <div className="text-center space-y-4">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary">
                 <Truck className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-bold text-white">Darmowa Dostawa</h3>
+              <h3 className="text-xl font-bold text-white">{t('home.trust.shipping.title')}</h3>
               <p className="text-gray-300">
-                Darmowa dostawa dla zamówień powyżej 500 zł. Szybka realizacja i bezpieczne opakowanie
+                {t('home.trust.shipping.text')}
               </p>
             </div>
             <div className="text-center space-y-4">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary">
                 <CheckCircle className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-bold text-white">Produkty Sprawdzone</h3>
+              <h3 className="text-xl font-bold text-white">{t('home.trust.verified.title')}</h3>
               <p className="text-gray-300">
-                Każdy produkt powystawowy jest dokładnie sprawdzony i gotowy do użycia
+                {t('home.trust.verified.text')}
               </p>
             </div>
           </div>

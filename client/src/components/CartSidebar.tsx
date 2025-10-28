@@ -1,10 +1,13 @@
 import { X, Minus, Plus, ShoppingBag } from "lucide-react";
 import { Link } from "wouter";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import type { CartItemWithProduct } from "@shared/schema";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { convertPrice, formatCurrency } from "@/lib/i18n";
 
 interface CartSidebarProps {
   isOpen: boolean;
@@ -21,15 +24,42 @@ export function CartSidebar({
   onUpdateQuantity,
   onRemoveItem,
 }: CartSidebarProps) {
+  const { t, currency } = useLanguage();
+  const [convertedPrices, setConvertedPrices] = useState<{ [key: string]: number }>({});
+  const [convertedThreshold, setConvertedThreshold] = useState(500);
+  const [convertedShipping, setConvertedShipping] = useState(29.99);
+
   const subtotal = items.reduce(
-    (sum, item) => sum + parseFloat(item.product.exhibitionPrice) * item.quantity,
+    (sum, item) => {
+      const price = convertedPrices[item.product.id] || parseFloat(item.product.exhibitionPrice);
+      return sum + price * item.quantity;
+    },
     0
   );
 
-  const FREE_SHIPPING_THRESHOLD = 500;
-  const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : 29.99;
+  const FREE_SHIPPING_THRESHOLD = convertedThreshold;
+  const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : convertedShipping;
   const total = subtotal + shippingCost;
   const shippingProgress = Math.min((subtotal / FREE_SHIPPING_THRESHOLD) * 100, 100);
+
+  useEffect(() => {
+    const convertAllPrices = async () => {
+      const prices: { [key: string]: number } = {};
+      for (const item of items) {
+        const converted = await convertPrice(parseFloat(item.product.exhibitionPrice), currency);
+        prices[item.product.id] = converted;
+      }
+      setConvertedPrices(prices);
+      
+      const threshold = await convertPrice(500, currency);
+      setConvertedThreshold(threshold);
+      
+      const shipping = await convertPrice(29.99, currency);
+      setConvertedShipping(shipping);
+    };
+    
+    convertAllPrices();
+  }, [items, currency]);
 
   if (!isOpen) return null;
 
@@ -51,7 +81,7 @@ export function CartSidebar({
         <div className="flex items-center justify-between p-6 border-b">
           <div className="flex items-center gap-2">
             <ShoppingBag className="h-5 w-5" />
-            <h2 className="text-xl font-bold font-heading">Koszyk</h2>
+            <h2 className="text-xl font-bold font-heading">{t('cart.title')}</h2>
             {items.length > 0 && (
               <Badge variant="secondary" data-testid="badge-items-count">
                 {items.length}
@@ -67,12 +97,12 @@ export function CartSidebar({
         {items.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center p-6 text-center">
             <ShoppingBag className="h-16 w-16 text-muted-foreground mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Twój koszyk jest pusty</h3>
+            <h3 className="text-lg font-semibold mb-2">{t('cart.empty')}</h3>
             <p className="text-muted-foreground mb-6">
-              Dodaj produkty do koszyka, aby rozpocząć zakupy
+              {t('cart.emptyText')}
             </p>
             <Button onClick={onClose} data-testid="button-continue-shopping">
-              Kontynuuj zakupy
+              {t('cart.continueShopping')}
             </Button>
           </div>
         ) : (
@@ -83,14 +113,11 @@ export function CartSidebar({
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted-foreground">
-                      Dodaj jeszcze{" "}
+                      {t('cart.freeShippingProgress')}{" "}
                       <span className="font-semibold text-foreground">
-                        {(FREE_SHIPPING_THRESHOLD - subtotal).toLocaleString("pl-PL", {
-                          minimumFractionDigits: 2,
-                        })}{" "}
-                        zł
+                        {formatCurrency(FREE_SHIPPING_THRESHOLD - subtotal, currency)}
                       </span>{" "}
-                      do darmowej dostawy
+                      {t('cart.freeShippingProgressEnd')}
                     </span>
                   </div>
                   <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
@@ -124,10 +151,7 @@ export function CartSidebar({
                       </h4>
                       <div className="flex items-center gap-2">
                         <span className="font-bold text-primary">
-                          {parseFloat(item.product.exhibitionPrice).toLocaleString("pl-PL", {
-                            minimumFractionDigits: 2,
-                          })}{" "}
-                          zł
+                          {formatCurrency(convertedPrices[item.product.id] || parseFloat(item.product.exhibitionPrice), currency)}
                         </span>
                       </div>
                       <div className="flex items-center justify-between">
@@ -163,7 +187,7 @@ export function CartSidebar({
                           className="text-destructive hover:text-destructive"
                           data-testid="button-remove-item"
                         >
-                          Usuń
+                          {t('cart.remove')}
                         </Button>
                       </div>
                     </div>
@@ -176,40 +200,32 @@ export function CartSidebar({
             <div className="border-t p-6 space-y-4">
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Suma częściowa</span>
+                  <span className="text-muted-foreground">{t('cart.subtotal')}</span>
                   <span className="font-medium">
-                    {subtotal.toLocaleString("pl-PL", {
-                      minimumFractionDigits: 2,
-                    })}{" "}
-                    zł
+                    {formatCurrency(subtotal, currency)}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Dostawa</span>
+                  <span className="text-muted-foreground">{t('cart.shipping')}</span>
                   <span className="font-medium">
                     {shippingCost === 0 ? (
-                      <span className="text-primary font-semibold">DARMOWA</span>
+                      <span className="text-primary font-semibold">{t('cart.free')}</span>
                     ) : (
-                      `${shippingCost.toLocaleString("pl-PL", {
-                        minimumFractionDigits: 2,
-                      })} zł`
+                      formatCurrency(shippingCost, currency)
                     )}
                   </span>
                 </div>
                 <Separator />
                 <div className="flex justify-between text-lg font-bold">
-                  <span>Suma</span>
+                  <span>{t('cart.total')}</span>
                   <span className="text-primary" data-testid="text-total">
-                    {total.toLocaleString("pl-PL", {
-                      minimumFractionDigits: 2,
-                    })}{" "}
-                    zł
+                    {formatCurrency(total, currency)}
                   </span>
                 </div>
               </div>
               <Link href="/checkout" onClick={onClose}>
                 <Button className="w-full" size="lg" data-testid="button-checkout">
-                  Przejdź do kasy
+                  {t('cart.checkout')}
                 </Button>
               </Link>
               <Button
@@ -218,7 +234,7 @@ export function CartSidebar({
                 onClick={onClose}
                 data-testid="button-continue-shopping-bottom"
               >
-                Kontynuuj zakupy
+                {t('cart.continueShopping')}
               </Button>
             </div>
           </>

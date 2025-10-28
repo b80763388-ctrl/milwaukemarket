@@ -58,7 +58,7 @@ function getSessionId(): string {
 export function CheckoutPage() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
-  const { language, formatPriceSync } = useLanguage();
+  const { language, formatPriceSync, t } = useLanguage();
   const [sessionId, setSessionId] = useState<string>("");
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [customerType, setCustomerType] = useState<"individual" | "company">("individual");
@@ -283,13 +283,13 @@ export function CheckoutPage() {
                       <div className={`flex items-center space-x-2 border rounded-lg p-3 cursor-pointer ${customerType === "individual" ? "border-primary bg-primary/5" : "border-border"}`}>
                         <RadioGroupItem value="individual" id="individual" data-testid="radio-individual" />
                         <label htmlFor="individual" className="font-medium cursor-pointer flex-1">
-                          Osoba prywatna
+                          {t('checkout.customerTypeIndividual')}
                         </label>
                       </div>
                       <div className={`flex items-center space-x-2 border rounded-lg p-3 cursor-pointer ${customerType === "company" ? "border-primary bg-primary/5" : "border-border"}`}>
                         <RadioGroupItem value="company" id="company" data-testid="radio-company" />
                         <label htmlFor="company" className="font-medium cursor-pointer flex-1">
-                          Firma
+                          {t('checkout.customerTypeCompany')}
                         </label>
                       </div>
                     </RadioGroup>
@@ -599,7 +599,7 @@ export function CheckoutPage() {
 
                   {/* Payment Method */}
                   <div className="space-y-3">
-                    <label className="text-base font-semibold">Metoda płatności</label>
+                    <label className="text-base font-semibold">{t('checkout.paymentMethod')}</label>
                     
                     {requiresTransfer && (
                       <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4 flex items-start gap-3 mb-3">
@@ -636,7 +636,7 @@ export function CheckoutPage() {
                         <label htmlFor="payment-online" className="flex-1 cursor-pointer">
                           <div className="flex items-center gap-2 mb-2">
                             <CreditCard className="h-5 w-5 text-primary" />
-                            <span className="font-medium">Płatność online</span>
+                            <span className="font-medium">{t('checkout.paymentOnline')}</span>
                           </div>
                           <div className="flex flex-wrap items-center gap-2 mt-2">
                             <div className="h-8 px-2 bg-white border border-slate-200 dark:border-slate-700 rounded flex items-center justify-center">
@@ -676,7 +676,7 @@ export function CheckoutPage() {
                         <label htmlFor="payment-transfer" className="flex-1 cursor-pointer">
                           <div className="flex items-center gap-2 mb-2">
                             <ArrowRightLeft className="h-5 w-5 text-primary" />
-                            <span className="font-medium">Przelew tradycyjny</span>
+                            <span className="font-medium">{t('checkout.paymentBankTransfer')}</span>
                           </div>
                           <p className="text-sm text-muted-foreground">
                             Dane do przelewu zostaną wyświetlone po złożeniu zamówienia
