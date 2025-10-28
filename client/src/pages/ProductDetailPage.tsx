@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams, Link } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,7 @@ import {
 import { ShoppingCart, ArrowLeft, Check, Shield, Package } from "lucide-react";
 import type { Product } from "@shared/schema";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { translate, convertPrice, formatCurrency } from "@/lib/i18n";
 
 interface ProductDetailPageProps {
   onAddToCart: (productId: string) => void;
@@ -20,13 +21,38 @@ interface ProductDetailPageProps {
 
 export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
   const { slug } = useParams();
-  const { language } = useLanguage();
+  const { language, currency } = useLanguage();
   const { data: products, isLoading } = useQuery<Product[]>({
     queryKey: ["/api/products"],
   });
 
   const product = products?.find((p) => p.slug === slug);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [convertedPrices, setConvertedPrices] = useState<{
+    original: number;
+    exhibition: number;
+  } | null>(null);
+
+  const t = (key: string) => translate(key, language);
+
+  useEffect(() => {
+    async function convertPrices() {
+      if (!product) return;
+      
+      const originalPrice = parseFloat(product.originalPrice);
+      const exhibitionPrice = parseFloat(product.exhibitionPrice);
+      
+      const convertedOriginal = await convertPrice(originalPrice, currency);
+      const convertedExhibition = await convertPrice(exhibitionPrice, currency);
+      
+      setConvertedPrices({
+        original: convertedOriginal,
+        exhibition: convertedExhibition,
+      });
+    }
+    
+    convertPrices();
+  }, [product, currency]);
 
   if (isLoading) {
     return (
@@ -46,11 +72,11 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
   if (!product) {
     return (
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-12 text-center">
-        <h2 className="text-2xl font-bold mb-4">Produkt nie znaleziony</h2>
+        <h2 className="text-2xl font-bold mb-4">{t('product.notFound')}</h2>
         <Link href="/">
           <Button data-testid="button-back-home">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Wróć do strony głównej
+            {t('product.backHome')}
           </Button>
         </Link>
       </div>
@@ -82,12 +108,12 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
         <Link href="/" data-testid="link-breadcrumb-home">
-          <span className="hover:text-white cursor-pointer">Strona główna</span>
+          <span className="hover:text-white cursor-pointer">{t('nav.home')}</span>
         </Link>
         <span>/</span>
         <Link href={`/kategoria/${product.category}`} data-testid="link-breadcrumb-category">
           <span className="hover:text-white cursor-pointer capitalize">
-            {product.category}
+            {t(`category.${product.category}`)}
           </span>
         </Link>
         <span>/</span>
@@ -105,7 +131,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
               className="absolute top-4 left-4 z-10 text-sm font-semibold uppercase tracking-wide"
               data-testid="badge-exhibition"
             >
-              PRODUKT POWYSTAWOWY
+              {t('products.exhibitionBadge')}
             </Badge>
             {discountPercent > 0 && (
               <Badge
@@ -168,15 +194,15 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
 
           {/* Availability */}
           {product.inStock ? (
-            <div className="flex items-center gap-2 text-green-600">
+            <div className="flex items-center gap-2 text-green-400">
               <Check className="h-5 w-5" />
-              <span className="font-medium" data-testid="text-availability">
-                Dostępny
+              <span className="font-medium text-white" data-testid="text-availability">
+                {t('products.available')}
               </span>
             </div>
           ) : (
-            <div className="text-muted-foreground" data-testid="text-out-of-stock">
-              Brak w magazynie
+            <div className="text-gray-400" data-testid="text-out-of-stock">
+              {t('products.outOfStock')}
             </div>
           )}
 
@@ -184,30 +210,19 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
           <Card>
             <CardContent className="p-6 space-y-4">
               <div className="space-y-2">
-                <div className="text-sm text-muted-foreground">Cena katalogowa:</div>
-                <div className="text-xl line-through text-muted-foreground" data-testid="text-original-price">
-                  {parseFloat(product.originalPrice).toLocaleString("pl-PL", {
-                    minimumFractionDigits: 2,
-                  })}{" "}
-                  zł
+                <div className="text-sm text-gray-400">{t('products.originalPrice')}</div>
+                <div className="text-xl line-through text-gray-400" data-testid="text-original-price">
+                  {convertedPrices ? formatCurrency(convertedPrices.original, currency) : '...'}
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="text-sm font-medium">Cena powystawowa:</div>
+                <div className="text-sm font-medium text-white">{t('products.exhibitionPrice')}</div>
                 <div className="text-4xl font-bold text-primary font-heading" data-testid="text-exhibition-price">
-                  {parseFloat(product.exhibitionPrice).toLocaleString("pl-PL", {
-                    minimumFractionDigits: 2,
-                  })}{" "}
-                  zł
+                  {convertedPrices ? formatCurrency(convertedPrices.exhibition, currency) : '...'}
                 </div>
                 <div className="text-sm font-medium text-destructive">
-                  Oszczędzasz:{" "}
-                  {(
-                    parseFloat(product.originalPrice) - parseFloat(product.exhibitionPrice)
-                  ).toLocaleString("pl-PL", {
-                    minimumFractionDigits: 2,
-                  })}{" "}
-                  zł ({discountPercent}%)
+                  {t('products.save')}:{" "}
+                  {convertedPrices ? formatCurrency(convertedPrices.original - convertedPrices.exhibition, currency) : '...'} ({discountPercent}%)
                 </div>
               </div>
             </CardContent>
@@ -222,7 +237,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
             data-testid="button-add-to-cart"
           >
             <ShoppingCart className="mr-2 h-5 w-5" />
-            Dodaj do koszyka
+            {t('products.addToCart')}
           </Button>
 
           {/* Trust Icons */}
@@ -232,8 +247,8 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
                 <Shield className="h-5 w-5" />
               </div>
               <div>
-                <div className="font-medium">Gwarancja</div>
-                <div className="text-xs text-muted-foreground">12 miesięcy</div>
+                <div className="font-medium text-white">{t('product.warranty')}</div>
+                <div className="text-xs text-white/80">{t('product.warrantyTime')}</div>
               </div>
             </div>
             <div className="flex items-center gap-3 text-sm">
@@ -241,8 +256,8 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
                 <Package className="h-5 w-5" />
               </div>
               <div>
-                <div className="font-medium">Darmowa dostawa</div>
-                <div className="text-xs text-muted-foreground">Od 500 zł</div>
+                <div className="font-medium text-white">{t('product.shipping.title')}</div>
+                <div className="text-xs text-white/80">{t('product.shipping.from')}</div>
               </div>
             </div>
           </div>
@@ -261,12 +276,12 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <div className="font-semibold text-base mb-1">Wymiary produktu</div>
-                      <div className="text-lg font-medium text-foreground" data-testid="text-dimensions">
+                      <div className="font-semibold text-base mb-1 text-white">{t('product.dimensions')}</div>
+                      <div className="text-lg font-medium text-white" data-testid="text-dimensions">
                         {product.features.find(f => f.startsWith("Wymiary:"))?.replace("Wymiary: ", "")}
                       </div>
-                      <div className="text-xs text-muted-foreground mt-1">
-                        szerokość × głębokość × wysokość
+                      <div className="text-xs text-gray-400 mt-1">
+                        {t('product.dimensionsLabel')}
                       </div>
                     </div>
                   </div>
@@ -277,7 +292,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
 
           {/* Description */}
           <div className="pt-4">
-            <h3 className="font-semibold text-lg mb-2 text-white">Opis produktu</h3>
+            <h3 className="font-semibold text-lg mb-2 text-white">{t('product.description')}</h3>
             <p className="text-gray-300" data-testid="text-product-description">
               {language === 'en' && product.descriptionEn ? product.descriptionEn : product.description}
             </p>
@@ -286,8 +301,8 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
           {/* Accordion Sections */}
           <Accordion type="multiple" className="w-full">
             <AccordionItem value="features">
-              <AccordionTrigger data-testid="accordion-features">
-                Specyfikacja Techniczna
+              <AccordionTrigger data-testid="accordion-features" className="text-white hover:text-white">
+                {t('product.features')}
               </AccordionTrigger>
               <AccordionContent>
                 <ul className="space-y-2">
@@ -301,7 +316,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                       <span className="font-medium text-primary">
-                        W zestawie z baterią i ładowarką
+                        {t('product.batteryIncluded')}
                       </span>
                     </li>
                   )}
@@ -310,29 +325,25 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
             </AccordionItem>
 
             <AccordionItem value="condition">
-              <AccordionTrigger data-testid="accordion-condition">
-                Stan Produktu
+              <AccordionTrigger data-testid="accordion-condition" className="text-white hover:text-white">
+                {t('product.condition')}
               </AccordionTrigger>
               <AccordionContent>
                 <p className="mb-4 text-gray-300">{product.condition}</p>
                 <p className="text-sm text-gray-400">
-                  Produkt był wcześniej wystawiony w salonie sprzedaży lub prezentowany na targach. 
-                  Został dokładnie sprawdzony przez naszych specjalistów i jest w pełni sprawny technicz.
-                  Może posiadać minimalne ślady użytkowania na obudowie.
+                  {t('product.conditionText')}
                 </p>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="warranty">
-              <AccordionTrigger data-testid="accordion-warranty">
-                Gwarancja
+              <AccordionTrigger data-testid="accordion-warranty" className="text-white hover:text-white">
+                {t('product.warranty')}
               </AccordionTrigger>
               <AccordionContent>
                 <p className="mb-4 text-gray-300">{product.warranty}</p>
                 <p className="text-sm text-gray-400">
-                  Na wszystkie produkty powystawowe udzielamy pełnej gwarancji producenta Milwaukee. 
-                  Gwarancja obejmuje wszelkie wady fabryczne i problemy techniczne. 
-                  W przypadku awarii, narzędzie zostanie naprawione lub wymienione na nowe.
+                  {t('product.warrantyText')}
                 </p>
               </AccordionContent>
             </AccordionItem>

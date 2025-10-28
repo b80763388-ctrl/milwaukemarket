@@ -50,7 +50,31 @@ I want the agent to use simple language and provide detailed explanations when n
 
 ## Recent Changes
 
-**2025-10-28:** Full Product Catalog Translation + Breadcrumbs Fix + Footer/HomePage Translations
+**2025-10-28 (Latest):** ProductDetailPage Full Internationalization + Currency Conversion + Visibility Fix
+- **Full Translation of Product Detail Page**:
+  - All UI elements translated: breadcrumbs, buttons ("Add to Cart", "Back to Home"), labels
+  - Product info: "Available", "Out of stock", "Original price", "Exhibition price", "You save"
+  - Trust icons: "Warranty" / "12 months", "Free shipping" / "From €115"
+  - Section headings: "Product Description", "Technical Specifications", "Product Condition", "Warranty"
+  - Accordion content: condition text and warranty text fully translated
+  - "Includes battery and charger" message translated
+  - "Product Dimensions" section with "width × depth × height" label translated
+- **Dynamic Currency Conversion**:
+  - Prices automatically convert based on selected language/currency
+  - Polish (PL) → PLN (zł), English (EN) → EUR (€)
+  - Real-time conversion using Frankfurter API
+  - All prices on product detail page: original, exhibition, savings - all properly converted
+  - Loading state (..."..") while conversion happens
+- **Improved Text Visibility**:
+  - Trust icons text: changed from `text-muted-foreground` to `text-white/80` (was invisible on dark background)
+  - "12 miesięcy" / "12 months" now clearly visible
+  - "Od 500 zł" / "From €115" now clearly visible  
+  - All labels changed to `text-white` for better contrast
+  - Section headings use `text-white` with `hover:text-white`
+- **Files Changed**: `client/src/pages/ProductDetailPage.tsx`, `client/src/lib/i18n.ts`
+- **Result**: Complete bilingual product detail experience with automatic currency conversion and perfect visibility
+
+**2025-10-28 (Earlier):** Full Product Catalog Translation + Breadcrumbs Fix + Footer/HomePage Translations
 - **ALL 43 Products Fully Translated**:
   - Added `descriptionEn` field to Product schema (server/storage.ts and shared/schema.ts)
   - ALL 43 products now have professional English translations for names (nameEn) and descriptions (descriptionEn)
