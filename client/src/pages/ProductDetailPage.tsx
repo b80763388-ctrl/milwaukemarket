@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import { ShoppingCart, ArrowLeft, Check, Shield, Package } from "lucide-react";
 import type { Product } from "@shared/schema";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ProductDetailPageProps {
   onAddToCart: (productId: string) => void;
@@ -19,6 +20,7 @@ interface ProductDetailPageProps {
 
 export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
   const { slug } = useParams();
+  const { language } = useLanguage();
   const { data: products, isLoading } = useQuery<Product[]>({
     queryKey: ["/api/products"],
   });
@@ -78,18 +80,18 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
       
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+      <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
         <Link href="/" data-testid="link-breadcrumb-home">
-          <span className="hover:text-foreground cursor-pointer">Strona główna</span>
+          <span className="hover:text-white cursor-pointer">Strona główna</span>
         </Link>
         <span>/</span>
         <Link href={`/kategoria/${product.category}`} data-testid="link-breadcrumb-category">
-          <span className="hover:text-foreground cursor-pointer capitalize">
+          <span className="hover:text-white cursor-pointer capitalize">
             {product.category}
           </span>
         </Link>
         <span>/</span>
-        <span className="text-foreground">{product.name}</span>
+        <span className="text-white">{language === 'en' && product.nameEn ? product.nameEn : product.name}</span>
       </nav>
 
       {/* Product Detail Grid */}
@@ -115,7 +117,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
             )}
             <img
               src={allImages[selectedImageIndex]}
-              alt={product.name}
+              alt={language === 'en' && product.nameEn ? product.nameEn : product.name}
               className="w-full h-full object-cover"
               data-testid="img-product-detail"
             />
@@ -137,7 +139,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
                 >
                   <img
                     src={image}
-                    alt={`${product.name} - ${index + 1}`}
+                    alt={`${language === 'en' && product.nameEn ? product.nameEn : product.name} - ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
                 </button>
@@ -151,7 +153,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
           {/* Title & SKU */}
           <div>
             <h1 className="text-3xl md:text-4xl font-bold mb-2 font-heading text-white" data-testid="text-product-name">
-              {product.name}
+              {language === 'en' && product.nameEn ? product.nameEn : product.name}
             </h1>
             <div className="flex items-center gap-4 text-sm text-gray-400">
               <span data-testid="text-product-sku">SKU: {product.sku}</span>
@@ -277,7 +279,7 @@ export function ProductDetailPage({ onAddToCart }: ProductDetailPageProps) {
           <div className="pt-4">
             <h3 className="font-semibold text-lg mb-2 text-white">Opis produktu</h3>
             <p className="text-gray-300" data-testid="text-product-description">
-              {product.description}
+              {language === 'en' && product.descriptionEn ? product.descriptionEn : product.description}
             </p>
           </div>
 

@@ -32,12 +32,12 @@ export function CategoryPage({ onAddToCart }: CategoryPageProps) {
       
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+      <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
         <Link href="/" data-testid="link-breadcrumb-home">
-          <span className="hover:text-foreground cursor-pointer">{t('nav.home')}</span>
+          <span className="hover:text-white cursor-pointer">{t('nav.home')}</span>
         </Link>
         <span>/</span>
-        <span className="text-foreground capitalize">{categoryName}</span>
+        <span className="text-white capitalize">{categoryName}</span>
       </nav>
 
       {/* Header */}

@@ -47,3 +47,36 @@ I want the agent to use simple language and provide detailed explanations when n
 - **Shadcn UI:** Re-usable UI components.
 - **Zod:** For schema validation.
 - **Resend API:** For sending order confirmation emails.
+
+## Recent Changes
+
+**2025-10-28:** Full Product Catalog Translation + Breadcrumbs Fix + Footer/HomePage Translations
+- **ALL 43 Products Fully Translated**:
+  - Added `descriptionEn` field to Product schema (server/storage.ts and shared/schema.ts)
+  - ALL 43 products now have professional English translations for names (nameEn) and descriptions (descriptionEn)
+  - Product categories covered: Drills, Impact Wrenches, Hammers, Saws, Grinders, Combo Kits, Accessories, Workshop Carts, Lasers, Makita Sets, Milwaukee Specialty Sets
+  - Technical specifications, voltages, torque values, and model numbers preserved exactly
+  - Subagent systematically translated entire product catalog maintaining technical accuracy
+- **ProductDetailPage Internationalization**:
+  - Added useLanguage hook to ProductDetailPage.tsx
+  - Product name displays in correct language: breadcrumb, page title, image alt texts, thumbnail alt texts
+  - Product description displays in correct language (descriptionEn when EN, description when PL)
+  - All 43 products now display correctly in both Polish and English on detail pages
+- **Breadcrumbs Visibility Fixed**:
+  - Changed breadcrumb color from `text-muted-foreground` to `text-white/70` in CategoryPage.tsx and ProductDetailPage.tsx
+  - Breadcrumbs now clearly visible on dark gradient backgrounds
+  - Hover states updated to `text-white` for better UX
+- **HomePage & Footer Fully Translated**:
+  - Featured Products section: badge, title, subtitle, "View all products" button all use t() translations
+  - Newsletter section: title, text, email placeholder, submit button, success messages all translated
+  - Footer columns: Products (11 categories), Information, Contact - all links and headings translated
+  - Copyright, payment labels, contact hours all bilingual
+- **ProductCard Already Supported Translations**:
+  - Verified ProductCard component already uses `language === 'en' && product.nameEn ? product.nameEn : product.name`
+  - Product names in card lists automatically display in selected language
+- **Database Schema Updated**:
+  - Added `descriptionEn` column to products table via db:push
+  - Schema changes synchronized without data loss
+- **Email Sender Fixed**: Changed from `onboarding@resend.dev` to `zamowienia@tools-shop-sretensky.com` (verified domain)
+- **Result**: Complete bilingual e-commerce experience - homepage, product catalog, product details, footer, cart all fully available in Polish and English
+- **Files Changed**: `shared/schema.ts`, `server/storage.ts` (all 43 products), `client/src/pages/ProductDetailPage.tsx`, `client/src/pages/CategoryPage.tsx`, `client/src/lib/i18n.ts`, `client/src/components/Footer.tsx`, `client/src/pages/HomePage.tsx`, `client/src/pages/CheckoutPage.tsx`

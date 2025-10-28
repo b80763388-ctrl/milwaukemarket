@@ -75,6 +75,8 @@ export class MemStorage implements IStorage {
         category: "wiertarki",
         description:
           "Profesjonalna wiertarko-wkrętarka udarowa M18 FUEL z silnikiem bezszczotkowym POWERSTATE™. Maksymalny moment obrotowy 158 Nm, 2-biegowa przekładnia, kompaktowa długość 175 mm. Wiercenie: drewno do 89mm, stal do 16mm, mur do 16mm. Częstotliwość udaru: 0-33000 udarów/min.",
+        descriptionEn:
+          "Professional M18 FUEL hammer drill/driver with POWERSTATE™ brushless motor. Maximum torque 158 Nm, 2-speed gearbox, compact length 175 mm. Drilling capacity: wood up to 89mm, steel up to 16mm, masonry up to 16mm. Impact frequency: 0-33000 impacts/min.",
         originalPrice: "899.00",
         exhibitionPrice: "549.00",
         image: "/attached_assets/image_1761428426765.png",
@@ -103,6 +105,8 @@ export class MemStorage implements IStorage {
         category: "wiertarki",
         description:
           "Kompaktowa wiertarka M12 FUEL z uchwytem 1/2\" i silnikiem bezszczotkowym POWERSTATE™. Długość tylko 15-17 cm, waga 1-1.1 kg z akumulatorem. Metalowy uchwyt 13mm, sprzęgło mechaniczne, kompatybilność z bateriami M12 REDLITHIUM 2.0Ah i 4.0Ah.",
+        descriptionEn:
+          "Compact M12 FUEL drill driver with 1/2\" chuck and POWERSTATE™ brushless motor. Length only 15-17 cm, weight 1-1.1 kg with battery. Metal chuck 13mm, mechanical clutch, compatible with M12 REDLITHIUM 2.0Ah and 4.0Ah batteries.",
         originalPrice: "649.00",
         exhibitionPrice: "399.00",
         image: "/attached_assets/image_1761512541599.png",
@@ -129,6 +133,8 @@ export class MemStorage implements IStorage {
         category: "wiertarki",
         description:
           "Unikalna wiertarka M12 FUEL 4-w-1 z 4 wymiennymi głowicami: uchwyt 3/8\", offset driver, 1/4\" hex, right angle. 16 pozycji montażu głowic. Moment obrotowy 300 in-lbs, prędkość 1600 RPM. Idealna dla elektryków, monterów HVAC, szafkarzy i mechaników.",
+        descriptionEn:
+          "Unique M12 FUEL 4-in-1 drill driver with 4 interchangeable heads: 3/8\" chuck, offset driver, 1/4\" hex, right angle. 16 head mounting positions. Torque 300 in-lbs, speed 1600 RPM. Ideal for electricians, HVAC installers, cabinet makers and mechanics.",
         originalPrice: "899.00",
         exhibitionPrice: "569.00",
         image: "/attached_assets/image_1761512457573.png",
@@ -156,6 +162,8 @@ export class MemStorage implements IStorage {
         category: "klucze",
         description:
           "Najwydajniejszy klucz udarowy M18 FUEL z gniazdem 1/2\". Moment dokręcania do 1100 ft-lbs (1492 Nm), 4 personalizowalne tryby momentu dokręcania. Funkcja ONE-KEY do śledzenia narzędzi przez Bluetooth. Idealny do serwisu opon samochodów osobowych i ciężarowych.",
+        descriptionEn:
+          "Most powerful M18 FUEL impact wrench with 1/2\" drive. Fastening torque up to 1100 ft-lbs (1492 Nm), 4 customizable torque modes. ONE-KEY feature for tool tracking via Bluetooth. Ideal for passenger and truck tire service.",
         originalPrice: "1399.00",
         exhibitionPrice: "899.00",
         image: "/attached_assets/image_1761512625203.png",
@@ -176,11 +184,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Stubby 1/2\" Impact Wrench Gen 2",
-        nameEn: null,
+        nameEn: "M12 FUEL Stubby 1/2\" Impact Wrench Gen 2",
         slug: "m12-fuel-stubby-12-gen2",
         category: "klucze",
         description:
           "Kompaktowy klucz udarowy M12 FUEL Stubby generacji 2 z gniazdem 1/2\". Moment dokręcania 400 ft-lbs, zrywanie 550 ft-lbs. Prędkość 0-3000 RPM, uderzenia 0-3300 IPM. Ultra kompaktowa długość 12.5 cm, waga tylko 1 kg. Ponad 2x więcej mocy niż poprzednia generacja.",
+        descriptionEn:
+          "Compact M12 FUEL Stubby generation 2 impact wrench with 1/2\" drive. Fastening torque 400 ft-lbs, breakaway torque 550 ft-lbs. Speed 0-3000 RPM, impacts 0-3300 IPM. Ultra-compact length 12.5 cm, weight only 1 kg. Over 2x more power than previous generation.",
         originalPrice: "799.00",
         exhibitionPrice: "499.00",
         image: "/attached_assets/image_1761512780593.png",
@@ -202,11 +212,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Stubby 3/8\" Impact Wrench Gen 2",
-        nameEn: null,
+        nameEn: "M12 FUEL Stubby 3/8\" Impact Wrench Gen 2",
         slug: "m12-fuel-stubby-38-gen2",
         category: "klucze",
         description:
           "Kompaktowy klucz udarowy M12 FUEL Stubby 3/8\" generacji 2. Moment dokręcania i zrywania 400/550 ft-lbs. Prędkość 0-3000 RPM, 0-3300 IPM. Długość 12.2 cm, waga 1 kg. Ideał do prac w ciasnych przestrzeniach.",
+        descriptionEn:
+          "Compact M12 FUEL Stubby 3/8\" generation 2 impact wrench. Fastening and breakaway torque 400/550 ft-lbs. Speed 0-3000 RPM, 0-3300 IPM. Length 12.2 cm, weight 1 kg. Ideal for work in tight spaces.",
         originalPrice: "749.00",
         exhibitionPrice: "469.00",
         image: "/attached_assets/image_1761580839029.png",
@@ -230,11 +242,13 @@ export class MemStorage implements IStorage {
       // MŁOTY SDS-PLUS i SDS-MAX
       {
         name: "M18 FUEL Młot udarowo-obrotowy SDS-Plus FHX",
-        nameEn: null,
+        nameEn: "M18 FUEL SDS-Plus Rotary Hammer FHX",
         slug: "m18-fuel-mlot-sds-plus-fhx",
         category: "mloty",
         description:
           "Młotowiertarka M18 FUEL SDS-Plus z energią udaru 2.5J. Wiercenie w betonie do 26mm, prędkość obrotowa 0-1330 obr/min, 4 tryby pracy. Wibracje tylko 12.9 m/s². Wydajność: do 125 otworów Ø10×50mm na akumulatorze M18 HIGH OUTPUT 5.5Ah. Technologie POWERSTATE, REDLINK PLUS, AVS.",
+        descriptionEn:
+          "M18 FUEL SDS-Plus rotary hammer with 2.5J impact energy. Concrete drilling up to 26mm, rotational speed 0-1330 rpm, 4 operating modes. Vibration only 12.9 m/s². Performance: up to 125 holes Ø10×50mm on M18 HIGH OUTPUT 5.5Ah battery. Technologies: POWERSTATE, REDLINK PLUS, AVS.",
         originalPrice: "1199.00",
         exhibitionPrice: "749.00",
         image: "/attached_assets/image_1761512848416.png",
@@ -256,11 +270,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18 FUEL Młot wyburzeniowy SDS-Max FHM",
-        nameEn: null,
+        nameEn: "M18 FUEL SDS-Max Demolition Hammer FHM",
         slug: "m18-fuel-mlot-sds-max-fhm",
         category: "mloty",
         description:
           "Najwydajniejszy akumulatorowy młot wyburzeniowy M18 FUEL SDS-Max. Energia udaru 11J, wiercenie do 45mm w betonie, wiercenie tunelowe 65mm, koronka rdzeniowa do 150mm. Prędkość 0-380 obr/min, częstotliwość 0-2900 ud/min. Wibracje: 9.4 m/s² (wiercenie) / 7.8 m/s² (kucie). Waga 8 kg, z akumulatorem 10.2 kg. Technologie: ONE-KEY, AUTOSTOP, AVS.",
+        descriptionEn:
+          "Most powerful cordless M18 FUEL SDS-Max demolition hammer. Impact energy 11J, drilling up to 45mm in concrete, tunnel drilling 65mm, core bit up to 150mm. Speed 0-380 rpm, frequency 0-2900 impacts/min. Vibration: 9.4 m/s² (drilling) / 7.8 m/s² (chipping). Weight 8 kg, with battery 10.2 kg. Technologies: ONE-KEY, AUTOSTOP, AVS.",
         originalPrice: "2799.00",
         exhibitionPrice: "1799.00",
         image: "/attached_assets/image_1761512909265.png",
@@ -283,11 +299,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Młotowiertarka SDS-Plus",
-        nameEn: null,
+        nameEn: "M12 FUEL SDS-Plus Rotary Hammer",
         slug: "m12-fuel-mlotowiertarka-sds-plus",
         category: "mloty",
         description:
           "Młotowiertarka M12 FUEL SDS-Plus z silnikiem bezszczotkowym POWERSTATE™. Energia udaru 1.1J, wiercenie w betonie do 16mm, prędkość 0-1150 obr/min. 3 tryby: wiercenie/wiercenie udarowe/kucie. Idealna do instalacji elektrycznych, hydraulicznych i HVAC.",
+        descriptionEn:
+          "M12 FUEL SDS-Plus rotary hammer with POWERSTATE™ brushless motor. Impact energy 1.1J, concrete drilling up to 16mm, speed 0-1150 rpm. 3 modes: drilling/hammer drilling/chipping. Ideal for electrical, plumbing and HVAC installations.",
         originalPrice: "799.00",
         exhibitionPrice: "499.00",
         image: "/attached_assets/image_1761513077121.png",
@@ -311,11 +329,13 @@ export class MemStorage implements IStorage {
       // PIŁY
       {
         name: "M18 FUEL Pilarka tarczowa 165mm FCS552",
-        nameEn: null,
+        nameEn: "M18 FUEL 165mm Circular Saw FCS552",
         slug: "m18-fuel-pilarka-tarczowa-165mm",
         category: "pily",
         description:
           "Kompaktowa pilarka tarczowa M18 FUEL z tarczą 165mm. Głębokość cięcia przy 90°: 57mm, przy 45°: 44mm. Prędkość max 6000 obr/min, waga 2.8 kg bez akumulatora. Regulacja kąta skośnego do 50°. Wydajność: 200 kawałków drewna 90×35mm (akumulator 3.0 Ah HIGH OUTPUT). Adapter odkurzacza, LED, dmuchawa pyłu, osłona magnezowa, stopa z magnesem, hak.",
+        descriptionEn:
+          "Compact M18 FUEL circular saw with 165mm blade. Cutting depth at 90°: 57mm, at 45°: 44mm. Max speed 6000 rpm, weight 2.8 kg without battery. Bevel adjustment up to 50°. Performance: 200 cuts of 90×35mm wood (3.0 Ah HIGH OUTPUT battery). Dust extractor adapter, LED, dust blower, magnesium guard, magnetic shoe, hook.",
         originalPrice: "849.00",
         exhibitionPrice: "529.00",
         image: "/attached_assets/image_1761513269900.png",
@@ -338,11 +358,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18 FUEL Pilarka łańcuchowa HATCHET 20cm",
-        nameEn: null,
+        nameEn: "M18 FUEL HATCHET 20cm Chainsaw",
         slug: "m18-fuel-pilarka-lancuchowa-20cm",
         category: "pily",
         description:
           "Kompaktowa pilarka łańcuchowa M18 FUEL HATCHET z prowadnicą 20cm. Prędkość łańcucha 5.0 m/s, waga 2.4 kg bez akumulatora. Wydajność: 180 cięć w twardym drewnie 10×10 cm (akumulator HIGH OUTPUT 5.5 Ah). Napinacz łańcucha łatwo dostępny, metalowe kolce, automatyczne smarowanie.",
+        descriptionEn:
+          "Compact M18 FUEL HATCHET chainsaw with 20cm bar. Chain speed 5.0 m/s, weight 2.4 kg without battery. Performance: 180 cuts in hardwood 10×10 cm (HIGH OUTPUT 5.5 Ah battery). Easy-access chain tensioner, metal spikes, automatic lubrication.",
         originalPrice: "899.00",
         exhibitionPrice: "569.00",
         image: "/attached_assets/image_1761513326785.png",
@@ -364,11 +386,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18 FUEL Pilarka łańcuchowa 35cm FCHS",
-        nameEn: null,
+        nameEn: "M18 FUEL 35cm Chainsaw FCHS",
         slug: "m18-fuel-pilarka-lancuchowa-35cm",
         category: "pily",
         description:
           "Pilarka łańcuchowa M18 FUEL z prowadnicą 35cm. Wydajność: 150 cięć drewna sosnowego 100×100 mm (akumulator 12.0 Ah). Wysoki moment obrotowy, regulacja prędkości spustem, reakcja silnika <1 sekunda. Szczelny zbiornik oleju z okienkiem podglądowym, automatyczne smarowanie łańcucha.",
+        descriptionEn:
+          "M18 FUEL chainsaw with 35cm bar. Performance: 150 cuts of 100×100 mm pine wood (12.0 Ah battery). High torque, trigger speed control, motor response <1 second. Sealed oil tank with viewing window, automatic chain lubrication.",
         originalPrice: "1199.00",
         exhibitionPrice: "749.00",
         image: "/attached_assets/image_1761513392632.png",
@@ -390,11 +414,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18 FUEL Piła szablasta SAWZALL FSZ",
-        nameEn: null,
+        nameEn: "M18 FUEL SAWZALL Reciprocating Saw FSZ",
         slug: "m18-fuel-pila-szablasta-sawzall",
         category: "pily",
         description:
           "Piła szablasta M18 FUEL SAWZALL z silnikiem POWERSTATE™ (do 5× dłuższa żywotność). Wydajność do 30% szybsze cięcie. System FIXTEC™ - wymiana ostrza bez narzędzi. Opatentowana ochrona przekładni zębatej. Idealna do wymagających zastosowań budowlanych i rozbiórkowych.",
+        descriptionEn:
+          "M18 FUEL SAWZALL reciprocating saw with POWERSTATE™ motor (up to 5× longer life). Performance up to 30% faster cutting. FIXTEC™ system - tool-free blade change. Patented gear protection. Ideal for demanding construction and demolition applications.",
         originalPrice: "899.00",
         exhibitionPrice: "569.00",
         image: "/attached_assets/image_1761513451622.png",
@@ -415,11 +441,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Piła szablasta HACKZALL",
-        nameEn: null,
+        nameEn: "M12 FUEL HACKZALL Reciprocating Saw",
         slug: "m12-fuel-pila-hackzall",
         category: "pily",
         description:
           "Ultra kompaktowa piła szablasta M12 FUEL HACKZALL. Skok 19mm, waga tylko 1.4 kg. Szybkomocowanie ostrza bez narzędzi. Idealna do prac w ciasnych przestrzeniach gdzie większe piły się nie zmieszczą.",
+        descriptionEn:
+          "Ultra-compact M12 FUEL HACKZALL reciprocating saw. Stroke 19mm, weight only 1.4 kg. Tool-free quick blade change. Ideal for working in tight spaces where larger saws won't fit.",
         originalPrice: "649.00",
         exhibitionPrice: "399.00",
         image: "/attached_assets/image_1761513563978.png",
@@ -440,11 +468,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Pilarka tarczowa 140mm",
-        nameEn: null,
+        nameEn: "M12 FUEL 140mm Circular Saw",
         slug: "m12-fuel-pilarka-tarczowa-140mm",
         category: "pily",
         description:
           "Kompaktowa pilarka tarczowa M12 FUEL z tarczą 140mm. Głębokość cięcia przy 90°: 47mm, przy 45°: 34mm. Prędkość 5000 obr/min, waga 2.3 kg bez akumulatora. Idealna do cięcia desek, sklejki i paneli. LED, dmuchawa pyłu, regulacja kąta do 50°.",
+        descriptionEn:
+          "Compact M12 FUEL circular saw with 140mm blade. Cutting depth at 90°: 47mm, at 45°: 34mm. Speed 5000 rpm, weight 2.3 kg without battery. Ideal for cutting boards, plywood and panels. LED, dust blower, bevel adjustment up to 50°.",
         originalPrice: "749.00",
         exhibitionPrice: "469.00",
         image: "/attached_assets/image_1761513650939.png",
@@ -468,11 +498,13 @@ export class MemStorage implements IStorage {
       // SZLIFIERKI
       {
         name: "M18 FUEL Szlifierka kątowa 125mm",
-        nameEn: null,
+        nameEn: "M18 FUEL 125mm Angle Grinder",
         slug: "m18-fuel-szlifierka-katowa-125mm",
         category: "szlifierki",
         description:
           "Bezprzewodowa szlifierka kątowa M18 FUEL 125mm z silnikiem bezszczotkowym POWERSTATE™. Prędkość 8500 obr/min. System RAPIDSTOP™ zatrzymuje tarczę w mniej niż 3 sekundy. Blokada wrzeciona, osłona przeciwpyłowa.",
+        descriptionEn:
+          "Cordless M18 FUEL 125mm angle grinder with POWERSTATE™ brushless motor. Speed 8500 rpm. RAPIDSTOP™ system stops the disc in less than 3 seconds. Spindle lock, dust guard.",
         originalPrice: "749.00",
         exhibitionPrice: "459.00",
         image: "/attached_assets/image_1761513775669.png",
@@ -494,11 +526,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12 FUEL Szlifierka prosta 1/4\" Die Grinder",
-        nameEn: null,
+        nameEn: "M12 FUEL 1/4\" Die Grinder",
         slug: "m12-fuel-szlifierka-prosta-14",
         category: "szlifierki",
         description:
           "Szlifierka prosta M12 FUEL 1/4\" z mocą 0.3 HP - o 20% więcej mocy niż narzędzia pneumatyczne. 3-Mode RPM Control + regulowany spust. Zaprojektowana do zastąpienia narzędzi pneumatycznych. Bezprzewodowa wolność bez kompromisów.",
+        descriptionEn:
+          "M12 FUEL 1/4\" die grinder with 0.3 HP power - 20% more power than pneumatic tools. 3-Mode RPM Control + variable speed trigger. Designed to replace pneumatic tools. Cordless freedom without compromises.",
         originalPrice: "649.00",
         exhibitionPrice: "409.00",
         image: "/attached_assets/image_1761513915075.png",
@@ -521,11 +555,13 @@ export class MemStorage implements IStorage {
       // ZESTAWY
       {
         name: "Zestaw combo M18 FUEL 2 narzędzia",
-        nameEn: null,
+        nameEn: "M18 FUEL 2-Tool Combo Kit",
         slug: "zestaw-combo-m18-fuel-2-narzedzia",
         category: "zestawy",
         description:
           "Zestaw M18 FUEL zawierający wiertarko-wkrętarkę udarową FPD3 + zakrętarkę udarową kompaktową. W zestawie: 2× akumulator M18 REDLITHIUM 5.0Ah, ładowarka M12-18FC, walizka HD Box. Kompletne rozwiązanie do prac budowlanych i montażowych.",
+        descriptionEn:
+          "M18 FUEL kit containing hammer drill/driver FPD3 + compact impact driver. Includes: 2× M18 REDLITHIUM 5.0Ah batteries, M12-18FC charger, HD Box case. Complete solution for construction and assembly work.",
         originalPrice: "1899.00",
         exhibitionPrice: "1199.00",
         image: "/attached_assets/image_1761514144172.png",
@@ -546,11 +582,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Zestaw combo M18 FUEL 3 narzędzia",
-        nameEn: null,
+        nameEn: "M18 FUEL 3-Tool Combo Kit",
         slug: "zestaw-combo-m18-fuel-3-narzedzia",
         category: "zestawy",
         description:
           "Rozszerzony zestaw M18 FUEL: wiertarko-wkrętarka + zakrętarka udarowa + szlifierka kątowa 125mm. W zestawie: 3× akumulator 5.0Ah, ładowarka szybka, walizka systemowa. Idealny zestaw dla profesjonalistów.",
+        descriptionEn:
+          "Extended M18 FUEL kit: hammer drill/driver + impact driver + 125mm angle grinder. Includes: 3× 5.0Ah batteries, rapid charger, system case. Ideal kit for professionals.",
         originalPrice: "2599.00",
         exhibitionPrice: "1649.00",
         image: "/attached_assets/image_1761514222853.png",
@@ -571,11 +609,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Zestaw startowy M18 bateria + ładowarka",
-        nameEn: null,
+        nameEn: "M18 Battery + Charger Starter Kit",
         slug: "zestaw-startowy-m18-bateria-ladowarka",
         category: "zestawy",
         description:
           "Zestaw startowy M18: 2× akumulator REDLITHIUM 5.0Ah + ładowarka M12-18FC. System REDLITHIUM zapewnia najdłuższy czas pracy, najwyższą moc i najlepszą żywotność baterii. Kompatybilny ze wszystkimi narzędziami M18.",
+        descriptionEn:
+          "M18 starter kit: 2× REDLITHIUM 5.0Ah batteries + M12-18FC charger. REDLITHIUM system provides longest runtime, highest power and best battery life. Compatible with all M18 tools.",
         originalPrice: "649.00",
         exhibitionPrice: "409.00",
         image: "/attached_assets/image_1761514286998.png",
@@ -595,11 +635,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Zestaw combo M12 FUEL 2 narzędzia",
-        nameEn: null,
+        nameEn: "M12 FUEL 2-Tool Combo Kit",
         slug: "zestaw-combo-m12-fuel-2-narzedzia",
         category: "zestawy",
         description:
           "Zestaw M12 FUEL zawierający wiertarkę 1/2\" + zakrętarkę udarową. W zestawie: 2× akumulator M12 REDLITHIUM 2.0Ah, ładowarka M12, torba narzędziowa. Kompletne rozwiązanie do prac instalacyjnych i montażowych.",
+        descriptionEn:
+          "M12 FUEL kit containing 1/2\" drill driver + impact driver. Includes: 2× M12 REDLITHIUM 2.0Ah batteries, M12 charger, tool bag. Complete solution for installation and assembly work.",
         originalPrice: "1499.00",
         exhibitionPrice: "949.00",
         image: "/attached_assets/image_1761514383361.png",
@@ -622,11 +664,13 @@ export class MemStorage implements IStorage {
       // AKCESORIA
       {
         name: "Zestaw wierteł HSS-G Milwaukee 19szt",
-        nameEn: null,
+        nameEn: "Milwaukee HSS-G Drill Bit Set 19pc",
         slug: "zestaw-wiertel-hss-g-19szt",
         category: "akcesoria",
         description:
           "Profesjonalny zestaw 19 wierteł HSS-G w zakresie 1-10mm w metalowej kasecie. Precyzyjnie szlifowane, nadają się do wiercenia w stali, żeliwie i metalu kolorowym.",
+        descriptionEn:
+          "Professional 19-piece HSS-G drill bit set ranging 1-10mm in metal case. Precision ground, suitable for drilling in steel, cast iron and non-ferrous metals.",
         originalPrice: "199.00",
         exhibitionPrice: "129.00",
         image: "/attached_assets/image_1761514474836.png",
@@ -646,11 +690,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Zestaw bitów SHOCKWAVE 56szt",
-        nameEn: null,
+        nameEn: "SHOCKWAVE Impact Bit Set 56pc",
         slug: "zestaw-bitow-shockwave-56szt",
         category: "akcesoria",
         description:
           "Kompletny zestaw 56 bitów udarowych SHOCKWAVE w modułowym futerale. Technologia SHOCKWAVE zapewnia dłuższą żywotność i lepszą wydajność. Zawiera bity płaskie, krzyżakowe, Torx, sześciokątne i inne.",
+        descriptionEn:
+          "Complete 56-piece SHOCKWAVE impact bit set in modular case. SHOCKWAVE technology provides longer life and better performance. Includes slotted, Phillips, Torx, hex and other bits.",
         originalPrice: "349.00",
         exhibitionPrice: "229.00",
         image: "/attached_assets/image_1761514592976.png",
@@ -671,11 +717,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Walizka systemowa PACKOUT",
-        nameEn: null,
+        nameEn: "PACKOUT Modular Tool Box",
         slug: "walizka-systemowa-packout",
         category: "akcesoria",
         description:
           "Duża walizka systemowa PACKOUT z organizerami wewnętrznymi. System stackowania pozwala na łączenie z innymi modułami PACKOUT. Wytrzymała konstrukcja, metalowe zamki, odporna na uderzenia i warunki atmosferyczne.",
+        descriptionEn:
+          "Large PACKOUT modular tool box with internal organizers. Stacking system allows connection with other PACKOUT modules. Durable construction, metal latches, impact and weather resistant.",
         originalPrice: "649.00",
         exhibitionPrice: "409.00",
         image: "/attached_assets/image_1761514676459.png",
@@ -696,11 +744,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Wiertła SDS-Plus SHOCKWAVE 7szt",
-        nameEn: null,
+        nameEn: "SDS-Plus SHOCKWAVE Drill Bit Set 7pc",
         slug: "wiertla-sds-plus-shockwave-7szt",
         category: "akcesoria",
         description:
           "Zestaw 7 wierteł SDS-Plus SHOCKWAVE do betonu w zakresie 5-12mm. Głowica z węglików spiekanych, 4-ostrzowa geometria zapewnia szybkie wiercenie i długą żywotność.",
+        descriptionEn:
+          "7-piece SDS-Plus SHOCKWAVE drill bit set for concrete ranging 5-12mm. Carbide tip, 4-cutter geometry provides fast drilling and long life.",
         originalPrice: "269.00",
         exhibitionPrice: "169.00",
         image: "/attached_assets/image_1761514758857.png",
@@ -723,11 +773,13 @@ export class MemStorage implements IStorage {
       // WÓZKI NARZĘDZIOWE
       {
         name: "Mobilny stół warsztatowy 72\" Industrial z 18 szufladami",
-        nameEn: null,
+        nameEn: "72\" Industrial Mobile Workbench 18-Drawer",
         slug: "mobilny-stol-warsztatowy-72-industrial-18-szuflad",
         category: "wozki",
         description:
           "Profesjonalny mobilny stół warsztatowy Milwaukee 72\" High Capacity Industrial z 18 szufladami. Wzmocniona konstrukcja stalowa z prowadnicami 150 lbs soft-close. Drewniany blat roboczy pokryty poliuretanem zapewnia dużą powierzchnię roboczą. Udźwig: 3,500 lbs. Centrum zasilania z 6 gniazdami i 2 portami USB. Przemysłowe kółka 6\" z hamulcami nożnymi. Idealne rozwiązanie dla warsztatów samochodowych, przemysłowych i produkcyjnych.",
+        descriptionEn:
+          "Professional Milwaukee 72\" High Capacity Industrial mobile workbench with 18 drawers. Reinforced steel construction with 150 lbs soft-close drawer slides. Polyurethane-coated wood work surface provides large work area. Load capacity: 3,500 lbs. Power center with 6 outlets and 2 USB ports. Industrial 6\" casters with foot brakes. Ideal solution for automotive, industrial and production workshops.",
         originalPrice: "4199.00",
         exhibitionPrice: "2799.00",
         image: "/attached_assets/image_1761504642717.png",
@@ -751,11 +803,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Szafa stalowa 41\" Industrial z 18 szufladami",
-        nameEn: null,
+        nameEn: "41\" Industrial Steel Cabinet 18-Drawer",
         slug: "szafa-stalowa-41-industrial-18-szuflad",
         category: "wozki",
         description:
           "Szafa stalowa Milwaukee 41\" High Capacity Industrial to kombinacja szafy górnej i dolnej z łącznie 18 szufladami. Prowadnice kulkowe 100 lbs soft-close we wszystkich szufladach. Wzmocniona konstrukcja stalowa z ramą z kątownika. Górna skrzynia narzędziowa z kołnierzem zabezpieczającym i zamkiem. Mobilna szafa dolna z kółkami 5\". Idealny system przechowywania dla profesjonalistów wymagających maksymalnej organizacji narzędzi.",
+        descriptionEn:
+          "Milwaukee 41\" High Capacity Industrial steel cabinet is a combination of upper and lower cabinet with total of 18 drawers. Ball-bearing 100 lbs soft-close slides in all drawers. Reinforced steel construction with angle iron frame. Upper tool chest with security collar and lock. Mobile lower cabinet with 5\" casters. Ideal storage system for professionals requiring maximum tool organization.",
         originalPrice: "1999.00",
         exhibitionPrice: "1299.00",
         image: "/attached_assets/image_1761504885330.png",
@@ -779,11 +833,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Mobilny stół warsztatowy 52\" Industrial z 12 szufladami",
-        nameEn: null,
+        nameEn: "52\" Industrial Mobile Workbench 12-Drawer",
         slug: "mobilny-stol-warsztatowy-52-industrial-12-szuflad",
         category: "wozki",
         description:
           "Mobilny stół warsztatowy Milwaukee 52\" High Capacity Industrial z 12 szufladami. Drewniany blat roboczy 1.2\" pokryty poliuretanem dla maksymalnej ochrony. Prowadnice 120 lbs soft-close w każdej szufladzie. Korpus spawany z blachy 18-gauge na ramie z kątownika 6-gauge wytrzymuje 2,500 lbs. Centrum zasilania z 6 gniazdami i 2 portami USB. Organizer na narzędzia akumulatorowe i miejsca na ładowarki Milwaukee. Kółka przemysłowe 5\" z hamulcami.",
+        descriptionEn:
+          "Milwaukee 52\" High Capacity Industrial mobile workbench with 12 drawers. 1.2\" wood work surface with polyurethane coating for maximum protection. 120 lbs soft-close slides in each drawer. Welded 18-gauge steel body on 6-gauge angle iron frame withstands 2,500 lbs. Power center with 6 outlets and 2 USB ports. Cordless tool organizer and Milwaukee charger slots. Industrial 5\" casters with brakes.",
         originalPrice: "2199.00",
         exhibitionPrice: "1499.00",
         image: "/attached_assets/image_1761504956393.png",
@@ -807,11 +863,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Mobilna stacja robocza 40\" z blatem stalowym i 6 szufladami",
-        nameEn: null,
+        nameEn: "40\" Mobile Workstation Stainless Steel Top 6-Drawer",
         slug: "mobilna-stacja-robocza-40-blat-stalowy-6-szuflad",
         category: "wozki",
         description:
           "Mobilna stacja robocza Milwaukee 40\" z 6 szufladami i blatem ze stali nierdzewnej. Prowadnice 100 lbs soft-close zapewniają płynne działanie szuflad. Rama z kątownika i kółka przemysłowe 5\" gwarantują trwałość przy udźwigu 1,800 lbs. Blat roboczy ze stali nierdzewnej odporny na uszkodzenia. Centrum zasilania 6 gniazd + 2 USB. Organizer narzędzi, składana półka boczna i zamek baryłkowy. Idealna stacja dla elektryków, hydraulików i mechaników.",
+        descriptionEn:
+          "Milwaukee 40\" mobile workstation with 6 drawers and stainless steel top. 100 lbs soft-close slides ensure smooth drawer operation. Angle iron frame and industrial 5\" casters guarantee durability with 1,800 lbs load capacity. Damage-resistant stainless steel work surface. Power center with 6 outlets + 2 USB. Tool organizer, folding side shelf and barrel lock. Ideal workstation for electricians, plumbers and mechanics.",
         originalPrice: "1499.00",
         exhibitionPrice: "999.00",
         image: "/attached_assets/image_1761505026761.png",
@@ -834,11 +892,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Mobilna stacja robocza 60\"",
-        nameEn: null,
+        nameEn: "60\" Mobile Workstation with Pegboard",
         slug: "mobilna-stacja-robocza-60",
         category: "wozki",
         description:
           "Mobilna stacja robocza Milwaukee 60\" to najbardziej trwałe i najlepiej wyposażone rozwiązanie. Wzmocniona rama z kątownika, prowadnice 100 lbs soft-close i 6 kółek przemysłowych 5\". Udźwig: 2,200 lbs. Pegboard metalowy 22\" wielopozycyjny do zawieszania narzędzi. Centrum zasilania z 6 gniazdami i portami USB. Odwracany blat twardy 1\" zapewnia maksymalną uniwersalność powierzchni roboczej. Uchwyt na narzędzia i regulowany uchwyt długich narzędzi. Idealna dla profesjonalistów wymagających dużej przestrzeni roboczej.",
+        descriptionEn:
+          "Milwaukee 60\" mobile workstation is the most durable and best-equipped solution. Reinforced angle iron frame, 100 lbs soft-close slides and 6 industrial 5\" casters. Load capacity: 2,200 lbs. Multi-position 22\" metal pegboard for hanging tools. Power center with 6 outlets and USB ports. Reversible 1\" hardwood top provides maximum work surface versatility. Tool holder and adjustable long tool holder. Ideal for professionals requiring large work area.",
         originalPrice: "3699.00",
         exhibitionPrice: "2499.00",
         image: "/attached_assets/image_1761505080445.png",
@@ -862,11 +922,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Combo szafa stalowa 46\" High Capacity",
-        nameEn: null,
+        nameEn: "46\" High Capacity Steel Storage Combo",
         slug: "combo-szafa-stalowa-46-high-capacity",
         category: "wozki",
         description:
           "Combo Milwaukee 46\" High Capacity Steel Storage to najlepiej wyposażone rozwiązanie łączące szafę górną i dolną. Kombinacja zapewnia wzmocnioną ramę z kątownika, prowadnice 100 lbs soft-close i udźwig 1,800 lbs. Kółka przemysłowe 5\" w dolnej szafie. Zintegrowana ścianka pegboard do maksymalizacji produktywności. Centrum zasilania MILWAUKEE i organizer narzędzi elektrycznych. Pojemność magazynowa dla najlepszej organizacji wszystkich rozmiarów narzędzi. System zamków chroniący przed kradzieżą.",
+        descriptionEn:
+          "Milwaukee 46\" High Capacity Steel Storage combo is the best-equipped solution combining upper and lower cabinets. Combination provides reinforced angle iron frame, 100 lbs soft-close slides and 1,800 lbs load capacity. Industrial 5\" casters on lower cabinet. Integrated pegboard wall to maximize productivity. MILWAUKEE power center and power tool organizer. Storage capacity for best organization of all tool sizes. Locking system protecting against theft.",
         originalPrice: "2399.00",
         exhibitionPrice: "1599.00",
         image: "/attached_assets/image_1761505145830.png",
@@ -890,11 +952,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Mobilny stół warsztatowy 52\" High Capacity",
-        nameEn: null,
+        nameEn: "52\" High Capacity Mobile Workbench with Wood Top",
         slug: "mobilny-stol-warsztatowy-52-high-capacity",
         category: "wozki",
         description:
           "Mobilny stół warsztatowy Milwaukee 52\" High Capacity to trwałe i najlepiej wyposażone rozwiązanie dla profesjonalistów. Korpus 18Ga z wzmocnioną ramą z kątownika zapewnia wyjątkową wytrzymałość. Odwracana powierzchnia drewniana 1.2\" do dociskania na 3 stronach. Powierzchnia robocza 22\" na wysokości 41\" dla optymalnej ergonomii. Prowadnice 100 lbs we wszystkich szufladach. Wbudowane centrum zasilania z 6 gniazdami i portami USB. Półka stalowa przykręcana, uchwyt na narzędzia i regulowany uchwyt długich narzędzi. Kółka przemysłowe z hamulcami.",
+        descriptionEn:
+          "Milwaukee 52\" High Capacity mobile workbench is a durable and best-equipped solution for professionals. 18Ga body with reinforced angle iron frame provides exceptional strength. Reversible 1.2\" wood surface for clamping on 3 sides. 22\" work surface at 41\" height for optimal ergonomics. 100 lbs slides in all drawers. Built-in power center with 6 outlets and USB ports. Bolt-on steel shelf, tool holder and adjustable long tool holder. Industrial casters with brakes.",
         originalPrice: "2799.00",
         exhibitionPrice: "1899.00",
         image: "/attached_assets/image_1761505187082.png",
@@ -920,11 +984,13 @@ export class MemStorage implements IStorage {
       // LASERY
       {
         name: "M12™ Zielony laser 3-płaszczyznowy 360° z automatycznym wypoziomowaniem i odbiornikiem",
-        nameEn: null,
+        nameEn: "M12™ Green 360° 3-Plane Laser with Auto-Leveling and Receiver",
         slug: "m12-zielony-laser-3-plaszczyznowy-360-auto-alignment",
         category: "lasery",
         description:
           "Profesjonalny laser M12™ Green 360° 3-Plane z automatycznym wypoziomowaniem to idealne rozwiązanie dla profesjonalistów. Zapewnia 3 pełne płaszczyzny lasera zielonego 360° dla maksymalnej wydajności pracy. Automatyczne wypoziomowanie z dokładnością ±3mm na 10m. W zestawie odbiornik laserowy i zacisk montażowy. Bateria M12™ REDLITHIUM™ XC4.0 zapewnia do 10 godzin pracy. Walizka transportowa w komplecie chroni sprzęt podczas przechowywania i transportu. Klasa lasera: 2, długość fali 515-530nm (zielony).",
+        descriptionEn:
+          "Professional M12™ Green 360° 3-Plane laser with auto-leveling is the ideal solution for professionals. Provides 3 full green 360° laser planes for maximum work efficiency. Auto-leveling with ±3mm accuracy at 10m. Includes laser receiver and mounting clamp. M12™ REDLITHIUM™ XC4.0 battery provides up to 10 hours runtime. Carrying case included protects equipment during storage and transport. Laser class: 2, wavelength 515-530nm (green).",
         originalPrice: "2499.00",
         exhibitionPrice: "1699.00",
         image: "/attached_assets/image_1761506455987.png",
@@ -947,11 +1013,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18™ Zielony laser obrotowy wewnętrzny z pilotem/odbiornikiem i uchwytem ściennym",
-        nameEn: null,
+        nameEn: "M18™ Green Interior Rotary Laser with Remote/Receiver and Wall Mount",
         slug: "m18-zielony-laser-obrotowy-wewnetrzny-kit",
         category: "lasery",
         description:
           "Zaawansowany laser obrotowy M18™ Green Interior Rotary Laser zapewnia precyzyjne wypoziomowanie wewnątrz pomieszczeń. Zielony laser obrotowy o zwiększonej widoczności, idealny do prac wykończeniowych. Pilot zdalnego sterowania z odbiornikiem laserowym dla maksymalnej wygody pracy. Uchwyt ścienny umożliwia montaż na ścianie do aplikacji pionowych. Bateria M18™ REDLITHIUM™ XC3.0 zapewnia długi czas pracy. Wytrzymała walizka transportowa chroni sprzęt. Zakres roboczy: do 600m z odbiornikiem. Dokładność ±1.5mm na 30m.",
+        descriptionEn:
+          "Advanced M18™ Green Interior Rotary Laser provides precise leveling indoors. Green rotary laser with enhanced visibility, ideal for finishing work. Remote control with laser receiver for maximum work convenience. Wall mount enables wall mounting for vertical applications. M18™ REDLITHIUM™ XC3.0 battery provides long runtime. Durable carrying case protects equipment. Working range: up to 600m with receiver. Accuracy ±1.5mm at 30m.",
         originalPrice: "3299.00",
         exhibitionPrice: "2199.00",
         image: "/attached_assets/image_1761506550003.png",
@@ -974,11 +1042,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M12™ Zielony laser 3-płaszczyznowy 360° - zestaw",
-        nameEn: null,
+        nameEn: "M12™ Green 360° 3-Plane Laser Kit",
         slug: "m12-zielony-laser-3-plaszczyznowy-360-kit",
         category: "lasery",
         description:
           "Kompletny zestaw M12™ Green 360° 3-Plane Laser Kit do profesjonalnych zastosowań budowlanych i wykończeniowych. Laser 3-płaszczyznowy 360° z zielonym widzialnym promieniem o zwiększonej jasności. Target laserowy w zestawie do łatwego przenoszenia linii. Bateria M12™ REDLITHIUM™ XC4.0 zapewnia pełny dzień pracy. Ładowarka M12™ w komplecie. Wytrzymała walizka transportowa Milwaukee. Zakres roboczy: do 45m (bez odbiornika), dokładność ±3mm na 10m. Klasa lasera 2, IP54.",
+        descriptionEn:
+          "Complete M12™ Green 360° 3-Plane Laser Kit for professional construction and finishing applications. 360° 3-plane laser with enhanced brightness green visible beam. Laser target included for easy line transfer. M12™ REDLITHIUM™ XC4.0 battery provides full day runtime. M12™ charger included. Durable Milwaukee carrying case. Working range: up to 45m (without receiver), accuracy ±3mm at 10m. Laser class 2, IP54.",
         originalPrice: "1899.00",
         exhibitionPrice: "1299.00",
         image: "/attached_assets/image_1761506600779.png",
@@ -1003,11 +1073,13 @@ export class MemStorage implements IStorage {
       // BATERIE I ŁADOWARKI (dodane do kategorii akcesoria)
       {
         name: "M18 REDLITHIUM FORGE HD12.0 Zestaw startowy",
-        nameEn: null,
+        nameEn: "M18 REDLITHIUM FORGE HD12.0 Starter Kit",
         slug: "m18-redlithium-forge-hd12-zestaw-startowy",
         category: "akcesoria",
         description:
           "Zestaw startowy M18 REDLITHIUM FORGE HD12.0 zapewnia 50% więcej mocy niż HIGH OUTPUT 12.0 i najdłuższą żywotność baterii REDLITHIUM. Technologia FORGE to najmocniejsze, najszybsze ładowanie i najdłuższa żywotność baterii Milwaukee. Bateria M18 FORGE HD12.0 zapewnia 12 Ah przy 50% większej mocy niż HIGH OUTPUT 12.0, optymalizując moc i czas pracy dla wymagających zastosowań. Litowo-jonowa bateria ma najdłuższą żywotność, najlepszą wydajność i najbardziej wytrzymałą obudowę odporną na oleje, smary i rozpuszczalniki. Wbudowana inteligencja REDLINK chroni baterię przed przeciążeniami. Bateria HD12.0 kompatybilna z 275+ rozwiązaniami M18. Ładowarka M18 & M12 Rapid Charger ładuje do 40% szybciej.",
+        descriptionEn:
+          "M18 REDLITHIUM FORGE HD12.0 starter kit provides 50% more power than HIGH OUTPUT 12.0 and longest REDLITHIUM battery life. FORGE technology is the most powerful, fastest charging and longest-lasting Milwaukee battery. M18 FORGE HD12.0 battery delivers 12 Ah with 50% more power than HIGH OUTPUT 12.0, optimizing power and runtime for demanding applications. Lithium-ion battery has longest life, best performance and most durable housing resistant to oils, greases and solvents. Built-in REDLINK Intelligence protects battery from overloads. HD12.0 battery compatible with 275+ M18 solutions. M18 & M12 Rapid Charger charges up to 40% faster.",
         originalPrice: "1499.00",
         exhibitionPrice: "999.00",
         image: "/attached_assets/image_1761518957357.png",
@@ -1030,11 +1102,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18 REDLITHIUM FORGE XC8.0 Bateria",
-        nameEn: null,
+        nameEn: "M18 REDLITHIUM FORGE XC8.0 Battery",
         slug: "m18-redlithium-forge-xc8-bateria",
         category: "akcesoria",
         description:
           "Bateria M18 REDLITHIUM FORGE XC8.0 zapewnia 50% więcej mocy i działa 50% chłodniej niż baterie M18 REDLITHIUM XC. Zoptymalizowana kombinacja rozmiaru i zwiększonej mocy - doskonałe rozwiązanie dla całej gamy produktów M18. Zapewnia zanikającą moc i działa znacznie dłużej niż kiedykolwiek przez aplikacje wymagające dużych obciążeń, pozwalając profesjonalistom pchać baterie XC dalej i dłużej. Bateria M18 REDLITHIUM FORGE XC8.0 zapewnia zwiększoną moc w ekstremalnie zimnych warunkach (poniżej 0F / -18C) i zapewnia więcej pracy na jedno ładowanie, napędzając zastąpienie przewodowe na placu budowy. W pełni kompatybilna z ponad 150+ rozwiązaniami M18.",
+        descriptionEn:
+          "M18 REDLITHIUM FORGE XC8.0 battery provides 50% more power and runs 50% cooler than M18 REDLITHIUM XC batteries. Optimized combination of size and increased power - excellent solution for entire M18 product range. Delivers fade-free power and runs significantly longer than ever through high-demand applications, allowing professionals to push XC batteries further and longer. M18 REDLITHIUM FORGE XC8.0 battery provides increased power in extremely cold conditions (below 0F / -18C) and delivers more work per charge, driving corded replacement on the jobsite. Fully compatible with over 150+ M18 solutions.",
         originalPrice: "699.00",
         exhibitionPrice: "469.00",
         image: "/attached_assets/image_1761518997060.png",
@@ -1056,11 +1130,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "M18 REDLITHIUM HIGH OUTPUT XC6.0 Baterie (2 szt)",
-        nameEn: null,
+        nameEn: "M18 REDLITHIUM HIGH OUTPUT XC6.0 Batteries (2-Pack)",
         slug: "m18-redlithium-high-output-xc6-baterie-2szt",
         category: "akcesoria",
         description:
           "Zestaw 2 baterii M18 REDLITHIUM HIGH OUTPUT XC6.0 zapewnia 50% więcej mocy i działa 50% chłodniej niż baterie M18 REDLITHIUM XC. Zoptymalizowana kombinacja rozmiaru i zwiększonej mocy zapewnia doskonałe rozwiązanie dla całej gamy produktów M18. Zapewnia zanikającą moc wolną i działa znacznie dłużej przez ciężkie aplikacje, pozwalając profesjonalistom pchać baterie XC dalej i dłużej niż wcześniej. Bateria M18 REDLITHIUM HIGH OUTPUT XC6.0 zapewnia zwiększoną moc w ekstremalnie zimnych warunkach pogodowych (poniżej 0F / -18C) i zapewnia więcej pracy na ładowanie. W pełni kompatybilna z ponad 150+ rozwiązaniami M18.",
+        descriptionEn:
+          "2-pack of M18 REDLITHIUM HIGH OUTPUT XC6.0 batteries provides 50% more power and runs 50% cooler than M18 REDLITHIUM XC batteries. Optimized combination of size and increased power provides excellent solution for entire M18 product range. Delivers fade-free power and runs significantly longer through heavy applications, allowing professionals to push XC batteries further and longer than before. M18 REDLITHIUM HIGH OUTPUT XC6.0 battery provides increased power in extremely cold weather conditions (below 0F / -18C) and delivers more work per charge. Fully compatible with over 150+ M18 solutions.",
         originalPrice: "1199.00",
         exhibitionPrice: "799.00",
         image: "/attached_assets/image_1761519211395.png",
@@ -1084,11 +1160,13 @@ export class MemStorage implements IStorage {
       // ZESTAWY MAKITA
       {
         name: "Makita DLX2283TJ Zestaw Combo 18V LXT 2-częściowy",
-        nameEn: null,
+        nameEn: "Makita DLX2283TJ 18V LXT 2-Piece Combo Kit",
         slug: "makita-dlx2283tj-zestaw-combo-2-czesciowy",
         category: "zestawy-makita",
         description:
           "Profesjonalny zestaw Makita 18V LXT zawierający wiertarko-wkrętarkę DHP485 z momentem 62 Nm i maksymalną prędkością 2000 obr/min oraz zakrętarkę udarową DTD153 o momencie dokręcania 175 Nm. W zestawie 2 akumulatory BL1850B 5.0Ah zapewniające długą pracę, szybka ładowarka DC18RC oraz walizka transportowa Makpac 4. System 18V LXT oferuje ponad 325 narzędzi i akcesoriów. Idealny zestaw startowy dla profesjonalistów i zaawansowanych użytkowników.",
+        descriptionEn:
+          "Professional Makita 18V LXT kit containing hammer drill/driver DHP485 with 62 Nm torque and max speed 2000 rpm, and impact driver DTD153 with 175 Nm fastening torque. Includes 2 BL1850B 5.0Ah batteries providing long runtime, DC18RC rapid charger and Makpac 4 carrying case. 18V LXT system offers over 325 tools and accessories. Ideal starter kit for professionals and advanced users.",
         originalPrice: "1299.00",
         exhibitionPrice: "689.00",
         image: "/attached_assets/image_1761572734302.png",
@@ -1110,11 +1188,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Makita DLX2153TJ1 Zestaw Combo Młot + Szlifierka 18V",
-        nameEn: null,
+        nameEn: "Makita DLX2153TJ1 Hammer + Grinder Combo Kit 18V",
         slug: "makita-dlx2153tj1-zestaw-mlot-szlifierka",
         category: "zestawy-makita",
         description:
           "Uniwersalny zestaw narzędzi Makita 18V LXT łączący młot udarowy DHR241 SDS-Plus z energią udaru 2.0J i prędkością 0-1200 obr/min oraz szlifierkę kątową DGA504 125mm z regulacją prędkości. W zestawie 2 akumulatory BL1850B 5.0Ah, ładowarka DC18RC i wytrzymała walizka transportowa. Młot wyposażony w system antywibracyjny AVT, szlifierka posiada zabezpieczenie przed przypadkowym włączeniem. Doskonały zestaw do prac budowlanych i remontowych.",
+        descriptionEn:
+          "Universal Makita 18V LXT tool kit combining DHR241 SDS-Plus rotary hammer with 2.0J impact energy and 0-1200 rpm speed, and DGA504 125mm angle grinder with speed control. Includes 2 BL1850B 5.0Ah batteries, DC18RC charger and durable carrying case. Hammer equipped with AVT anti-vibration system, grinder has accidental start protection. Excellent kit for construction and renovation work.",
         originalPrice: "2099.00",
         exhibitionPrice: "1399.00",
         image: "/attached_assets/image_1761572869307.png",
@@ -1136,11 +1216,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Makita DLX4155TX1 Zestaw Combo 18V LXT 4-częściowy",
-        nameEn: null,
+        nameEn: "Makita DLX4155TX1 18V LXT 4-Piece Combo Kit",
         slug: "makita-dlx4155tx1-zestaw-combo-4-czesciowy",
         category: "zestawy-makita",
         description:
           "Kompletny zestaw 4 narzędzi Makita 18V LXT Brushless dla profesjonalistów z technologią XPT (ochrona przed wilgocią i pyłem). Zawiera: wiertarko-wkrętarkę DDF486 (125 Nm), zakrętarkę udarową DTD153 (175 Nm), szlifierkę kątową DGA504 (125mm, 8500 obr/min) oraz młot udarowy DHR243 SDS-Plus z systemem odsysania pyłu DX07 i filtrem HEPA. W zestawie 2 akumulatory BL1850B 5.0Ah, ładowarka szybka DC18RC oraz torba transportowa. Wszystkie narzędzia wyposażone w silniki bezszczotkowe zapewniające długą żywotność i maksymalną wydajność.",
+        descriptionEn:
+          "Complete 4-tool Makita 18V LXT Brushless kit for professionals with XPT technology (moisture and dust protection). Includes: drill/driver DDF486 (125 Nm), impact driver DTD153 (175 Nm), angle grinder DGA504 (125mm, 8500 rpm) and rotary hammer DHR243 SDS-Plus with DX07 dust extraction system and HEPA filter. Includes 2 BL1850B 5.0Ah batteries, DC18RC rapid charger and carrying bag. All tools equipped with brushless motors providing long life and maximum performance.",
         originalPrice: "2999.00",
         exhibitionPrice: "1699.00",
         image: "/attached_assets/image_1761573009616.png",
@@ -1164,11 +1246,13 @@ export class MemStorage implements IStorage {
       // ZESTAWY SPECJALISTYCZNE MILWAUKEE
       {
         name: "Milwaukee M18 FUEL Zestaw Combo 7 Narzędzi 3697-27",
-        nameEn: null,
+        nameEn: "Milwaukee M18 FUEL 7-Tool Combo Kit 3697-27",
         slug: "milwaukee-m18-fuel-zestaw-7-narzedzi",
         category: "zestawy-specjalistyczne-milwaukee",
         description:
           "Profesjonalny zestaw 7 narzędzi M18 FUEL™ z silnikami bezszczotkowymi POWERSTATE™ zapewniającymi dłuższą żywotność i większą moc. Zawiera: wiertarko-wkrętarkę udarową 1/2\" (2904-20), zakrętarkę udarową 1/4\" hex (2953-20), pilarkę szablastą SAWZALL (2821-20), pilarkę tarczową 6-1/2\" (2730-20), szlifierkę kątową 4-1/2\"/5\" z hamulcem (2880-20, 8500 RPM), klucz udarowy 1/2\" (2962-20 z 4-trybową regulacją DRIVE CONTROL) oraz lampę LED (2735-20). System REDLINK PLUS™ Intelligence chroni przed przeciążeniem. W zestawie 2x akumulatory M18 REDLITHIUM XC5.0 (5.0 Ah), ładowarka multi-voltage M18/M12 i 2 torby. Kompatybilny z ponad 250 narzędziami M18.",
+        descriptionEn:
+          "Professional 7-tool M18 FUEL™ kit with POWERSTATE™ brushless motors providing longer life and more power. Includes: 1/2\" hammer drill/driver (2904-20), 1/4\" hex impact driver (2953-20), SAWZALL reciprocating saw (2821-20), 6-1/2\" circular saw (2730-20), 4-1/2\"/5\" angle grinder with brake (2880-20, 8500 RPM), 1/2\" impact wrench (2962-20 with 4-mode DRIVE CONTROL) and LED work light (2735-20). REDLINK PLUS™ Intelligence system protects against overload. Includes 2x M18 REDLITHIUM XC5.0 (5.0 Ah) batteries, multi-voltage M18/M12 charger and 2 bags. Compatible with over 250 M18 tools.",
         originalPrice: "5199.00",
         exhibitionPrice: "2599.00",
         image: "/attached_assets/image_1761573883563.png",
@@ -1202,11 +1286,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Milwaukee M18 FORCE LOGIC Prasa do Rur 1/2\"-1\" 2773-22L",
-        nameEn: null,
+        nameEn: "Milwaukee M18 FORCE LOGIC 1/2\"-1\" Pipe Press Tool 2773-22L",
         slug: "milwaukee-m18-force-logic-prasa-do-rur",
         category: "zestawy-specjalistyczne-milwaukee",
         description:
           "Profesjonalne narzędzie do prasowania rur M18™ FORCE LOGIC™ Long Throw z regulowanym skokiem dla optymalnego czasu cyklu. Najmniejsze narzędzie prasujące o wydłużonej długości na rynku z konstrukcją in-line umożliwiającą jednorękową obsługę i dostęp do ciasnych przestrzeni. Siła zaciskania 7,200 lbs, zakres średnic 1/2\"-1\" (z możliwością rozszerzenia do 2\" z opcjonalnymi szczękami). Inteligencja REDLINK™: automatyczny cykl zapewnia pełne zaprasowanie za każdym razem, kontrola baterii przed prasowaniem zapobiega niekompletnym zaprasowaniom. Zielony wskaźnik LED sygnalizuje ukończenie prasowania. Najdłuższy w branży okres kalibracji: 50,000 cykli. Silnik bezszczotkowy dla maksymalnej trwałości. W zestawie: 3 szczęki IPS-IA (1/2\", 3/4\", 1\"), 2x akumulator M18 REDLITHIUM XC 3.0Ah, ładowarka M18/M12 i wytrzymała walizka.",
+        descriptionEn:
+          "Professional M18™ FORCE LOGIC™ Long Throw pipe pressing tool with adjustable throw for optimal cycle time. Smallest extended-reach press tool on market with in-line design enabling one-handed operation and access to tight spaces. Clamping force 7,200 lbs, pipe range 1/2\"-1\" (expandable to 2\" with optional jaws). REDLINK™ Intelligence: automatic cycle ensures complete press every time, battery check before pressing prevents incomplete presses. Green LED indicator signals press completion. Industry-longest calibration period: 50,000 cycles. Brushless motor for maximum durability. Includes: 3 IPS-IA jaws (1/2\", 3/4\", 1\"), 2x M18 REDLITHIUM XC 3.0Ah batteries, M18/M12 charger and durable case.",
         originalPrice: "16399.00",
         exhibitionPrice: "2999.00",
         image: "/attached_assets/image_1761574082885.png",

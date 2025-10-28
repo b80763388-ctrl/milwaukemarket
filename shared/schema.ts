@@ -10,7 +10,8 @@ export const products = pgTable("products", {
   nameEn: text("name_en"), // English name
   slug: text("slug").notNull().unique(),
   category: text("category").notNull(), // "wiertarki", "szlifierki", "klucze", "mloty", "zestawy"
-  description: text("description").notNull(),
+  description: text("description").notNull(), // Polish description
+  descriptionEn: text("description_en"), // English description
   originalPrice: decimal("original_price", { precision: 10, scale: 2 }).notNull(),
   exhibitionPrice: decimal("exhibition_price", { precision: 10, scale: 2 }).notNull(),
   image: text("image").notNull(),
